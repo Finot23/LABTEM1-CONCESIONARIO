@@ -4,7 +4,14 @@
  */
 package consecionario.Formularios;
 
+
+import BD.ConexionBD;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,11 +19,16 @@ import java.awt.Color;
  */
 public class Login extends javax.swing.JFrame {
 
+    Connection conn;
+    PreparedStatement pst;
+    ResultSet rs;
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+        txtPass.setEchoChar((char)0);
+        conn = ConexionBD.conn();
     }
 
     /**
@@ -203,7 +215,43 @@ public class Login extends javax.swing.JFrame {
 
     private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
         // TODO add your handling code here:
+        String usuario = txtUsuario.getText();
+        char [] contraseña = txtPass.getPassword();
+        try{
+            //Se realiza la consulta en la BD
+            String sqlquery = "SELECT rol FROM userlogin WHERE nombre_usuario=? AND contraseña_usuario=?";
+            pst = conn.prepareStatement(sqlquery);
+            pst.setString(1, usuario);
+            pst.setString(2, String.valueOf(contraseña));
+            rs = pst.executeQuery();
+            
+            //Condicional para validar quien esta iniciando secion si el Gerente o el Vendedor
+            if(rs.next()){
+                //Se crea la variable de tipo String "tipoUsuario" donde se almacena el rol extraido de la BD
+                String tipoUsuario = rs.getString("rol");
+                //Valida si el usuario es el Gerente
+                if(tipoUsuario.equals("Gerente")){
+                    //NOTAA: Temporalmente dara el aviso de quien inicio secion. 
+                    //Posteriormente se debe de agrer que abra la ventana de gerente o de vendedor
+                JOptionPane.showMessageDialog(null, "Se inicio Secion con Exito, Bienbenido Gerente");
+                //si no es el gerente entonces es el vendedor
+                }else if(tipoUsuario.equals("Vendedor")){
+                    //NOTAA: Temporalmente dara el aviso de quien inicio secion. 
+                    //Posteriormente se debe de agrer que abra la ventana de gerente o de vendedor
+                    JOptionPane.showMessageDialog(null, "Se inicio Secion con Exito, Bienvenido Vendedor");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Intenta de nuevo");
+                txtUsuario.setText("Ingresa tu usuario");
+                txtUsuario.setForeground(Color.GRAY);
+                txtPass.setText("********");
+                txtPass.setForeground(Color.GRAY);
+            }
+            
+        }catch(SQLException e){
         
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_loginBtnMouseClicked
 
     /**
@@ -234,11 +282,12 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
             }
         });
+*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
