@@ -5,6 +5,7 @@
 package consecionario.Formularios;
 
 import java.awt.BorderLayout;
+import javax.swing.JPanel;
 
 
 
@@ -43,7 +44,14 @@ public class Principal extends javax.swing.JFrame {
 
     private void InitContent(){
         
-        InfoUsuario info = new InfoUsuario();
+        MostrarJpanel(new InfoUsuario());
+        
+        
+        
+
+    }
+    private void MostrarJpanel(JPanel info){
+        
         info.setSize(810, 520);
         info.setLocation(0, 0);
         
@@ -51,11 +59,7 @@ public class Principal extends javax.swing.JFrame {
         jPanelContenido.add(info, BorderLayout.CENTER);
         jPanelContenido.revalidate();
         jPanelContenido.repaint();
-        
-        
-
     }
-   
  
     
     /**
@@ -99,6 +103,7 @@ public class Principal extends javax.swing.JFrame {
 
         txtNombreUsuario.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
 
+        jPanelPaginaPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelPaginaPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanelPaginaPrincipalMouseClicked(evt);
@@ -130,6 +135,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanelSeguros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelSeguros.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanelSegurosMouseClicked(evt);
@@ -160,6 +166,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(iconSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
+        jPanelHistorial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelHistorial.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanelHistorialMouseClicked(evt);
@@ -191,6 +198,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanelCredito.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelCredito.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanelCreditoMouseClicked(evt);
@@ -221,6 +229,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel4)))
         );
 
+        jPanelVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelVentas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanelVentasMouseClicked(evt);
@@ -331,23 +340,23 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanelPaginaPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelPaginaPrincipalMouseClicked
-        // TODO add your handling code here:
+        MostrarJpanel(new InfoUsuario());
     }//GEN-LAST:event_jPanelPaginaPrincipalMouseClicked
 
     private void jPanelSegurosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSegurosMouseClicked
-        // TODO add your handling code here:
+        MostrarJpanel(new Seguros());
     }//GEN-LAST:event_jPanelSegurosMouseClicked
 
     private void jPanelHistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHistorialMouseClicked
-        // TODO add your handling code here:
+        MostrarJpanel(new Historial());
     }//GEN-LAST:event_jPanelHistorialMouseClicked
 
     private void jPanelCreditoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCreditoMouseClicked
-        // TODO add your handling code here:
+        MostrarJpanel(new Creditos());
     }//GEN-LAST:event_jPanelCreditoMouseClicked
 
     private void jPanelVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelVentasMouseClicked
-        // TODO add your handling code here:
+        MostrarJpanel(new Ventas());
     }//GEN-LAST:event_jPanelVentasMouseClicked
 
     /**
