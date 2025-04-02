@@ -30,7 +30,25 @@ public class Login extends javax.swing.JFrame {
         txtPass.setEchoChar((char)0);
         conn = ConexionBD.conn();
     }
+ private String verificarUsuario(String usuario, String contraseña){
+String sqlquery = "SELECT rol FROM userlogin WHERE nombre_usuario=? AND contraseña_usuario=?";
 
+try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
+        pst.setString(1, usuario);
+        pst.setString(2, contraseña);
+        
+        try (ResultSet rs = pst.executeQuery()) {
+            if (rs.next()) {
+                return rs.getString("rol"); // Devuelve el rol si el usuario existe
+            }
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error en la base de datos: " + e.getMessage());
+    }
+    
+    return null; // Devuelve null si no se encontró el usuario
+}
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -215,45 +233,26 @@ public class Login extends javax.swing.JFrame {
 
     private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
         // TODO add your handling code here:
-        String usuario = txtUsuario.getText();
-        char [] contraseña = txtPass.getPassword();
-        try{
-            //Se realiza la consulta en la BD
-            String sqlquery = "SELECT rol FROM userlogin WHERE nombre_usuario=? AND contraseña_usuario=?";
-            pst = conn.prepareStatement(sqlquery);
-            pst.setString(1, usuario);
-            pst.setString(2, String.valueOf(contraseña));
-            rs = pst.executeQuery();
-            
-            //Condicional para validar quien esta iniciando secion si el Gerente o el Vendedor
-            if(rs.next()){
-                //Se crea la variable de tipo String "tipoUsuario" donde se almacena el rol extraido de la BD
-                String tipoUsuario = rs.getString("rol");
-                //Valida si el usuario es el Gerente
-                if(tipoUsuario.equals("Gerente")){
-                    
-                    //Abre el form principal
-                    Principal p = new Principal();
-                    p.setVisible(true);
-                JOptionPane.showMessageDialog(null, "Se inicio Secion con Exito, Bienbenido Gerente");
-                //si no es el gerente entonces es el vendedor
-                }else if(tipoUsuario.equals("Vendedor")){
-                    //NOTAA: Temporalmente dara el aviso de quien inicio secion. 
-                    //Posteriormente se debe de agrer que abra la ventana de gerente o de vendedor
-                    JOptionPane.showMessageDialog(null, "Se inicio Secion con Exito, Bienvenido Vendedor");
-                }
-            }else{
-                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Intenta de nuevo");
-                txtUsuario.setText("Ingresa tu usuario");
-                txtUsuario.setForeground(Color.GRAY);
-                txtPass.setText("********");
-                txtPass.setForeground(Color.GRAY);
-            }
-            
-        }catch(SQLException e){
-        
-            JOptionPane.showMessageDialog(null, e);
+       String usuario = txtUsuario.getText();
+    char[] contraseña = txtPass.getPassword();
+    String passwordStr = String.valueOf(contraseña);
+
+    String tipoUsuario = verificarUsuario(usuario, passwordStr);
+    
+    
+    
+    if (tipoUsuario != null) {
+        if (tipoUsuario.equals("Gerente")) {
+            Principal p = new Principal(tipoUsuario, usuario); // Pasamos el rol
+            p.setVisible(true);
+            this.dispose(); // Cierra la ventana de login
+        } else if (tipoUsuario.equals("Vendedor")) {
+            JOptionPane.showMessageDialog(null, "Se inició sesión con éxito, bienvenido Vendedor.");
         }
+    } else {
+        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos.");
+    
+}                     
     }//GEN-LAST:event_loginBtnMouseClicked
 
     /**

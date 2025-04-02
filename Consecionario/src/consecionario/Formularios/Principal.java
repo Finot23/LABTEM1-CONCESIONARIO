@@ -4,13 +4,8 @@
  */
 package consecionario.Formularios;
 
-import BD.ConexionBD;
-import java.awt.Color;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
+
+
 
 /**
  *
@@ -20,19 +15,25 @@ public class Principal extends javax.swing.JFrame {
 
     /**
      * Creates new form Principal
+     * 
      */
     
-    Connection conn;
-    PreparedStatement pst;
-    ResultSet rs;
-    
-    public Principal() {
+  
+    public Principal(String rolUsuario, String usuario) {
         initComponents();
+        this.setLocationRelativeTo(this);
         
+        rsscalelabel.RSScaleLabel.setScaleLabel(iconUserMain, "src/consecionario/Imagenes/iconoUsuarioSmall.png");
+      
         
-        conn = ConexionBD.conn();
+    txtBienvenida.setText("Bienvendido de nuevo, " +rolUsuario);
+    txtNombreUsuario.setText(""+usuario);    
+        
     }
 
+   
+ 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,12 +46,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         iconVentas = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        iconUser = new javax.swing.JLabel();
         iconSeguros = new javax.swing.JLabel();
+        iconUserMain = new javax.swing.JLabel();
+        txtNombreUsuario = new javax.swing.JLabel();
         IconUser2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        txtNombreUsuario = new javax.swing.JTextField();
+        txtBienvenida = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,28 +61,11 @@ public class Principal extends javax.swing.JFrame {
 
         iconVentas.setText("jLabel1");
 
-        jPanel3.setBackground(new java.awt.Color(233, 238, 246));
-
-        iconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/consecionario/Imagenes/iconoUsuario.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(iconUser)
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(iconUser)
-                .addContainerGap(59, Short.MAX_VALUE))
-        );
-
         iconSeguros.setText("jLabel1");
+
+        iconUserMain.setBackground(new java.awt.Color(255, 255, 255));
+
+        txtNombreUsuario.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -90,24 +73,33 @@ public class Principal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(82, 82, 82)
                         .addComponent(iconSeguros, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(iconUserMain, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addComponent(iconVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addContainerGap()
+                .addComponent(iconUserMain, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(iconVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
                 .addComponent(iconSeguros)
-                .addContainerGap(204, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 560));
@@ -115,22 +107,10 @@ public class Principal extends javax.swing.JFrame {
         IconUser2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/consecionario/Imagenes/iconoUsuario.png"))); // NOI18N
         jPanel1.add(IconUser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, -1, -1));
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Te damos la bienvenida,");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
-
-        txtNombreUsuario.setEditable(false);
-        txtNombreUsuario.setBackground(new java.awt.Color(255, 255, 255));
-        txtNombreUsuario.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        txtNombreUsuario.setForeground(new java.awt.Color(0, 0, 0));
-        txtNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreUsuarioActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, -1, -1));
+        txtBienvenida.setBackground(new java.awt.Color(0, 0, 0));
+        txtBienvenida.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        txtBienvenida.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtBienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, 540, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,32 +129,6 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtNombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreUsuarioActionPerformed
-        // TODO add your handling code here:
-        String sqlquery = "SELECT rol FROM userlogin WHERE nombre_usuario=?";
-           
-        try{
-        if(rs.next()){
-                //Se crea la variable de tipo String "tipoUsuario" donde se almacena el rol extraido de la BD
-                String tipoUsuario = rs.getString("rol");
-                //Valida si el usuario es el Gerente
-                if(tipoUsuario.equals("Gerente")){
-                    //NOTAA: Temporalmente dara el aviso de quien inicio secion. 
-                    //Posteriormente se debe de agrer que abra la ventana de gerente o de vendedor
-                 txtNombreUsuario.setText("Gerente");
-                //si no es el gerente entonces es el vendedor
-                }else if(tipoUsuario.equals("Vendedor")){
-                    //NOTAA: Temporalmente dara el aviso de quien inicio secion. 
-                    //Posteriormente se debe de agrer que abra la ventana de gerente o de vendedor
-                     txtNombreUsuario.setText("Vendedor");
-                }
-        }
-        }catch(SQLException e){
-        
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }//GEN-LAST:event_txtNombreUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,22 +158,24 @@ public class Principal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+       /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
             }
-        });
-    }
+        }};
 
+    */
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IconUser2;
     private javax.swing.JLabel iconSeguros;
-    private javax.swing.JLabel iconUser;
+    private javax.swing.JLabel iconUserMain;
     private javax.swing.JLabel iconVentas;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField txtNombreUsuario;
+    private javax.swing.JLabel txtBienvenida;
+    private javax.swing.JLabel txtNombreUsuario;
     // End of variables declaration//GEN-END:variables
 }
