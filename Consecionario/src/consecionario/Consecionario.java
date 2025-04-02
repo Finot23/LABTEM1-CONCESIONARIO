@@ -16,8 +16,8 @@ public class Consecionario {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Login P = new Login();
-        P.setVisible(true);
+        Login L = new Login();
+        L.setVisible(true);
     }
     
 }

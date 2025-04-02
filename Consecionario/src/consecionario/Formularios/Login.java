@@ -231,8 +231,10 @@ public class Login extends javax.swing.JFrame {
                 String tipoUsuario = rs.getString("rol");
                 //Valida si el usuario es el Gerente
                 if(tipoUsuario.equals("Gerente")){
-                    //NOTAA: Temporalmente dara el aviso de quien inicio secion. 
-                    //Posteriormente se debe de agrer que abra la ventana de gerente o de vendedor
+                    
+                    //Abre el form principal
+                    Principal p = new Principal();
+                    p.setVisible(true);
                 JOptionPane.showMessageDialog(null, "Se inicio Secion con Exito, Bienbenido Gerente");
                 //si no es el gerente entonces es el vendedor
                 }else if(tipoUsuario.equals("Vendedor")){
