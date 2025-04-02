@@ -4,6 +4,8 @@
  */
 package consecionario.Formularios;
 
+import java.awt.BorderLayout;
+
 
 
 
@@ -30,11 +32,29 @@ public class Principal extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(iconSeguro, "src/consecionario/Imagenes/iconoSeguro.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(iconVenta, "src/consecionario/Imagenes/iconoVenta.png");
         
-    txtBienvenida.setText("Bienvendido de nuevo, " +rolUsuario);
+        InitContent();
+   
+     
+        
+    //txtBienvenida.setText("Bienvendido de nuevo, " +rolUsuario);
     txtNombreUsuario.setText(""+usuario);    
         
     }
 
+    private void InitContent(){
+        
+        InfoUsuario info = new InfoUsuario();
+        info.setSize(810, 520);
+        info.setLocation(0, 0);
+        
+        jPanelContenido.removeAll();
+        jPanelContenido.add(info, BorderLayout.CENTER);
+        jPanelContenido.revalidate();
+        jPanelContenido.repaint();
+        
+        
+
+    }
    
  
     
@@ -66,8 +86,7 @@ public class Principal extends javax.swing.JFrame {
         jPanelVentas = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         iconVenta = new javax.swing.JLabel();
-        IconUser2 = new javax.swing.JLabel();
-        txtBienvenida = new javax.swing.JLabel();
+        jPanelContenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -282,27 +301,30 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 560));
 
-        IconUser2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/consecionario/Imagenes/iconoUsuario.png"))); // NOI18N
-        jPanel1.add(IconUser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, -1, -1));
+        jPanelContenido.setSize(new java.awt.Dimension(810, 520));
 
-        txtBienvenida.setBackground(new java.awt.Color(0, 0, 0));
-        txtBienvenida.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        txtBienvenida.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(txtBienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, 540, 40));
+        javax.swing.GroupLayout jPanelContenidoLayout = new javax.swing.GroupLayout(jPanelContenido);
+        jPanelContenido.setLayout(jPanelContenidoLayout);
+        jPanelContenidoLayout.setHorizontalGroup(
+            jPanelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 810, Short.MAX_VALUE)
+        );
+        jPanelContenidoLayout.setVerticalGroup(
+            jPanelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 520, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanelContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 810, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -367,7 +389,6 @@ public class Principal extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel IconUser2;
     private javax.swing.JLabel iconCredito;
     private javax.swing.JLabel iconHistorial;
     private javax.swing.JLabel iconHome;
@@ -381,12 +402,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelContenido;
     private javax.swing.JPanel jPanelCredito;
     private javax.swing.JPanel jPanelHistorial;
     private javax.swing.JPanel jPanelPaginaPrincipal;
     private javax.swing.JPanel jPanelSeguros;
     private javax.swing.JPanel jPanelVentas;
-    private javax.swing.JLabel txtBienvenida;
     private javax.swing.JLabel txtNombreUsuario;
     // End of variables declaration//GEN-END:variables
 }
