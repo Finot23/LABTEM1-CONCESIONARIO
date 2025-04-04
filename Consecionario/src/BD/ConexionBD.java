@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class ConexionBD {
    public static Connection conn(){
        try{
-           String url = "jdbc:mysql://localhost:3306/Concesionaria";
+           String url = "jdbc:mysql://localhost:3306/concesionaria";
            String user = "admin";
            String password = "admin";
            Class.forName("com.mysql.cj.jdbc.Driver");

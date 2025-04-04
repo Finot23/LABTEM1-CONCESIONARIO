@@ -76,10 +76,8 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Contraseña");
 
-        txtPass.setBackground(new java.awt.Color(255, 255, 255));
         txtPass.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         txtPass.setForeground(new java.awt.Color(153, 153, 153));
         txtPass.setText("********");
@@ -96,10 +94,8 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
 
         jLabelUsuario.setBackground(new java.awt.Color(0, 0, 0));
         jLabelUsuario.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabelUsuario.setForeground(new java.awt.Color(0, 0, 0));
         jLabelUsuario.setText("Usuario:");
 
-        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuario.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(204, 204, 204));
         txtUsuario.setText("Ingresa tu usuario");
@@ -181,7 +177,7 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/consecionario/Imagenes/rkLSdmj5g_1256x620.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 870, 640));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -150, 870, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
