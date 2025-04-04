@@ -5,6 +5,7 @@
 package consecionario.Formularios;
 
 import java.awt.BorderLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
@@ -15,6 +16,7 @@ import javax.swing.JPanel;
  * @author antoniosalinas
  */
 public class Principal extends javax.swing.JFrame {
+
 
     /**
      * Creates new form Principal
@@ -32,7 +34,7 @@ public class Principal extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(iconHome, "src/consecionario/Imagenes/iconoHome.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(iconSeguro, "src/consecionario/Imagenes/iconoSeguro.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(iconVenta, "src/consecionario/Imagenes/iconoVenta.png");
-        
+        rsscalelabel.RSScaleLabel.setScaleLabel(iconCatalogo, "src/consecionario/Imagenes/iconoCatalogo.png");
         InitContent();
    
      
@@ -90,6 +92,9 @@ public class Principal extends javax.swing.JFrame {
         jPanelVentas = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         iconVenta = new javax.swing.JLabel();
+        jPanelCatalogo = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        iconCatalogo = new javax.swing.JLabel();
         jPanelContenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -121,7 +126,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanelPaginaPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(iconHome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
@@ -155,7 +160,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(iconSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanelSegurosLayout.setVerticalGroup(
             jPanelSegurosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,7 +191,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(iconHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanelHistorialLayout.setVerticalGroup(
             jPanelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,7 +254,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(iconVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanelVentasLayout.setVerticalGroup(
             jPanelVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,6 +263,38 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanelVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(iconVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanelCatalogo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanelCatalogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelCatalogoMouseClicked(evt);
+            }
+        });
+
+        jLabel6.setText("Catalogo");
+
+        iconCatalogo.setText("Catalogo");
+
+        javax.swing.GroupLayout jPanelCatalogoLayout = new javax.swing.GroupLayout(jPanelCatalogo);
+        jPanelCatalogo.setLayout(jPanelCatalogoLayout);
+        jPanelCatalogoLayout.setHorizontalGroup(
+            jPanelCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCatalogoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(iconCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelCatalogoLayout.setVerticalGroup(
+            jPanelCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCatalogoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(iconCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -276,13 +313,14 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(iconUserMain, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelPaginaPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelSeguros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelCredito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelCatalogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(17, 17, 17))
         );
 
@@ -305,12 +343,12 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jPanelCredito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(24, 24, 24)
                 .addComponent(jPanelVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addComponent(jPanelCatalogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(76, 76, 76))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 560));
-
-        jPanelContenido.setSize(new java.awt.Dimension(810, 520));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 620));
 
         javax.swing.GroupLayout jPanelContenidoLayout = new javax.swing.GroupLayout(jPanelContenido);
         jPanelContenido.setLayout(jPanelContenidoLayout);
@@ -320,10 +358,10 @@ public class Principal extends javax.swing.JFrame {
         );
         jPanelContenidoLayout.setVerticalGroup(
             jPanelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
+            .addGap(0, 580, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanelContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 810, 520));
+        jPanel1.add(jPanelContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 810, 580));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -333,32 +371,36 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanelPaginaPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelPaginaPrincipalMouseClicked
-        MostrarJpanel(new InfoUsuario());
-    }//GEN-LAST:event_jPanelPaginaPrincipalMouseClicked
-
-    private void jPanelSegurosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSegurosMouseClicked
-        MostrarJpanel(new Seguros());
-    }//GEN-LAST:event_jPanelSegurosMouseClicked
-
-    private void jPanelHistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHistorialMouseClicked
-        MostrarJpanel(new Historial());
-    }//GEN-LAST:event_jPanelHistorialMouseClicked
+    private void jPanelVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelVentasMouseClicked
+        MostrarJpanel(new Ventas());
+    }//GEN-LAST:event_jPanelVentasMouseClicked
 
     private void jPanelCreditoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCreditoMouseClicked
         MostrarJpanel(new Creditos());
     }//GEN-LAST:event_jPanelCreditoMouseClicked
 
-    private void jPanelVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelVentasMouseClicked
-        MostrarJpanel(new Ventas());
-    }//GEN-LAST:event_jPanelVentasMouseClicked
+    private void jPanelHistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHistorialMouseClicked
+        MostrarJpanel(new Historial());
+    }//GEN-LAST:event_jPanelHistorialMouseClicked
 
+    private void jPanelSegurosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSegurosMouseClicked
+        MostrarJpanel(new Seguros());
+    }//GEN-LAST:event_jPanelSegurosMouseClicked
+
+    private void jPanelPaginaPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelPaginaPrincipalMouseClicked
+        MostrarJpanel(new InfoUsuario());
+    }//GEN-LAST:event_jPanelPaginaPrincipalMouseClicked
+
+    private void jPanelCatalogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCatalogoMouseClicked
+           MostrarJpanel(new Catalogo());
+    }//GEN-LAST:event_jPanelCatalogoMouseClicked
+     
     /**
      * @param args the command line arguments
      */
@@ -398,6 +440,7 @@ public class Principal extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel iconCatalogo;
     private javax.swing.JLabel iconCredito;
     private javax.swing.JLabel iconHistorial;
     private javax.swing.JLabel iconHome;
@@ -409,8 +452,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelCatalogo;
     private javax.swing.JPanel jPanelContenido;
     private javax.swing.JPanel jPanelCredito;
     private javax.swing.JPanel jPanelHistorial;
