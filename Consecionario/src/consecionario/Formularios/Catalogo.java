@@ -26,51 +26,36 @@ public class Catalogo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelcat = new javax.swing.JPanel();
+        bg = new javax.swing.JPanel();
         cat = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(810, 520));
+
+        bg.setBackground(new java.awt.Color(255, 255, 255));
+        bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         cat.setText("FormsCatalogo");
-
-        javax.swing.GroupLayout panelcatLayout = new javax.swing.GroupLayout(panelcat);
-        panelcat.setLayout(panelcatLayout);
-        panelcatLayout.setHorizontalGroup(
-            panelcatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelcatLayout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(cat)
-                .addContainerGap(202, Short.MAX_VALUE))
-        );
-        panelcatLayout.setVerticalGroup(
-            panelcatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelcatLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(cat)
-                .addContainerGap(254, Short.MAX_VALUE))
-        );
-
-        cat.getAccessibleContext().setAccessibleName("FormsCatalogo");
+        bg.add(cat, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 150, 100));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelcat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelcat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-
-        panelcat.getAccessibleContext().setAccessibleName("cg");
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel bg;
     private javax.swing.JLabel cat;
-    private javax.swing.JPanel panelcat;
     // End of variables declaration//GEN-END:variables
 }
