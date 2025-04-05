@@ -396,6 +396,8 @@ public class Ventas extends javax.swing.JPanel {
 
         bg.add(jPanelCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 720, 120));
 
+        btnContinuar.setBackground(new java.awt.Color(255, 153, 51));
+        btnContinuar.setForeground(new java.awt.Color(0, 0, 0));
         btnContinuar.setText("Continuar");
         bg.add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 390, -1));
 
