@@ -28,6 +28,11 @@ public class Seguros extends javax.swing.JPanel {
 
         bg = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        labelPersonalData = new javax.swing.JLabel();
+        labelName = new javax.swing.JLabel();
+        fieldNombre = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        fieldCurp = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(810, 520));
@@ -36,28 +41,50 @@ public class Seguros extends javax.swing.JPanel {
         bg.setPreferredSize(new java.awt.Dimension(810, 520));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("FORM SEGUROS");
-        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, -1, -1));
+        jLabel1.setText("FORMULARIO SEGUROS");
+        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
+
+        labelPersonalData.setText("DATOS PERSONALES");
+        bg.add(labelPersonalData, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        labelName.setText("Nombre Completo:");
+        bg.add(labelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+
+        fieldNombre.setPreferredSize(new java.awt.Dimension(150, 22));
+        bg.add(fieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
+
+        jLabel2.setText("Curp:");
+        bg.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, -1));
+
+        fieldCurp.setPreferredSize(new java.awt.Dimension(150, 22));
+        bg.add(fieldCurp, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
+    private javax.swing.JTextField fieldCurp;
+    private javax.swing.JTextField fieldNombre;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel labelName;
+    private javax.swing.JLabel labelPersonalData;
     // End of variables declaration//GEN-END:variables
 }
