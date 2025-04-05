@@ -34,7 +34,7 @@ public class Catalogo extends javax.swing.JPanel {
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cat.setText("FormsCatalogo");
+        cat.setText("FormsCatalogos");
         bg.add(cat, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 150, 100));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
