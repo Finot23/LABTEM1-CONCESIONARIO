@@ -399,7 +399,7 @@ public class Ventas extends javax.swing.JPanel {
         btnContinuar.setBackground(new java.awt.Color(255, 153, 51));
         btnContinuar.setForeground(new java.awt.Color(0, 0, 0));
         btnContinuar.setText("Continuar");
-        bg.add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 390, -1));
+        bg.add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 390, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
