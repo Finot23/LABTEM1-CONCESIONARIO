@@ -4,6 +4,8 @@
  */
 package consecionario.Formularios;
 
+import java.awt.Color;
+
 /**
  *
  * @author antoniosalinas
@@ -13,10 +15,20 @@ public class Ventas extends javax.swing.JPanel {
     /**
      * Creates new form Ventas
      */
+    
+    
+    String placeholderApellidoP = "Apellido Paterno";
+    Color placeholderColor= Color.GRAY;
+    Color normalColor = Color.BLACK;
+    
     public Ventas() {
         initComponents();
+        txtApellidoP.setText(placeholderApellidoP);
+        txtApellidoP.setForeground(placeholderColor);
     }
-
+       
+        
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,7 +127,14 @@ public class Ventas extends javax.swing.JPanel {
         txtApellidoP.setBackground(new java.awt.Color(255, 255, 255));
         txtApellidoP.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtApellidoP.setForeground(new java.awt.Color(204, 204, 204));
-        txtApellidoP.setText("Apellido Paterno");
+        txtApellidoP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtApellidoPFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtApellidoPFocusLost(evt);
+            }
+        });
 
         txtApellidoM.setBackground(new java.awt.Color(255, 255, 255));
         txtApellidoM.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
@@ -428,6 +447,26 @@ public class Ventas extends javax.swing.JPanel {
     private void txtMunicipioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMunicipioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMunicipioActionPerformed
+
+    private void txtApellidoPFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoPFocusGained
+        // TODO add your handling code here:
+
+        if (txtApellidoP.getText().equals(placeholderApellidoP)) {
+                    txtApellidoP.setText("");
+                    txtApellidoP.setForeground(normalColor);
+                }
+            
+
+        
+    }//GEN-LAST:event_txtApellidoPFocusGained
+
+    private void txtApellidoPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoPFocusLost
+        // TODO add your handling code here:
+        if (txtApellidoP.getText().isEmpty()) {
+                    txtApellidoP.setText(placeholderApellidoP);
+                    txtApellidoP.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtApellidoPFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
