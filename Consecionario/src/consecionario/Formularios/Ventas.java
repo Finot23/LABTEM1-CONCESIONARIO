@@ -27,7 +27,26 @@ public class Ventas extends javax.swing.JPanel {
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblSolicitudCompra = new javax.swing.JLabel();
+        jPanelDatosCliente = new javax.swing.JPanel();
+        txtNombreCliente = new javax.swing.JTextField();
+        txtTelefonoCliente = new javax.swing.JTextField();
+        bgDatosComprador = new javax.swing.JPanel();
+        lblDatosComprador = new javax.swing.JLabel();
+        txtApellidoP = new javax.swing.JTextField();
+        txtApellidoM = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        txtCorreo = new javax.swing.JTextField();
+        jPanelDireccion = new javax.swing.JPanel();
+        txtMunicipio = new javax.swing.JTextField();
+        bgDomicilio = new javax.swing.JPanel();
+        lblDomicilio = new javax.swing.JLabel();
+        txtCalle = new javax.swing.JTextField();
+        txtColonia = new javax.swing.JTextField();
+        txtEstado = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        txtCP = new javax.swing.JTextField();
+        txtCiudad = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -35,8 +54,218 @@ public class Ventas extends javax.swing.JPanel {
         bg.setPreferredSize(new java.awt.Dimension(810, 520));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("FORM VENTAS");
-        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, -1, -1));
+        lblSolicitudCompra.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblSolicitudCompra.setForeground(new java.awt.Color(0, 0, 0));
+        lblSolicitudCompra.setText("Solicitud de compra");
+        bg.add(lblSolicitudCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+
+        jPanelDatosCliente.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelDatosCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(199, 0, 57), 3));
+
+        txtNombreCliente.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombreCliente.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtNombreCliente.setForeground(new java.awt.Color(204, 204, 204));
+        txtNombreCliente.setText("Nombre (s)");
+        txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreClienteActionPerformed(evt);
+            }
+        });
+
+        txtTelefonoCliente.setBackground(new java.awt.Color(255, 255, 255));
+        txtTelefonoCliente.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtTelefonoCliente.setForeground(new java.awt.Color(204, 204, 204));
+        txtTelefonoCliente.setText("Teléfono Celular");
+
+        bgDatosComprador.setBackground(new java.awt.Color(199, 0, 57));
+        bgDatosComprador.setForeground(new java.awt.Color(255, 255, 255));
+        bgDatosComprador.setFont(new java.awt.Font("Roboto", 1, 8)); // NOI18N
+
+        lblDatosComprador.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        lblDatosComprador.setForeground(new java.awt.Color(255, 255, 255));
+        lblDatosComprador.setText("DATOS DEL COMPRADOR");
+
+        javax.swing.GroupLayout bgDatosCompradorLayout = new javax.swing.GroupLayout(bgDatosComprador);
+        bgDatosComprador.setLayout(bgDatosCompradorLayout);
+        bgDatosCompradorLayout.setHorizontalGroup(
+            bgDatosCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgDatosCompradorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblDatosComprador)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        bgDatosCompradorLayout.setVerticalGroup(
+            bgDatosCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgDatosCompradorLayout.createSequentialGroup()
+                .addComponent(lblDatosComprador)
+                .addGap(0, 6, Short.MAX_VALUE))
+        );
+
+        txtApellidoP.setBackground(new java.awt.Color(255, 255, 255));
+        txtApellidoP.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtApellidoP.setForeground(new java.awt.Color(204, 204, 204));
+        txtApellidoP.setText("Apellido Paterno");
+
+        txtApellidoM.setBackground(new java.awt.Color(255, 255, 255));
+        txtApellidoM.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtApellidoM.setForeground(new java.awt.Color(204, 204, 204));
+        txtApellidoM.setText("Apellido Materno");
+
+        jSeparator1.setBackground(new java.awt.Color(153, 0, 51));
+        jSeparator1.setForeground(new java.awt.Color(199, 0, 57));
+
+        txtCorreo.setBackground(new java.awt.Color(255, 255, 255));
+        txtCorreo.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtCorreo.setForeground(new java.awt.Color(204, 204, 204));
+        txtCorreo.setText("Correo Electrónico");
+
+        javax.swing.GroupLayout jPanelDatosClienteLayout = new javax.swing.GroupLayout(jPanelDatosCliente);
+        jPanelDatosCliente.setLayout(jPanelDatosClienteLayout);
+        jPanelDatosClienteLayout.setHorizontalGroup(
+            jPanelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bgDatosComprador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanelDatosClienteLayout.createSequentialGroup()
+                .addGroup(jPanelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelDatosClienteLayout.createSequentialGroup()
+                        .addComponent(txtApellidoP, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)
+                        .addComponent(txtApellidoM, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelDatosClienteLayout.createSequentialGroup()
+                        .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
+                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanelDatosClienteLayout.setVerticalGroup(
+            jPanelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDatosClienteLayout.createSequentialGroup()
+                .addComponent(bgDatosComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtApellidoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApellidoM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
+
+        bg.add(jPanelDatosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 720, 120));
+
+        jPanelDireccion.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelDireccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(199, 0, 57), 3));
+
+        txtMunicipio.setBackground(new java.awt.Color(255, 255, 255));
+        txtMunicipio.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtMunicipio.setForeground(new java.awt.Color(204, 204, 204));
+        txtMunicipio.setText("Población, Alcaldía o Municipio");
+
+        bgDomicilio.setBackground(new java.awt.Color(199, 0, 57));
+        bgDomicilio.setForeground(new java.awt.Color(255, 255, 255));
+        bgDomicilio.setFont(new java.awt.Font("Roboto", 1, 8)); // NOI18N
+
+        lblDomicilio.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        lblDomicilio.setForeground(new java.awt.Color(255, 255, 255));
+        lblDomicilio.setText("DOMICILIO");
+
+        javax.swing.GroupLayout bgDomicilioLayout = new javax.swing.GroupLayout(bgDomicilio);
+        bgDomicilio.setLayout(bgDomicilioLayout);
+        bgDomicilioLayout.setHorizontalGroup(
+            bgDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgDomicilioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblDomicilio)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        bgDomicilioLayout.setVerticalGroup(
+            bgDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgDomicilioLayout.createSequentialGroup()
+                .addComponent(lblDomicilio)
+                .addGap(0, 6, Short.MAX_VALUE))
+        );
+
+        txtCalle.setBackground(new java.awt.Color(255, 255, 255));
+        txtCalle.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtCalle.setForeground(new java.awt.Color(204, 204, 204));
+        txtCalle.setText("Calle");
+
+        txtColonia.setBackground(new java.awt.Color(255, 255, 255));
+        txtColonia.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtColonia.setForeground(new java.awt.Color(204, 204, 204));
+        txtColonia.setText("Colonia");
+
+        txtEstado.setBackground(new java.awt.Color(255, 255, 255));
+        txtEstado.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtEstado.setForeground(new java.awt.Color(204, 204, 204));
+        txtEstado.setText("Estado");
+        txtEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEstadoActionPerformed(evt);
+            }
+        });
+
+        jSeparator2.setBackground(new java.awt.Color(153, 0, 51));
+        jSeparator2.setForeground(new java.awt.Color(199, 0, 57));
+
+        txtCP.setBackground(new java.awt.Color(255, 255, 255));
+        txtCP.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtCP.setForeground(new java.awt.Color(204, 204, 204));
+        txtCP.setText("Código Postal");
+
+        txtCiudad.setBackground(new java.awt.Color(255, 255, 255));
+        txtCiudad.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtCiudad.setForeground(new java.awt.Color(204, 204, 204));
+        txtCiudad.setText("Ciudad");
+
+        javax.swing.GroupLayout jPanelDireccionLayout = new javax.swing.GroupLayout(jPanelDireccion);
+        jPanelDireccion.setLayout(jPanelDireccionLayout);
+        jPanelDireccionLayout.setHorizontalGroup(
+            jPanelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bgDomicilio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanelDireccionLayout.createSequentialGroup()
+                .addComponent(txtCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(txtColonia)
+                .addContainerGap())
+            .addGroup(jPanelDireccionLayout.createSequentialGroup()
+                .addComponent(txtMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(txtCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
+        );
+        jPanelDireccionLayout.setVerticalGroup(
+            jPanelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDireccionLayout.createSequentialGroup()
+                .addComponent(bgDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtColonia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        bg.add(jPanelDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 720, 120));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -50,9 +279,36 @@ public class Ventas extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreClienteActionPerformed
+
+    private void txtEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEstadoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel bgDatosComprador;
+    private javax.swing.JPanel bgDomicilio;
+    private javax.swing.JPanel jPanelDatosCliente;
+    private javax.swing.JPanel jPanelDireccion;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblDatosComprador;
+    private javax.swing.JLabel lblDomicilio;
+    private javax.swing.JLabel lblSolicitudCompra;
+    private javax.swing.JTextField txtApellidoM;
+    private javax.swing.JTextField txtApellidoP;
+    private javax.swing.JTextField txtCP;
+    private javax.swing.JTextField txtCalle;
+    private javax.swing.JTextField txtCiudad;
+    private javax.swing.JTextField txtColonia;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtEstado;
+    private javax.swing.JTextField txtMunicipio;
+    private javax.swing.JTextField txtNombreCliente;
+    private javax.swing.JTextField txtTelefonoCliente;
     // End of variables declaration//GEN-END:variables
 }
