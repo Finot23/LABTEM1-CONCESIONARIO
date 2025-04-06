@@ -4,10 +4,14 @@
  */
 package consecionario.Formularios;
 import BD.ConexionBD;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -21,40 +25,42 @@ public class Catalogo extends javax.swing.JPanel {
      */
     public Catalogo() {
         initComponents();
-        mostrarAutos();
-    }
-     private void mostrarAutos() {
-        try {
-            Connection conn = ConexionBD.conn();
-            if (conn != null) {
-                String query = "SELECT * FROM almacen WHERE Categoria IN ('Hatchback', 'Seadan', 'SUV')";
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(query);
+      
+    } 
+     private void filtrarPorCategoria() {
+    try {
+        Connection conn = ConexionBD.conn();
+        if (conn != null) {
+              String categoria = (String) jComboBox1.getSelectedItem();
 
-                DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-                modelo.setRowCount(0);
+            String query = "SELECT * FROM almacen WHERE Categoria = '" + categoria + "'";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
 
-                while (rs.next()) {
-                    Object[] fila = new Object[7];
-                    fila[0] = rs.getInt("id");
-                    fila[1] = rs.getString("modelo");
-                    fila[2] = rs.getInt("año_fabricacion");
-                    fila[3] = rs.getDouble("precio");
-                    fila[4] = rs.getString("color");
-                    fila[5] = rs.getString("estado");
-                    fila[6] = rs.getString("Categoria");
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            modelo.setRowCount(0);
 
-                    modelo.addRow(fila);
-                }
+            while (rs.next()) {
+                Object[] fila = new Object[7];
+                fila[0] = rs.getInt("id");
+                fila[1] = rs.getString("modelo");
+                fila[2] = rs.getInt("año_fabricacion");
+                fila[3] = rs.getDouble("precio");
+                fila[4] = rs.getString("color");
+                fila[5] = rs.getString("estado");
+                fila[6] = rs.getString("Categoria");
 
-                conn.close(); // Cerrar la conexión
-            } else {
-                JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos");
+                modelo.addRow(fila);
             }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al mostrar autos: " + e.getMessage());
+
+            conn.close(); // Cerrar la conexión
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos");
         }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al filtrar autos: " + e.getMessage());
     }
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -63,6 +69,8 @@ public class Catalogo extends javax.swing.JPanel {
         cat = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        Filtrar = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(810, 520));
 
@@ -92,6 +100,22 @@ public class Catalogo extends javax.swing.JPanel {
 
         bg.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 420, -1));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hatchback ", "Seadan", "SUV", " " }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        bg.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, -1, -1));
+
+        Filtrar.setText("Filtrar");
+        Filtrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FiltrarActionPerformed(evt);
+            }
+        });
+        bg.add(Filtrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,10 +132,22 @@ public class Catalogo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+
+        String[] categorias = {"Hatchback", "Seadan", "SUV"};
+      JComboBox<String> categoriaComboBox = new JComboBox<>(categorias);
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void FiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltrarActionPerformed
+       filtrarPorCategoria();
+    }//GEN-LAST:event_FiltrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Filtrar;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel cat;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
