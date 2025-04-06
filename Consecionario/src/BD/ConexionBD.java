@@ -7,27 +7,25 @@ package BD;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author antoniosalinas
  */
 public class ConexionBD {
+  
+   private static final String url = "jdbc:mysql://localhost:3306/concesionaria";
+   private static final String user = "admin";
+   private static final String password = "admin";
+   
    public static Connection conn(){
        try{
-           String url = "jdbc:mysql://localhost:3306/concesionaria";
-           String user = "admin";
-           String password = "admin";
            Class.forName("com.mysql.cj.jdbc.Driver");
-           Connection conn = DriverManager.getConnection(url, user, password);
-           return conn;
-       }catch(SQLException|ClassNotFoundException e){
-           JOptionPane.showMessageDialog(null, e);
-         
-       }
        
-   
-return null;
-}
+         return DriverManager.getConnection(url, user, password);
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error en la conexión: " + e.getMessage());
+            return null;
+        }
+    }
 }

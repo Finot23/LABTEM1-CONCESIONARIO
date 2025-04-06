@@ -28,7 +28,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         txtPass.setEchoChar((char)0);
-        conn = ConexionBD.conn();
+        ConexionBD conexionBD = new ConexionBD();
+        conn = conexionBD.conn();
     }
  private String verificarUsuario(String usuario, String contraseña){
 String sqlquery = "SELECT rol FROM userlogin WHERE nombre_usuario=? AND contraseña_usuario=?";

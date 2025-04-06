@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-04-2025 a las 02:49:58
+-- Tiempo de generación: 06-04-2025 a las 08:22:06
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -44,10 +44,40 @@ CREATE TABLE `almacen` (
 
 CREATE TABLE `clientes` (
   `id` int(20) NOT NULL,
+  `Apellido_Paterno` varchar(50) NOT NULL,
+  `Apellido_Materno` varchar(50) NOT NULL,
   `nombre` varchar(150) NOT NULL,
-  `direccion` varchar(200) NOT NULL,
-  `fecha_compra` date NOT NULL,
-  `telefono` int(10) NOT NULL
+  `telefono` int(11) NOT NULL,
+  `Correo` varchar(100) NOT NULL,
+  `calle` varchar(200) NOT NULL,
+  `colonia` varchar(100) NOT NULL,
+  `municipio` varchar(100) NOT NULL,
+  `ciudad` varchar(50) NOT NULL,
+  `curp` varchar(40) NOT NULL,
+  `licencia` varchar(80) NOT NULL,
+  `genero` varchar(50) NOT NULL,
+  `edad` varchar(101) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`id`, `Apellido_Paterno`, `Apellido_Materno`, `nombre`, `telefono`, `Correo`, `calle`, `colonia`, `municipio`, `ciudad`, `curp`, `licencia`, `genero`, `edad`) VALUES
+(1, 'Salinas', 'Mata', 'Luis Antonio', 562590955, 'luis.salinas.contacto@gmail.com', 'av. Coapa', 'Santa Barabara', 'Cuautitlan Izcalli ', 'Mexico', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `seguro`
+--
+
+CREATE TABLE `seguro` (
+  `tipo_cobertura` varchar(50) NOT NULL,
+  `periodo` varchar(100) NOT NULL,
+  `metodo_pago` varchar(50) NOT NULL,
+  `valor` varchar(100) NOT NULL,
+  `prima` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
@@ -101,7 +131,7 @@ ALTER TABLE `almacen`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

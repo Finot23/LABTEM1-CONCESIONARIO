@@ -4,27 +4,108 @@
  */
 package consecionario.Formularios;
 
+
+import BD.ClienteDB;
+import BD.ConexionBD;
+import consecionario.Cliente;
 import java.awt.Color;
+import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author antoniosalinas
  */
+
+
+
+
 public class Ventas extends javax.swing.JPanel {
 
     /**
      * Creates new form Ventas
      */
     
-    
+   
+
     String placeholderApellidoP = "Apellido Paterno";
+    String placeholderApellidoM ="Apellido Materno";
+    String placeholderNombre ="Nombre (s)";
+    String placeholderTelefono ="Teléfono Celular";
+    String placeholderCorreo ="Correo Electrónico";
+    String placeholderCalle ="Calle";
+    String placeholderColonia ="Colonia";
+    String placeholderMunicipio ="Población, Alcaldía o Municipio";
+    String placeholderCiudad ="Ciudad";
+    String placeholderEstado ="Estado";
+    String placeholderCP ="Código Postal";
+    String placeholderMarca ="Marca";
+    String placeholderModelo ="Modelo";
+    String placeholderTipo ="Tipo";
+    String placeholderColorCarro ="Color";
+    String placeholderAnio ="Año";
+    String placeholderEstados ="Condición";
+    
     Color placeholderColor= Color.GRAY;
     Color normalColor = Color.BLACK;
     
     public Ventas() {
         initComponents();
+        
+        
+        
+        
         txtApellidoP.setText(placeholderApellidoP);
         txtApellidoP.setForeground(placeholderColor);
+        
+        txtApellidoM.setText(placeholderApellidoM);
+        txtApellidoM.setForeground(placeholderColor);
+        
+        txtNombreCliente.setText(placeholderNombre);
+        txtNombreCliente.setForeground(placeholderColor);
+        
+        txtTelefonoCliente.setText(placeholderTelefono);
+        txtTelefonoCliente.setForeground(placeholderColor);
+        
+        txtCalle.setText(placeholderCalle);
+        txtCalle.setForeground(placeholderColor);
+        
+        txtColonia.setText(placeholderColonia);
+        txtColonia.setForeground(placeholderColor);
+        
+        txtCorreo.setText(placeholderCorreo);
+        txtCorreo.setForeground(placeholderColor);
+                
+        txtMunicipio.setText(placeholderMunicipio);
+        txtMunicipio.setForeground(placeholderColor);
+        
+        txtCiudad.setText(placeholderCiudad);
+        txtCiudad.setForeground(placeholderColor);
+        
+        txtEstado.setText(placeholderEstado);
+        txtEstado.setForeground(placeholderColor);
+        
+        txtCP.setText(placeholderCP);
+        txtCP.setForeground(placeholderColor);
+        
+        txtMarca.setText(placeholderMarca);
+        txtMarca.setForeground(placeholderColor);
+        
+        txtModelo.setText(placeholderModelo);
+        txtModelo.setForeground(placeholderColor);
+        
+        txtTipoCarro.setText(placeholderTipo);
+        txtTipoCarro.setForeground(placeholderColor);
+        
+        txtColorCarro.setText(placeholderColorCarro);
+        txtColorCarro.setForeground(placeholderColor);
+        
+        txtAnioCarro.setText(placeholderAnio);
+        txtAnioCarro.setForeground(placeholderColor);
+        
+        txtEstadoCarro.setText(placeholderEstados);
+        txtEstadoCarro.setForeground(placeholderColor);
+        
     }
        
         
@@ -88,7 +169,14 @@ public class Ventas extends javax.swing.JPanel {
         txtNombreCliente.setBackground(new java.awt.Color(255, 255, 255));
         txtNombreCliente.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtNombreCliente.setForeground(new java.awt.Color(204, 204, 204));
-        txtNombreCliente.setText("Nombre (s)");
+        txtNombreCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombreClienteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreClienteFocusLost(evt);
+            }
+        });
         txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreClienteActionPerformed(evt);
@@ -98,7 +186,19 @@ public class Ventas extends javax.swing.JPanel {
         txtTelefonoCliente.setBackground(new java.awt.Color(255, 255, 255));
         txtTelefonoCliente.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtTelefonoCliente.setForeground(new java.awt.Color(204, 204, 204));
-        txtTelefonoCliente.setText("Teléfono Celular");
+        txtTelefonoCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTelefonoClienteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTelefonoClienteFocusLost(evt);
+            }
+        });
+        txtTelefonoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoClienteActionPerformed(evt);
+            }
+        });
 
         bgDatosComprador.setBackground(new java.awt.Color(199, 0, 57));
         bgDatosComprador.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,11 +235,23 @@ public class Ventas extends javax.swing.JPanel {
                 txtApellidoPFocusLost(evt);
             }
         });
+        txtApellidoP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoPActionPerformed(evt);
+            }
+        });
 
         txtApellidoM.setBackground(new java.awt.Color(255, 255, 255));
         txtApellidoM.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtApellidoM.setForeground(new java.awt.Color(204, 204, 204));
-        txtApellidoM.setText("Apellido Materno");
+        txtApellidoM.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtApellidoMFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtApellidoMFocusLost(evt);
+            }
+        });
 
         jSeparator1.setBackground(new java.awt.Color(153, 0, 51));
         jSeparator1.setForeground(new java.awt.Color(199, 0, 57));
@@ -147,7 +259,14 @@ public class Ventas extends javax.swing.JPanel {
         txtCorreo.setBackground(new java.awt.Color(255, 255, 255));
         txtCorreo.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtCorreo.setForeground(new java.awt.Color(204, 204, 204));
-        txtCorreo.setText("Correo Electrónico");
+        txtCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCorreoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCorreoFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelDatosClienteLayout = new javax.swing.GroupLayout(jPanelDatosCliente);
         jPanelDatosCliente.setLayout(jPanelDatosClienteLayout);
@@ -221,7 +340,14 @@ public class Ventas extends javax.swing.JPanel {
         txtMunicipio.setBackground(new java.awt.Color(255, 255, 255));
         txtMunicipio.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtMunicipio.setForeground(new java.awt.Color(204, 204, 204));
-        txtMunicipio.setText("Población, Alcaldía o Municipio");
+        txtMunicipio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtMunicipioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMunicipioFocusLost(evt);
+            }
+        });
         txtMunicipio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMunicipioActionPerformed(evt);
@@ -231,17 +357,43 @@ public class Ventas extends javax.swing.JPanel {
         txtCalle.setBackground(new java.awt.Color(255, 255, 255));
         txtCalle.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtCalle.setForeground(new java.awt.Color(204, 204, 204));
-        txtCalle.setText("Calle");
+        txtCalle.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCalleFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCalleFocusLost(evt);
+            }
+        });
 
         txtColonia.setBackground(new java.awt.Color(255, 255, 255));
         txtColonia.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtColonia.setForeground(new java.awt.Color(204, 204, 204));
-        txtColonia.setText("Colonia");
+        txtColonia.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtColoniaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtColoniaFocusLost(evt);
+            }
+        });
+        txtColonia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtColoniaActionPerformed(evt);
+            }
+        });
 
         txtEstado.setBackground(new java.awt.Color(255, 255, 255));
         txtEstado.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtEstado.setForeground(new java.awt.Color(204, 204, 204));
-        txtEstado.setText("Estado");
+        txtEstado.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEstadoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEstadoFocusLost(evt);
+            }
+        });
         txtEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEstadoActionPerformed(evt);
@@ -254,12 +406,26 @@ public class Ventas extends javax.swing.JPanel {
         txtCP.setBackground(new java.awt.Color(255, 255, 255));
         txtCP.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtCP.setForeground(new java.awt.Color(204, 204, 204));
-        txtCP.setText("Código Postal");
+        txtCP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCPFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCPFocusLost(evt);
+            }
+        });
 
         txtCiudad.setBackground(new java.awt.Color(255, 255, 255));
         txtCiudad.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtCiudad.setForeground(new java.awt.Color(204, 204, 204));
-        txtCiudad.setText("Ciudad");
+        txtCiudad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCiudadFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCiudadFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelDireccionLayout = new javax.swing.GroupLayout(jPanelDireccion);
         jPanelDireccion.setLayout(jPanelDireccionLayout);
@@ -281,7 +447,7 @@ public class Ventas extends javax.swing.JPanel {
                         .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
                         .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                         .addComponent(txtCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17))))
         );
@@ -336,12 +502,26 @@ public class Ventas extends javax.swing.JPanel {
         txtMarca.setBackground(new java.awt.Color(255, 255, 255));
         txtMarca.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtMarca.setForeground(new java.awt.Color(204, 204, 204));
-        txtMarca.setText("Marca");
+        txtMarca.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtMarcaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMarcaFocusLost(evt);
+            }
+        });
 
         txtModelo.setBackground(new java.awt.Color(255, 255, 255));
         txtModelo.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtModelo.setForeground(new java.awt.Color(204, 204, 204));
-        txtModelo.setText("Modelo");
+        txtModelo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtModeloFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtModeloFocusLost(evt);
+            }
+        });
 
         jSeparator3.setBackground(new java.awt.Color(153, 0, 51));
         jSeparator3.setForeground(new java.awt.Color(199, 0, 57));
@@ -349,17 +529,43 @@ public class Ventas extends javax.swing.JPanel {
         txtTipoCarro.setBackground(new java.awt.Color(255, 255, 255));
         txtTipoCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtTipoCarro.setForeground(new java.awt.Color(204, 204, 204));
-        txtTipoCarro.setText("Tipo");
+        txtTipoCarro.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTipoCarroFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTipoCarroFocusLost(evt);
+            }
+        });
+        txtTipoCarro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTipoCarroActionPerformed(evt);
+            }
+        });
 
         txtColorCarro.setBackground(new java.awt.Color(255, 255, 255));
         txtColorCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtColorCarro.setForeground(new java.awt.Color(204, 204, 204));
-        txtColorCarro.setText("Color");
+        txtColorCarro.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtColorCarroFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtColorCarroFocusLost(evt);
+            }
+        });
 
         txtAnioCarro.setBackground(new java.awt.Color(255, 255, 255));
         txtAnioCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtAnioCarro.setForeground(new java.awt.Color(204, 204, 204));
-        txtAnioCarro.setText("Año");
+        txtAnioCarro.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtAnioCarroFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtAnioCarroFocusLost(evt);
+            }
+        });
         txtAnioCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAnioCarroActionPerformed(evt);
@@ -369,7 +575,14 @@ public class Ventas extends javax.swing.JPanel {
         txtEstadoCarro.setBackground(new java.awt.Color(255, 255, 255));
         txtEstadoCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtEstadoCarro.setForeground(new java.awt.Color(204, 204, 204));
-        txtEstadoCarro.setText("Estado");
+        txtEstadoCarro.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEstadoCarroFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEstadoCarroFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelCarroLayout = new javax.swing.GroupLayout(jPanelCarro);
         jPanelCarro.setLayout(jPanelCarroLayout);
@@ -418,6 +631,11 @@ public class Ventas extends javax.swing.JPanel {
         btnContinuar.setBackground(new java.awt.Color(255, 153, 51));
         btnContinuar.setForeground(new java.awt.Color(0, 0, 0));
         btnContinuar.setText("Continuar");
+        btnContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinuarActionPerformed(evt);
+            }
+        });
         bg.add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 390, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -467,6 +685,334 @@ public class Ventas extends javax.swing.JPanel {
                     txtApellidoP.setForeground(placeholderColor);
                 }
     }//GEN-LAST:event_txtApellidoPFocusLost
+
+    private void txtTelefonoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoClienteActionPerformed
+
+    private void txtApellidoMFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoMFocusGained
+        // TODO add your handling code here:
+        if (txtApellidoM.getText().equals(placeholderApellidoM)) {
+                    txtApellidoM.setText("");
+                    txtApellidoM.setForeground(normalColor);
+                }
+    }//GEN-LAST:event_txtApellidoMFocusGained
+
+    private void txtApellidoMFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoMFocusLost
+        // TODO add your handling code here:
+       
+        if (txtApellidoM.getText().isEmpty()) {
+                    txtApellidoM.setText(placeholderApellidoM);
+                    txtApellidoM.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtApellidoMFocusLost
+
+
+    private void txtNombreClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreClienteFocusGained
+        // TODO add your handling code here:
+        if (txtNombreCliente.getText().equals(placeholderNombre)) {
+                    txtNombreCliente.setText("");
+                    txtNombreCliente.setForeground(normalColor);
+                }
+        
+    }//GEN-LAST:event_txtNombreClienteFocusGained
+
+    private void txtNombreClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreClienteFocusLost
+        // TODO add your handling code here:
+        if (txtNombreCliente.getText().isEmpty()) {
+                    txtNombreCliente.setText(placeholderNombre);
+                    txtNombreCliente.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtNombreClienteFocusLost
+
+    private void txtTelefonoClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoClienteFocusGained
+        // TODO add your handling code here:
+        if ( txtTelefonoCliente.getText().equals(placeholderTelefono)) {
+                     txtTelefonoCliente.setText("");
+                     txtTelefonoCliente.setForeground(normalColor);
+                }
+               
+       
+
+    }//GEN-LAST:event_txtTelefonoClienteFocusGained
+
+    private void txtTelefonoClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoClienteFocusLost
+        // TODO add your handling code here:
+         if (txtTelefonoCliente.getText().isEmpty()) {
+                    txtTelefonoCliente.setText(placeholderTelefono);
+                    txtTelefonoCliente.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtTelefonoClienteFocusLost
+
+    private void txtCorreoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusGained
+        // TODO add your handling code here:
+        if (txtCorreo.getText().equals(placeholderCorreo)) {
+                    txtCorreo.setText("");
+                    txtCorreo.setForeground(normalColor);
+                }
+    }//GEN-LAST:event_txtCorreoFocusGained
+
+    private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusLost
+        // TODO add your handling code here:
+        if (txtCorreo.getText().isEmpty()) {
+                    txtCorreo.setText(placeholderCorreo);
+                    txtCorreo.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtCorreoFocusLost
+
+    private void txtCalleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCalleFocusGained
+        // TODO add your handling code here:
+        if (txtCalle.getText().equals(placeholderCalle)) {
+                    txtCalle.setText("");
+                    txtCalle.setForeground(normalColor);
+                }
+        
+    }//GEN-LAST:event_txtCalleFocusGained
+
+    private void txtCalleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCalleFocusLost
+        // TODO add your handling code here:
+        if (txtCalle.getText().isEmpty()) {
+                    txtCalle.setText(placeholderCalle);
+                    txtCalle.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtCalleFocusLost
+
+    private void txtColoniaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtColoniaFocusGained
+        // TODO add your handling code here:
+        if (txtColonia.getText().equals(placeholderColonia)) {
+                    txtColonia.setText("");
+                    txtColonia.setForeground(normalColor);
+                }
+
+    }//GEN-LAST:event_txtColoniaFocusGained
+
+    private void txtColoniaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtColoniaFocusLost
+        // TODO add your handling code here:
+        if (txtColonia.getText().isEmpty()) {
+                    txtColonia.setText(placeholderColonia);
+                    txtColonia.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtColoniaFocusLost
+
+    private void txtMunicipioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMunicipioFocusGained
+        // TODO add your handling code here:
+        if (txtMunicipio.getText().equals(placeholderMunicipio)) {
+                    txtMunicipio.setText("");
+                    txtMunicipio.setForeground(normalColor);
+                }
+        
+    }//GEN-LAST:event_txtMunicipioFocusGained
+
+    private void txtMunicipioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMunicipioFocusLost
+        // TODO add your handling code here:
+        if (txtMunicipio.getText().isEmpty()) {
+                    txtMunicipio.setText(placeholderMunicipio);
+                    txtMunicipio.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtMunicipioFocusLost
+
+    private void txtCiudadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCiudadFocusGained
+        // TODO add your handling code here:
+        if (txtCiudad.getText().equals(placeholderCiudad)) {
+                    txtCiudad.setText("");
+                    txtCiudad.setForeground(normalColor);
+                }
+        
+    }//GEN-LAST:event_txtCiudadFocusGained
+
+    private void txtCiudadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCiudadFocusLost
+        // TODO add your handling code here:
+        if (txtCiudad.getText().isEmpty()) {
+                    txtCiudad.setText(placeholderCiudad);
+                    txtCiudad.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtCiudadFocusLost
+
+    private void txtEstadoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEstadoFocusGained
+        // TODO add your handling code here:
+        if (txtEstado.getText().equals(placeholderEstado)) {
+                    txtEstado.setText("");
+                    txtEstado.setForeground(normalColor);
+                }
+        
+    }//GEN-LAST:event_txtEstadoFocusGained
+
+    private void txtEstadoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEstadoFocusLost
+        // TODO add your handling code here:
+        if (txtEstado.getText().isEmpty()) {
+                    txtEstado.setText(placeholderEstado);
+                    txtEstado.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtEstadoFocusLost
+
+    private void txtCPFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCPFocusGained
+        // TODO add your handling code here:
+        if (txtCP.getText().equals(placeholderCP)) {
+                    txtCP.setText("");
+                    txtCP.setForeground(normalColor);
+                }
+        
+    }//GEN-LAST:event_txtCPFocusGained
+
+    private void txtCPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCPFocusLost
+        // TODO add your handling code here:
+        if (txtCP.getText().isEmpty()) {
+                    txtCP.setText(placeholderCP);
+                    txtCP.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtCPFocusLost
+
+    private void txtMarcaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMarcaFocusGained
+        // TODO add your handling code here:
+        if (txtMarca.getText().equals(placeholderMarca)) {
+                    txtMarca.setText("");
+                    txtMarca.setForeground(normalColor);
+                }
+       
+    }//GEN-LAST:event_txtMarcaFocusGained
+
+    private void txtMarcaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMarcaFocusLost
+        // TODO add your handling code here:
+         if (txtMarca.getText().isEmpty()) {
+                    txtMarca.setText(placeholderMarca);
+                    txtMarca.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtMarcaFocusLost
+
+    private void txtModeloFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtModeloFocusGained
+        // TODO add your handling code here:
+        if (txtModelo.getText().equals(placeholderModelo)) {
+                    txtModelo.setText("");
+                    txtModelo.setForeground(normalColor);
+                }
+        
+    }//GEN-LAST:event_txtModeloFocusGained
+
+    private void txtModeloFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtModeloFocusLost
+        // TODO add your handling code here:
+        if (txtModelo.getText().isEmpty()) {
+                    txtModelo.setText(placeholderModelo);
+                    txtModelo.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtModeloFocusLost
+
+    private void txtTipoCarroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTipoCarroFocusGained
+        // TODO add your handling code here:
+        if (txtTipoCarro.getText().equals(placeholderTipo)) {
+                    txtTipoCarro.setText("");
+                    txtTipoCarro.setForeground(normalColor);
+                }
+        
+    }//GEN-LAST:event_txtTipoCarroFocusGained
+
+    private void txtTipoCarroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTipoCarroFocusLost
+        // TODO add your handling code here:
+        if (txtTipoCarro.getText().isEmpty()) {
+                    txtTipoCarro.setText(placeholderTipo);
+                    txtTipoCarro.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtTipoCarroFocusLost
+
+    private void txtColorCarroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtColorCarroFocusGained
+        // TODO add your handling code here:
+        if (txtColorCarro.getText().equals(placeholderColorCarro)) {
+                    txtColorCarro.setText("");
+                    txtColorCarro.setForeground(normalColor);
+                }
+        
+    }//GEN-LAST:event_txtColorCarroFocusGained
+
+    private void txtColorCarroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtColorCarroFocusLost
+        // TODO add your handling code here:
+        if (txtColorCarro.getText().isEmpty()) {
+                    txtColorCarro.setText(placeholderColorCarro);
+                    txtColorCarro.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtColorCarroFocusLost
+
+    private void txtAnioCarroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAnioCarroFocusGained
+        // TODO add your handling code here:
+        if (txtAnioCarro.getText().equals(placeholderAnio)) {
+                    txtAnioCarro.setText("");
+                    txtAnioCarro.setForeground(normalColor);
+                }
+        
+    }//GEN-LAST:event_txtAnioCarroFocusGained
+
+    private void txtAnioCarroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAnioCarroFocusLost
+        // TODO add your handling code here:
+        if (txtAnioCarro.getText().isEmpty()) {
+                    txtAnioCarro.setText(placeholderAnio);
+                    txtAnioCarro.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtAnioCarroFocusLost
+
+    private void txtEstadoCarroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEstadoCarroFocusGained
+        // TODO add your handling code here:
+        if (txtEstadoCarro.getText().equals(placeholderEstados)) {
+                    txtEstadoCarro.setText("");
+                    txtEstadoCarro.setForeground(normalColor);
+                }
+        
+    }//GEN-LAST:event_txtEstadoCarroFocusGained
+
+    private void txtEstadoCarroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEstadoCarroFocusLost
+        // TODO add your handling code here:
+        if (txtEstadoCarro.getText().isEmpty()) {
+                    txtEstadoCarro.setText(placeholderEstados);
+                    txtEstadoCarro.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtEstadoCarroFocusLost
+
+    private void txtTipoCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoCarroActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtTipoCarroActionPerformed
+
+    private void txtApellidoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoPActionPerformed
+
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        // TODO add your handling code here:
+        Cliente cliente = new Cliente();
+        
+        cliente.setApellidoP(txtApellidoP.getText());
+        cliente.setApellidoM(txtApellidoM.getText());
+        cliente.setNombre(txtNombreCliente.getText());
+        cliente.setTelefono(Long.parseLong(txtTelefonoCliente.getText()));
+        cliente.setCorreo(txtCorreo.getText());
+        
+        cliente.setCalle(txtCalle.getText());
+        cliente.setColonia(txtColonia.getText());
+        cliente.setMunicipio(txtMunicipio.getText());
+        cliente.setCiudad(txtCiudad.getText());
+        cliente.setEstado(txtEstado.getText());
+        cliente.setCP(txtCP.getText());
+        
+        /*
+        cliente.setMarca(txtMarca.getText());
+        cliente.setModelo(txtModelo.getText());
+        cliente.setTipoCarro(txtTipoCarro.getText());
+        cliente.setColorCarro(txtColorCarro.getText());
+        cliente.setAño(Integer.parseInt(txtAnioCarro.getText()));
+        cliente.setCorreo(txtEstadoCarro.getText());
+   */
+       
+        ClienteDB dao = new ClienteDB();
+      
+        if (dao.RegistrarClientes(cliente)){
+            JOptionPane.showMessageDialog(this, "Cliente registrado con éxito");
+            //limpiarCampos();
+            
+        }else {
+            JOptionPane.showMessageDialog(this, "Error al registrar cliente");
+        }
+    }//GEN-LAST:event_btnContinuarActionPerformed
+
+    private void txtColoniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtColoniaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtColoniaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
