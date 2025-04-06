@@ -18,6 +18,12 @@ import javax.swing.JOptionPane;
  * @author antoniosalinas
  */
 public class Login extends javax.swing.JFrame {
+    
+    String placeholderUsuario = "Ingrese Usuario";
+    String placeholderPass = "********";
+    Color placeholderColor= Color.GRAY;
+    Color normalColor = Color.BLACK;
+    
 //Funcion de conexion con base de datos 
     Connection conn;
     PreparedStatement pst;
@@ -25,11 +31,19 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    
+    
     public Login() {
         initComponents();
         txtPass.setEchoChar((char)0);
         ConexionBD conexionBD = new ConexionBD();
         conn = conexionBD.conn();
+        
+        txtUsuario.setText(placeholderUsuario);
+        txtUsuario.setForeground(placeholderColor);
+        
+        txtPass.setText(placeholderPass);
+        txtPass.setForeground(placeholderColor);
     }
  private String verificarUsuario(String usuario, String contraseña){
 String sqlquery = "SELECT rol FROM userlogin WHERE nombre_usuario=? AND contraseña_usuario=?";
@@ -85,6 +99,14 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
         txtPass.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         txtPass.setForeground(new java.awt.Color(153, 153, 153));
         txtPass.setText("********");
+        txtPass.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPassFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPassFocusLost(evt);
+            }
+        });
         txtPass.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtPassMousePressed(evt);
@@ -104,6 +126,14 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
         txtUsuario.setForeground(new java.awt.Color(204, 204, 204));
         txtUsuario.setText("Ingresa tu usuario");
         txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtUsuarioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUsuarioFocusLost(evt);
+            }
+        });
         txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtUsuarioMousePressed(evt);
@@ -203,14 +233,7 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
 
     private void txtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMousePressed
         // TODO add your handling code here:
-        if(txtUsuario.getText().equals("Ingresa tu usuario")){
-        txtUsuario.setText("");
-        txtUsuario.setForeground(Color.BLACK);
-        }
-        if (String.valueOf(txtPass.getPassword()).isEmpty()){
-        txtPass.setText("********");
-        txtPass.setForeground(Color.gray);
-        }
+        
     }//GEN-LAST:event_txtUsuarioMousePressed
 
     private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
@@ -219,16 +242,7 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
 
     private void txtPassMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassMousePressed
         // TODO add your handling code here:
-      if (String.valueOf(txtPass.getPassword()).equals("********")){
-        txtPass.setText("");
-        txtPass.setForeground(Color.BLACK);
-      }
-        
-        if(txtUsuario.getText().isEmpty()){
-        txtUsuario.setText("Ingresa tu usuario"); 
-        txtUsuario.setForeground(Color.GRAY);
-         
-        }
+      
     }//GEN-LAST:event_txtPassMousePressed
 
     private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
@@ -255,6 +269,42 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
     
 }                     
     }//GEN-LAST:event_loginBtnMouseClicked
+
+    private void txtUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusGained
+        if(txtUsuario.getText().equals(placeholderUsuario)){
+        txtUsuario.setText("");
+        txtUsuario.setForeground(normalColor);
+        }
+       
+    }//GEN-LAST:event_txtUsuarioFocusGained
+
+    private void txtUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusLost
+        // TODO add your handling code here:
+        if (txtUsuario.getText().isEmpty()){
+        txtUsuario.setText(placeholderUsuario);
+        txtPass.setForeground(placeholderColor);
+        }
+       
+    }//GEN-LAST:event_txtUsuarioFocusLost
+
+    private void txtPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusGained
+        // TODO add your handling code here:
+        if (String.valueOf(txtPass.getPassword()).equals(placeholderPass)){
+        txtPass.setText("");
+        txtPass.setForeground(normalColor);
+      }
+        
+       
+    }//GEN-LAST:event_txtPassFocusGained
+
+    private void txtPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusLost
+        // TODO add your handling code here:
+         if(String.valueOf(txtPass.getPassword()).isEmpty()){
+        txtPass.setText(placeholderPass); 
+        txtPass.setForeground(placeholderColor);
+         
+        }
+    }//GEN-LAST:event_txtPassFocusLost
 
     /**
      * @param args the command line arguments
