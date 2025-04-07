@@ -27,6 +27,7 @@ public class Cliente {
     String Genero;
     int Edad;
     
+    
     public Cliente(){
     
 }
