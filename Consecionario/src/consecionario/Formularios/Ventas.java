@@ -6,7 +6,7 @@ package consecionario.Formularios;
 
 
 import BD.ClienteDB;
-import BD.ConexionBD;
+
 import consecionario.Cliente;
 import java.awt.Color;
 import javax.swing.JOptionPane;

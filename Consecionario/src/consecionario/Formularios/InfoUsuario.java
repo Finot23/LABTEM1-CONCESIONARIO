@@ -4,6 +4,10 @@
  */
 package consecionario.Formularios;
 
+import BD.ConexionBD;
+import BD.UsuarioBD;
+import consecionario.Usuario;
+
 /**
  *
  * @author antoniosalinas
@@ -15,7 +19,21 @@ public class InfoUsuario extends javax.swing.JPanel {
      */
     public InfoUsuario() {
         initComponents();
+        UsuarioBD dao = new UsuarioBD();
+         Usuario user = dao.CargarUsuarios(1000, "Admin", "Admin");
+
+        
+         if (user != null) {
+        System.out.println("Usuario encontrado. Rol: " + user.getRol());
+        txtBienvenida.setText("Bienvenido de nuevo, " + user.getRol());
+    } else {
+        System.out.println("Credenciales incorrectas o usuario no encontrado.");
+        txtBienvenida.setText("Bienvenido de nuevo, Invitado");
     }
+
+    }
+   
+    
     //txtBienvenida.setText("Bienvendido de nuevo, " +rolUsuario);
      
     /**
@@ -28,8 +46,18 @@ public class InfoUsuario extends javax.swing.JPanel {
     private void initComponents() {
 
         gb = new javax.swing.JPanel();
-        IconUser2 = new javax.swing.JLabel();
         txtBienvenida = new javax.swing.JLabel();
+        IconUser2 = new javax.swing.JLabel();
+        bgInfoUsuario = new javax.swing.JPanel();
+        lblNombre = new javax.swing.JLabel();
+        lblApellidoP = new javax.swing.JLabel();
+        lblApellidoM = new javax.swing.JLabel();
+        lblPuesto = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        txtApellidoM = new javax.swing.JTextField();
+        txtApellidoP = new javax.swing.JTextField();
+        txtPuesto = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(810, 520));
@@ -37,36 +65,126 @@ public class InfoUsuario extends javax.swing.JPanel {
         gb.setBackground(new java.awt.Color(255, 255, 255));
         gb.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        IconUser2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/consecionario/Imagenes/iconoUsuario.png"))); // NOI18N
-        gb.add(IconUser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 6, -1, -1));
-
         txtBienvenida.setBackground(new java.awt.Color(0, 0, 0));
         txtBienvenida.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         txtBienvenida.setForeground(new java.awt.Color(0, 0, 0));
-        gb.add(txtBienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 136, 540, 40));
+
+        IconUser2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/consecionario/Imagenes/iconoUsuario.png"))); // NOI18N
+
+        lblNombre.setText("Nombre (s):");
+
+        lblApellidoP.setText("Apellido Paterno:");
+
+        lblApellidoM.setText("Apellido Materno:");
+
+        lblPuesto.setText("Puesto:");
+
+        txtNombre.setText("jTextField1");
+
+        txtApellidoM.setText("jTextField2");
+
+        txtApellidoP.setText("jTextField3");
+
+        txtPuesto.setText("jTextField4");
+
+        jLabel5.setText("INFORMACIÓN DEL USUARIO");
+
+        javax.swing.GroupLayout bgInfoUsuarioLayout = new javax.swing.GroupLayout(bgInfoUsuario);
+        bgInfoUsuario.setLayout(bgInfoUsuarioLayout);
+        bgInfoUsuarioLayout.setHorizontalGroup(
+            bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgInfoUsuarioLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bgInfoUsuarioLayout.createSequentialGroup()
+                        .addGroup(bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPuesto)
+                            .addComponent(lblApellidoM))
+                        .addGap(92, 92, 92)
+                        .addGroup(bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtApellidoP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtApellidoM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(lblNombre)
+                    .addComponent(jLabel5)
+                    .addComponent(lblApellidoP))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+        bgInfoUsuarioLayout.setVerticalGroup(
+            bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgInfoUsuarioLayout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombre)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblApellidoM)
+                    .addComponent(txtApellidoM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblApellidoP)
+                    .addComponent(txtApellidoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPuesto)
+                    .addComponent(txtPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(357, 357, 357)
+                .addComponent(IconUser2)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(gb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(229, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bgInfoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(gb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap())
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(txtBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(41, 41, 41)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(gb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addComponent(IconUser2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(bgInfoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IconUser2;
+    private javax.swing.JPanel bgInfoUsuario;
     private javax.swing.JPanel gb;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblApellidoM;
+    private javax.swing.JLabel lblApellidoP;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblPuesto;
+    private javax.swing.JTextField txtApellidoM;
+    private javax.swing.JTextField txtApellidoP;
     private javax.swing.JLabel txtBienvenida;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPuesto;
     // End of variables declaration//GEN-END:variables
 }
