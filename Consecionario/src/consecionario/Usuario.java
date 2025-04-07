@@ -13,49 +13,54 @@ package consecionario;
 
 
 public class Usuario {
-    private int id;
-    private String nombre;
-    private String contaseña;
-    int rol;
+    private int Id;
+    private String Nombre;
+    private String Contraseña;
+    String Rol;
 
-    public Usuario(int id, String nombre, String contaseña, int rol) {
-        this.id = id;
-        this.nombre = nombre;
-        this.contaseña = contaseña;
-        this.rol = rol;
+    public Usuario(int Id, String Nombre, String Contraseña, String  Rol) {
+        this.Id = Id;
+        this.Nombre = Nombre;
+        this.Contraseña = Contraseña;
+        this.Rol = Rol;
+    }
+
+    public Usuario() {
+        
     }
 
     public int getId() {
-        return id;
+        return Id;
     }
 
     public String getNombre() {
-        return nombre;
+        return Nombre;
     }
 
-    public String getContaseña() {
-        return contaseña;
+    public String getContraseña() {
+        return Contraseña;
     }
 
-    public int getRol() {
-        return rol;
+    public String  getRol() {
+        return Rol;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
-    public void setContaseña(String contaseña) {
-        this.contaseña = contaseña;
+    public void setContraseña(String Contraseña) {
+        this.Contraseña = Contraseña;
     }
 
-    public void setRol(int rol) {
-        this.rol = rol;
+    public void setRol(String  Rol) {
+        this.Rol = Rol;
     }
- 
+
     
-}
+   
+    }
