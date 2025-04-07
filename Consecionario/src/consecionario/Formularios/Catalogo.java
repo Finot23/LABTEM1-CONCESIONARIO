@@ -71,6 +71,7 @@ public class Catalogo extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
         Filtrar = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
 
         setMaximumSize(new java.awt.Dimension(810, 520));
 
@@ -82,23 +83,23 @@ public class Catalogo extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "id", "modelo", "año_fabricacion", "precio", "color", "estado", "Categoria"
+                "id", "modelo", "año_fabricacion", "precio", "color", "estado", "Categoria", "Imagen"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        bg.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 420, -1));
+        bg.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 480, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hatchback ", "Seadan", "SUV", " " }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +107,7 @@ public class Catalogo extends javax.swing.JPanel {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        bg.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, -1, -1));
+        bg.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, -1, -1));
 
         Filtrar.setText("Filtrar");
         Filtrar.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +115,10 @@ public class Catalogo extends javax.swing.JPanel {
                 FiltrarActionPerformed(evt);
             }
         });
-        bg.add(Filtrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, -1, -1));
+        bg.add(Filtrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, -1, -1));
+
+        jTextField1.setText("Escoge tu categoria preferida");
+        bg.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -150,5 +154,6 @@ public class Catalogo extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
