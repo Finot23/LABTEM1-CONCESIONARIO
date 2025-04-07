@@ -35,6 +35,10 @@ public class UsuarioBD {
             user.setNombre(rs.getString("nombre_usuario"));
             user.setContraseña(rs.getString("contraseña_usuario"));
             user.setRol(rs.getString("rol"));
+            user.setNombres(rs.getString("nombres"));
+            user.setApellidoP(rs.getString("apellido_P"));
+            user.setApellidoM(rs.getString("apellido_M"));
+            user.setPuesto(rs.getString("puesto"));
         }
 
         rs.close();

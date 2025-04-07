@@ -20,12 +20,17 @@ public class InfoUsuario extends javax.swing.JPanel {
     public InfoUsuario() {
         initComponents();
         UsuarioBD dao = new UsuarioBD();
-         Usuario user = dao.CargarUsuarios(1000, "Admin", "Admin");
+         Usuario user = dao.CargarUsuarios(1, "Admin", "Admin");
 
         
          if (user != null) {
         System.out.println("Usuario encontrado. Rol: " + user.getRol());
         txtBienvenida.setText("Bienvenido de nuevo, " + user.getRol());
+        
+    txtNombre.setText(user.getNombres());
+    txtApellidoP.setText(user.getApellidoP());
+    txtApellidoM.setText(user.getApellidoM());
+    txtPuesto.setText(user.getPuesto());
     } else {
         System.out.println("Credenciales incorrectas o usuario no encontrado.");
         txtBienvenida.setText("Bienvenido de nuevo, Invitado");
@@ -57,7 +62,7 @@ public class InfoUsuario extends javax.swing.JPanel {
         txtApellidoM = new javax.swing.JTextField();
         txtApellidoP = new javax.swing.JTextField();
         txtPuesto = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        lblInfoUsuario = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(810, 520));
@@ -79,15 +84,20 @@ public class InfoUsuario extends javax.swing.JPanel {
 
         lblPuesto.setText("Puesto:");
 
-        txtNombre.setText("jTextField1");
+        txtNombre.setEditable(false);
 
-        txtApellidoM.setText("jTextField2");
+        txtApellidoM.setEditable(false);
 
-        txtApellidoP.setText("jTextField3");
+        txtApellidoP.setEditable(false);
+        txtApellidoP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoPActionPerformed(evt);
+            }
+        });
 
-        txtPuesto.setText("jTextField4");
+        txtPuesto.setEditable(false);
 
-        jLabel5.setText("INFORMACIÓN DEL USUARIO");
+        lblInfoUsuario.setText("INFORMACIÓN DEL USUARIO");
 
         javax.swing.GroupLayout bgInfoUsuarioLayout = new javax.swing.GroupLayout(bgInfoUsuario);
         bgInfoUsuario.setLayout(bgInfoUsuarioLayout);
@@ -102,13 +112,12 @@ public class InfoUsuario extends javax.swing.JPanel {
                             .addComponent(lblApellidoM))
                         .addGap(92, 92, 92)
                         .addGroup(bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtApellidoP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtApellidoM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtApellidoP, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtPuesto, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtApellidoM, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNombre)))
                     .addComponent(lblNombre)
-                    .addComponent(jLabel5)
+                    .addComponent(lblInfoUsuario)
                     .addComponent(lblApellidoP))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
@@ -116,9 +125,9 @@ public class InfoUsuario extends javax.swing.JPanel {
             bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgInfoUsuarioLayout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addComponent(jLabel5)
+                .addComponent(lblInfoUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNombre)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -171,14 +180,18 @@ public class InfoUsuario extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtApellidoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoPActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IconUser2;
     private javax.swing.JPanel bgInfoUsuario;
     private javax.swing.JPanel gb;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblApellidoM;
     private javax.swing.JLabel lblApellidoP;
+    private javax.swing.JLabel lblInfoUsuario;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPuesto;
     private javax.swing.JTextField txtApellidoM;
