@@ -64,7 +64,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="40" width="420" height="-1"/>
+              <AbsoluteConstraints x="10" y="40" width="480" height="-1"/>
             </Constraint>
           </Constraints>
 
@@ -73,7 +73,7 @@
             <Component class="javax.swing.JTable" name="jTable1">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="7" rowCount="9">
+                  <Table columnCount="8" rowCount="9">
                     <Column editable="true" title="id" type="java.lang.Object"/>
                     <Column editable="true" title="modelo" type="java.lang.Object"/>
                     <Column editable="true" title="a&#xf1;o_fabricacion" type="java.lang.Object"/>
@@ -81,6 +81,7 @@
                     <Column editable="true" title="color" type="java.lang.Object"/>
                     <Column editable="true" title="estado" type="java.lang.Object"/>
                     <Column editable="true" title="Categoria" type="java.lang.Object"/>
+                    <Column editable="true" title="Imagen" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>
@@ -106,7 +107,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="480" y="40" width="-1" height="-1"/>
+              <AbsoluteConstraints x="510" y="70" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -119,7 +120,17 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="480" y="80" width="-1" height="-1"/>
+              <AbsoluteConstraints x="520" y="130" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Escoge tu categoria preferida"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="510" y="40" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
