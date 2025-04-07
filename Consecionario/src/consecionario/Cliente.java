@@ -15,6 +15,7 @@ public class Cliente {
     String Nombre;
     long Telefono;
     String Correo;
+    String Curp;
     
     String Calle;
     String Colonia;
@@ -22,6 +23,9 @@ public class Cliente {
     String Ciudad;
     String Estado;
     String CP;
+    String Licencia;
+    String Genero;
+    int Edad;
     
     public Cliente(){
     
@@ -54,11 +58,13 @@ public class Cliente {
     public void setCiudad(String Ciudad) {
         this.Ciudad = Ciudad;
     }
+
+    
     
     
   
 
-    public Cliente(int Id, String ApellidoP, String ApellidoM, String Nombre, String Calle, String Colonia, String Estado, String CP, String Marca, String Modelo, String TipoCarro, String ColorCarro, int Año, String Condicion, long Telefono, String Correo) {
+    public Cliente(int Id, String ApellidoP, String ApellidoM, String Nombre, String Calle, String Colonia, String Estado, String CP, String Marca, String Modelo, String TipoCarro, String ColorCarro, int Año, String Condicion, long Telefono, String Correo,String Curp,String Licencia,String Genero,int Edad) {
         this.Id = Id;
         this.ApellidoP = ApellidoP;
         this.ApellidoM = ApellidoM;
@@ -69,6 +75,11 @@ public class Cliente {
         this.CP = CP;
         this.Telefono = Telefono;
         this.Correo = Correo;
+        this.Curp = Curp;
+        this.Licencia = Licencia;
+        this.Genero = Genero;
+        this.Edad = Edad;
+        
     }
 
     public void setId(int Id) {
@@ -151,6 +162,38 @@ public class Cliente {
 
     public String getCorreo() {
         return Correo;
+    }
+    
+    public String getCurp() {
+        return Curp;
+    }
+
+    public void setCurp(String Curp) {
+        this.Curp = Curp;
+    }
+
+    public String getLicencia() {
+        return Licencia;
+    }
+
+    public void setLicencia(String Licencia) {
+        this.Licencia = Licencia;
+    }
+
+    public String getGenero() {
+        return Genero;
+    }
+
+    public void setGenero(String Genero) {
+        this.Genero = Genero;
+    }
+
+    public int getEdad() {
+        return Edad;
+    }
+
+    public void setEdad(int Edad) {
+        this.Edad = Edad;
     }
     
 }

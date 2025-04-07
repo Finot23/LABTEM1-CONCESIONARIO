@@ -28,7 +28,7 @@ public boolean RegistrarClientes(Cliente cl){
             return false;
         }
         
-     String sql = "INSERT INTO clientes (Id, Apellido_Paterno, Apellido_Materno, nombre, telefono, Correo, calle, colonia, municipio, ciudad) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+     String sql = "INSERT INTO clientes (Id, Apellido_Paterno, Apellido_Materno, nombre, telefono, Correo, calle, colonia, municipio, ciudad,curp,licencia,genero,edad) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
       
      try{
         ps = con.prepareStatement(sql);
@@ -42,6 +42,11 @@ public boolean RegistrarClientes(Cliente cl){
         ps.setString(8, cl.getColonia());
         ps.setString(9, cl.getMunicipio());
         ps.setString(10, cl.getCiudad());
+        ps.setString(11, cl.getCurp());
+        ps.setString(12, cl.getLicencia());
+        ps.setString(13, cl.getGenero());
+        ps.setInt(14, cl.getEdad());
+        
         
         ps.executeUpdate();
         return true;
