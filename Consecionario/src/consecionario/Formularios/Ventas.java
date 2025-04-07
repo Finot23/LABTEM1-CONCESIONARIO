@@ -159,14 +159,12 @@ public class Ventas extends javax.swing.JPanel {
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSolicitudCompra.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        lblSolicitudCompra.setForeground(new java.awt.Color(0, 0, 0));
         lblSolicitudCompra.setText("Solicitud de compra");
         bg.add(lblSolicitudCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         jPanelDatosCliente.setBackground(new java.awt.Color(255, 255, 255));
         jPanelDatosCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(199, 0, 57), 3));
 
-        txtNombreCliente.setBackground(new java.awt.Color(255, 255, 255));
         txtNombreCliente.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtNombreCliente.setForeground(new java.awt.Color(204, 204, 204));
         txtNombreCliente.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -183,7 +181,6 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
-        txtTelefonoCliente.setBackground(new java.awt.Color(255, 255, 255));
         txtTelefonoCliente.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtTelefonoCliente.setForeground(new java.awt.Color(204, 204, 204));
         txtTelefonoCliente.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -224,7 +221,6 @@ public class Ventas extends javax.swing.JPanel {
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
-        txtApellidoP.setBackground(new java.awt.Color(255, 255, 255));
         txtApellidoP.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtApellidoP.setForeground(new java.awt.Color(204, 204, 204));
         txtApellidoP.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -241,7 +237,6 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
-        txtApellidoM.setBackground(new java.awt.Color(255, 255, 255));
         txtApellidoM.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtApellidoM.setForeground(new java.awt.Color(204, 204, 204));
         txtApellidoM.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -252,11 +247,15 @@ public class Ventas extends javax.swing.JPanel {
                 txtApellidoMFocusLost(evt);
             }
         });
+        txtApellidoM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoMActionPerformed(evt);
+            }
+        });
 
         jSeparator1.setBackground(new java.awt.Color(153, 0, 51));
         jSeparator1.setForeground(new java.awt.Color(199, 0, 57));
 
-        txtCorreo.setBackground(new java.awt.Color(255, 255, 255));
         txtCorreo.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtCorreo.setForeground(new java.awt.Color(204, 204, 204));
         txtCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -305,7 +304,7 @@ public class Ventas extends javax.swing.JPanel {
                 .addGroup(jPanelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         bg.add(jPanelDatosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 720, 120));
@@ -337,7 +336,6 @@ public class Ventas extends javax.swing.JPanel {
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
-        txtMunicipio.setBackground(new java.awt.Color(255, 255, 255));
         txtMunicipio.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtMunicipio.setForeground(new java.awt.Color(204, 204, 204));
         txtMunicipio.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -354,7 +352,6 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
-        txtCalle.setBackground(new java.awt.Color(255, 255, 255));
         txtCalle.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtCalle.setForeground(new java.awt.Color(204, 204, 204));
         txtCalle.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -366,7 +363,6 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
-        txtColonia.setBackground(new java.awt.Color(255, 255, 255));
         txtColonia.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtColonia.setForeground(new java.awt.Color(204, 204, 204));
         txtColonia.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -383,7 +379,6 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
-        txtEstado.setBackground(new java.awt.Color(255, 255, 255));
         txtEstado.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtEstado.setForeground(new java.awt.Color(204, 204, 204));
         txtEstado.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -403,7 +398,6 @@ public class Ventas extends javax.swing.JPanel {
         jSeparator2.setBackground(new java.awt.Color(153, 0, 51));
         jSeparator2.setForeground(new java.awt.Color(199, 0, 57));
 
-        txtCP.setBackground(new java.awt.Color(255, 255, 255));
         txtCP.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtCP.setForeground(new java.awt.Color(204, 204, 204));
         txtCP.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -415,7 +409,6 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
-        txtCiudad.setBackground(new java.awt.Color(255, 255, 255));
         txtCiudad.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtCiudad.setForeground(new java.awt.Color(204, 204, 204));
         txtCiudad.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -499,7 +492,6 @@ public class Ventas extends javax.swing.JPanel {
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
-        txtMarca.setBackground(new java.awt.Color(255, 255, 255));
         txtMarca.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtMarca.setForeground(new java.awt.Color(204, 204, 204));
         txtMarca.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -511,7 +503,6 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
-        txtModelo.setBackground(new java.awt.Color(255, 255, 255));
         txtModelo.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtModelo.setForeground(new java.awt.Color(204, 204, 204));
         txtModelo.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -526,7 +517,6 @@ public class Ventas extends javax.swing.JPanel {
         jSeparator3.setBackground(new java.awt.Color(153, 0, 51));
         jSeparator3.setForeground(new java.awt.Color(199, 0, 57));
 
-        txtTipoCarro.setBackground(new java.awt.Color(255, 255, 255));
         txtTipoCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtTipoCarro.setForeground(new java.awt.Color(204, 204, 204));
         txtTipoCarro.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -543,7 +533,6 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
-        txtColorCarro.setBackground(new java.awt.Color(255, 255, 255));
         txtColorCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtColorCarro.setForeground(new java.awt.Color(204, 204, 204));
         txtColorCarro.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -555,7 +544,6 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
-        txtAnioCarro.setBackground(new java.awt.Color(255, 255, 255));
         txtAnioCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtAnioCarro.setForeground(new java.awt.Color(204, 204, 204));
         txtAnioCarro.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -572,7 +560,6 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
-        txtEstadoCarro.setBackground(new java.awt.Color(255, 255, 255));
         txtEstadoCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtEstadoCarro.setForeground(new java.awt.Color(204, 204, 204));
         txtEstadoCarro.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -629,7 +616,6 @@ public class Ventas extends javax.swing.JPanel {
         bg.add(jPanelCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 720, 120));
 
         btnContinuar.setBackground(new java.awt.Color(255, 153, 51));
-        btnContinuar.setForeground(new java.awt.Color(0, 0, 0));
         btnContinuar.setText("Continuar");
         btnContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1013,6 +999,10 @@ public class Ventas extends javax.swing.JPanel {
     private void txtColoniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtColoniaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtColoniaActionPerformed
+
+    private void txtApellidoMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoMActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
