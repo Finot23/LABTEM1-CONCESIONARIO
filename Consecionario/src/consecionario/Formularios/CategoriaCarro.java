@@ -111,6 +111,11 @@ public class CategoriaCarro extends javax.swing.JPanel {
         txtHatchback.setText("jLabel4");
         txtHatchback.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         txtHatchback.setPreferredSize(new java.awt.Dimension(30, 40));
+        txtHatchback.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtHatchbackMouseClicked(evt);
+            }
+        });
         bg.add(txtHatchback, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 240, 170));
 
         txtSedan.setText("jLabel5");
@@ -140,6 +145,11 @@ public class CategoriaCarro extends javax.swing.JPanel {
             .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtHatchbackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtHatchbackMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtHatchbackMouseClicked
 
   
          

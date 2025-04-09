@@ -400,6 +400,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelPaginaPrincipalMouseClicked
 
     private void jPanelCatalogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCatalogoMouseClicked
+           //MostrarJpanel(new Catalogo());
            MostrarJpanel(new CategoriaCarro());
     }//GEN-LAST:event_jPanelCatalogoMouseClicked
      
