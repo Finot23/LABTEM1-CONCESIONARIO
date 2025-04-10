@@ -10,23 +10,25 @@ package consecionario;
  */
 public class CatalogoCarros {
     
-    int Id;
-    String modelo;
+  int Id;
+    String Modelo;
     String AnioFabricacion;
     int Precio;
     String Color;
-    String estado;
+    String Estado;
     String Categoria;
     String Imagen;
     String Descripcion;
-
+public CatalogoCarros() {
+    // Constructor vacío requerido para instanciar sin parámetros
+}
     public CatalogoCarros(int Id, String modelo, String AnioFabricacion, int Precio, String Color, String estado, String Categoria, String Imagen, String Descripcion) {
         this.Id = Id;
-        this.modelo = modelo;
+        this.Modelo = modelo;
         this.AnioFabricacion = AnioFabricacion;
         this.Precio = Precio;
         this.Color = Color;
-        this.estado = estado;
+        this.Estado = estado;
         this.Categoria = Categoria;
         this.Imagen = Imagen;
         this.Descripcion = Descripcion;
@@ -37,7 +39,7 @@ public class CatalogoCarros {
     }
 
     public String getModelo() {
-        return modelo;
+        return Modelo;
     }
 
     public String getAnioFabricacion() {
@@ -53,7 +55,7 @@ public class CatalogoCarros {
     }
 
     public String getEstado() {
-        return estado;
+        return Estado;
     }
 
     public String getCategoria() {
@@ -73,7 +75,7 @@ public class CatalogoCarros {
     }
 
     public void setModelo(String modelo) {
-        this.modelo = modelo;
+        this.Modelo = modelo;
     }
 
     public void setAnioFabricacion(String AnioFabricacion) {
@@ -89,7 +91,7 @@ public class CatalogoCarros {
     }
 
     public void setEstado(String estado) {
-        this.estado = estado;
+        this.Estado = estado;
     }
 
     public void setCategoria(String Categoria) {
@@ -106,3 +108,5 @@ public class CatalogoCarros {
     
     
 }
+
+

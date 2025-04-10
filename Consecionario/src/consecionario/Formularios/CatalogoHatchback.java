@@ -4,17 +4,72 @@
  */
 package consecionario.Formularios;
 
+import BD.CatalogoBD;
+import consecionario.CatalogoCarros;
+import java.awt.Image;
+import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Finot
  */
 public class CatalogoHatchback extends javax.swing.JPanel {
 
+     public void SetImageLabel (JLabel labelName, String resourcePath){
+        
+        java.net.URL imgURL = getClass().getResource(resourcePath);
+        if (imgURL == null) {
+        System.err.println("No se encontró la imagen en: " + resourcePath);
+        return;
+    }
+        ImageIcon imageIcon = new ImageIcon(imgURL);
+        Image scaledImage = imageIcon.getImage().getScaledInstance(
+        labelName.getWidth(),
+        labelName.getHeight(),
+        Image.SCALE_SMOOTH
+    );
+
+    labelName.setIcon(new ImageIcon(scaledImage));
+}
+    
+     //inicializa el metodo para cargar la imagen deceada en el label decignado
+    public void CargarImagen(){
+      CatalogoBD catalogoBD = new CatalogoBD();
+    List<CatalogoCarros> lista = catalogoBD.obtenerPorCategoria("Hatchback");
+
+    if (lista.isEmpty()) {
+        System.out.println("No se encontraron autos hatchback.");
+        return;
+    }
+
+    // Establece máximo de 3 imágenes
+    if (lista.size() >= 1) {
+        SetImageLabel(txtImagen1, lista.get(0).getImagen());
+    }
+
+    if (lista.size() >= 2) {
+        SetImageLabel(txtImagen2, lista.get(1).getImagen());
+    }
+
+    if (lista.size() >= 3) {
+        SetImageLabel(txtImagen3, lista.get(2).getImagen());
+    }
+
+       
+    }
     /**
      * Creates new form CatalogoHatchback
      */
     public CatalogoHatchback() {
         initComponents();
+        txtImagen1.addComponentListener(new java.awt.event.ComponentAdapter() {
+        @Override
+        public void componentResized(java.awt.event.ComponentEvent evt) {
+            CargarImagen();
+        }
+    });
     }
 
     /**
@@ -27,24 +82,42 @@ public class CatalogoHatchback extends javax.swing.JPanel {
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
+        txtImagen1 = new javax.swing.JLabel();
+        txtImagen2 = new javax.swing.JLabel();
+        txtImagen3 = new javax.swing.JLabel();
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
+        bg.setPreferredSize(new java.awt.Dimension(500, 199));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtImagen1.setText("jLabel1");
+        bg.add(txtImagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 190, 120, 200));
+
+        txtImagen2.setText("jLabel2");
+        bg.add(txtImagen2, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 180, 100, 230));
+
+        txtImagen3.setText("jLabel3");
+        bg.add(txtImagen3, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 190, 90, 200));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 678, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
+    private javax.swing.JLabel txtImagen1;
+    private javax.swing.JLabel txtImagen2;
+    private javax.swing.JLabel txtImagen3;
     // End of variables declaration//GEN-END:variables
 }
