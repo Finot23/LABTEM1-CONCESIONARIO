@@ -53,14 +53,17 @@ public class CatalogoHatchback extends javax.swing.JPanel {
     // Establece máximo de 3 imágenes
     if (lista.size() >= 1) {
         SetImageLabel(txtImagen1, lista.get(0).getImagen());
+        txtCaracteristicas1.setText("<html>" + lista.get(0).getDescripcion() + "</html>");
     }
 
     if (lista.size() >= 2) {
         SetImageLabel(txtImagen2, lista.get(1).getImagen());
+        txtCaracteristicas2.setText("<html>" + lista.get(1).getDescripcion() + "</html>");
     }
 
     if (lista.size() >= 3) {
         SetImageLabel(txtImagen3, lista.get(2).getImagen());
+        txtCaracteristicas3.setText("<html>" + lista.get(2).getDescripcion() + "</html>");
     }
 
        
@@ -104,12 +107,14 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         JPanelVentana3 = new javax.swing.JPanel();
         txtImagen3 = new javax.swing.JLabel();
         btnSiguienteV3 = new javax.swing.JButton();
+        txtCaracteristicas3 = new javax.swing.JLabel();
         JPanelVentana2 = new javax.swing.JPanel();
         txtImagen2 = new javax.swing.JLabel();
         btnSiguienteV2 = new javax.swing.JButton();
+        txtCaracteristicas2 = new javax.swing.JLabel();
         JPanelVentana1 = new javax.swing.JPanel();
         btnSeleccionar = new javax.swing.JButton();
-        Caracteristicas = new javax.swing.JLabel();
+        txtCaracteristicas1 = new javax.swing.JLabel();
         btnSiguiente = new javax.swing.JButton();
         txtImagen1 = new javax.swing.JLabel();
 
@@ -117,45 +122,54 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         bg.setPreferredSize(new java.awt.Dimension(500, 199));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtImagen3.setText("jLabel2");
+        txtImagen3.setText("Coche");
 
-        btnSiguienteV3.setText("jButton1");
+        btnSiguienteV3.setText("Siguiente");
         btnSiguienteV3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSiguienteV3ActionPerformed(evt);
             }
         });
 
+        txtCaracteristicas3.setText("jLabel1");
+
         javax.swing.GroupLayout JPanelVentana3Layout = new javax.swing.GroupLayout(JPanelVentana3);
         JPanelVentana3.setLayout(JPanelVentana3Layout);
         JPanelVentana3Layout.setHorizontalGroup(
             JPanelVentana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelVentana3Layout.createSequentialGroup()
-                .addContainerGap(88, Short.MAX_VALUE)
-                .addComponent(btnSiguienteV3)
-                .addGap(47, 47, 47))
+            .addGroup(JPanelVentana3Layout.createSequentialGroup()
+                .addContainerGap(144, Short.MAX_VALUE)
+                .addGroup(JPanelVentana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelVentana3Layout.createSequentialGroup()
+                        .addComponent(btnSiguienteV3)
+                        .addGap(47, 47, 47))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelVentana3Layout.createSequentialGroup()
+                        .addComponent(txtCaracteristicas3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))))
             .addGroup(JPanelVentana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(JPanelVentana3Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtImagen3)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelVentana3Layout.createSequentialGroup()
+                    .addContainerGap(44, Short.MAX_VALUE)
+                    .addComponent(txtImagen3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(118, Short.MAX_VALUE)))
         );
         JPanelVentana3Layout.setVerticalGroup(
             JPanelVentana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelVentana3Layout.createSequentialGroup()
-                .addContainerGap(120, Short.MAX_VALUE)
+                .addGap(68, 68, 68)
+                .addComponent(txtCaracteristicas3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(btnSiguienteV3)
                 .addGap(17, 17, 17))
             .addGroup(JPanelVentana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(JPanelVentana3Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtImagen3)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelVentana3Layout.createSequentialGroup()
+                    .addContainerGap(46, Short.MAX_VALUE)
+                    .addComponent(txtImagen3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(102, Short.MAX_VALUE)))
         );
 
-        bg.add(JPanelVentana3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 210, 160));
+        bg.add(JPanelVentana3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 520, 270, 220));
 
-        txtImagen2.setText("jLabel1");
+        txtImagen2.setText("Coche");
 
         btnSiguienteV2.setText("Siguiente");
         btnSiguienteV2.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +178,8 @@ public class CatalogoHatchback extends javax.swing.JPanel {
             }
         });
 
+        txtCaracteristicas2.setText("jLabel1");
+
         javax.swing.GroupLayout JPanelVentana2Layout = new javax.swing.GroupLayout(JPanelVentana2);
         JPanelVentana2.setLayout(JPanelVentana2Layout);
         JPanelVentana2Layout.setHorizontalGroup(
@@ -171,27 +187,35 @@ public class CatalogoHatchback extends javax.swing.JPanel {
             .addGroup(JPanelVentana2Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(txtImagen2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(btnSiguienteV2)
+                .addGroup(JPanelVentana2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JPanelVentana2Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(btnSiguienteV2))
+                    .addGroup(JPanelVentana2Layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(txtCaracteristicas2)))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
         JPanelVentana2Layout.setVerticalGroup(
             JPanelVentana2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelVentana2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSiguienteV2)
-                .addGap(70, 70, 70))
             .addGroup(JPanelVentana2Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(txtImagen2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGroup(JPanelVentana2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JPanelVentana2Layout.createSequentialGroup()
+                        .addComponent(txtCaracteristicas2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSiguienteV2)
+                        .addGap(70, 70, 70))
+                    .addGroup(JPanelVentana2Layout.createSequentialGroup()
+                        .addComponent(txtImagen2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(52, Short.MAX_VALUE))))
         );
 
-        bg.add(JPanelVentana2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 310, 190));
+        bg.add(JPanelVentana2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 520, 310, 190));
 
         btnSeleccionar.setText("Seleccionar");
 
-        Caracteristicas.setText("jLabel1");
+        txtCaracteristicas1.setText("Caracteristicas");
 
         btnSiguiente.setText("Siguiente");
         btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
@@ -207,51 +231,47 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         JPanelVentana1Layout.setHorizontalGroup(
             JPanelVentana1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPanelVentana1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
                 .addGroup(JPanelVentana1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JPanelVentana1Layout.createSequentialGroup()
-                        .addComponent(Caracteristicas, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(JPanelVentana1Layout.createSequentialGroup()
-                        .addComponent(btnSeleccionar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                        .addComponent(btnSiguiente)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtImagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                        .addGap(128, 128, 128)
+                        .addComponent(btnSeleccionar))
+                    .addComponent(txtCaracteristicas1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                .addGroup(JPanelVentana1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelVentana1Layout.createSequentialGroup()
+                        .addComponent(btnSiguiente)
+                        .addGap(204, 204, 204))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelVentana1Layout.createSequentialGroup()
+                        .addComponent(txtImagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))))
         );
         JPanelVentana1Layout.setVerticalGroup(
             JPanelVentana1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPanelVentana1Layout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addComponent(Caracteristicas, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addComponent(txtCaracteristicas1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSeleccionar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(61, 61, 61))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelVentana1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(JPanelVentana1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelVentana1Layout.createSequentialGroup()
-                        .addComponent(txtImagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(98, 98, 98))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelVentana1Layout.createSequentialGroup()
-                        .addComponent(btnSiguiente)
-                        .addGap(142, 142, 142))))
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(txtImagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
+                .addComponent(btnSiguiente)
+                .addGap(69, 69, 69))
         );
 
-        bg.add(JPanelVentana1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 300));
+        bg.add(JPanelVentana1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 834, 420));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 1202, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 834, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -276,7 +296,6 @@ public class CatalogoHatchback extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Caracteristicas;
     private javax.swing.JPanel JPanelVentana1;
     private javax.swing.JPanel JPanelVentana2;
     private javax.swing.JPanel JPanelVentana3;
@@ -285,6 +304,9 @@ public class CatalogoHatchback extends javax.swing.JPanel {
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JButton btnSiguienteV2;
     private javax.swing.JButton btnSiguienteV3;
+    private javax.swing.JLabel txtCaracteristicas1;
+    private javax.swing.JLabel txtCaracteristicas2;
+    private javax.swing.JLabel txtCaracteristicas3;
     private javax.swing.JLabel txtImagen1;
     private javax.swing.JLabel txtImagen2;
     private javax.swing.JLabel txtImagen3;

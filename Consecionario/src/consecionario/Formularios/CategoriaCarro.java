@@ -96,17 +96,17 @@ public class CategoriaCarro extends javax.swing.JPanel {
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel1.setText("Hatchback");
-        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, -1, -1));
+        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel2.setText("Sedan");
-        bg.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, -1, -1));
+        bg.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel3.setText("SUV");
-        bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 390, -1, -1));
+        bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 370, -1, -1));
 
         txtHatchback.setText("jLabel4");
         txtHatchback.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -116,7 +116,7 @@ public class CategoriaCarro extends javax.swing.JPanel {
                 txtHatchbackMouseClicked(evt);
             }
         });
-        bg.add(txtHatchback, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 240, 170));
+        bg.add(txtHatchback, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 240, 170));
 
         txtSedan.setText("jLabel5");
         txtSedan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -125,7 +125,7 @@ public class CategoriaCarro extends javax.swing.JPanel {
                 txtSedanMouseClicked(evt);
             }
         });
-        bg.add(txtSedan, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 240, 170));
+        bg.add(txtSedan, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 240, 170));
 
         txtSUV.setText("jLabel6");
         txtSUV.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -134,24 +134,22 @@ public class CategoriaCarro extends javax.swing.JPanel {
                 txtSUVMouseClicked(evt);
             }
         });
-        bg.add(txtSUV, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, 240, 170));
+        bg.add(txtSUV, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 240, 170));
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 48)); // NOI18N
         jLabel4.setText("Elige el tipo de Coche");
-        bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, -1, -1));
+        bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE))
+            .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 834, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -153,14 +153,17 @@ public class Ventas extends javax.swing.JPanel {
         btnContinuar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(834, 768));
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
-        bg.setPreferredSize(new java.awt.Dimension(810, 520));
+        bg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        bg.setMinimumSize(new java.awt.Dimension(1024, 768));
+        bg.setPreferredSize(new java.awt.Dimension(834, 768));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSolicitudCompra.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lblSolicitudCompra.setText("Solicitud de compra");
-        bg.add(lblSolicitudCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        bg.add(lblSolicitudCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         jPanelDatosCliente.setBackground(new java.awt.Color(255, 255, 255));
         jPanelDatosCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(199, 0, 57), 3));
@@ -307,7 +310,7 @@ public class Ventas extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        bg.add(jPanelDatosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 720, 120));
+        bg.add(jPanelDatosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 720, 120));
 
         jPanelDireccion.setBackground(new java.awt.Color(255, 255, 255));
         jPanelDireccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(199, 0, 57), 3));
@@ -463,7 +466,7 @@ public class Ventas extends javax.swing.JPanel {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        bg.add(jPanelDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 720, 120));
+        bg.add(jPanelDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 720, 120));
 
         jPanelCarro.setBackground(new java.awt.Color(255, 255, 255));
         jPanelCarro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(199, 0, 57), 3));
@@ -613,7 +616,7 @@ public class Ventas extends javax.swing.JPanel {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        bg.add(jPanelCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 720, 120));
+        bg.add(jPanelCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 720, 120));
 
         btnContinuar.setBackground(new java.awt.Color(255, 153, 51));
         btnContinuar.setText("Continuar");
@@ -622,13 +625,15 @@ public class Ventas extends javax.swing.JPanel {
                 btnContinuarActionPerformed(evt);
             }
         });
-        bg.add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 390, -1));
+        bg.add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 560, 390, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
