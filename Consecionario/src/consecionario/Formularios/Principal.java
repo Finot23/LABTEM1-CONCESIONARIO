@@ -43,7 +43,9 @@ public class Principal extends javax.swing.JFrame {
     txtNombreUsuario.setText(""+usuario);    
         
     }
-
+     
+    
+    
     private void InitContent(){
         
         MostrarJpanel(new InfoUsuario());
@@ -62,7 +64,24 @@ public class Principal extends javax.swing.JFrame {
         jPanelContenido.revalidate();
         jPanelContenido.repaint();
     }
- 
+      public void mostrarCatalogo(String tipo) {
+        JPanel catalogoPanel = null;
+        switch (tipo) {
+            case "Hatchback":
+                catalogoPanel = new CatalogoHatchback();
+                break;
+            case "Sedan":
+                catalogoPanel = new CatalogoSedan();
+                break;
+            case "SUV":
+                catalogoPanel = new CatalogoSUV();
+                break;
+        }
+
+        if (catalogoPanel != null) {
+            MostrarJpanel(catalogoPanel);
+        }
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -126,7 +145,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanelPaginaPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(iconHome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
@@ -191,7 +210,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(iconHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanelHistorialLayout.setVerticalGroup(
             jPanelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,7 +242,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(iconCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanelCreditoLayout.setVerticalGroup(
             jPanelCreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,7 +273,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(iconVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanelVentasLayout.setVerticalGroup(
             jPanelVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,7 +420,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void jPanelCatalogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCatalogoMouseClicked
            //MostrarJpanel(new Catalogo());
-           MostrarJpanel(new CategoriaCarro());
+          CategoriaCarro categoriaCarro = new CategoriaCarro(this);
+        MostrarJpanel(categoriaCarro);
     }//GEN-LAST:event_jPanelCatalogoMouseClicked
      
     /**

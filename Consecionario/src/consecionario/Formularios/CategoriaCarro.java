@@ -46,8 +46,11 @@ public class CategoriaCarro extends javax.swing.JPanel {
     /**
      * Creates new form CategoriaCarro
      */
-    public CategoriaCarro() {
+     private Principal principal;
+
+    public CategoriaCarro(Principal principal){
         initComponents();
+         this.principal = principal;
         //System.out.println(getClass().getResource("/consecionario/Imagenes/iconoUsuarioSmall.png"));
       
         //Espera a que se carge el label antes de llamar al metodo Cargar imagen
@@ -92,19 +95,16 @@ public class CategoriaCarro extends javax.swing.JPanel {
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Hatchback");
         bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Sedan");
         bg.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("SUV");
         bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 390, -1, -1));
 
@@ -120,15 +120,24 @@ public class CategoriaCarro extends javax.swing.JPanel {
 
         txtSedan.setText("jLabel5");
         txtSedan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        txtSedan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtSedanMouseClicked(evt);
+            }
+        });
         bg.add(txtSedan, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 240, 170));
 
         txtSUV.setText("jLabel6");
         txtSUV.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        txtSUV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtSUVMouseClicked(evt);
+            }
+        });
         bg.add(txtSUV, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, 240, 170));
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 48)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Elige el tipo de Coche");
         bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, -1, -1));
 
@@ -147,9 +156,16 @@ public class CategoriaCarro extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtHatchbackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtHatchbackMouseClicked
-        // TODO add your handling code here:
-        
+        principal.mostrarCatalogo("Hatchback");
     }//GEN-LAST:event_txtHatchbackMouseClicked
+
+    private void txtSedanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSedanMouseClicked
+      principal.mostrarCatalogo("Sedan");
+    }//GEN-LAST:event_txtSedanMouseClicked
+
+    private void txtSUVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSUVMouseClicked
+      principal.mostrarCatalogo("SUV");
+    }//GEN-LAST:event_txtSUVMouseClicked
 
   
          
