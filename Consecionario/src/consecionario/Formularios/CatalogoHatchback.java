@@ -159,6 +159,12 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         bg.setPreferredSize(new java.awt.Dimension(500, 199));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanelCoche1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelCoche1MouseClicked(evt);
+            }
+        });
+
         txtImagen1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         txtImagen1.setForeground(new java.awt.Color(0, 0, 0));
         txtImagen1.setText("IMagen Coche");
@@ -259,6 +265,12 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         );
 
         bg.add(jPanelCoche1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 298, 384));
+
+        jPanelCoche2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelCoche2MouseClicked(evt);
+            }
+        });
 
         txtImagen2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         txtImagen2.setForeground(new java.awt.Color(0, 0, 0));
@@ -363,6 +375,12 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         );
 
         bg.add(jPanelCoche2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 298, 384));
+
+        jPanelCoche3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelCoche3MouseClicked(evt);
+            }
+        });
 
         txtImagen3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         txtImagen3.setForeground(new java.awt.Color(0, 0, 0));
@@ -625,6 +643,18 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         JPanelVentana1.setVisible(true);
         JPanelVentana3.setVisible(false); 
     }//GEN-LAST:event_btnSiguienteV3ActionPerformed
+
+    private void jPanelCoche1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCoche1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanelCoche1MouseClicked
+
+    private void jPanelCoche2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCoche2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanelCoche2MouseClicked
+
+    private void jPanelCoche3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCoche3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanelCoche3MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
