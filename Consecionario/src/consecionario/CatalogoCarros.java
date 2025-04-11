@@ -11,6 +11,7 @@ package consecionario;
 public class CatalogoCarros {
     
   int Id;
+    String Marca;
     String Modelo;
     String AnioFabricacion;
     int Precio;
@@ -22,13 +23,15 @@ public class CatalogoCarros {
 public CatalogoCarros() {
     // Constructor vacío requerido para instanciar sin parámetros
 }
-    public CatalogoCarros(int Id, String modelo, String AnioFabricacion, int Precio, String Color, String estado, String Categoria, String Imagen, String Descripcion) {
+
+    public CatalogoCarros(int Id, String Marca, String Modelo, String AnioFabricacion, int Precio, String Color, String Estado, String Categoria, String Imagen, String Descripcion) {
         this.Id = Id;
-        this.Modelo = modelo;
+        this.Marca = Marca;
+        this.Modelo = Modelo;
         this.AnioFabricacion = AnioFabricacion;
         this.Precio = Precio;
         this.Color = Color;
-        this.Estado = estado;
+        this.Estado = Estado;
         this.Categoria = Categoria;
         this.Imagen = Imagen;
         this.Descripcion = Descripcion;
@@ -36,6 +39,10 @@ public CatalogoCarros() {
 
     public int getId() {
         return Id;
+    }
+
+    public String getMarca() {
+        return Marca;
     }
 
     public String getModelo() {
@@ -74,8 +81,12 @@ public CatalogoCarros() {
         this.Id = Id;
     }
 
-    public void setModelo(String modelo) {
-        this.Modelo = modelo;
+    public void setMarca(String Marca) {
+        this.Marca = Marca;
+    }
+
+    public void setModelo(String Modelo) {
+        this.Modelo = Modelo;
     }
 
     public void setAnioFabricacion(String AnioFabricacion) {
@@ -90,8 +101,8 @@ public CatalogoCarros() {
         this.Color = Color;
     }
 
-    public void setEstado(String estado) {
-        this.Estado = estado;
+    public void setEstado(String Estado) {
+        this.Estado = Estado;
     }
 
     public void setCategoria(String Categoria) {
@@ -105,7 +116,6 @@ public CatalogoCarros() {
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
     }
-    
     
 }
 

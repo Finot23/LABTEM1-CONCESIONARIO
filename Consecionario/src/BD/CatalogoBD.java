@@ -29,19 +29,20 @@ public boolean RegistrarCarro(CatalogoCarros cl){
             return false;
         }
         
-     String sql = "INSERT INTO almacen (id, modelo, año_fabricacion, precio, color, estado, categoria, imagen, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+     String sql = "INSERT INTO almacen (id, marca, modelo, año_fabricacion, precio, color, estado, categoria, imagen, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       
      try{
         ps = con.prepareStatement(sql);
         ps.setInt(1, cl.getId());
-        ps.setString(2, cl.getModelo());
-        ps.setString(3, cl.getAnioFabricacion());
-        ps.setInt(4, cl.getPrecio());
-        ps.setString(5, cl.getColor());
-        ps.setString(6, cl.getEstado());
-        ps.setString(7, cl.getCategoria());
-        ps.setString(8, cl.getImagen());
-        ps.setString(9, cl.getDescripcion());
+        ps.setString(2, cl.getMarca());
+        ps.setString(3, cl.getModelo());
+        ps.setString(4, cl.getAnioFabricacion());
+        ps.setInt(5, cl.getPrecio());
+        ps.setString(6, cl.getColor());
+        ps.setString(7, cl.getEstado());
+        ps.setString(8, cl.getCategoria());
+        ps.setString(9, cl.getImagen());
+        ps.setString(10, cl.getDescripcion());
         
         
         ps.executeUpdate();
@@ -79,6 +80,7 @@ public List<CatalogoCarros> obtenerPorCategoria(String categoria) {
         while (rs.next()) {
             CatalogoCarros carro = new CatalogoCarros();
             carro.setId(rs.getInt("id"));
+            carro.setMarca(rs.getString("marca"));
             carro.setModelo(rs.getString("modelo"));
             carro.setAnioFabricacion(rs.getString("año_fabricacion"));
             carro.setPrecio(rs.getInt("precio"));
