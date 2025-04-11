@@ -48,14 +48,27 @@ public void SetImageLabel (JLabel labelName, String resourcePath){
     // Establece máximo de 3 imágenes
     if (lista.size() >= 1) {
         SetImageLabel(txtImagen1, lista.get(0).getImagen());
+        //txtCaracteristicas1.setText("<html>" + lista.get(0).getDescripcion() + "</html>");
+        txtMarca.setText(lista.get(0).getMarca() +"   •  ");
+        txtModelo.setText(lista.get(0).getModelo());
+        txtAnio.setText(lista.get(0).getAnioFabricacion());
+        txtPrecio.setText("$" + lista.get(0).getPrecio());
     }
 
     if (lista.size() >= 2) {
         SetImageLabel(txtImagen2, lista.get(1).getImagen());
+        txtMarca1.setText(lista.get(1).getMarca() +"   •  ");
+        txtModelo1.setText(lista.get(1).getModelo());
+        txtAnio1.setText(lista.get(1).getAnioFabricacion());
+        txtPrecio1.setText("$" + lista.get(1).getPrecio());
     }
 
     if (lista.size() >= 3) {
         SetImageLabel(txtImagen3, lista.get(2).getImagen());
+        txtMarca2.setText(lista.get(2).getMarca() +"   •  ");
+        txtModelo2.setText(lista.get(2).getModelo());
+        txtAnio2.setText(lista.get(2).getAnioFabricacion());
+        txtPrecio2.setText("$" + lista.get(2).getPrecio());
     }
     }
     /**
@@ -81,21 +94,359 @@ public void SetImageLabel (JLabel labelName, String resourcePath){
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
+        jPanelCoche1 = new javax.swing.JPanel();
         txtImagen1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        txtMarca = new javax.swing.JLabel();
+        txtModelo = new javax.swing.JLabel();
+        txtAnio = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        txtPrecio = new javax.swing.JLabel();
+        txtPrecioDesde = new javax.swing.JLabel();
+        jPanelCoche2 = new javax.swing.JPanel();
         txtImagen2 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        txtMarca1 = new javax.swing.JLabel();
+        txtModelo1 = new javax.swing.JLabel();
+        txtAnio1 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        txtPrecio1 = new javax.swing.JLabel();
+        txtPrecioDesde1 = new javax.swing.JLabel();
+        jPanelCoche3 = new javax.swing.JPanel();
         txtImagen3 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        txtMarca2 = new javax.swing.JLabel();
+        txtModelo2 = new javax.swing.JLabel();
+        txtAnio2 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        txtPrecio2 = new javax.swing.JLabel();
+        txtPrecioDesde2 = new javax.swing.JLabel();
+
+        setPreferredSize(new java.awt.Dimension(836, 840));
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtImagen1.setText("jLabel1");
-        bg.add(txtImagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 220, 160));
+        jPanelCoche1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelCoche1MouseClicked(evt);
+            }
+        });
 
-        txtImagen2.setText("jLabel2");
-        bg.add(txtImagen2, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 220, 110, 140));
+        txtImagen1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtImagen1.setForeground(new java.awt.Color(0, 0, 0));
+        txtImagen1.setText("IMagen Coche");
+        txtImagen1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtImagen1.setMaximumSize(new java.awt.Dimension(296, 169));
 
-        txtImagen3.setText("jLabel3");
-        bg.add(txtImagen3, new org.netbeans.lib.awtextra.AbsoluteConstraints(577, 230, 180, 170));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtMarca.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtMarca.setForeground(new java.awt.Color(0, 0, 0));
+        txtMarca.setText("Marca");
+
+        txtModelo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtModelo.setForeground(new java.awt.Color(0, 0, 0));
+        txtModelo.setText("Modelo");
+
+        txtAnio.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtAnio.setForeground(new java.awt.Color(0, 0, 0));
+        txtAnio.setText("Anio");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtAnio)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtModelo)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtPrecio.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        txtPrecio.setForeground(new java.awt.Color(0, 0, 0));
+        txtPrecio.setText("Precio");
+
+        txtPrecioDesde.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtPrecioDesde.setForeground(new java.awt.Color(0, 0, 0));
+        txtPrecioDesde.setText("Precio desde");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPrecio)
+                    .addComponent(txtPrecioDesde))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(txtPrecioDesde)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPrecio)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanelCoche1Layout = new javax.swing.GroupLayout(jPanelCoche1);
+        jPanelCoche1.setLayout(jPanelCoche1Layout);
+        jPanelCoche1Layout.setHorizontalGroup(
+            jPanelCoche1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCoche1Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(txtImagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanelCoche1Layout.setVerticalGroup(
+            jPanelCoche1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCoche1Layout.createSequentialGroup()
+                .addComponent(txtImagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 49, Short.MAX_VALUE))
+        );
+
+        bg.add(jPanelCoche1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 298, 384));
+
+        jPanelCoche2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelCoche2MouseClicked(evt);
+            }
+        });
+
+        txtImagen2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtImagen2.setForeground(new java.awt.Color(0, 0, 0));
+        txtImagen2.setText("IMagen Coche");
+        txtImagen2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtImagen2.setMaximumSize(new java.awt.Dimension(296, 169));
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtMarca1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtMarca1.setForeground(new java.awt.Color(0, 0, 0));
+        txtMarca1.setText("Marca");
+
+        txtModelo1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtModelo1.setForeground(new java.awt.Color(0, 0, 0));
+        txtModelo1.setText("Modelo");
+
+        txtAnio1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtAnio1.setForeground(new java.awt.Color(0, 0, 0));
+        txtAnio1.setText("Anio");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtAnio1)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(txtMarca1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtModelo1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtModelo1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMarca1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtAnio1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtPrecio1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        txtPrecio1.setForeground(new java.awt.Color(0, 0, 0));
+        txtPrecio1.setText("Precio");
+
+        txtPrecioDesde1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtPrecioDesde1.setForeground(new java.awt.Color(0, 0, 0));
+        txtPrecioDesde1.setText("Precio desde");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPrecio1)
+                    .addComponent(txtPrecioDesde1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(txtPrecioDesde1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPrecio1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanelCoche2Layout = new javax.swing.GroupLayout(jPanelCoche2);
+        jPanelCoche2.setLayout(jPanelCoche2Layout);
+        jPanelCoche2Layout.setHorizontalGroup(
+            jPanelCoche2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCoche2Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(txtImagen2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanelCoche2Layout.setVerticalGroup(
+            jPanelCoche2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCoche2Layout.createSequentialGroup()
+                .addComponent(txtImagen2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 49, Short.MAX_VALUE))
+        );
+
+        bg.add(jPanelCoche2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
+
+        jPanelCoche3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelCoche3MouseClicked(evt);
+            }
+        });
+
+        txtImagen3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtImagen3.setForeground(new java.awt.Color(0, 0, 0));
+        txtImagen3.setText("IMagen Coche");
+        txtImagen3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtImagen3.setMaximumSize(new java.awt.Dimension(296, 169));
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtMarca2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtMarca2.setForeground(new java.awt.Color(0, 0, 0));
+        txtMarca2.setText("Marca");
+
+        txtModelo2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtModelo2.setForeground(new java.awt.Color(0, 0, 0));
+        txtModelo2.setText("Modelo");
+
+        txtAnio2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtAnio2.setForeground(new java.awt.Color(0, 0, 0));
+        txtAnio2.setText("Anio");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtAnio2)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(txtMarca2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtModelo2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtModelo2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMarca2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtAnio2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtPrecio2.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        txtPrecio2.setForeground(new java.awt.Color(0, 0, 0));
+        txtPrecio2.setText("Precio");
+
+        txtPrecioDesde2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtPrecioDesde2.setForeground(new java.awt.Color(0, 0, 0));
+        txtPrecioDesde2.setText("Precio desde");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPrecio2)
+                    .addComponent(txtPrecioDesde2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(txtPrecioDesde2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPrecio2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanelCoche3Layout = new javax.swing.GroupLayout(jPanelCoche3);
+        jPanelCoche3.setLayout(jPanelCoche3Layout);
+        jPanelCoche3Layout.setHorizontalGroup(
+            jPanelCoche3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCoche3Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(txtImagen3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanelCoche3Layout.setVerticalGroup(
+            jPanelCoche3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCoche3Layout.createSequentialGroup()
+                .addComponent(txtImagen3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 49, Short.MAX_VALUE))
+        );
+
+        bg.add(jPanelCoche3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 420, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -105,15 +456,51 @@ public void SetImageLabel (JLabel labelName, String resourcePath){
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jPanelCoche1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCoche1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanelCoche1MouseClicked
+
+    private void jPanelCoche2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCoche2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanelCoche2MouseClicked
+
+    private void jPanelCoche3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCoche3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanelCoche3MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanelCoche1;
+    private javax.swing.JPanel jPanelCoche2;
+    private javax.swing.JPanel jPanelCoche3;
+    private javax.swing.JLabel txtAnio;
+    private javax.swing.JLabel txtAnio1;
+    private javax.swing.JLabel txtAnio2;
     private javax.swing.JLabel txtImagen1;
     private javax.swing.JLabel txtImagen2;
     private javax.swing.JLabel txtImagen3;
+    private javax.swing.JLabel txtMarca;
+    private javax.swing.JLabel txtMarca1;
+    private javax.swing.JLabel txtMarca2;
+    private javax.swing.JLabel txtModelo;
+    private javax.swing.JLabel txtModelo1;
+    private javax.swing.JLabel txtModelo2;
+    private javax.swing.JLabel txtPrecio;
+    private javax.swing.JLabel txtPrecio1;
+    private javax.swing.JLabel txtPrecio2;
+    private javax.swing.JLabel txtPrecioDesde;
+    private javax.swing.JLabel txtPrecioDesde1;
+    private javax.swing.JLabel txtPrecioDesde2;
     // End of variables declaration//GEN-END:variables
 }

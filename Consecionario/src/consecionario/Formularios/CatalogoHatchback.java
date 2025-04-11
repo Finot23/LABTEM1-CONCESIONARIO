@@ -53,7 +53,7 @@ public class CatalogoHatchback extends javax.swing.JPanel {
     // Establece máximo de 3 imágenes
     if (lista.size() >= 1) {
         SetImageLabel(txtImagen1, lista.get(0).getImagen());
-        txtCaracteristicas1.setText("<html>" + lista.get(0).getDescripcion() + "</html>");
+        //txtCaracteristicas1.setText("<html>" + lista.get(0).getDescripcion() + "</html>");
         txtMarca.setText(lista.get(0).getMarca() +"   •  ");
         txtModelo.setText(lista.get(0).getModelo());
         txtAnio.setText(lista.get(0).getAnioFabricacion());
