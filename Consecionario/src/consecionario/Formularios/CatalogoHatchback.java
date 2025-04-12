@@ -166,7 +166,6 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         });
 
         txtImagen1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        txtImagen1.setForeground(new java.awt.Color(0, 0, 0));
         txtImagen1.setText("IMagen Coche");
         txtImagen1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtImagen1.setMaximumSize(new java.awt.Dimension(296, 169));
@@ -174,15 +173,12 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txtMarca.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        txtMarca.setForeground(new java.awt.Color(0, 0, 0));
         txtMarca.setText("Marca");
 
         txtModelo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        txtModelo.setForeground(new java.awt.Color(0, 0, 0));
         txtModelo.setText("Modelo");
 
         txtAnio.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        txtAnio.setForeground(new java.awt.Color(0, 0, 0));
         txtAnio.setText("Anio");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -214,11 +210,9 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txtPrecio.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        txtPrecio.setForeground(new java.awt.Color(0, 0, 0));
         txtPrecio.setText("Precio");
 
         txtPrecioDesde.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        txtPrecioDesde.setForeground(new java.awt.Color(0, 0, 0));
         txtPrecioDesde.setText("Precio desde");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -273,22 +267,18 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         });
 
         txtImagen2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        txtImagen2.setForeground(new java.awt.Color(0, 0, 0));
         txtImagen2.setText("Coche");
         txtImagen2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txtMarca1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        txtMarca1.setForeground(new java.awt.Color(0, 0, 0));
         txtMarca1.setText("Marca");
 
         txtModelo1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        txtModelo1.setForeground(new java.awt.Color(0, 0, 0));
         txtModelo1.setText("Modelo");
 
         txtAnio1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        txtAnio1.setForeground(new java.awt.Color(0, 0, 0));
         txtAnio1.setText("Anio");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -320,11 +310,9 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txtPrecio1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        txtPrecio1.setForeground(new java.awt.Color(0, 0, 0));
         txtPrecio1.setText("Precio");
 
         txtPrecioDesde1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        txtPrecioDesde1.setForeground(new java.awt.Color(0, 0, 0));
         txtPrecioDesde1.setText("Precio desde");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -383,22 +371,18 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         });
 
         txtImagen3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        txtImagen3.setForeground(new java.awt.Color(0, 0, 0));
         txtImagen3.setText("Coche");
         txtImagen3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txtMarca2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        txtMarca2.setForeground(new java.awt.Color(0, 0, 0));
         txtMarca2.setText("Marca");
 
         txtModelo2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        txtModelo2.setForeground(new java.awt.Color(0, 0, 0));
         txtModelo2.setText("Modelo");
 
         txtAnio2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        txtAnio2.setForeground(new java.awt.Color(0, 0, 0));
         txtAnio2.setText("Anio");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -430,11 +414,9 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txtPrecio2.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        txtPrecio2.setForeground(new java.awt.Color(0, 0, 0));
         txtPrecio2.setText("Precio");
 
         txtPrecioDesde2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        txtPrecioDesde2.setForeground(new java.awt.Color(0, 0, 0));
         txtPrecioDesde2.setText("Precio desde");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -487,7 +469,6 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         bg.add(jPanelCoche3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, 298, 384));
 
         btnSiguienteV3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnSiguienteV3.setForeground(new java.awt.Color(0, 0, 0));
         btnSiguienteV3.setText("Siguiente");
         btnSiguienteV3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -496,7 +477,6 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         });
 
         txtCaracteristicas3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        txtCaracteristicas3.setForeground(new java.awt.Color(0, 0, 0));
         txtCaracteristicas3.setText("jLabel1");
 
         javax.swing.GroupLayout JPanelVentana3Layout = new javax.swing.GroupLayout(JPanelVentana3);
@@ -526,7 +506,6 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         bg.add(JPanelVentana3, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 490, 270, 220));
 
         btnSiguienteV2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnSiguienteV2.setForeground(new java.awt.Color(0, 0, 0));
         btnSiguienteV2.setText("Siguiente");
         btnSiguienteV2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -535,7 +514,6 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         });
 
         txtCaracteristicas2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        txtCaracteristicas2.setForeground(new java.awt.Color(0, 0, 0));
         txtCaracteristicas2.setText("jLabel1");
 
         javax.swing.GroupLayout JPanelVentana2Layout = new javax.swing.GroupLayout(JPanelVentana2);
@@ -565,15 +543,12 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         bg.add(JPanelVentana2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 550, 310, 190));
 
         btnSeleccionar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnSeleccionar.setForeground(new java.awt.Color(0, 0, 0));
         btnSeleccionar.setText("Seleccionar");
 
         txtCaracteristicas1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        txtCaracteristicas1.setForeground(new java.awt.Color(0, 0, 0));
         txtCaracteristicas1.setText("Caracteristicas");
 
         btnSiguiente.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnSiguiente.setForeground(new java.awt.Color(0, 0, 0));
         btnSiguiente.setText("Siguiente");
         btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -615,13 +590,16 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 1266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
