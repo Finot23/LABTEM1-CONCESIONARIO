@@ -37,7 +37,7 @@ public class CatalogoSUV extends javax.swing.JPanel {
      //inicializa el metodo para cargar la imagen deceada en el label decignado
     public void CargarImagen(){
       CatalogoBD catalogoBD = new CatalogoBD();
-    List<CatalogoCarros> lista = catalogoBD.obtenerPorCategoria("Hatchback");
+    List<CatalogoCarros> lista = catalogoBD.obtenerPorCategoria("SUV");
 
     if (lista.isEmpty()) {
         System.out.println("No se encontraron autos hatchback.");
