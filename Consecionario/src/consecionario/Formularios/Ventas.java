@@ -981,6 +981,11 @@ public class Ventas extends javax.swing.JPanel {
         cliente.setEstado(txtEstado.getText());
         cliente.setCP(txtCP.getText());
         
+        cliente.setCurp("");
+        cliente.setLicencia("");
+        cliente.setGenero("");
+        cliente.setEdad(0);
+        
         /*
         cliente.setMarca(txtMarca.getText());
         cliente.setModelo(txtModelo.getText());

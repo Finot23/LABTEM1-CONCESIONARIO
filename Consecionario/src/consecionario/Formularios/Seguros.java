@@ -5,21 +5,18 @@
 package consecionario.Formularios;
 
 import BD.ClienteDB;
+import BD.SegurosBD;
 import consecionario.Cliente;
-import java.text.SimpleDateFormat;
-
-import java.text.ParseException;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import consecionario.Seguro;
 import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author antoniosalinas
  */
 public class Seguros extends javax.swing.JPanel {
-
+    private boolean clienteYaExiste = false;
     /**
      * Creates new form Seguros
      */
@@ -45,9 +42,9 @@ public class Seguros extends javax.swing.JPanel {
         fieldNombre = new javax.swing.JTextField();
         labelName = new javax.swing.JLabel();
         fieldApellidoP = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
+        labelApellido = new javax.swing.JLabel();
         fieldApellidoM = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
+        labelApellidoM = new javax.swing.JLabel();
         fieldCurp = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -59,7 +56,7 @@ public class Seguros extends javax.swing.JPanel {
         fieldTelefono = new javax.swing.JTextField();
         fieldEmail = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        fieldGenero = new javax.swing.JTextField();
+        comboGenero = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         fieldCalle = new javax.swing.JTextField();
@@ -91,6 +88,8 @@ public class Seguros extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         comboUso = new javax.swing.JComboBox<>();
         comboTipo = new javax.swing.JComboBox<>();
+        fieldValorAuto = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         panelCobertura = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -149,11 +148,11 @@ public class Seguros extends javax.swing.JPanel {
 
         fieldApellidoP.setPreferredSize(new java.awt.Dimension(80, 22));
 
-        jLabel24.setText("Apellido P.");
+        labelApellido.setText("Apellido P.");
 
         fieldApellidoM.setPreferredSize(new java.awt.Dimension(80, 22));
 
-        jLabel25.setText("Apellido M.");
+        labelApellidoM.setText("Apellido M.");
 
         fieldCurp.setPreferredSize(new java.awt.Dimension(130, 22));
         fieldCurp.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +191,8 @@ public class Seguros extends javax.swing.JPanel {
 
         jLabel5.setText("Correo Electronico");
 
-        fieldGenero.setPreferredSize(new java.awt.Dimension(80, 22));
+        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino", "Sin especificar" }));
+        comboGenero.setPreferredSize(new java.awt.Dimension(120, 22));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -200,41 +200,41 @@ public class Seguros extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelName))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fieldApellidoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel24))
+                            .addComponent(labelApellido))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fieldApellidoM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel25))
+                            .addComponent(labelApellidoM))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(fieldCurp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel7)
-                                .addComponent(fieldGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(52, 52, 52)
+                                .addComponent(comboGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(fieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel6))
-                            .addGap(12, 12, 12)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labelAge)
-                                .addComponent(fieldLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(fieldLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelAge)))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(fieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel4))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(22, 22, 22)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel5)
                                 .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -246,8 +246,8 @@ public class Seguros extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelName)
-                    .addComponent(jLabel24)
-                    .addComponent(jLabel25)
+                    .addComponent(labelApellido)
+                    .addComponent(labelApellidoM)
                     .addComponent(jLabel2))
                 .addGap(1, 1, 1)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -264,7 +264,7 @@ public class Seguros extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -406,6 +406,10 @@ public class Seguros extends javax.swing.JPanel {
         comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hatchback", "Sedan", "SUV" }));
         comboTipo.setPreferredSize(new java.awt.Dimension(120, 22));
 
+        fieldValorAuto.setPreferredSize(new java.awt.Dimension(70, 22));
+
+        jLabel20.setText("Precio Aprox.");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -425,8 +429,12 @@ public class Seguros extends javax.swing.JPanel {
                             .addComponent(jLabel15))
                         .addGap(12, 12, 12)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel20)
+                            .addComponent(fieldValorAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -446,7 +454,7 @@ public class Seguros extends javax.swing.JPanel {
                             .addComponent(jLabel16)
                             .addComponent(jLabel12)
                             .addComponent(fieldAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -474,11 +482,13 @@ public class Seguros extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jLabel13))
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboUso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldValorAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10))
         );
 
@@ -613,9 +623,9 @@ public class Seguros extends javax.swing.JPanel {
 
         jLabel23.setText("Valor Asegurado");
 
-        labelValorAsegurado.setText("jLabel24");
+        labelValorAsegurado.setText("$ 0");
 
-        labelPrima.setText("jLabel25");
+        labelPrima.setText("$ 0");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -627,11 +637,11 @@ public class Seguros extends javax.swing.JPanel {
                     .addComponent(jLabel21)
                     .addComponent(jLabel22)
                     .addComponent(jLabel23))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelValorAsegurado)
-                    .addComponent(labelPrima))
-                .addGap(63, 63, 63))
+                    .addComponent(labelPrima)
+                    .addComponent(labelValorAsegurado))
+                .addGap(62, 62, 62))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -639,11 +649,11 @@ public class Seguros extends javax.swing.JPanel {
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
-                    .addComponent(labelPrima))
+                    .addComponent(labelValorAsegurado))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(labelValorAsegurado))
+                    .addComponent(labelPrima))
                 .addGap(78, 78, 78)
                 .addComponent(jLabel22))
         );
@@ -737,36 +747,147 @@ public class Seguros extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private void actualizarCalculos() {
+    try {
+        // Crear objeto seguro temporal
+        Seguro seguro = new Seguro();
+        
+        // Obtener valores del formulario
+        seguro.setValorBaseAuto(Integer.parseInt(fieldValorAuto.getText()));
+        seguro.setEdadConductor(Integer.parseInt(fieldEdad.getText()));
+        seguro.setCobertura(comboCobertura.getSelectedItem().toString());
+        
+        // Configurar coberturas adicionales
+        seguro.setCoberturaVial(checkVial.isSelected());
+        seguro.setCoberturaLlantas(checkLlantas.isSelected());
+        // ... configurar otras coberturas
+        
+        // Calcular
+        int prima = seguro.calcularPrima();
+        int valorAsegurado = seguro.calcularValorAsegurado();
+        
+        // Actualizar labels
+        labelPrima.setText(String.format("$%,d MXN", prima));
+        labelValorAsegurado.setText(String.format("$%,d MXN", valorAsegurado));
+        
+    } catch (NumberFormatException e) {
+        // Manejar campos vacíos o inválidos
+        labelPrima.setText("$0 MXN");
+        labelValorAsegurado.setText("$0 MXN");
+    }
+}
+    
+    public void setClienteYaExiste(boolean existe) {
+        this.clienteYaExiste = existe;
+    }
+    
+    public void setDatosCliente(Cliente cliente) {
+    fieldNombre.setText(cliente.getNombre());
+    fieldApellidoP.setText(cliente.getApellidoP());
+    fieldApellidoM.setText(cliente.getApellidoM());
+    fieldTelefono.setText(String.valueOf(cliente.getTelefono()));
+    fieldEmail.setText(cliente.getCorreo());
+    fieldCalle.setText(cliente.getCalle());
+    fieldColonia.setText(cliente.getColonia());
+    fieldMunicipio.setText(cliente.getMunicipio());
+    fieldCiudad.setText(cliente.getCiudad());
+    fieldEstado.setText(cliente.getEstado());
+    fieldCP.setText(cliente.getCP());
+    fieldCurp.setText(cliente.getCurp());
+    fieldLicencia.setText(cliente.getLicencia());
+    fieldEdad.setText(String.valueOf(cliente.getEdad()));
+    
+    // Configurar género
+    setGenero(cliente.getGenero());
+    //actualizarCalculos(); 
+}
+
+public void setGenero(String genero) {
+    for (int i = 0; i < comboGenero.getItemCount(); i++) {
+        if (comboGenero.getItemAt(i).equalsIgnoreCase(genero)) {
+            comboGenero.setSelectedIndex(i);
+            break;
+        }
+    }
+}
+    
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         // TODO add your handling code here:
-        Cliente cliente = new Cliente();
-        
-        cliente.setApellidoP(fieldApellidoP.getText());
-        cliente.setApellidoM(fieldApellidoM.getText());
-        cliente.setNombre(fieldNombre.getText());
-        cliente.setTelefono(Long.parseLong(fieldTelefono.getText()));
-        cliente.setCorreo(fieldEmail.getText());
-        
-        cliente.setCalle(fieldCalle.getText());
-        cliente.setColonia(fieldColonia.getText());
-        cliente.setMunicipio(fieldMunicipio.getText());
-        cliente.setCiudad(fieldCiudad.getText());
-        cliente.setEstado(fieldEstado.getText());
-        cliente.setCurp(fieldCurp.getText());
-        cliente.setLicencia(fieldLicencia.getText());
-        cliente.setGenero(fieldGenero.getText());
-        cliente.setEdad((int) Long.parseLong(fieldEdad.getText()));
-        
-        
+        // --- Parte 1: Obtener datos del formulario ---
+    Cliente cliente = new Cliente();
+    cliente.setApellidoP(fieldApellidoP.getText());
+    cliente.setApellidoM(fieldApellidoM.getText());
+    cliente.setNombre(fieldNombre.getText());
+    cliente.setTelefono(Long.parseLong(fieldTelefono.getText()));
+    cliente.setCorreo(fieldEmail.getText());
+    cliente.setCalle(fieldCalle.getText());
+    cliente.setColonia(fieldColonia.getText());
+    cliente.setMunicipio(fieldMunicipio.getText());
+    cliente.setCiudad(fieldCiudad.getText());
+    cliente.setEstado(fieldEstado.getText());
+    cliente.setCP(fieldCP.getText());
+    cliente.setCurp(fieldCurp.getText());
+    cliente.setLicencia(fieldLicencia.getText());
+    cliente.setGenero(comboGenero.getSelectedItem().toString());
+    cliente.setEdad((int) Long.parseLong(fieldEdad.getText()));
+    
+    // --- Parte 2: Registrar cliente SOLO si no existe ---
+    if (!clienteYaExiste) {
         ClienteDB dao = new ClienteDB();
-      
-        if (dao.RegistrarClientes(cliente)){
-            JOptionPane.showMessageDialog(this, "Cliente registrado con éxito");
-            //limpiarCampos();
-            
-        }else {
+        if (!dao.RegistrarClientes(cliente)) {
             JOptionPane.showMessageDialog(this, "Error al registrar cliente");
+            return; // Detener el proceso si hay error
         }
+    }
+    
+    // --- Parte 3: Procesar el seguro (siempre se ejecuta) ---
+    Seguro seguro = new Seguro();
+    seguro.setNombreS(fieldNombre.getText());
+    seguro.setApellidoP(fieldApellidoP.getText());
+    
+    // Generar resumen del auto
+    String resumenAuto = Seguro.generarResumenAuto(
+        fieldMarca.getText(),
+        fieldModelo.getText(), 
+        fieldValorAuto.getText(),
+        fieldPlacas.getText(),
+        fieldColor.getText()
+    );
+    seguro.setAutoResumen(resumenAuto);
+    
+    // Configurar datos del seguro
+    seguro.setCobertura(comboCobertura.getSelectedItem().toString());
+    seguro.setPeriodo(comboPeriodo.getSelectedItem().toString());
+    seguro.setMetodoP(comboPago.getSelectedItem().toString());
+    seguro.setEdadConductor(cliente.getEdad());
+    seguro.setGeneroConductor(cliente.getGenero());
+    seguro.setValorBaseAuto(Integer.parseInt(fieldValorAuto.getText()));
+    
+    // Coberturas adicionales
+    seguro.setCoberturaJuridico(checkJuridico.isSelected());
+    seguro.setCoberturaLlantas(checkLlantas.isSelected());
+    seguro.setCoberturaPerdidaTotal(checkPerdidaTotal.isSelected());
+    seguro.setCoberturaRCA(checkRCA.isSelected());
+    seguro.setCoberturaRobo(checkRobo.isSelected());
+    seguro.setCoberturaVial(checkVial.isSelected());
+    
+    // Calcular y mostrar valores
+    int valorAsegurado = seguro.calcularValorAsegurado();
+    int prima = seguro.calcularPrima();
+    labelPrima.setText(String.valueOf(prima) + " MXN");
+    labelValorAsegurado.setText(String.valueOf(valorAsegurado) + " MXN");
+    
+    // Registrar seguro
+    SegurosBD sao = new SegurosBD();
+    if (sao.RegistrarSeguro(seguro)) {
+        String mensaje = clienteYaExiste ? 
+            "Seguro registrado para cliente existente" : 
+            "Cliente nuevo y seguro registrados correctamente";
+        JOptionPane.showMessageDialog(this, mensaje);
+    } else {
+        JOptionPane.showMessageDialog(this, "Error al registrar seguro");
+    }
 
     }//GEN-LAST:event_btnContinuarActionPerformed
 
@@ -802,6 +923,7 @@ public class Seguros extends javax.swing.JPanel {
     private javax.swing.JCheckBox checkRobo;
     private javax.swing.JCheckBox checkVial;
     private javax.swing.JComboBox<String> comboCobertura;
+    private javax.swing.JComboBox<String> comboGenero;
     private javax.swing.JComboBox<String> comboPago;
     private javax.swing.JComboBox<String> comboPeriodo;
     private javax.swing.JComboBox<String> comboTipo;
@@ -818,7 +940,6 @@ public class Seguros extends javax.swing.JPanel {
     private javax.swing.JTextField fieldEdad;
     private javax.swing.JTextField fieldEmail;
     private javax.swing.JTextField fieldEstado;
-    private javax.swing.JTextField fieldGenero;
     private javax.swing.JTextField fieldLicencia;
     private javax.swing.JTextField fieldMarca;
     private javax.swing.JTextField fieldModelo;
@@ -827,6 +948,7 @@ public class Seguros extends javax.swing.JPanel {
     private javax.swing.JTextField fieldPlacas;
     private javax.swing.JTextField fieldSerie;
     private javax.swing.JTextField fieldTelefono;
+    private javax.swing.JTextField fieldValorAuto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -839,11 +961,10 @@ public class Seguros extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -866,6 +987,8 @@ public class Seguros extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel labelAge;
+    private javax.swing.JLabel labelApellido;
+    private javax.swing.JLabel labelApellidoM;
     private javax.swing.JLabel labelName;
     private javax.swing.JLabel labelPersonalData;
     private javax.swing.JLabel labelPrima;

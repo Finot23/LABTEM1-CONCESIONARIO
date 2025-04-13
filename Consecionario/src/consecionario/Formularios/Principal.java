@@ -4,8 +4,11 @@
  */
 package consecionario.Formularios;
 
+import BD.ClienteDB;
+import consecionario.Cliente;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -409,7 +412,40 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelHistorialMouseClicked
 
     private void jPanelSegurosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSegurosMouseClicked
-        MostrarJpanel(new Seguros());
+        // Paso 1: Preguntar si el cliente existe
+    int respuesta = JOptionPane.showConfirmDialog(
+        null, 
+        "¿El cliente ya existe?", 
+        "Confirmación", 
+        JOptionPane.YES_NO_OPTION
+    );
+    
+    // Paso 2: Crear el panel de seguros
+    Seguros segurosPanel = new Seguros();
+    boolean clienteExiste = false;
+    
+    // Paso 3: Si el usuario dice que existe, buscar sus datos
+    if (respuesta == JOptionPane.YES_OPTION) {
+        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente:");
+        String apellidoPaterno = JOptionPane.showInputDialog("Ingrese el apellido paterno:");
+        
+        if (nombre != null && apellidoPaterno != null && !nombre.isEmpty() && !apellidoPaterno.isEmpty()) {
+            ClienteDB clienteDB = new ClienteDB();
+            Cliente cliente = clienteDB.buscarClientePorNombreYApellido(nombre, apellidoPaterno);
+            
+            if (cliente != null) {
+                segurosPanel.setDatosCliente(cliente); // Autocompletar campos
+                clienteExiste = true;
+                JOptionPane.showMessageDialog(null, "Datos del cliente cargados correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró un cliente con esos datos");
+            }
+        }
+    }
+    
+    // Paso 4: Configurar el estado y mostrar el panel
+    segurosPanel.setClienteYaExiste(clienteExiste);
+    MostrarJpanel(segurosPanel);
     }//GEN-LAST:event_jPanelSegurosMouseClicked
 
     private void jPanelPaginaPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelPaginaPrincipalMouseClicked

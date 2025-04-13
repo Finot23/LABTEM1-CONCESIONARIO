@@ -9,6 +9,7 @@ import consecionario.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 
 
 /**
@@ -28,7 +29,7 @@ public boolean RegistrarClientes(Cliente cl){
             return false;
         }
         
-     String sql = "INSERT INTO clientes (Id, Apellido_Paterno, Apellido_Materno, nombre, telefono, Correo, calle, colonia, municipio, ciudad,curp,licencia,genero,edad) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
+     String sql = "INSERT INTO clientes (Id, Apellido_Paterno, Apellido_Materno, nombre, telefono, Correo, calle, colonia, municipio, ciudad,estado , cp ,curp,licencia,genero,edad) VALUES (?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?,?,?,?,?)";
       
      try{
         ps = con.prepareStatement(sql);
@@ -42,10 +43,12 @@ public boolean RegistrarClientes(Cliente cl){
         ps.setString(8, cl.getColonia());
         ps.setString(9, cl.getMunicipio());
         ps.setString(10, cl.getCiudad());
-        ps.setString(11, cl.getCurp());
-        ps.setString(12, cl.getLicencia());
-        ps.setString(13, cl.getGenero());
-        ps.setInt(14, cl.getEdad());
+        ps.setString(11, cl.getEstado());
+        ps.setString(12, cl.getCP());
+        ps.setString(13, cl.getCurp());
+        ps.setString(14, cl.getLicencia());
+        ps.setString(15, cl.getGenero());
+        ps.setInt(16, cl.getEdad());
         
         
         ps.executeUpdate();
@@ -63,6 +66,58 @@ public boolean RegistrarClientes(Cliente cl){
         }
     }
 }
+
+ public Cliente buscarClientePorNombreYApellido(String nombre, String apellidoPaterno) {
+        Connection con = ConexionBD.conn();
+        if (con == null) {
+            System.out.println("No se pudo establecer conexión con la base de datos.");
+            return null;
+        }
+        
+        String sql = "SELECT * FROM clientes WHERE nombre = ? AND Apellido_Paterno = ?";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, nombre);
+            ps.setString(2, apellidoPaterno);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setId(rs.getInt("id"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellidoP(rs.getString("Apellido_Paterno"));
+                cliente.setApellidoM(rs.getString("Apellido_Materno"));
+                cliente.setTelefono(rs.getLong("telefono"));
+                cliente.setCorreo(rs.getString("Correo"));
+                cliente.setCalle(rs.getString("calle"));
+                cliente.setColonia(rs.getString("colonia"));
+                cliente.setMunicipio(rs.getString("municipio"));
+                cliente.setCiudad(rs.getString("ciudad"));
+                cliente.setEstado(rs.getString("estado"));
+                cliente.setCP(rs.getString("cp"));
+                cliente.setCurp(rs.getString("curp"));
+                cliente.setLicencia(rs.getString("licencia"));
+                cliente.setGenero(rs.getString("genero"));
+                cliente.setEdad(rs.getInt("edad"));
+                return cliente;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al buscar cliente: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar conexión: " + e.getMessage());
+            }
+        }
+        return null;
+    }
+
       }
               
 
