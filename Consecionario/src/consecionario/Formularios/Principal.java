@@ -67,11 +67,13 @@ public class Principal extends javax.swing.JFrame {
         jPanelContenido.revalidate();
         jPanelContenido.repaint();
     }
+      
       public void mostrarCatalogo(String tipo) {
         JPanel catalogoPanel = null;
         switch (tipo) {
             case "Hatchback":
-                catalogoPanel = new CatalogoHatchback();
+               catalogoPanel = new CatalogoHatchback();
+
                 break;
             case "Sedan":
                 catalogoPanel = new CatalogoSedan();
@@ -86,6 +88,7 @@ public class Principal extends javax.swing.JFrame {
         }
     }
     
+      
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -400,7 +403,8 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanelVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelVentasMouseClicked
-        MostrarJpanel(new Ventas());
+        CategoriaCarro categoriaCarro = new CategoriaCarro(this);
+        MostrarJpanel(categoriaCarro);
     }//GEN-LAST:event_jPanelVentasMouseClicked
 
     private void jPanelCreditoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCreditoMouseClicked
@@ -454,8 +458,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jPanelCatalogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCatalogoMouseClicked
            //MostrarJpanel(new Catalogo());
-          CategoriaCarro categoriaCarro = new CategoriaCarro(this);
-        MostrarJpanel(categoriaCarro);
+          
     }//GEN-LAST:event_jPanelCatalogoMouseClicked
      
     /**

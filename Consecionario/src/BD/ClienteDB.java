@@ -29,7 +29,7 @@ public boolean RegistrarClientes(Cliente cl){
             return false;
         }
         
-     String sql = "INSERT INTO clientes (Id, Apellido_Paterno, Apellido_Materno, nombre, telefono, Correo, calle, colonia, municipio, ciudad,estado , cp ,curp,licencia,genero,edad) VALUES (?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?,?,?,?,?)";
+     String sql = "INSERT INTO clientes (Id, Apellido_Paterno, Apellido_Materno, nombre, telefono, Correo, calle, colonia, municipio, estado , cp ,curp,licencia,genero,edad) VALUES (?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?,?,?,?)";
       
      try{
         ps = con.prepareStatement(sql);
@@ -42,13 +42,13 @@ public boolean RegistrarClientes(Cliente cl){
         ps.setString(7, cl.getCalle());
         ps.setString(8, cl.getColonia());
         ps.setString(9, cl.getMunicipio());
-        ps.setString(10, cl.getCiudad());
-        ps.setString(11, cl.getEstado());
-        ps.setString(12, cl.getCP());
-        ps.setString(13, cl.getCurp());
-        ps.setString(14, cl.getLicencia());
-        ps.setString(15, cl.getGenero());
-        ps.setInt(16, cl.getEdad());
+        
+        ps.setString(10, cl.getEstado());
+        ps.setString(11, cl.getCP());
+        ps.setString(12, cl.getCurp());
+        ps.setString(13, cl.getLicencia());
+        ps.setString(14, cl.getGenero());
+        ps.setInt(15, cl.getEdad());
         
         
         ps.executeUpdate();
@@ -95,7 +95,7 @@ public boolean RegistrarClientes(Cliente cl){
                 cliente.setCalle(rs.getString("calle"));
                 cliente.setColonia(rs.getString("colonia"));
                 cliente.setMunicipio(rs.getString("municipio"));
-                cliente.setCiudad(rs.getString("ciudad"));
+                
                 cliente.setEstado(rs.getString("estado"));
                 cliente.setCP(rs.getString("cp"));
                 cliente.setCurp(rs.getString("curp"));

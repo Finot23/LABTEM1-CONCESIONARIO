@@ -6,10 +6,13 @@ package consecionario.Formularios;
 
 
 import BD.ClienteDB;
+import consecionario.AdministradorPanel;
 
 import consecionario.Cliente;
+import consecionario.Formularios.Seguros;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 
 /**
@@ -31,12 +34,15 @@ public class Ventas extends javax.swing.JPanel {
     String placeholderApellidoP = "Apellido Paterno";
     String placeholderApellidoM ="Apellido Materno";
     String placeholderNombre ="Nombre (s)";
-    String placeholderTelefono ="Teléfono Celular";
+    String placeholderCURP = "CURP";
+    String placeholderEdad = "Edad";
+    String placeholderLicencia = "No. Licencia";
     String placeholderCorreo ="Correo Electrónico";
+    String placeholderTelefono ="Teléfono Celular";
     String placeholderCalle ="Calle";
     String placeholderColonia ="Colonia";
     String placeholderMunicipio ="Población, Alcaldía o Municipio";
-    String placeholderCiudad ="Ciudad";
+    
     String placeholderEstado ="Estado";
     String placeholderCP ="Código Postal";
     String placeholderMarca ="Marca";
@@ -48,7 +54,11 @@ public class Ventas extends javax.swing.JPanel {
     
     Color placeholderColor= Color.GRAY;
     Color normalColor = Color.BLACK;
+   
+    private JPanel jPanelContenido;
     
+    
+
     public Ventas() {
         initComponents();
         
@@ -63,6 +73,15 @@ public class Ventas extends javax.swing.JPanel {
         
         txtNombreCliente.setText(placeholderNombre);
         txtNombreCliente.setForeground(placeholderColor);
+        
+        txtCURP.setText(placeholderCURP);
+        txtCURP.setForeground(placeholderColor);
+        
+        txtEdad.setText(placeholderEdad);
+        txtEdad.setForeground(placeholderColor);
+        
+        txtNoLicencia.setText(placeholderLicencia);
+        txtNoLicencia.setForeground(placeholderColor);
         
         txtTelefonoCliente.setText(placeholderTelefono);
         txtTelefonoCliente.setForeground(placeholderColor);
@@ -79,9 +98,7 @@ public class Ventas extends javax.swing.JPanel {
         txtMunicipio.setText(placeholderMunicipio);
         txtMunicipio.setForeground(placeholderColor);
         
-        txtCiudad.setText(placeholderCiudad);
-        txtCiudad.setForeground(placeholderColor);
-        
+       
         txtEstado.setText(placeholderEstado);
         txtEstado.setForeground(placeholderColor);
         
@@ -107,7 +124,11 @@ public class Ventas extends javax.swing.JPanel {
         txtEstadoCarro.setForeground(placeholderColor);
         
     }
-       
+    
+    public Ventas(JPanel jPanelContenido) {
+        // Lógica por defecto o vacía
+        this.jPanelContenido = jPanelContenido;
+    }   
         
         
     /**
@@ -122,24 +143,27 @@ public class Ventas extends javax.swing.JPanel {
         bg = new javax.swing.JPanel();
         lblSolicitudCompra = new javax.swing.JLabel();
         jPanelDatosCliente = new javax.swing.JPanel();
-        txtNombreCliente = new javax.swing.JTextField();
-        txtTelefonoCliente = new javax.swing.JTextField();
         bgDatosComprador = new javax.swing.JPanel();
         lblDatosComprador = new javax.swing.JLabel();
         txtApellidoP = new javax.swing.JTextField();
         txtApellidoM = new javax.swing.JTextField();
+        txtNombreCliente = new javax.swing.JTextField();
+        txtCURP = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        cbGenero = new javax.swing.JComboBox<>();
+        txtEdad = new javax.swing.JTextField();
+        txtNoLicencia = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
+        txtTelefonoCliente = new javax.swing.JTextField();
         jPanelDireccion = new javax.swing.JPanel();
         bgDomicilio = new javax.swing.JPanel();
         lblDomicilio = new javax.swing.JLabel();
-        txtMunicipio = new javax.swing.JTextField();
         txtCalle = new javax.swing.JTextField();
         txtColonia = new javax.swing.JTextField();
-        txtEstado = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
+        txtMunicipio = new javax.swing.JTextField();
+        txtEstado = new javax.swing.JTextField();
         txtCP = new javax.swing.JTextField();
-        txtCiudad = new javax.swing.JTextField();
         jPanelCarro = new javax.swing.JPanel();
         bgCarro = new javax.swing.JPanel();
         lblCarro = new javax.swing.JLabel();
@@ -163,42 +187,10 @@ public class Ventas extends javax.swing.JPanel {
 
         lblSolicitudCompra.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lblSolicitudCompra.setText("Solicitud de compra");
-        bg.add(lblSolicitudCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        bg.add(lblSolicitudCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 310, -1));
 
         jPanelDatosCliente.setBackground(new java.awt.Color(255, 255, 255));
         jPanelDatosCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(199, 0, 57), 3));
-
-        txtNombreCliente.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtNombreCliente.setForeground(new java.awt.Color(204, 204, 204));
-        txtNombreCliente.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNombreClienteFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNombreClienteFocusLost(evt);
-            }
-        });
-        txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreClienteActionPerformed(evt);
-            }
-        });
-
-        txtTelefonoCliente.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtTelefonoCliente.setForeground(new java.awt.Color(204, 204, 204));
-        txtTelefonoCliente.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtTelefonoClienteFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtTelefonoClienteFocusLost(evt);
-            }
-        });
-        txtTelefonoCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonoClienteActionPerformed(evt);
-            }
-        });
 
         bgDatosComprador.setBackground(new java.awt.Color(199, 0, 57));
         bgDatosComprador.setForeground(new java.awt.Color(255, 255, 255));
@@ -256,8 +248,69 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
+        txtNombreCliente.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtNombreCliente.setForeground(new java.awt.Color(204, 204, 204));
+        txtNombreCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombreClienteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreClienteFocusLost(evt);
+            }
+        });
+        txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreClienteActionPerformed(evt);
+            }
+        });
+
+        txtCURP.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtCURP.setForeground(new java.awt.Color(204, 204, 204));
+        txtCURP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCURPFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCURPFocusLost(evt);
+            }
+        });
+        txtCURP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCURPActionPerformed(evt);
+            }
+        });
+
         jSeparator1.setBackground(new java.awt.Color(153, 0, 51));
         jSeparator1.setForeground(new java.awt.Color(199, 0, 57));
+
+        cbGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Género", "Masculino", "Femenino" }));
+        cbGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbGeneroActionPerformed(evt);
+            }
+        });
+
+        txtEdad.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtEdad.setForeground(new java.awt.Color(204, 204, 204));
+        txtEdad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEdadFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEdadFocusLost(evt);
+            }
+        });
+
+        txtNoLicencia.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtNoLicencia.setForeground(new java.awt.Color(204, 204, 204));
+        txtNoLicencia.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNoLicenciaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNoLicenciaFocusLost(evt);
+            }
+        });
 
         txtCorreo.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtCorreo.setForeground(new java.awt.Color(204, 204, 204));
@@ -267,6 +320,22 @@ public class Ventas extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtCorreoFocusLost(evt);
+            }
+        });
+
+        txtTelefonoCliente.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtTelefonoCliente.setForeground(new java.awt.Color(204, 204, 204));
+        txtTelefonoCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTelefonoClienteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTelefonoClienteFocusLost(evt);
+            }
+        });
+        txtTelefonoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoClienteActionPerformed(evt);
             }
         });
 
@@ -281,16 +350,24 @@ public class Ventas extends javax.swing.JPanel {
                 .addGroup(jPanelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelDatosClienteLayout.createSequentialGroup()
                         .addComponent(txtApellidoP, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
+                        .addGap(18, 18, 18)
                         .addComponent(txtApellidoM, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                        .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCURP, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(28, Short.MAX_VALUE))
                     .addGroup(jPanelDatosClienteLayout.createSequentialGroup()
+                        .addComponent(cbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNoLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCorreo)
+                        .addGap(18, 18, 18)
                         .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(27, 27, 27))))
         );
         jPanelDatosClienteLayout.setVerticalGroup(
             jPanelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,17 +377,23 @@ public class Ventas extends javax.swing.JPanel {
                 .addGroup(jPanelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtApellidoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtApellidoM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCURP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNoLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
-        bg.add(jPanelDatosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 720, 120));
+        cbGenero.getAccessibleContext().setAccessibleParent(null);
+
+        bg.add(jPanelDatosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 810, 120));
 
         jPanelDireccion.setBackground(new java.awt.Color(255, 255, 255));
         jPanelDireccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(199, 0, 57), 3));
@@ -339,22 +422,6 @@ public class Ventas extends javax.swing.JPanel {
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
-        txtMunicipio.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtMunicipio.setForeground(new java.awt.Color(204, 204, 204));
-        txtMunicipio.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtMunicipioFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtMunicipioFocusLost(evt);
-            }
-        });
-        txtMunicipio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMunicipioActionPerformed(evt);
-            }
-        });
-
         txtCalle.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtCalle.setForeground(new java.awt.Color(204, 204, 204));
         txtCalle.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -382,6 +449,25 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
+        jSeparator2.setBackground(new java.awt.Color(153, 0, 51));
+        jSeparator2.setForeground(new java.awt.Color(199, 0, 57));
+
+        txtMunicipio.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtMunicipio.setForeground(new java.awt.Color(204, 204, 204));
+        txtMunicipio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtMunicipioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMunicipioFocusLost(evt);
+            }
+        });
+        txtMunicipio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMunicipioActionPerformed(evt);
+            }
+        });
+
         txtEstado.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtEstado.setForeground(new java.awt.Color(204, 204, 204));
         txtEstado.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -398,9 +484,6 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
-        jSeparator2.setBackground(new java.awt.Color(153, 0, 51));
-        jSeparator2.setForeground(new java.awt.Color(199, 0, 57));
-
         txtCP.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtCP.setForeground(new java.awt.Color(204, 204, 204));
         txtCP.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -409,17 +492,6 @@ public class Ventas extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtCPFocusLost(evt);
-            }
-        });
-
-        txtCiudad.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtCiudad.setForeground(new java.awt.Color(204, 204, 204));
-        txtCiudad.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCiudadFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCiudadFocusLost(evt);
             }
         });
 
@@ -435,17 +507,15 @@ public class Ventas extends javax.swing.JPanel {
                     .addGroup(jPanelDireccionLayout.createSequentialGroup()
                         .addComponent(txtCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)
-                        .addComponent(txtColonia)
-                        .addContainerGap())
+                        .addComponent(txtColonia, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
                     .addGroup(jPanelDireccionLayout.createSequentialGroup()
                         .addComponent(txtMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
+                        .addGap(57, 57, 57)
                         .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                        .addComponent(txtCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17))))
+                        .addGap(53, 53, 53)
+                        .addComponent(txtCP, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanelDireccionLayout.setVerticalGroup(
             jPanelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -460,13 +530,12 @@ public class Ventas extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        bg.add(jPanelDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 720, 120));
+        bg.add(jPanelDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 810, 120));
 
         jPanelCarro.setBackground(new java.awt.Color(255, 255, 255));
         jPanelCarro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(199, 0, 57), 3));
@@ -595,7 +664,7 @@ public class Ventas extends javax.swing.JPanel {
                         .addComponent(txtAnioCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(116, 116, 116)
                         .addComponent(txtEstadoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
         jPanelCarroLayout.setVerticalGroup(
             jPanelCarroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -616,7 +685,7 @@ public class Ventas extends javax.swing.JPanel {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        bg.add(jPanelCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 720, 120));
+        bg.add(jPanelCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 810, 120));
 
         btnContinuar.setBackground(new java.awt.Color(255, 153, 51));
         btnContinuar.setText("Continuar");
@@ -802,23 +871,6 @@ public class Ventas extends javax.swing.JPanel {
                 }
     }//GEN-LAST:event_txtMunicipioFocusLost
 
-    private void txtCiudadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCiudadFocusGained
-        // TODO add your handling code here:
-        if (txtCiudad.getText().equals(placeholderCiudad)) {
-                    txtCiudad.setText("");
-                    txtCiudad.setForeground(normalColor);
-                }
-        
-    }//GEN-LAST:event_txtCiudadFocusGained
-
-    private void txtCiudadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCiudadFocusLost
-        // TODO add your handling code here:
-        if (txtCiudad.getText().isEmpty()) {
-                    txtCiudad.setText(placeholderCiudad);
-                    txtCiudad.setForeground(placeholderColor);
-                }
-    }//GEN-LAST:event_txtCiudadFocusLost
-
     private void txtEstadoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEstadoFocusGained
         // TODO add your handling code here:
         if (txtEstado.getText().equals(placeholderEstado)) {
@@ -971,20 +1023,22 @@ public class Ventas extends javax.swing.JPanel {
         cliente.setApellidoP(txtApellidoP.getText());
         cliente.setApellidoM(txtApellidoM.getText());
         cliente.setNombre(txtNombreCliente.getText());
+        cliente.setCurp(txtCURP.getText());
+        cliente.setGenero(cbGenero.getSelectedItem().toString());
+        cliente.setEdad(Integer.parseInt(txtEdad.getText()));
+        cliente.setLicencia(txtNoLicencia.getText());
         cliente.setTelefono(Long.parseLong(txtTelefonoCliente.getText()));
         cliente.setCorreo(txtCorreo.getText());
         
         cliente.setCalle(txtCalle.getText());
         cliente.setColonia(txtColonia.getText());
         cliente.setMunicipio(txtMunicipio.getText());
-        cliente.setCiudad(txtCiudad.getText());
+        
         cliente.setEstado(txtEstado.getText());
         cliente.setCP(txtCP.getText());
         
-        cliente.setCurp("");
-        cliente.setLicencia("");
-        cliente.setGenero("");
-        cliente.setEdad(0);
+        
+      
         
         /*
         cliente.setMarca(txtMarca.getText());
@@ -1004,6 +1058,29 @@ public class Ventas extends javax.swing.JPanel {
         }else {
             JOptionPane.showMessageDialog(this, "Error al registrar cliente");
         }
+        
+        int respuesta = JOptionPane.showConfirmDialog(
+        null, 
+        "¿El cliente desea un seguro?", 
+        "Confirmación", 
+        JOptionPane.YES_NO_OPTION
+    );
+    Seguros segurosPanel = new Seguros();
+    boolean ConfirmacionSeguro = false;
+    
+    // Paso 3: Si el usuario dice que existe, buscar sus datos
+    if (respuesta == JOptionPane.YES_OPTION) {
+        
+        segurosPanel.setDatosCliente(cliente); // Autocompletar campos
+                ConfirmacionSeguro = true;
+                JOptionPane.showMessageDialog(null, "Datos del cliente cargados correctamente");
+}
+       
+    // Paso 4: Configurar el estado y mostrar el panel
+    segurosPanel.setClienteYaExiste(ConfirmacionSeguro);
+    AdministradorPanel panelP = new AdministradorPanel(jPanelContenido);
+        panelP.mostrarPanel(segurosPanel);
+    
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void txtColoniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtColoniaActionPerformed
@@ -1014,6 +1091,64 @@ public class Ventas extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoMActionPerformed
 
+    private void txtCURPFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCURPFocusGained
+        // TODO add your handling code here:
+        if (txtCURP.getText().equals(placeholderCURP)) {
+                    txtCURP.setText("");
+                    txtCURP.setForeground(normalColor);
+                }
+    }//GEN-LAST:event_txtCURPFocusGained
+
+    private void txtCURPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCURPFocusLost
+        // TODO add your handling code here:
+         if (txtCURP.getText().isEmpty()) {
+                    txtCURP.setText(placeholderCURP);
+                    txtCURP.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtCURPFocusLost
+
+    private void txtCURPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCURPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCURPActionPerformed
+
+    private void txtEdadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEdadFocusGained
+        // TODO add your handling code here:
+        if (txtEdad.getText().equals(placeholderEdad)) {
+                    txtEdad.setText("");
+                    txtEdad.setForeground(normalColor);
+                }
+    }//GEN-LAST:event_txtEdadFocusGained
+
+    private void txtEdadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEdadFocusLost
+        // TODO add your handling code here:
+         if (txtEdad.getText().isEmpty()) {
+                    txtEdad.setText(placeholderEdad);
+                    txtEdad.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtEdadFocusLost
+
+    private void txtNoLicenciaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNoLicenciaFocusGained
+        // TODO add your handling code here:
+        if (txtNoLicencia.getText().equals(placeholderLicencia)) {
+                    txtNoLicencia.setText("");
+                    txtNoLicencia.setForeground(normalColor);
+                }
+    }//GEN-LAST:event_txtNoLicenciaFocusGained
+
+    private void txtNoLicenciaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNoLicenciaFocusLost
+        // TODO add your handling code here:
+         if (txtNoLicencia.getText().isEmpty()) {
+                    txtNoLicencia.setText(placeholderLicencia);
+                    txtNoLicencia.setForeground(placeholderColor);
+                }
+    }//GEN-LAST:event_txtNoLicenciaFocusLost
+
+    private void cbGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbGeneroActionPerformed
+        // TODO add your handling code here:
+    
+    
+    }//GEN-LAST:event_cbGeneroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
@@ -1021,6 +1156,7 @@ public class Ventas extends javax.swing.JPanel {
     private javax.swing.JPanel bgDatosComprador;
     private javax.swing.JPanel bgDomicilio;
     private javax.swing.JButton btnContinuar;
+    private javax.swing.JComboBox<String> cbGenero;
     private javax.swing.JPanel jPanelCarro;
     private javax.swing.JPanel jPanelDatosCliente;
     private javax.swing.JPanel jPanelDireccion;
@@ -1035,16 +1171,18 @@ public class Ventas extends javax.swing.JPanel {
     private javax.swing.JTextField txtApellidoM;
     private javax.swing.JTextField txtApellidoP;
     private javax.swing.JTextField txtCP;
+    private javax.swing.JTextField txtCURP;
     private javax.swing.JTextField txtCalle;
-    private javax.swing.JTextField txtCiudad;
     private javax.swing.JTextField txtColonia;
     private javax.swing.JTextField txtColorCarro;
     private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtEstadoCarro;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtMunicipio;
+    private javax.swing.JTextField txtNoLicencia;
     private javax.swing.JTextField txtNombreCliente;
     private javax.swing.JTextField txtTelefonoCliente;
     private javax.swing.JTextField txtTipoCarro;
