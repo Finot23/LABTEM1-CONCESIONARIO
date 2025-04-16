@@ -9,6 +9,7 @@ import BD.ClienteDB;
 import consecionario.Clases.AdministradorPanel;
 import consecionario.Clases.CatalogoCarros;
 import consecionario.Clases.Cliente;
+import consecionario.Formularios.Principal;
 import consecionario.Formularios.Seguros;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -1050,52 +1051,67 @@ public class Ventas extends javax.swing.JPanel {
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         // TODO add your handling code here:
-        Cliente cliente = new Cliente();
-        
-        cliente.setApellidoP(txtApellidoP.getText());
-        cliente.setApellidoM(txtApellidoM.getText());
-        cliente.setNombre(txtNombreCliente.getText());
-        cliente.setCurp(txtCURP.getText());
-        cliente.setGenero(cbGenero.getSelectedItem().toString());
-        cliente.setEdad(Integer.parseInt(txtEdad.getText()));
-        cliente.setLicencia(txtNoLicencia.getText());
-        cliente.setTelefono(Long.parseLong(txtTelefonoCliente.getText()));
-        cliente.setCorreo(txtCorreo.getText());
-        
-        cliente.setCalle(txtCalle.getText());
-        cliente.setColonia(txtColonia.getText());
-        cliente.setMunicipio(txtMunicipio.getText());
-        
-        cliente.setEstado(txtEstado.getText());
-        cliente.setCP(txtCP.getText());
-        
-        
-      
-        
-    
-        ClienteDB dao = new ClienteDB();
-      String textoEdad = txtEdad.getText().trim();
+                
+        String textoEdad = txtEdad.getText().trim();
 
-try {
-    int edad = Integer.parseInt(textoEdad);
-    // Usar la edad aquí
-} catch (NumberFormatException e) {
-    JOptionPane.showMessageDialog(null, "Por favor, ingresa un número válido en el campo de edad.");
-    return; // Salir del método si hay error
-}
+// Validación de número
 if (!textoEdad.matches("\\d+")) {
     JOptionPane.showMessageDialog(null, "La edad debe ser un número entero.");
     return;
 }
 
-        if (dao.RegistrarClientes(cliente)){
-            JOptionPane.showMessageDialog(this, "Cliente registrado con éxito");
-            //limpiarCampos();
-            
-        }else {
-            JOptionPane.showMessageDialog(this, "Error al registrar cliente");
-        }
-        
+int edad;
+try {
+    edad = Integer.parseInt(textoEdad);
+} catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(null, "Por favor, ingresa un número válido en el campo de edad.");
+    return;
+}
+
+// Si llegamos aquí, la edad es válida
+Cliente cliente = new Cliente();
+
+cliente.setApellidoP(txtApellidoP.getText());
+cliente.setApellidoM(txtApellidoM.getText());
+cliente.setNombre(txtNombreCliente.getText());
+cliente.setCurp(txtCURP.getText());
+cliente.setGenero(cbGenero.getSelectedItem().toString());
+cliente.setEdad(edad); // Ya validado
+cliente.setLicencia(txtNoLicencia.getText());
+
+// Validación de teléfono
+try {
+    long telefono = Long.parseLong(txtTelefonoCliente.getText().trim());
+    cliente.setTelefono(telefono);
+} catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(null, "Por favor, ingresa un número de teléfono válido.");
+    return;
+}
+
+cliente.setCorreo(txtCorreo.getText());
+cliente.setCalle(txtCalle.getText());
+cliente.setColonia(txtColonia.getText());
+cliente.setMunicipio(txtMunicipio.getText());
+cliente.setEstado(txtEstado.getText());
+cliente.setCP(txtCP.getText());
+
+ClienteDB dao = new ClienteDB();
+if (dao.RegistrarClientes(cliente)) {
+    JOptionPane.showMessageDialog(this, "Cliente registrado con éxito");
+    // limpiarCampos(); // si tienes una función para limpiar
+} else {
+    JOptionPane.showMessageDialog(this, "Error al registrar cliente");
+    return; // No continuar si no se pudo registrar
+}
+
+// Crear el nuevo panel de Seguros
+Seguros segurosPanel = new Seguros(cliente);
+
+// Obtener la ventana Principal (el JFrame)
+Principal ventanaPrincipal = (Principal) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+// Cambiar el contenido del panel central
+ventanaPrincipal.setPanelContenido(segurosPanel);
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void txtColoniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtColoniaActionPerformed

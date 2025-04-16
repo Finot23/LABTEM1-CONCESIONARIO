@@ -6,9 +6,11 @@ package consecionario.Formularios;
 
 import BD.ClienteDB;
 import BD.SegurosBD;
+import consecionario.Clases.CatalogoCarros;
 import consecionario.Clases.Cliente;
 import consecionario.Clases.Seguro;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 
 /**
@@ -16,13 +18,55 @@ import javax.swing.JOptionPane;
  * @author antoniosalinas
  */
 public class Seguros extends javax.swing.JPanel {
+    
+     private Cliente cliente;
+    private JPanel jPanelContenido;
+     
+     public Seguros(Cliente cliente) {
+        this.cliente = cliente;
+        initComponents();
+        cargarDatosCliente(); 
+       
+    }
+    private void cargarDatosCliente() {
+    // Suponiendo que tienes JTextField o JLabel con estos nombres:
+    fieldNombre.setText(cliente.getNombre());
+    fieldApellidoP.setText(cliente.getApellidoP());
+    fieldApellidoM.setText(cliente.getApellidoM());
+    fieldCurp.setText(cliente.getCurp());
+    comboGenero.setSelectedItem(cliente.getGenero());
+    fieldEdad.setText(String.valueOf(cliente.getEdad()));
+    fieldTelefono.setText(String.valueOf(cliente.getTelefono()));
+    fieldEmail.setText(cliente.getCorreo());
+
+    fieldCalle.setText(cliente.getCalle());
+    fieldColonia.setText(cliente.getColonia());
+    fieldMunicipio.setText(cliente.getMunicipio());
+    fieldEstado.setText(cliente.getEstado());
+    fieldCP.setText(cliente.getCP());
+}
+     public Seguros(JPanel jPanelContenido) {
+        this.jPanelContenido = jPanelContenido;
+        initComponents();
+    }
+     
+     public Seguros(CatalogoCarros carro) {
+        initComponents();
+
+        fieldMarca.setText(carro.getMarca());
+        fieldModelo.setText(carro.getModelo());
+        fieldAnio.setText(carro.getAnioFabricacion());
+        // txtPrecio.setText(String.valueOf(carro.getPrecio())); // Solo si existe ese campo
+    }
+public Seguros() {
+        initComponents();
+    }
+     
     private boolean clienteYaExiste = false;
     /**
      * Creates new form Seguros
      */
-    public Seguros() {
-        initComponents();
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
