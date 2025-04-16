@@ -6,8 +6,8 @@ package consecionario.Formularios;
 
 import BD.ClienteDB;
 import BD.SegurosBD;
-import consecionario.Cliente;
-import consecionario.Seguro;
+import consecionario.Clases.Cliente;
+import consecionario.Clases.Seguro;
 import javax.swing.JOptionPane;
 
 

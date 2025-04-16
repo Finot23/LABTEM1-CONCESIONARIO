@@ -6,9 +6,8 @@ package consecionario.Formularios;
 
 
 import BD.ClienteDB;
-import consecionario.AdministradorPanel;
-
-import consecionario.Cliente;
+import consecionario.Clases.AdministradorPanel;
+import consecionario.Clases.Cliente;
 import consecionario.Formularios.Seguros;
 import java.awt.Color;
 import javax.swing.JOptionPane;

@@ -4,7 +4,7 @@
  */
 package BD;
 
-import consecionario.CatalogoCarros;
+import consecionario.Clases.CatalogoCarros;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -5,7 +5,7 @@
 package BD;
 
 
-import consecionario.Cliente;
+import consecionario.Clases.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

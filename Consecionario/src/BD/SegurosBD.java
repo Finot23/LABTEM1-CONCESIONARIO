@@ -4,7 +4,7 @@
  */
 package BD;
 
-import consecionario.Seguro;
+import consecionario.Clases.Seguro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

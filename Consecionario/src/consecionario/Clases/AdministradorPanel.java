@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package consecionario;
+package consecionario.Clases;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;

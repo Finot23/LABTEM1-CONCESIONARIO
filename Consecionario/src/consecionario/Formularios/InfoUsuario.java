@@ -6,7 +6,7 @@ package consecionario.Formularios;
 
 import BD.ConexionBD;
 import BD.UsuarioBD;
-import consecionario.Usuario;
+import consecionario.Clases.Usuario;
 
 /**
  *

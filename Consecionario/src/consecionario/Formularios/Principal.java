@@ -5,7 +5,7 @@
 package consecionario.Formularios;
 
 import BD.ClienteDB;
-import consecionario.Cliente;
+import consecionario.Clases.Cliente;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
