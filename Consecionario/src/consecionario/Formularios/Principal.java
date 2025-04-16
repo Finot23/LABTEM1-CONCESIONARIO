@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import consecionario.Formularios.Ventas;
 
 
 //prueba push
@@ -87,7 +88,12 @@ public class Principal extends javax.swing.JFrame {
             MostrarJpanel(catalogoPanel);
         }
     }
-    
+    public void setPanelContenido(JPanel nuevoPanel) {
+    jPanelContenido.removeAll();              // Quita lo anterior
+    jPanelContenido.add(nuevoPanel);          // Agrega el nuevo panel
+    jPanelContenido.revalidate();             // Recalcula el layout
+    jPanelContenido.repaint();                // Redibuja
+}
       
     /**
      * This method is called from within the constructor to initialize the form.
@@ -375,17 +381,7 @@ public class Principal extends javax.swing.JFrame {
 
         bg.add(bgMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 840));
 
-        javax.swing.GroupLayout jPanelContenidoLayout = new javax.swing.GroupLayout(jPanelContenido);
-        jPanelContenido.setLayout(jPanelContenidoLayout);
-        jPanelContenidoLayout.setHorizontalGroup(
-            jPanelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 824, Short.MAX_VALUE)
-        );
-        jPanelContenidoLayout.setVerticalGroup(
-            jPanelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 840, Short.MAX_VALUE)
-        );
-
+        jPanelContenido.setLayout(new java.awt.BorderLayout());
         bg.add(jPanelContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 824, 840));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

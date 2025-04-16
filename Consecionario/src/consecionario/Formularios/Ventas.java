@@ -7,11 +7,13 @@ package consecionario.Formularios;
 
 import BD.ClienteDB;
 import consecionario.Clases.AdministradorPanel;
+import consecionario.Clases.CatalogoCarros;
 import consecionario.Clases.Cliente;
 import consecionario.Formularios.Seguros;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 
 /**
@@ -58,10 +60,15 @@ public class Ventas extends javax.swing.JPanel {
     
     
 
-    public Ventas() {
+    
+    
+
+ public Ventas() {
         initComponents();
         
         
+        
+   
         
         
         txtApellidoP.setText(placeholderApellidoP);
@@ -121,14 +128,23 @@ public class Ventas extends javax.swing.JPanel {
         
         txtEstadoCarro.setText(placeholderEstados);
         txtEstadoCarro.setForeground(placeholderColor);
-        
-    }
+       
+    } 
     
     public Ventas(JPanel jPanelContenido) {
         // Lógica por defecto o vacía
         this.jPanelContenido = jPanelContenido;
     }   
-        
+    
+    public Ventas(CatalogoCarros carro) {
+    initComponents();
+    
+    // Esto debe ser visible en pantalla
+    txtMarca.setText(carro.getMarca());
+    txtModelo.setText(carro.getModelo());
+    txtAnioCarro.setText(carro.getAnioFabricacion());
+    //txtPrecio.setText(String.valueOf(carro.getPrecio()));
+}
         
     /**
      * This method is called from within the constructor to initialize the form.
@@ -163,7 +179,7 @@ public class Ventas extends javax.swing.JPanel {
         txtMunicipio = new javax.swing.JTextField();
         txtEstado = new javax.swing.JTextField();
         txtCP = new javax.swing.JTextField();
-        jPanelCarro = new javax.swing.JPanel();
+        txtPrecio = new javax.swing.JPanel();
         bgCarro = new javax.swing.JPanel();
         lblCarro = new javax.swing.JLabel();
         txtMarca = new javax.swing.JTextField();
@@ -216,7 +232,8 @@ public class Ventas extends javax.swing.JPanel {
         );
 
         txtApellidoP.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtApellidoP.setForeground(new java.awt.Color(204, 204, 204));
+        txtApellidoP.setForeground(new java.awt.Color(153, 153, 153));
+        txtApellidoP.setText("Apellido Paterno");
         txtApellidoP.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtApellidoPFocusGained(evt);
@@ -232,7 +249,8 @@ public class Ventas extends javax.swing.JPanel {
         });
 
         txtApellidoM.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtApellidoM.setForeground(new java.awt.Color(204, 204, 204));
+        txtApellidoM.setForeground(new java.awt.Color(153, 153, 153));
+        txtApellidoM.setText("Apellido Materno");
         txtApellidoM.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtApellidoMFocusGained(evt);
@@ -248,7 +266,8 @@ public class Ventas extends javax.swing.JPanel {
         });
 
         txtNombreCliente.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtNombreCliente.setForeground(new java.awt.Color(204, 204, 204));
+        txtNombreCliente.setForeground(new java.awt.Color(153, 153, 153));
+        txtNombreCliente.setText("Nombre (s)");
         txtNombreCliente.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtNombreClienteFocusGained(evt);
@@ -264,7 +283,8 @@ public class Ventas extends javax.swing.JPanel {
         });
 
         txtCURP.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtCURP.setForeground(new java.awt.Color(204, 204, 204));
+        txtCURP.setForeground(new java.awt.Color(153, 153, 153));
+        txtCURP.setText("CURP");
         txtCURP.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtCURPFocusGained(evt);
@@ -290,7 +310,8 @@ public class Ventas extends javax.swing.JPanel {
         });
 
         txtEdad.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtEdad.setForeground(new java.awt.Color(204, 204, 204));
+        txtEdad.setForeground(new java.awt.Color(153, 153, 153));
+        txtEdad.setText("Edad");
         txtEdad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtEdadFocusGained(evt);
@@ -301,7 +322,8 @@ public class Ventas extends javax.swing.JPanel {
         });
 
         txtNoLicencia.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtNoLicencia.setForeground(new java.awt.Color(204, 204, 204));
+        txtNoLicencia.setForeground(new java.awt.Color(153, 153, 153));
+        txtNoLicencia.setText("No. Licencia");
         txtNoLicencia.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtNoLicenciaFocusGained(evt);
@@ -312,7 +334,8 @@ public class Ventas extends javax.swing.JPanel {
         });
 
         txtCorreo.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtCorreo.setForeground(new java.awt.Color(204, 204, 204));
+        txtCorreo.setForeground(new java.awt.Color(153, 153, 153));
+        txtCorreo.setText("Correo Electrónico");
         txtCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtCorreoFocusGained(evt);
@@ -323,7 +346,8 @@ public class Ventas extends javax.swing.JPanel {
         });
 
         txtTelefonoCliente.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtTelefonoCliente.setForeground(new java.awt.Color(204, 204, 204));
+        txtTelefonoCliente.setForeground(new java.awt.Color(153, 153, 153));
+        txtTelefonoCliente.setText("Teléfono Celular");
         txtTelefonoCliente.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtTelefonoClienteFocusGained(evt);
@@ -390,8 +414,6 @@ public class Ventas extends javax.swing.JPanel {
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
-        cbGenero.getAccessibleContext().setAccessibleParent(null);
-
         bg.add(jPanelDatosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 810, 120));
 
         jPanelDireccion.setBackground(new java.awt.Color(255, 255, 255));
@@ -422,7 +444,8 @@ public class Ventas extends javax.swing.JPanel {
         );
 
         txtCalle.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtCalle.setForeground(new java.awt.Color(204, 204, 204));
+        txtCalle.setForeground(new java.awt.Color(153, 153, 153));
+        txtCalle.setText("Calle");
         txtCalle.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtCalleFocusGained(evt);
@@ -433,7 +456,8 @@ public class Ventas extends javax.swing.JPanel {
         });
 
         txtColonia.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtColonia.setForeground(new java.awt.Color(204, 204, 204));
+        txtColonia.setForeground(new java.awt.Color(153, 153, 153));
+        txtColonia.setText("Colonia");
         txtColonia.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtColoniaFocusGained(evt);
@@ -452,7 +476,8 @@ public class Ventas extends javax.swing.JPanel {
         jSeparator2.setForeground(new java.awt.Color(199, 0, 57));
 
         txtMunicipio.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtMunicipio.setForeground(new java.awt.Color(204, 204, 204));
+        txtMunicipio.setForeground(new java.awt.Color(153, 153, 153));
+        txtMunicipio.setText("Población, Alcaldía o Municipio");
         txtMunicipio.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtMunicipioFocusGained(evt);
@@ -468,7 +493,8 @@ public class Ventas extends javax.swing.JPanel {
         });
 
         txtEstado.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtEstado.setForeground(new java.awt.Color(204, 204, 204));
+        txtEstado.setForeground(new java.awt.Color(153, 153, 153));
+        txtEstado.setText("Estado");
         txtEstado.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtEstadoFocusGained(evt);
@@ -484,7 +510,8 @@ public class Ventas extends javax.swing.JPanel {
         });
 
         txtCP.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtCP.setForeground(new java.awt.Color(204, 204, 204));
+        txtCP.setForeground(new java.awt.Color(153, 153, 153));
+        txtCP.setText("Código Postal");
         txtCP.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtCPFocusGained(evt);
@@ -536,8 +563,8 @@ public class Ventas extends javax.swing.JPanel {
 
         bg.add(jPanelDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 810, 120));
 
-        jPanelCarro.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelCarro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(199, 0, 57), 3));
+        txtPrecio.setBackground(new java.awt.Color(255, 255, 255));
+        txtPrecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(199, 0, 57), 3));
 
         bgCarro.setBackground(new java.awt.Color(199, 0, 57));
         bgCarro.setForeground(new java.awt.Color(255, 255, 255));
@@ -564,7 +591,8 @@ public class Ventas extends javax.swing.JPanel {
         );
 
         txtMarca.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtMarca.setForeground(new java.awt.Color(204, 204, 204));
+        txtMarca.setForeground(new java.awt.Color(0, 0, 0));
+        txtMarca.setText("Marca");
         txtMarca.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtMarcaFocusGained(evt);
@@ -575,7 +603,8 @@ public class Ventas extends javax.swing.JPanel {
         });
 
         txtModelo.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtModelo.setForeground(new java.awt.Color(204, 204, 204));
+        txtModelo.setForeground(new java.awt.Color(0, 0, 0));
+        txtModelo.setText("Modelo");
         txtModelo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtModeloFocusGained(evt);
@@ -589,7 +618,8 @@ public class Ventas extends javax.swing.JPanel {
         jSeparator3.setForeground(new java.awt.Color(199, 0, 57));
 
         txtTipoCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtTipoCarro.setForeground(new java.awt.Color(204, 204, 204));
+        txtTipoCarro.setForeground(new java.awt.Color(0, 0, 0));
+        txtTipoCarro.setText("Tipo");
         txtTipoCarro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtTipoCarroFocusGained(evt);
@@ -605,7 +635,8 @@ public class Ventas extends javax.swing.JPanel {
         });
 
         txtColorCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtColorCarro.setForeground(new java.awt.Color(204, 204, 204));
+        txtColorCarro.setForeground(new java.awt.Color(0, 0, 0));
+        txtColorCarro.setText("Color");
         txtColorCarro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtColorCarroFocusGained(evt);
@@ -616,7 +647,8 @@ public class Ventas extends javax.swing.JPanel {
         });
 
         txtAnioCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtAnioCarro.setForeground(new java.awt.Color(204, 204, 204));
+        txtAnioCarro.setForeground(new java.awt.Color(0, 0, 0));
+        txtAnioCarro.setText("Año");
         txtAnioCarro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtAnioCarroFocusGained(evt);
@@ -632,7 +664,8 @@ public class Ventas extends javax.swing.JPanel {
         });
 
         txtEstadoCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtEstadoCarro.setForeground(new java.awt.Color(204, 204, 204));
+        txtEstadoCarro.setForeground(new java.awt.Color(0, 0, 0));
+        txtEstadoCarro.setText("Condición");
         txtEstadoCarro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtEstadoCarroFocusGained(evt);
@@ -642,16 +675,16 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanelCarroLayout = new javax.swing.GroupLayout(jPanelCarro);
-        jPanelCarro.setLayout(jPanelCarroLayout);
-        jPanelCarroLayout.setHorizontalGroup(
-            jPanelCarroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout txtPrecioLayout = new javax.swing.GroupLayout(txtPrecio);
+        txtPrecio.setLayout(txtPrecioLayout);
+        txtPrecioLayout.setHorizontalGroup(
+            txtPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(bgCarro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanelCarroLayout.createSequentialGroup()
+            .addGroup(txtPrecioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelCarroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCarroLayout.createSequentialGroup()
+                .addGroup(txtPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(txtPrecioLayout.createSequentialGroup()
                         .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -659,18 +692,18 @@ public class Ventas extends javax.swing.JPanel {
                         .addComponent(txtTipoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(txtColorCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelCarroLayout.createSequentialGroup()
+                    .addGroup(txtPrecioLayout.createSequentialGroup()
                         .addComponent(txtAnioCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(116, 116, 116)
                         .addComponent(txtEstadoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(144, Short.MAX_VALUE))
         );
-        jPanelCarroLayout.setVerticalGroup(
-            jPanelCarroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCarroLayout.createSequentialGroup()
+        txtPrecioLayout.setVerticalGroup(
+            txtPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(txtPrecioLayout.createSequentialGroup()
                 .addComponent(bgCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelCarroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(txtPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTipoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -678,13 +711,13 @@ public class Ventas extends javax.swing.JPanel {
                 .addGap(10, 10, 10)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelCarroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(txtPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAnioCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEstadoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        bg.add(jPanelCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 810, 120));
+        bg.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 810, 120));
 
         btnContinuar.setBackground(new java.awt.Color(255, 153, 51));
         btnContinuar.setText("Continuar");
@@ -1039,17 +1072,22 @@ public class Ventas extends javax.swing.JPanel {
         
       
         
-        /*
-        cliente.setMarca(txtMarca.getText());
-        cliente.setModelo(txtModelo.getText());
-        cliente.setTipoCarro(txtTipoCarro.getText());
-        cliente.setColorCarro(txtColorCarro.getText());
-        cliente.setAño(Integer.parseInt(txtAnioCarro.getText()));
-        cliente.setCorreo(txtEstadoCarro.getText());
-   */
-       
+    
         ClienteDB dao = new ClienteDB();
-      
+      String textoEdad = txtEdad.getText().trim();
+
+try {
+    int edad = Integer.parseInt(textoEdad);
+    // Usar la edad aquí
+} catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(null, "Por favor, ingresa un número válido en el campo de edad.");
+    return; // Salir del método si hay error
+}
+if (!textoEdad.matches("\\d+")) {
+    JOptionPane.showMessageDialog(null, "La edad debe ser un número entero.");
+    return;
+}
+
         if (dao.RegistrarClientes(cliente)){
             JOptionPane.showMessageDialog(this, "Cliente registrado con éxito");
             //limpiarCampos();
@@ -1058,28 +1096,6 @@ public class Ventas extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Error al registrar cliente");
         }
         
-        int respuesta = JOptionPane.showConfirmDialog(
-        null, 
-        "¿El cliente desea un seguro?", 
-        "Confirmación", 
-        JOptionPane.YES_NO_OPTION
-    );
-    Seguros segurosPanel = new Seguros();
-    boolean ConfirmacionSeguro = false;
-    
-    // Paso 3: Si el usuario dice que existe, buscar sus datos
-    if (respuesta == JOptionPane.YES_OPTION) {
-        
-        segurosPanel.setDatosCliente(cliente); // Autocompletar campos
-                ConfirmacionSeguro = true;
-                JOptionPane.showMessageDialog(null, "Datos del cliente cargados correctamente");
-}
-       
-    // Paso 4: Configurar el estado y mostrar el panel
-    segurosPanel.setClienteYaExiste(ConfirmacionSeguro);
-    AdministradorPanel panelP = new AdministradorPanel(jPanelContenido);
-        panelP.mostrarPanel(segurosPanel);
-    
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void txtColoniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtColoniaActionPerformed
@@ -1156,7 +1172,6 @@ public class Ventas extends javax.swing.JPanel {
     private javax.swing.JPanel bgDomicilio;
     private javax.swing.JButton btnContinuar;
     private javax.swing.JComboBox<String> cbGenero;
-    private javax.swing.JPanel jPanelCarro;
     private javax.swing.JPanel jPanelDatosCliente;
     private javax.swing.JPanel jPanelDireccion;
     private javax.swing.JSeparator jSeparator1;
@@ -1183,6 +1198,7 @@ public class Ventas extends javax.swing.JPanel {
     private javax.swing.JTextField txtMunicipio;
     private javax.swing.JTextField txtNoLicencia;
     private javax.swing.JTextField txtNombreCliente;
+    private javax.swing.JPanel txtPrecio;
     private javax.swing.JTextField txtTelefonoCliente;
     private javax.swing.JTextField txtTipoCarro;
     // End of variables declaration//GEN-END:variables

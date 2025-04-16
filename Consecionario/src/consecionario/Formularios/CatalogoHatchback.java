@@ -5,7 +5,7 @@
 package consecionario.Formularios;
 
 import BD.CatalogoBD;
-import consecionario.CatalogoCarros;
+import consecionario.Clases.CatalogoCarros;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.util.List;
@@ -583,8 +583,24 @@ public class CatalogoHatchback extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSiguiente3ActionPerformed
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
-        // TODO add your handling code here:
         
+   CatalogoCarros carroSeleccionado = new CatalogoCarros();
+carroSeleccionado.setMarca(txtMarca1.getText());
+carroSeleccionado.setModelo(txtModelo1.getText());
+carroSeleccionado.setAnioFabricacion(txtAnio.getText());
+
+// Quitar símbolos y convertir el precio a número
+String precioTexto = txtPrecio.getText().replace("$", "").replace(",", "").trim();
+carroSeleccionado.setPrecio(Integer.parseInt(precioTexto));
+
+// Crear el nuevo panel de ventas
+Ventas ventasPanel = new Ventas(carroSeleccionado);
+
+// Obtener la ventana Principal (el JFrame)
+Principal ventanaPrincipal = (Principal) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+// Cambiar el contenido del panel central
+ventanaPrincipal.setPanelContenido(ventasPanel);
     }//GEN-LAST:event_btnSeleccionarActionPerformed
 
 
