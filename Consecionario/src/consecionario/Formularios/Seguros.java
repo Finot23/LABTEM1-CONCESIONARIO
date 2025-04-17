@@ -9,6 +9,13 @@ import BD.SegurosBD;
 import consecionario.Cliente;
 import consecionario.Seguro;
 import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+import javax.swing.*;
+import java.awt.*;
+import java.util.concurrent.ExecutionException;
 
 
 /**
@@ -17,11 +24,17 @@ import javax.swing.JOptionPane;
  */
 public class Seguros extends javax.swing.JPanel {
     private boolean clienteYaExiste = false;
+    private DocumentListener documentListener;
+    private ItemListener checkboxListener;
+    private java.awt.event.ActionListener comboBoxListener;
+    
     /**
      * Creates new form Seguros
      */
     public Seguros() {
         initComponents();
+        inicializarListeners();
+        configurarListeners();
     }
 
     /**
@@ -746,33 +759,87 @@ public class Seguros extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
+   private void inicializarListeners() {
+        documentListener = new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                actualizarCalculos();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                actualizarCalculos();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                actualizarCalculos();
+            }
+        };
+        
+        checkboxListener = new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                actualizarCalculos();
+            }
+        };
+        
+        comboBoxListener = new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                actualizarCalculos();
+            }
+        };
+    }
+    
+    // Método para asignar los listeners a los componentes
+    private void configurarListeners() {
+        // Campos de texto
+        fieldValorAuto.getDocument().addDocumentListener(documentListener);
+        fieldEdad.getDocument().addDocumentListener(documentListener);
+        
+        // Comboboxes
+        comboCobertura.addActionListener(comboBoxListener);
+        comboPeriodo.addActionListener(comboBoxListener);
+        comboGenero.addActionListener(comboBoxListener);
+        
+        // Checkboxes
+        checkVial.addItemListener(checkboxListener);
+        checkPerdidaTotal.addItemListener(checkboxListener);
+        checkLlantas.addItemListener(checkboxListener);
+        checkRobo.addItemListener(checkboxListener);
+        checkRCA.addItemListener(checkboxListener);
+        checkJuridico.addItemListener(checkboxListener);
+    }
     
     private void actualizarCalculos() {
     try {
-        // Crear objeto seguro temporal
+        if (fieldValorAuto.getText().trim().isEmpty()) {
+            labelPrima.setText("$0 MXN");
+            labelValorAsegurado.setText("$0 MXN");
+            return;
+        }
+
         Seguro seguro = new Seguro();
-        
-        // Obtener valores del formulario
         seguro.setValorBaseAuto(Integer.parseInt(fieldValorAuto.getText()));
-        seguro.setEdadConductor(Integer.parseInt(fieldEdad.getText()));
+        seguro.setEdadConductor(fieldEdad.getText().trim().isEmpty() ? 30 : Integer.parseInt(fieldEdad.getText()));
+        seguro.setGeneroConductor(comboGenero.getSelectedItem().toString());
         seguro.setCobertura(comboCobertura.getSelectedItem().toString());
-        
-        // Configurar coberturas adicionales
+        seguro.setPeriodo(comboPeriodo.getSelectedItem().toString());
         seguro.setCoberturaVial(checkVial.isSelected());
         seguro.setCoberturaLlantas(checkLlantas.isSelected());
-        // ... configurar otras coberturas
+        seguro.setCoberturaPerdidaTotal(checkPerdidaTotal.isSelected());
+        seguro.setCoberturaRCA(checkRCA.isSelected());
+        seguro.setCoberturaRobo(checkRobo.isSelected());
+        seguro.setCoberturaJuridico(checkJuridico.isSelected());
         
-        // Calcular
-        int prima = seguro.calcularPrima();
         int valorAsegurado = seguro.calcularValorAsegurado();
+        int prima = seguro.calcularPrima();
         
-        // Actualizar labels
         labelPrima.setText(String.format("$%,d MXN", prima));
         labelValorAsegurado.setText(String.format("$%,d MXN", valorAsegurado));
         
     } catch (NumberFormatException e) {
-        // Manejar campos vacíos o inválidos
         labelPrima.setText("$0 MXN");
         labelValorAsegurado.setText("$0 MXN");
     }
@@ -814,81 +881,120 @@ public void setGenero(String genero) {
     
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         // TODO add your handling code here:
-        // --- Parte 1: Obtener datos del formulario ---
-    Cliente cliente = new Cliente();
-    cliente.setApellidoP(fieldApellidoP.getText());
-    cliente.setApellidoM(fieldApellidoM.getText());
-    cliente.setNombre(fieldNombre.getText());
-    cliente.setTelefono(Long.parseLong(fieldTelefono.getText()));
-    cliente.setCorreo(fieldEmail.getText());
-    cliente.setCalle(fieldCalle.getText());
-    cliente.setColonia(fieldColonia.getText());
-    cliente.setMunicipio(fieldMunicipio.getText());
-    cliente.setCiudad(fieldCiudad.getText());
-    cliente.setEstado(fieldEstado.getText());
-    cliente.setCP(fieldCP.getText());
-    cliente.setCurp(fieldCurp.getText());
-    cliente.setLicencia(fieldLicencia.getText());
-    cliente.setGenero(comboGenero.getSelectedItem().toString());
-    cliente.setEdad((int) Long.parseLong(fieldEdad.getText()));
+         // 1. Sincronizar cálculos
+    actualizarCalculos();
     
-    // --- Parte 2: Registrar cliente SOLO si no existe ---
-    if (!clienteYaExiste) {
-        ClienteDB dao = new ClienteDB();
-        if (!dao.RegistrarClientes(cliente)) {
-            JOptionPane.showMessageDialog(this, "Error al registrar cliente");
-            return; // Detener el proceso si hay error
-        }
-    }
-    
-    // --- Parte 3: Procesar el seguro (siempre se ejecuta) ---
-    Seguro seguro = new Seguro();
-    seguro.setNombreS(fieldNombre.getText());
-    seguro.setApellidoP(fieldApellidoP.getText());
-    
-    // Generar resumen del auto
-    String resumenAuto = Seguro.generarResumenAuto(
-        fieldMarca.getText(),
-        fieldModelo.getText(), 
-        fieldValorAuto.getText(),
-        fieldPlacas.getText(),
-        fieldColor.getText()
-    );
-    seguro.setAutoResumen(resumenAuto);
-    
-    // Configurar datos del seguro
-    seguro.setCobertura(comboCobertura.getSelectedItem().toString());
-    seguro.setPeriodo(comboPeriodo.getSelectedItem().toString());
-    seguro.setMetodoP(comboPago.getSelectedItem().toString());
-    seguro.setEdadConductor(cliente.getEdad());
-    seguro.setGeneroConductor(cliente.getGenero());
-    seguro.setValorBaseAuto(Integer.parseInt(fieldValorAuto.getText()));
-    
-    // Coberturas adicionales
-    seguro.setCoberturaJuridico(checkJuridico.isSelected());
-    seguro.setCoberturaLlantas(checkLlantas.isSelected());
-    seguro.setCoberturaPerdidaTotal(checkPerdidaTotal.isSelected());
-    seguro.setCoberturaRCA(checkRCA.isSelected());
-    seguro.setCoberturaRobo(checkRobo.isSelected());
-    seguro.setCoberturaVial(checkVial.isSelected());
-    
-    // Calcular y mostrar valores
-    int valorAsegurado = seguro.calcularValorAsegurado();
-    int prima = seguro.calcularPrima();
-    labelPrima.setText(String.valueOf(prima) + " MXN");
-    labelValorAsegurado.setText(String.valueOf(valorAsegurado) + " MXN");
-    
-    // Registrar seguro
-    SegurosBD sao = new SegurosBD();
-    if (sao.RegistrarSeguro(seguro)) {
-        String mensaje = clienteYaExiste ? 
-            "Seguro registrado para cliente existente" : 
-            "Cliente nuevo y seguro registrados correctamente";
-        JOptionPane.showMessageDialog(this, mensaje);
-    } else {
-        JOptionPane.showMessageDialog(this, "Error al registrar seguro");
+    // 2. Validar campos obligatorios
+    if (fieldValorAuto.getText().trim().isEmpty() || fieldNombre.getText().trim().isEmpty() || 
+        fieldApellidoP.getText().trim().isEmpty() || fieldTelefono.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Complete todos los campos obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
     }
 
+    // 3. Configurar diálogo de carga (ESTA ES LA PARTE NUEVA)
+    JDialog loadingDialog = new JDialog();
+    loadingDialog.setUndecorated(true);
+    loadingDialog.setSize(250, 100);
+    loadingDialog.setLocationRelativeTo(this);
+    
+    JPanel panel = new JPanel(new BorderLayout());
+    panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+    
+    JProgressBar progressBar = new JProgressBar();
+    progressBar.setIndeterminate(true);
+    JLabel label = new JLabel("Procesando pago...", JLabel.CENTER);
+    
+    panel.add(progressBar, BorderLayout.CENTER);
+    panel.add(label, BorderLayout.SOUTH);
+    loadingDialog.add(panel);
+    loadingDialog.setVisible(true);
+
+    // 4. Ejecutar en segundo plano (CON TIEMPO EXTENDIDO)
+    new Thread(() -> {
+        try {
+            // ==== TU LÓGICA ORIGINAL INICIA AQUÍ ====
+            Thread.sleep(3000); // Espera inicial de 3 segundos (simula procesamiento)
+            
+            Cliente cliente = new Cliente();
+            cliente.setNombre(fieldNombre.getText());
+            cliente.setApellidoP(fieldApellidoP.getText());
+            cliente.setApellidoM(fieldApellidoM.getText());
+            cliente.setTelefono(Long.parseLong(fieldTelefono.getText()));
+            cliente.setCorreo(fieldEmail.getText());
+            cliente.setCalle(fieldCalle.getText());
+            cliente.setColonia(fieldColonia.getText());
+            cliente.setMunicipio(fieldMunicipio.getText());
+            cliente.setCiudad(fieldCiudad.getText());
+            cliente.setEstado(fieldEstado.getText());
+            cliente.setCP(fieldCP.getText());
+            cliente.setCurp(fieldCurp.getText());
+            cliente.setLicencia(fieldLicencia.getText());
+            cliente.setGenero(comboGenero.getSelectedItem().toString());
+            cliente.setEdad(Integer.parseInt(fieldEdad.getText()));
+
+            if (!clienteYaExiste) {
+                ClienteDB clienteDB = new ClienteDB();
+                if (!clienteDB.RegistrarClientes(cliente)) {
+                    throw new Exception("Error al registrar cliente");
+                }
+            }
+
+            Seguro seguro = new Seguro();
+            seguro.setNombreS(fieldNombre.getText());
+            seguro.setApellidoP(fieldApellidoP.getText());
+            seguro.setAutoResumen(Seguro.generarResumenAuto(
+                fieldMarca.getText(),
+                fieldModelo.getText(),
+                fieldAnio.getText(),
+                fieldPlacas.getText(),
+                fieldColor.getText()
+            ));
+            seguro.setCobertura(comboCobertura.getSelectedItem().toString());
+            seguro.setPeriodo(comboPeriodo.getSelectedItem().toString());
+            seguro.setMetodoP(comboPago.getSelectedItem().toString());
+            seguro.setValor(Integer.parseInt(labelValorAsegurado.getText().replaceAll("[^0-9]", "")));
+            seguro.setPrima(Integer.parseInt(labelPrima.getText().replaceAll("[^0-9]", "")));
+            seguro.setEdadConductor(cliente.getEdad());
+            seguro.setGeneroConductor(cliente.getGenero());
+            seguro.setValorBaseAuto(Integer.parseInt(fieldValorAuto.getText()));
+            seguro.setCoberturaJuridico(checkJuridico.isSelected());
+            seguro.setCoberturaLlantas(checkLlantas.isSelected());
+            seguro.setCoberturaPerdidaTotal(checkPerdidaTotal.isSelected());
+            seguro.setCoberturaRCA(checkRCA.isSelected());
+            seguro.setCoberturaRobo(checkRobo.isSelected());
+            seguro.setCoberturaVial(checkVial.isSelected());
+
+            SegurosBD segurosBD = new SegurosBD();
+            boolean resultado = segurosBD.RegistrarSeguro(seguro);
+            // ==== TU LÓGICA ORIGINAL TERMINA AQUÍ ====
+            
+            Thread.sleep(2000); // Espera adicional de 2 segundos (antes de mostrar resultado)
+            
+            SwingUtilities.invokeLater(() -> {
+                loadingDialog.dispose();
+                if (resultado) {
+                    JOptionPane.showMessageDialog(Seguros.this, 
+                        "✅ Pago aprobado", 
+                        "Éxito", 
+                        JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(Seguros.this, 
+                        "Error en el proceso", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE);
+                }
+            });
+            
+        } catch (Exception e) {
+            SwingUtilities.invokeLater(() -> {
+                loadingDialog.dispose();
+                JOptionPane.showMessageDialog(Seguros.this, 
+                    "Error: " + e.getMessage(), 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+            });
+        }
+    }).start();
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void fieldCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCPActionPerformed

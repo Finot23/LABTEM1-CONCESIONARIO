@@ -117,6 +117,9 @@ public class Principal extends javax.swing.JFrame {
         jPanelCatalogo = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         iconCatalogo = new javax.swing.JLabel();
+        jPanelAlmacen = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        iconCatalogo1 = new javax.swing.JLabel();
         jPanelContenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -292,6 +295,7 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jPanelCatalogo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanelCatalogo.setPreferredSize(new java.awt.Dimension(100, 70));
         jPanelCatalogo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanelCatalogoMouseClicked(evt);
@@ -323,6 +327,38 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
+        jPanelAlmacen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanelAlmacen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelAlmacenMouseClicked(evt);
+            }
+        });
+
+        jLabel7.setText("Almacen");
+
+        iconCatalogo1.setText("Catalogo");
+
+        javax.swing.GroupLayout jPanelAlmacenLayout = new javax.swing.GroupLayout(jPanelAlmacen);
+        jPanelAlmacen.setLayout(jPanelAlmacenLayout);
+        jPanelAlmacenLayout.setHorizontalGroup(
+            jPanelAlmacenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAlmacenLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(iconCatalogo1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelAlmacenLayout.setVerticalGroup(
+            jPanelAlmacenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAlmacenLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanelAlmacenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(iconCatalogo1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout bgMenuLayout = new javax.swing.GroupLayout(bgMenu);
         bgMenu.setLayout(bgMenuLayout);
         bgMenuLayout.setHorizontalGroup(
@@ -340,7 +376,8 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgMenuLayout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(bgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanelCatalogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelAlmacen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelCatalogo, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                     .addComponent(jPanelPaginaPrincipal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelHistorial, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelSeguros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -367,7 +404,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jPanelVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanelCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanelAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         bg.add(bgMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 840));
@@ -457,6 +496,11 @@ public class Principal extends javax.swing.JFrame {
           CategoriaCarro categoriaCarro = new CategoriaCarro(this);
         MostrarJpanel(categoriaCarro);
     }//GEN-LAST:event_jPanelCatalogoMouseClicked
+
+    private void jPanelAlmacenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelAlmacenMouseClicked
+        // TODO add your handling code here:
+        MostrarJpanel(new Catalogo());
+    }//GEN-LAST:event_jPanelAlmacenMouseClicked
      
     /**
      * @param args the command line arguments
@@ -500,6 +544,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel bg;
     private javax.swing.JPanel bgMenu;
     private javax.swing.JLabel iconCatalogo;
+    private javax.swing.JLabel iconCatalogo1;
     private javax.swing.JLabel iconCredito;
     private javax.swing.JLabel iconHistorial;
     private javax.swing.JLabel iconHome;
@@ -512,6 +557,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanelAlmacen;
     private javax.swing.JPanel jPanelCatalogo;
     private javax.swing.JPanel jPanelContenido;
     private javax.swing.JPanel jPanelCredito;

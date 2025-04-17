@@ -4,21 +4,27 @@
  */
 package consecionario.Formularios;
 import BD.ConexionBD;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author andre
  */
 public class Catalogo extends javax.swing.JPanel {
+    
+    
 
     /**
      * Creates new form Catalogo
@@ -27,7 +33,8 @@ public class Catalogo extends javax.swing.JPanel {
         initComponents();
       
     } 
-     private void filtrarPorCategoria() {
+    
+    private void filtrarPorCategoria() {
     try {
         Connection conn = ConexionBD.conn();
         if (conn != null) {
@@ -61,6 +68,7 @@ public class Catalogo extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Error al filtrar autos: " + e.getMessage());
     }
 }
+     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -71,15 +79,17 @@ public class Catalogo extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
         Filtrar = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        btnAEauto = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(810, 520));
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cat.setText("FormsCatalogos");
-        bg.add(cat, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, -20, 150, 100));
+        cat.setText("ALMACEN");
+        bg.add(cat, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, -30, 150, 100));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,10 +125,21 @@ public class Catalogo extends javax.swing.JPanel {
                 FiltrarActionPerformed(evt);
             }
         });
-        bg.add(Filtrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, -1, -1));
+        bg.add(Filtrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, -1, -1));
 
-        jTextField1.setText("Escoge tu categoria preferida");
-        bg.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, -1, -1));
+        btnAEauto.setText("Agregar Auto");
+        btnAEauto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAEautoActionPerformed(evt);
+            }
+        });
+        bg.add(btnAEauto, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, -1, -1));
+
+        jButton1.setText("Eliminar Auto");
+        bg.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, -1, -1));
+
+        jLabel1.setText("Escoge tu categoria preferida");
+        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -146,14 +167,23 @@ public class Catalogo extends javax.swing.JPanel {
        filtrarPorCategoria();
     }//GEN-LAST:event_FiltrarActionPerformed
 
+    private void btnAEautoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAEautoActionPerformed
+        // TODO add your handling code here:
+        InterfaceEA dialog = new InterfaceEA();
+        //dialog.setCatalogoReference(this);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnAEautoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Filtrar;
     private javax.swing.JPanel bg;
+    private javax.swing.JButton btnAEauto;
     private javax.swing.JLabel cat;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
