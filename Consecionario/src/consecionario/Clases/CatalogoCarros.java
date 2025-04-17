@@ -13,18 +13,19 @@ public class CatalogoCarros {
   int Id;
     String Marca;
     String Modelo;
-    String AnioFabricacion;
-    int Precio;
+    int AnioFabricacion;
+    double Precio;
     String Color;
     String Estado;
     String Categoria;
     String Imagen;
     String Descripcion;
+    Long Kilometraje;
 public CatalogoCarros() {
     // Constructor vacío requerido para instanciar sin parámetros
 }
 
-    public CatalogoCarros(int Id, String Marca, String Modelo, String AnioFabricacion, int Precio, String Color, String Estado, String Categoria, String Imagen, String Descripcion) {
+    public CatalogoCarros(int Id, String Marca, String Modelo, int AnioFabricacion, double Precio, String Color, String Estado, String Categoria, String Imagen, String Descripcion, Long Kilometraje) {
         this.Id = Id;
         this.Marca = Marca;
         this.Modelo = Modelo;
@@ -35,6 +36,7 @@ public CatalogoCarros() {
         this.Categoria = Categoria;
         this.Imagen = Imagen;
         this.Descripcion = Descripcion;
+        this.Kilometraje = Kilometraje;
     }
 
     public int getId() {
@@ -49,11 +51,11 @@ public CatalogoCarros() {
         return Modelo;
     }
 
-    public String getAnioFabricacion() {
+    public int getAnioFabricacion() {
         return AnioFabricacion;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return Precio;
     }
 
@@ -77,6 +79,10 @@ public CatalogoCarros() {
         return Descripcion;
     }
 
+    public Long getKilometraje() {
+        return Kilometraje;
+    }
+
     public void setId(int Id) {
         this.Id = Id;
     }
@@ -89,11 +95,11 @@ public CatalogoCarros() {
         this.Modelo = Modelo;
     }
 
-    public void setAnioFabricacion(String AnioFabricacion) {
+    public void setAnioFabricacion(int AnioFabricacion) {
         this.AnioFabricacion = AnioFabricacion;
     }
 
-    public void setPrecio(int Precio) {
+    public void setPrecio(double Precio) {
         this.Precio = Precio;
     }
 
@@ -116,7 +122,11 @@ public CatalogoCarros() {
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
     }
-    
+
+    public void setKilometraje(Long Kilometraje) {
+        this.Kilometraje = Kilometraje;
+    }
+
 }
 
 

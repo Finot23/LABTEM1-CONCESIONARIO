@@ -29,21 +29,21 @@ public boolean RegistrarCarro(CatalogoCarros cl){
             return false;
         }
         
-     String sql = "INSERT INTO almacen (id, marca, modelo, año_fabricacion, precio, color, estado, categoria, imagen, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+     String sql = "INSERT INTO almacen (id, marca, modelo, anio_fabricacion, precio, color, estado, categoria, imagen, descripcion, kilometraje) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       
      try{
         ps = con.prepareStatement(sql);
         ps.setInt(1, cl.getId());
         ps.setString(2, cl.getMarca());
         ps.setString(3, cl.getModelo());
-        ps.setString(4, cl.getAnioFabricacion());
-        ps.setInt(5, cl.getPrecio());
+        ps.setInt(4, cl.getAnioFabricacion());
+        ps.setDouble(5, cl.getPrecio());
         ps.setString(6, cl.getColor());
         ps.setString(7, cl.getEstado());
         ps.setString(8, cl.getCategoria());
         ps.setString(9, cl.getImagen());
         ps.setString(10, cl.getDescripcion());
-        
+        ps.setLong(11, cl.getKilometraje());
         
         ps.executeUpdate();
         return true;
@@ -82,13 +82,14 @@ public List<CatalogoCarros> obtenerPorCategoria(String categoria) {
             carro.setId(rs.getInt("id"));
             carro.setMarca(rs.getString("marca"));
             carro.setModelo(rs.getString("modelo"));
-            carro.setAnioFabricacion(rs.getString("año_fabricacion"));
-            carro.setPrecio(rs.getInt("precio"));
+            carro.setAnioFabricacion(rs.getInt("anio_fabricacion"));
+            carro.setPrecio(rs.getDouble("precio"));
             carro.setColor(rs.getString("color"));
             carro.setEstado(rs.getString("estado"));
             carro.setCategoria(rs.getString("categoria"));
             carro.setImagen(rs.getString("imagen"));
             carro.setDescripcion(rs.getString("descripcion"));
+            carro.setKilometraje(rs.getLong("kilometraje"));
             lista.add(carro);
         }
     } catch (SQLException e) {

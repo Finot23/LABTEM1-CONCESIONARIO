@@ -25,17 +25,23 @@ import java.util.concurrent.ExecutionException;
  */
 public class Seguros extends javax.swing.JPanel {
     
-     private Cliente cliente;
+    private CatalogoCarros carro;
+    private Cliente cliente;
+    
     private JPanel jPanelContenido;
      
-     public Seguros(Cliente cliente) {
+     public Seguros(Cliente cliente, CatalogoCarros carro) {
         this.cliente = cliente;
+        this.carro = carro;
         initComponents();
         cargarDatosCliente(); 
+        cargarDatosCarroSeleccionado();
        
     }
+     
+     
     private void cargarDatosCliente() {
-    // Suponiendo que tienes JTextField o JLabel con estos nombres:
+
     fieldNombre.setText(cliente.getNombre());
     fieldApellidoP.setText(cliente.getApellidoP());
     fieldApellidoM.setText(cliente.getApellidoM());
@@ -50,20 +56,23 @@ public class Seguros extends javax.swing.JPanel {
     fieldMunicipio.setText(cliente.getMunicipio());
     fieldEstado.setText(cliente.getEstado());
     fieldCP.setText(cliente.getCP());
+    
+    
+}
+    private void cargarDatosCarroSeleccionado(){
+    fieldModelo.setText(carro.getModelo());
+    fieldMarca.setText(carro.getMarca());
+    fieldAnio.setText(String.valueOf(carro.getAnioFabricacion()));
+    fieldColor.setText(carro.getColor());
+    comboTipo.setSelectedItem(carro.getCategoria());
+    fieldValorAuto.setText(String.valueOf(carro.getPrecio()));
 }
      public Seguros(JPanel jPanelContenido) {
         this.jPanelContenido = jPanelContenido;
         initComponents();
     }
      
-     public Seguros(CatalogoCarros carro) {
-        initComponents();
-
-        fieldMarca.setText(carro.getMarca());
-        fieldModelo.setText(carro.getModelo());
-        fieldAnio.setText(carro.getAnioFabricacion());
-        // txtPrecio.setText(String.valueOf(carro.getPrecio())); // Solo si existe ese campo
-    }
+    
 public Seguros() {
         initComponents();
     }

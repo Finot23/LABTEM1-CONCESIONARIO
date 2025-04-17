@@ -50,7 +50,7 @@ public class CatalogoSUV extends javax.swing.JPanel {
         txtCaracteristicas1.setText("<html>" + lista.get(0).getDescripcion() + "</html>");
         txtMarca.setText(lista.get(0).getMarca() +"   •  ");
         txtModelo.setText(lista.get(0).getModelo());
-        txtAnio.setText(lista.get(0).getAnioFabricacion());
+        //txtAnio.setText(lista.get(0).getAnioFabricacion());
         txtPrecio.setText("$" + lista.get(0).getPrecio());
     }
 
@@ -59,7 +59,7 @@ public class CatalogoSUV extends javax.swing.JPanel {
         txtCaracteristicas2.setText("<html>" + lista.get(1).getDescripcion() + "</html>");
         txtMarca1.setText(lista.get(1).getMarca() +"   •  ");
         txtModelo1.setText(lista.get(1).getModelo());
-        txtAnio1.setText(lista.get(1).getAnioFabricacion());
+        //txtAnio1.setText(lista.get(1).getAnioFabricacion());
         txtPrecio1.setText("$" + lista.get(1).getPrecio());
     }
 
@@ -68,7 +68,7 @@ public class CatalogoSUV extends javax.swing.JPanel {
         txtCaracteristicas3.setText("<html>" + lista.get(2).getDescripcion() + "</html>");
         txtMarca2.setText(lista.get(2).getMarca() +"   •  ");
         txtModelo2.setText(lista.get(2).getModelo());
-        txtAnio2.setText(lista.get(2).getAnioFabricacion());
+        //txtAnio2.setText(lista.get(2).getAnioFabricacion());
         txtPrecio2.setText("$" + lista.get(2).getPrecio());
     }
 

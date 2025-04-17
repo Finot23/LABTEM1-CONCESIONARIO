@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -55,28 +56,43 @@ public class CatalogoHatchback extends javax.swing.JPanel {
     if (lista.size() >= 1) {
         SetImageLabel(txtImagen1, lista.get(0).getImagen());
         //txtCaracteristicas1.setText("<html>" + lista.get(0).getDescripcion() + "</html>");
-        txtMarca.setText(lista.get(0).getMarca() +"   •  ");
+        txtMarca.setText(lista.get(0).getMarca());
         txtModelo.setText(lista.get(0).getModelo());
-        txtAnio.setText(lista.get(0).getAnioFabricacion());
+        txtAnio.setText(String.valueOf(lista.get(0).getAnioFabricacion()));
         txtPrecio.setText("$" + lista.get(0).getPrecio());
+        txtCondicion.setText(lista.get(0).getEstado());
+        txtColor.setText(lista.get(0).getColor());
+        txtTipo.setText(lista.get(0).getCategoria());
+        txtKilometraje.setText(String.valueOf(lista.get(0).getKilometraje()));
+        txtId.setText(String.valueOf(lista.get(0).getId()));
     }
 
     if (lista.size() >= 2) {
         SetImageLabel(txtImagen2, lista.get(1).getImagen());
         //txtCaracteristicas2.setText("<html>" + lista.get(1).getDescripcion() + "</html>");
-        txtMarca1.setText(lista.get(1).getMarca() +"   •  ");
+        txtMarca1.setText(lista.get(1).getMarca());
         txtModelo1.setText(lista.get(1).getModelo());
-        txtAnio1.setText(lista.get(1).getAnioFabricacion());
+        txtAnio1.setText(String.valueOf(lista.get(1).getAnioFabricacion()));
         txtPrecio1.setText("$" + lista.get(1).getPrecio());
+        txtCondicion1.setText(lista.get(1).getEstado());
+        txtColor1.setText(lista.get(1).getColor());
+        txtTipo1.setText(lista.get(1).getCategoria());
+        txtKilometraje1.setText(String.valueOf(lista.get(1).getKilometraje()));
+    txtId1.setText(String.valueOf(lista.get(1).getId()));
     }
 
     if (lista.size() >= 3) {
         SetImageLabel(txtImagen3, lista.get(2).getImagen());
         //txtCaracteristicas3.setText("<html>" + lista.get(2).getDescripcion() + "</html>");
-        txtMarca2.setText(lista.get(2).getMarca() +"   •  ");
+        txtMarca2.setText(lista.get(2).getMarca());
         txtModelo2.setText(lista.get(2).getModelo());
-        txtAnio2.setText(lista.get(2).getAnioFabricacion());
+        txtAnio2.setText(String.valueOf(lista.get(2).getAnioFabricacion()));
         txtPrecio2.setText("$" + lista.get(2).getPrecio());
+        txtCondicion2.setText(lista.get(2).getEstado());
+        txtColor2.setText(lista.get(2).getColor());
+        txtTipo2.setText(lista.get(2).getCategoria());
+        txtKilometraje2.setText(String.valueOf(lista.get(2).getKilometraje()));
+        txtId2.setText(String.valueOf(lista.get(2).getId()));
     }
 
        
@@ -133,6 +149,11 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         txtPrecioDesde1 = new javax.swing.JLabel();
         btnSeleccionar = new javax.swing.JButton();
         btnSiguiente = new javax.swing.JButton();
+        txtTipo1 = new javax.swing.JLabel();
+        txtColor1 = new javax.swing.JLabel();
+        txtCondicion1 = new javax.swing.JLabel();
+        txtId1 = new javax.swing.JLabel();
+        txtKilometraje1 = new javax.swing.JLabel();
         jPanelCoche3 = new javax.swing.JPanel();
         txtImagen3 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -143,6 +164,11 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         txtPrecio2 = new javax.swing.JLabel();
         txtPrecioDesde2 = new javax.swing.JLabel();
         btnSiguiente1 = new javax.swing.JButton();
+        txtTipo2 = new javax.swing.JLabel();
+        txtColor2 = new javax.swing.JLabel();
+        txtCondicion2 = new javax.swing.JLabel();
+        txtId2 = new javax.swing.JLabel();
+        txtKilometraje2 = new javax.swing.JLabel();
         jPanelCoche1 = new javax.swing.JPanel();
         txtImagen1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -153,6 +179,11 @@ public class CatalogoHatchback extends javax.swing.JPanel {
         txtPrecio = new javax.swing.JLabel();
         txtPrecioDesde = new javax.swing.JLabel();
         btnSiguiente3 = new javax.swing.JButton();
+        txtId = new javax.swing.JLabel();
+        txtKilometraje = new javax.swing.JLabel();
+        txtTipo = new javax.swing.JLabel();
+        txtColor = new javax.swing.JLabel();
+        txtCondicion = new javax.swing.JLabel();
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setPreferredSize(new java.awt.Dimension(500, 199));
@@ -251,6 +282,16 @@ public class CatalogoHatchback extends javax.swing.JPanel {
             }
         });
 
+        txtTipo1.setText("Tipo");
+
+        txtColor1.setText("Color");
+
+        txtCondicion1.setText("Condicion");
+
+        txtId1.setText("id");
+
+        txtKilometraje1.setText("Kilometraje");
+
         javax.swing.GroupLayout jPanelCoche2Layout = new javax.swing.GroupLayout(jPanelCoche2);
         jPanelCoche2.setLayout(jPanelCoche2Layout);
         jPanelCoche2Layout.setHorizontalGroup(
@@ -259,18 +300,33 @@ public class CatalogoHatchback extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addComponent(txtImagen2, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanelCoche2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCoche2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelCoche2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCoche2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtKilometraje1)
+                        .addGap(51, 51, 51)
+                        .addComponent(txtCondicion1)
+                        .addGap(139, 139, 139))
                     .addGroup(jPanelCoche2Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addComponent(btnSeleccionar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                        .addComponent(btnSiguiente)
-                        .addGap(68, 68, 68))))
+                        .addGroup(jPanelCoche2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtTipo1)
+                            .addComponent(btnSeleccionar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                        .addGroup(jPanelCoche2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnSiguiente)
+                            .addComponent(txtColor1))
+                        .addGap(63, 63, 63))
+                    .addGroup(jPanelCoche2Layout.createSequentialGroup()
+                        .addGroup(jPanelCoche2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelCoche2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelCoche2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanelCoche2Layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(txtId1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanelCoche2Layout.setVerticalGroup(
             jPanelCoche2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,7 +340,17 @@ public class CatalogoHatchback extends javax.swing.JPanel {
                         .addGap(88, 88, 88)
                         .addGroup(jPanelCoche2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSeleccionar)
-                            .addComponent(btnSiguiente)))
+                            .addComponent(btnSiguiente))
+                        .addGap(41, 41, 41)
+                        .addComponent(txtId1)
+                        .addGap(8, 8, 8)
+                        .addGroup(jPanelCoche2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTipo1)
+                            .addComponent(txtColor1))
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanelCoche2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCondicion1)
+                            .addComponent(txtKilometraje1)))
                     .addComponent(txtImagen2, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(379, Short.MAX_VALUE))
         );
@@ -375,6 +441,16 @@ public class CatalogoHatchback extends javax.swing.JPanel {
             }
         });
 
+        txtTipo2.setText("Tipo");
+
+        txtColor2.setText("Color");
+
+        txtCondicion2.setText("Condicion");
+
+        txtId2.setText("id");
+
+        txtKilometraje2.setText("Kilometraje");
+
         javax.swing.GroupLayout jPanelCoche3Layout = new javax.swing.GroupLayout(jPanelCoche3);
         jPanelCoche3.setLayout(jPanelCoche3Layout);
         jPanelCoche3Layout.setHorizontalGroup(
@@ -383,16 +459,35 @@ public class CatalogoHatchback extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addComponent(txtImagen3, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanelCoche3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCoche3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelCoche3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(7, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCoche3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelCoche3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCoche3Layout.createSequentialGroup()
+                                .addComponent(txtKilometraje2)
+                                .addGap(13, 13, 13))
+                            .addGroup(jPanelCoche3Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(txtId2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(56, 56, 56)
                         .addComponent(btnSiguiente1)
-                        .addGap(44, 44, 44))))
+                        .addGap(44, 44, 44))
+                    .addGroup(jPanelCoche3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelCoche3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelCoche3Layout.createSequentialGroup()
+                                .addGroup(jPanelCoche3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanelCoche3Layout.createSequentialGroup()
+                                .addComponent(txtTipo2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtColor2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCoche3Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCondicion2)
+                                .addGap(23, 23, 23)))
+                        .addContainerGap())))
         );
         jPanelCoche3Layout.setVerticalGroup(
             jPanelCoche3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,8 +499,21 @@ public class CatalogoHatchback extends javax.swing.JPanel {
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(150, 150, 150)
-                        .addComponent(btnSiguiente1)))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanelCoche3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTipo2)
+                            .addComponent(txtColor2))
+                        .addGap(36, 36, 36)
+                        .addComponent(txtCondicion2)
+                        .addGroup(jPanelCoche3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelCoche3Layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(btnSiguiente1))
+                            .addGroup(jPanelCoche3Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(txtId2)
+                                .addGap(61, 61, 61)
+                                .addComponent(txtKilometraje2)))))
                 .addContainerGap(379, Short.MAX_VALUE))
         );
 
@@ -496,6 +604,16 @@ public class CatalogoHatchback extends javax.swing.JPanel {
             }
         });
 
+        txtId.setText("id");
+
+        txtKilometraje.setText("Kilometraje");
+
+        txtTipo.setText("Tipo");
+
+        txtColor.setText("Color");
+
+        txtCondicion.setText("Condicion");
+
         javax.swing.GroupLayout jPanelCoche1Layout = new javax.swing.GroupLayout(jPanelCoche1);
         jPanelCoche1.setLayout(jPanelCoche1Layout);
         jPanelCoche1Layout.setHorizontalGroup(
@@ -504,16 +622,37 @@ public class CatalogoHatchback extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addComponent(txtImagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanelCoche1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCoche1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelCoche1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(7, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCoche1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSiguiente3)
-                        .addGap(70, 70, 70))))
+                        .addGap(70, 70, 70))
+                    .addGroup(jPanelCoche1Layout.createSequentialGroup()
+                        .addGroup(jPanelCoche1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelCoche1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelCoche1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCoche1Layout.createSequentialGroup()
+                                        .addGap(63, 63, 63)
+                                        .addComponent(txtTipo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtColor)
+                                        .addGap(97, 97, 97))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCoche1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtCondicion)
+                                        .addGap(23, 23, 23))))
+                            .addGroup(jPanelCoche1Layout.createSequentialGroup()
+                                .addGap(96, 96, 96)
+                                .addGroup(jPanelCoche1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCoche1Layout.createSequentialGroup()
+                                        .addComponent(txtKilometraje)
+                                        .addGap(13, 13, 13))
+                                    .addGroup(jPanelCoche1Layout.createSequentialGroup()
+                                        .addGap(13, 13, 13)
+                                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(7, Short.MAX_VALUE))))
         );
         jPanelCoche1Layout.setVerticalGroup(
             jPanelCoche1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -526,7 +665,17 @@ public class CatalogoHatchback extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(76, 76, 76)
-                        .addComponent(btnSiguiente3)))
+                        .addComponent(btnSiguiente3)
+                        .addGap(19, 19, 19)
+                        .addComponent(txtId)
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanelCoche1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTipo)
+                            .addComponent(txtColor))
+                        .addGap(36, 36, 36)
+                        .addComponent(txtCondicion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtKilometraje)))
                 .addGap(0, 379, Short.MAX_VALUE))
         );
 
@@ -584,14 +733,22 @@ public class CatalogoHatchback extends javax.swing.JPanel {
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
         
-   CatalogoCarros carroSeleccionado = new CatalogoCarros();
+CatalogoCarros carroSeleccionado = new CatalogoCarros();
 carroSeleccionado.setMarca(txtMarca1.getText());
 carroSeleccionado.setModelo(txtModelo1.getText());
-carroSeleccionado.setAnioFabricacion(txtAnio.getText());
+carroSeleccionado.setAnioFabricacion(Integer.parseInt(txtAnio.getText()));
+carroSeleccionado.setColor(txtColor1.getText());
+carroSeleccionado.setEstado(txtCondicion1.getText());
+carroSeleccionado.setCategoria(txtTipo1.getText());
+carroSeleccionado.setKilometraje(Long.parseLong(txtKilometraje1.getText()));
+carroSeleccionado.setId(Integer.parseInt(txtId1.getText()));
+
+
+
 
 // Quitar símbolos y convertir el precio a número
-String precioTexto = txtPrecio.getText().replace("$", "").replace(",", "").trim();
-carroSeleccionado.setPrecio(Integer.parseInt(precioTexto));
+String precioTexto = txtPrecio1.getText().replace("$", "").replace(",", "").trim();
+carroSeleccionado.setPrecio(Double.parseDouble(precioTexto));
 
 // Crear el nuevo panel de ventas
 Ventas ventasPanel = new Ventas(carroSeleccionado);
@@ -623,9 +780,21 @@ ventanaPrincipal.setPanelContenido(ventasPanel);
     private javax.swing.JLabel txtAnio;
     private javax.swing.JLabel txtAnio1;
     private javax.swing.JLabel txtAnio2;
+    private javax.swing.JLabel txtColor;
+    private javax.swing.JLabel txtColor1;
+    private javax.swing.JLabel txtColor2;
+    private javax.swing.JLabel txtCondicion;
+    private javax.swing.JLabel txtCondicion1;
+    private javax.swing.JLabel txtCondicion2;
+    private javax.swing.JLabel txtId;
+    private javax.swing.JLabel txtId1;
+    private javax.swing.JLabel txtId2;
     private javax.swing.JLabel txtImagen1;
     private javax.swing.JLabel txtImagen2;
     private javax.swing.JLabel txtImagen3;
+    private javax.swing.JLabel txtKilometraje;
+    private javax.swing.JLabel txtKilometraje1;
+    private javax.swing.JLabel txtKilometraje2;
     private javax.swing.JLabel txtMarca;
     private javax.swing.JLabel txtMarca1;
     private javax.swing.JLabel txtMarca2;
@@ -638,5 +807,8 @@ ventanaPrincipal.setPanelContenido(ventasPanel);
     private javax.swing.JLabel txtPrecioDesde;
     private javax.swing.JLabel txtPrecioDesde1;
     private javax.swing.JLabel txtPrecioDesde2;
+    private javax.swing.JLabel txtTipo;
+    private javax.swing.JLabel txtTipo1;
+    private javax.swing.JLabel txtTipo2;
     // End of variables declaration//GEN-END:variables
 }

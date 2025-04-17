@@ -26,11 +26,12 @@ import javax.swing.JTextField;
 
 
 public class Ventas extends javax.swing.JPanel {
+    
 
     /**
      * Creates new form Ventas
      */
-    
+    private CatalogoCarros carroSeleccionado;
    
 
     String placeholderApellidoP = "Apellido Paterno";
@@ -139,12 +140,18 @@ public class Ventas extends javax.swing.JPanel {
     
     public Ventas(CatalogoCarros carro) {
     initComponents();
+    this.carroSeleccionado = carro;
     
     // Esto debe ser visible en pantalla
-    txtMarca.setText(carro.getMarca());
-    txtModelo.setText(carro.getModelo());
-    txtAnioCarro.setText(carro.getAnioFabricacion());
-    //txtPrecio.setText(String.valueOf(carro.getPrecio()));
+   txtMarca.setText(carro.getMarca());
+txtModelo.setText(carro.getModelo());
+txtColorCarro.setText(carro.getColor());
+txtEstadoCarro.setText(carro.getEstado());
+txtTipoCarro.setText(carro.getCategoria());
+txtAnioCarro.setText(String.valueOf(carro.getAnioFabricacion()));
+txtPrecioCarro.setText(String.valueOf(carro.getPrecio()));
+
+
 }
         
     /**
@@ -190,6 +197,7 @@ public class Ventas extends javax.swing.JPanel {
         txtColorCarro = new javax.swing.JTextField();
         txtAnioCarro = new javax.swing.JTextField();
         txtEstadoCarro = new javax.swing.JTextField();
+        txtPrecioCarro = new javax.swing.JTextField();
         btnContinuar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -591,6 +599,7 @@ public class Ventas extends javax.swing.JPanel {
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
+        txtMarca.setEditable(false);
         txtMarca.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtMarca.setForeground(new java.awt.Color(0, 0, 0));
         txtMarca.setText("Marca");
@@ -603,6 +612,7 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
+        txtModelo.setEditable(false);
         txtModelo.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtModelo.setForeground(new java.awt.Color(0, 0, 0));
         txtModelo.setText("Modelo");
@@ -618,6 +628,7 @@ public class Ventas extends javax.swing.JPanel {
         jSeparator3.setBackground(new java.awt.Color(153, 0, 51));
         jSeparator3.setForeground(new java.awt.Color(199, 0, 57));
 
+        txtTipoCarro.setEditable(false);
         txtTipoCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtTipoCarro.setForeground(new java.awt.Color(0, 0, 0));
         txtTipoCarro.setText("Tipo");
@@ -635,6 +646,7 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
+        txtColorCarro.setEditable(false);
         txtColorCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtColorCarro.setForeground(new java.awt.Color(0, 0, 0));
         txtColorCarro.setText("Color");
@@ -647,6 +659,7 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
+        txtAnioCarro.setEditable(false);
         txtAnioCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtAnioCarro.setForeground(new java.awt.Color(0, 0, 0));
         txtAnioCarro.setText("Año");
@@ -664,6 +677,7 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
+        txtEstadoCarro.setEditable(false);
         txtEstadoCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtEstadoCarro.setForeground(new java.awt.Color(0, 0, 0));
         txtEstadoCarro.setText("Condición");
@@ -673,6 +687,19 @@ public class Ventas extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtEstadoCarroFocusLost(evt);
+            }
+        });
+
+        txtPrecioCarro.setEditable(false);
+        txtPrecioCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtPrecioCarro.setForeground(new java.awt.Color(0, 0, 0));
+        txtPrecioCarro.setText("Precio");
+        txtPrecioCarro.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPrecioCarroFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPrecioCarroFocusLost(evt);
             }
         });
 
@@ -695,8 +722,10 @@ public class Ventas extends javax.swing.JPanel {
                         .addComponent(txtColorCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(txtPrecioLayout.createSequentialGroup()
                         .addComponent(txtAnioCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(116, 116, 116)
-                        .addComponent(txtEstadoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(113, 113, 113)
+                        .addComponent(txtEstadoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(88, 88, 88)
+                        .addComponent(txtPrecioCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(144, Short.MAX_VALUE))
         );
         txtPrecioLayout.setVerticalGroup(
@@ -714,7 +743,8 @@ public class Ventas extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txtPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAnioCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEstadoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEstadoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrecioCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -1105,7 +1135,8 @@ if (dao.RegistrarClientes(cliente)) {
 }
 
 // Crear el nuevo panel de Seguros
-Seguros segurosPanel = new Seguros(cliente);
+Seguros segurosPanel = new Seguros(cliente, carroSeleccionado);
+
 
 // Obtener la ventana Principal (el JFrame)
 Principal ventanaPrincipal = (Principal) javax.swing.SwingUtilities.getWindowAncestor(this);
@@ -1180,6 +1211,14 @@ ventanaPrincipal.setPanelContenido(segurosPanel);
     
     }//GEN-LAST:event_cbGeneroActionPerformed
 
+    private void txtPrecioCarroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecioCarroFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecioCarroFocusGained
+
+    private void txtPrecioCarroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecioCarroFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecioCarroFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
@@ -1215,6 +1254,7 @@ ventanaPrincipal.setPanelContenido(segurosPanel);
     private javax.swing.JTextField txtNoLicencia;
     private javax.swing.JTextField txtNombreCliente;
     private javax.swing.JPanel txtPrecio;
+    private javax.swing.JTextField txtPrecioCarro;
     private javax.swing.JTextField txtTelefonoCliente;
     private javax.swing.JTextField txtTipoCarro;
     // End of variables declaration//GEN-END:variables
