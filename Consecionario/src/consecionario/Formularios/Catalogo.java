@@ -31,7 +31,7 @@ public class Catalogo extends javax.swing.JPanel {
      */
     public Catalogo() {
         initComponents();
-      
+       
     } 
     
     private void filtrarPorCategoria() {
@@ -68,6 +68,43 @@ public class Catalogo extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Error al filtrar autos: " + e.getMessage());
     }
 }
+    
+    private void eliminarAutoSeleccionado() {
+    int filaSeleccionada = jTable1.getSelectedRow();
+    if (filaSeleccionada == -1) {
+        JOptionPane.showMessageDialog(this, "Por favor selecciona un auto para eliminar.");
+        return;
+    }
+
+    int id = (int) jTable1.getValueAt(filaSeleccionada, 0);
+
+    int confirmacion = JOptionPane.showConfirmDialog(this, "¿Estás seguro de eliminar este auto?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+    if (confirmacion != JOptionPane.YES_OPTION) {
+        return;
+    }
+
+    try {
+        Connection conn = ConexionBD.conn();
+        String sql = "DELETE FROM almacen WHERE id = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, id);
+        int filasAfectadas = ps.executeUpdate();
+
+        if (filasAfectadas > 0) {
+            JOptionPane.showMessageDialog(this, "Auto eliminado correctamente.");
+
+            // 🔁 Recargar la tabla
+            recargarTabla();
+        } else {
+            JOptionPane.showMessageDialog(this, "No se pudo eliminar el auto.");
+        }
+
+        ps.close();
+        conn.close();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Error al eliminar el auto: " + e.getMessage());
+    }
+}
      
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -93,25 +130,25 @@ public class Catalogo extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "id", "modelo", "año_fabricacion", "precio", "color", "estado", "Categoria", "Imagen"
+                "id", "modelo", "año_fabricacion", "precio", "color", "estado", "Categoria"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
         bg.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 480, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hatchback ", "Seadan", "SUV", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hatchback ", "Sedan", "SUV", " " }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -136,6 +173,11 @@ public class Catalogo extends javax.swing.JPanel {
         bg.add(btnAEauto, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, -1, -1));
 
         jButton1.setText("Eliminar Auto");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         bg.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, -1, -1));
 
         jLabel1.setText("Escoge tu categoria preferida");
@@ -167,12 +209,21 @@ public class Catalogo extends javax.swing.JPanel {
        filtrarPorCategoria();
     }//GEN-LAST:event_FiltrarActionPerformed
 
+    public void recargarTabla() {
+    filtrarPorCategoria(); // ya tienes este método que llena la JTable
+}
+    
     private void btnAEautoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAEautoActionPerformed
         // TODO add your handling code here:
-        InterfaceEA dialog = new InterfaceEA();
+        InterfaceEA dialog = new InterfaceEA(this); 
         //dialog.setCatalogoReference(this);
         dialog.setVisible(true);
     }//GEN-LAST:event_btnAEautoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        eliminarAutoSeleccionado();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

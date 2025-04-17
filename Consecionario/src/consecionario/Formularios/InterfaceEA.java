@@ -21,8 +21,17 @@ public class InterfaceEA extends javax.swing.JFrame {
     /**
      * Creates new form InterfaceEA
      */
+    
+    public InterfaceEA(Catalogo catalogoRef) {
+    initComponents();
+    this.catalogoRef = catalogoRef;
+
+}
+    
     public InterfaceEA() {
         initComponents();
+        
+        
     }
 
     /**
@@ -241,19 +250,49 @@ public class InterfaceEA extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
+        if (fieldMarca.getText().isEmpty() || fieldModelo.getText().isEmpty() || fieldAnio.getText().isEmpty() || 
+        fieldValorAuto.getText().isEmpty() || fieldColor.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos obligatorios.");
+        return;
+    }
+
+    try {
+        java.sql.Connection conn = ConexionBD.conn();
+        String sql = "INSERT INTO almacen (marca, modelo, año_fabricacion, precio, color, estado, categoria, imagen, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement ps = conn.prepareStatement(sql);
+
+        ps.setString(1, fieldMarca.getText());
+        ps.setString(2, fieldModelo.getText());
+        ps.setString(3, fieldAnio.getText());
+        ps.setInt(4, Integer.parseInt(fieldValorAuto.getText()));
+        ps.setString(5, fieldColor.getText());
+        ps.setString(6, comboEstadoAuto.getSelectedItem().toString());
+        ps.setString(7, comboTipo.getSelectedItem().toString());
+        ps.setString(8, ""); // imagen vacía
+        ps.setString(9, ""); // descripción vacía
+
+        ps.executeUpdate();
+        JOptionPane.showMessageDialog(this, "Auto agregado exitosamente.");
+
+        if (catalogoRef != null) {
+            catalogoRef.recargarTabla();
+        }
+
+        this.dispose();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al agregar auto: " + e.getMessage());
+    }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
-    
-    
-    
-
-
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JComboBox<String> comboEstadoAuto;

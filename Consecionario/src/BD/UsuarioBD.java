@@ -1,6 +1,6 @@
 package BD;
 
-import consecionario.Usuario;
+import consecionario.Clases.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
