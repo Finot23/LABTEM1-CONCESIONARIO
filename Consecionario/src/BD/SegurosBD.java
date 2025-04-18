@@ -38,8 +38,8 @@ public class SegurosBD {
         ps.setString(4, s1.getCobertura());
         ps.setString(5, s1.getPeriodo());
         ps.setString(6, s1.getMetodoP());
-        ps.setInt(7, s1.getValor());
-        ps.setInt(8, s1.getPrima());
+        ps.setDouble(7, s1.getValor());
+        ps.setDouble(8, s1.getPrima());
         
         ps.executeUpdate();
         return true;

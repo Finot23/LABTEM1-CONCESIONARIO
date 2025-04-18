@@ -34,6 +34,8 @@ public class Seguros extends javax.swing.JPanel {
         this.cliente = cliente;
         this.carro = carro;
         initComponents();
+        inicializarListeners();
+        configurarListeners();
         cargarDatosCliente(); 
         cargarDatosCarroSeleccionado();
        
@@ -70,11 +72,15 @@ public class Seguros extends javax.swing.JPanel {
      public Seguros(JPanel jPanelContenido) {
         this.jPanelContenido = jPanelContenido;
         initComponents();
+        inicializarListeners();
+    configurarListeners();
     }
      
     
 public Seguros() {
         initComponents();
+        inicializarListeners();
+        configurarListeners();
     }
      
     private boolean clienteYaExiste = false;
@@ -856,15 +862,23 @@ public Seguros() {
     }
     
     private void actualizarCalculos() {
+        System.out.println("Método actualizarCalculos() ejecutado");
     try {
         if (fieldValorAuto.getText().trim().isEmpty()) {
-            labelPrima.setText("$0 MXN");
-            labelValorAsegurado.setText("$0 MXN");
+            labelPrima.setText("$0.00 MXN");
+            labelValorAsegurado.setText("$0.00 MXN");
             return;
         }
+         double valorAuto = Double.parseDouble(fieldValorAuto.getText());
+        if (valorAuto <= 0) {
+            throw new NumberFormatException("El valor debe ser positivo");
+        }
+        
+        
 
         Seguro seguro = new Seguro();
-        seguro.setValorBaseAuto(Integer.parseInt(fieldValorAuto.getText()));
+        seguro.setValorBaseAuto(valorAuto);
+        //seguro.setValorBaseAuto(Double.parseDouble(fieldValorAuto.getText()));
         seguro.setEdadConductor(fieldEdad.getText().trim().isEmpty() ? 30 : Integer.parseInt(fieldEdad.getText()));
         seguro.setGeneroConductor(comboGenero.getSelectedItem().toString());
         seguro.setCobertura(comboCobertura.getSelectedItem().toString());
@@ -876,15 +890,20 @@ public Seguros() {
         seguro.setCoberturaRobo(checkRobo.isSelected());
         seguro.setCoberturaJuridico(checkJuridico.isSelected());
         
-        int valorAsegurado = seguro.calcularValorAsegurado();
-        int prima = seguro.calcularPrima();
+        double valorAsegurado = seguro.calcularValorAsegurado();
+        double prima = seguro.calcularPrima();
         
-        labelPrima.setText(String.format("$%,d MXN", prima));
-        labelValorAsegurado.setText(String.format("$%,d MXN", valorAsegurado));
+        System.out.println("[DEBUG] Valor base del auto: " + seguro.getValorBaseAuto());
+        System.out.println("[DEBUG] Cobertura seleccionada: " + seguro.getCobertura());
+        System.out.println("[DEBUG] Valor asegurado calculado: " + valorAsegurado);
+        System.out.println("[DEBUG] Prima calculada: " + prima);
+        
+        labelPrima.setText(String.format("$%,.2f MXN", prima));
+        labelValorAsegurado.setText(String.format("$%,.2f MXN", valorAsegurado));
         
     } catch (NumberFormatException e) {
-        labelPrima.setText("$0 MXN");
-        labelValorAsegurado.setText("$0 MXN");
+        labelPrima.setText("$0.00 MXN");
+        labelValorAsegurado.setText("$0.00 MXN");
     }
 }
     
@@ -1010,8 +1029,8 @@ public void setGenero(String genero) {
             seguro.setCobertura(comboCobertura.getSelectedItem().toString());
             seguro.setPeriodo(comboPeriodo.getSelectedItem().toString());
             seguro.setMetodoP(comboPago.getSelectedItem().toString());
-            seguro.setValor(Integer.parseInt(labelValorAsegurado.getText().replaceAll("[^0-9]", "")));
-            seguro.setPrima(Integer.parseInt(labelPrima.getText().replaceAll("[^0-9]", "")));
+            seguro.setValor(Double.parseDouble(labelValorAsegurado.getText().replaceAll("[^0-9.]", "")));
+            seguro.setPrima(Double.parseDouble(labelPrima.getText().replaceAll("[^0-9.]", "")));
             seguro.setEdadConductor(clientes.getEdad());
             seguro.setGeneroConductor(clientes.getGenero());
             seguro.setValorBaseAuto(Integer.parseInt(fieldValorAuto.getText()));
@@ -1074,12 +1093,6 @@ public void setGenero(String genero) {
     private void comboGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGeneroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboGeneroActionPerformed
-
-    
-    
-   
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
