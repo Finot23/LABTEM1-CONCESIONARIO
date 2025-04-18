@@ -61,7 +61,7 @@ public class Principal extends javax.swing.JFrame {
     
     private void InitContent(){
         
-        MostrarJpanel(new InfoUsuario());
+        MostrarJpanel(new Dashboard());
         
         
         
@@ -678,7 +678,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelSegurosMouseClicked
 
     private void jPanelPaginaPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelPaginaPrincipalMouseClicked
-        MostrarJpanel(new InfoUsuario());
+        MostrarJpanel(new Dashboard());
     }//GEN-LAST:event_jPanelPaginaPrincipalMouseClicked
 
     private void jPanelCatalogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCatalogoMouseClicked
