@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -117,7 +119,89 @@ public boolean RegistrarClientes(Cliente cl){
         }
         return null;
     }
+public List<Cliente> obtenerTodosLosClientes() {
+    List<Cliente> listaClientes = new ArrayList<>();
+    Connection con = ConexionBD.conn();
+    PreparedStatement ps = null;
+    ResultSet rs = null;
 
+    if (con == null) {
+        System.out.println("No se pudo establecer conexión con la base de datos.");
+        return listaClientes;
+    }
+
+    String sql = "SELECT * FROM clientes";
+
+    try {
+        ps = con.prepareStatement(sql);
+        rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Cliente cliente = new Cliente();
+            cliente.setId(rs.getInt("id"));
+            cliente.setNombre(rs.getString("nombre"));
+            cliente.setApellidoP(rs.getString("Apellido_Paterno"));
+            cliente.setApellidoM(rs.getString("Apellido_Materno"));
+            cliente.setTelefono(rs.getLong("telefono"));
+            cliente.setCorreo(rs.getString("Correo"));
+            cliente.setCalle(rs.getString("calle"));
+            cliente.setColonia(rs.getString("colonia"));
+            cliente.setMunicipio(rs.getString("municipio"));
+            cliente.setEstado(rs.getString("estado"));
+            cliente.setCP(rs.getString("cp"));
+            cliente.setCurp(rs.getString("curp"));
+            cliente.setLicencia(rs.getString("licencia"));
+            cliente.setGenero(rs.getString("genero"));
+            cliente.setEdad(rs.getInt("edad"));
+
+            listaClientes.add(cliente);
+        }
+
+    } catch (SQLException e) {
+        System.out.println("Error al obtener los clientes: " + e.getMessage());
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al cerrar conexión: " + e.getMessage());
+        }
+    }
+
+    return listaClientes;
+}
+public int contarClientes() {
+    Connection con = ConexionBD.conn();
+    if (con == null) {
+        System.out.println("No se pudo establecer conexión con la base de datos.");
+        return 0;
+    }
+
+    String sql = "SELECT COUNT(*) FROM clientes";
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+
+    try {
+        ps = con.prepareStatement(sql);
+        rs = ps.executeQuery();
+        if (rs.next()) {
+            return rs.getInt(1);
+        }
+    } catch (SQLException e) {
+        System.out.println("Error al contar clientes: " + e.getMessage());
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al cerrar conexión: " + e.getMessage());
+        }
+    }
+
+    return 0;
+}
       }
               
 
