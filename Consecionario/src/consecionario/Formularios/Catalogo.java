@@ -51,11 +51,11 @@ public class Catalogo extends javax.swing.JPanel {
                 Object[] fila = new Object[7];
                 fila[0] = rs.getInt("id");
                 fila[1] = rs.getString("modelo");
-                fila[2] = rs.getInt("año_fabricacion");
+                fila[2] = rs.getInt("anio_fabricacion");
                 fila[3] = rs.getDouble("precio");
                 fila[4] = rs.getString("color");
                 fila[5] = rs.getString("estado");
-                fila[6] = rs.getString("Categoria");
+                fila[6] = rs.getString("categoria");
 
                 modelo.addRow(fila);
             }
