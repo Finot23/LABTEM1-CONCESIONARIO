@@ -22,9 +22,6 @@ import javax.swing.JTextField;
  * @author antoniosalinas
  */
 
-
-
-
 public class Ventas extends javax.swing.JPanel {
     
 
@@ -60,18 +57,9 @@ public class Ventas extends javax.swing.JPanel {
    
     private JPanel jPanelContenido;
     
-    
-
-    
-    
 
  public Ventas() {
         initComponents();
-        
-        
-        
-   
-        
         
         txtApellidoP.setText(placeholderApellidoP);
         txtApellidoP.setForeground(placeholderColor);
@@ -143,13 +131,13 @@ public class Ventas extends javax.swing.JPanel {
     this.carroSeleccionado = carro;
     
     // Esto debe ser visible en pantalla
-   txtMarca.setText(carro.getMarca());
-txtModelo.setText(carro.getModelo());
-txtColorCarro.setText(carro.getColor());
-txtEstadoCarro.setText(carro.getEstado());
-txtTipoCarro.setText(carro.getCategoria());
-txtAnioCarro.setText(String.valueOf(carro.getAnioFabricacion()));
-txtPrecioCarro.setText(String.valueOf(carro.getPrecio()));
+    txtMarca.setText(carro.getMarca());
+    txtModelo.setText(carro.getModelo());
+    txtColorCarro.setText(carro.getColor());
+    txtEstadoCarro.setText(carro.getEstado());
+    txtTipoCarro.setText(carro.getCategoria());
+    txtAnioCarro.setText(String.valueOf(carro.getAnioFabricacion()));
+    txtPrecioCarro.setText(String.valueOf(carro.getPrecio()));
 
 
 }
@@ -1084,65 +1072,81 @@ txtPrecioCarro.setText(String.valueOf(carro.getPrecio()));
                 
         String textoEdad = txtEdad.getText().trim();
 
-// Validación de número
-if (!textoEdad.matches("\\d+")) {
-    JOptionPane.showMessageDialog(null, "La edad debe ser un número entero.");
-    return;
-}
+        // Validación de número
+        if (!textoEdad.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "La edad debe ser un número entero.");
+            return;
+        }
 
-int edad;
-try {
-    edad = Integer.parseInt(textoEdad);
-} catch (NumberFormatException e) {
-    JOptionPane.showMessageDialog(null, "Por favor, ingresa un número válido en el campo de edad.");
-    return;
-}
+        int edad;
+        try {
+            edad = Integer.parseInt(textoEdad);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingresa un número válido en el campo de edad.");
+            return;
+        }
 
-// Si llegamos aquí, la edad es válida
-Cliente cliente = new Cliente();
+    // Si llegamos aquí, la edad es válida
+    Cliente cliente = new Cliente();
 
-cliente.setApellidoP(txtApellidoP.getText());
-cliente.setApellidoM(txtApellidoM.getText());
-cliente.setNombre(txtNombreCliente.getText());
-cliente.setCurp(txtCURP.getText());
-cliente.setGenero(cbGenero.getSelectedItem().toString());
-cliente.setEdad(edad); // Ya validado
-cliente.setLicencia(txtNoLicencia.getText());
+    cliente.setApellidoP(txtApellidoP.getText());
+    cliente.setApellidoM(txtApellidoM.getText());
+    cliente.setNombre(txtNombreCliente.getText());
+    cliente.setCurp(txtCURP.getText());
+    cliente.setGenero(cbGenero.getSelectedItem().toString());
+    cliente.setEdad(edad); // Ya validado
+    cliente.setLicencia(txtNoLicencia.getText());
 
-// Validación de teléfono
-try {
-    long telefono = Long.parseLong(txtTelefonoCliente.getText().trim());
-    cliente.setTelefono(telefono);
-} catch (NumberFormatException e) {
-    JOptionPane.showMessageDialog(null, "Por favor, ingresa un número de teléfono válido.");
-    return;
-}
+    // Validación de teléfono
+    try {
+        long telefono = Long.parseLong(txtTelefonoCliente.getText().trim());
+        cliente.setTelefono(telefono);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Por favor, ingresa un número de teléfono válido.");
+        return;
+    }
 
-cliente.setCorreo(txtCorreo.getText());
-cliente.setCalle(txtCalle.getText());
-cliente.setColonia(txtColonia.getText());
-cliente.setMunicipio(txtMunicipio.getText());
-cliente.setEstado(txtEstado.getText());
-cliente.setCP(txtCP.getText());
+    cliente.setCorreo(txtCorreo.getText());
+    cliente.setCalle(txtCalle.getText());
+    cliente.setColonia(txtColonia.getText());
+    cliente.setMunicipio(txtMunicipio.getText());
+    cliente.setEstado(txtEstado.getText());
+    cliente.setCP(txtCP.getText());
 
-ClienteDB dao = new ClienteDB();
-if (dao.RegistrarClientes(cliente)) {
-    JOptionPane.showMessageDialog(this, "Cliente registrado con éxito");
+    ClienteDB dao = new ClienteDB();
+    if (dao.RegistrarClientes(cliente)) {
+        JOptionPane.showMessageDialog(this, "Cliente registrado con éxito");
     // limpiarCampos(); // si tienes una función para limpiar
-} else {
-    JOptionPane.showMessageDialog(this, "Error al registrar cliente");
-    return; // No continuar si no se pudo registrar
-}
+    }else {
+        JOptionPane.showMessageDialog(this, "Error al registrar cliente");
+        return;
+    }
+    // Mostrar opciones de qué desea hacer
+    Object[] opciones = {"Solo Seguro", "Solo Crédito", "Ambos", "Cancelar"};
+    int seleccion = JOptionPane.showOptionDialog(null,"¿Qué desea hacer a continuación?","Opciones de Compra",JOptionPane.DEFAULT_OPTION,
+        JOptionPane.QUESTION_MESSAGE,null,opciones,opciones[0]);
 
-// Crear el nuevo panel de Seguros
-Seguros segurosPanel = new Seguros(cliente, carroSeleccionado);
+    Principal ventanaPrincipal = (Principal) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+    switch (seleccion) {
+        case 0: // Solo Seguro
+            Seguros segurosPanel = new Seguros(cliente, carroSeleccionado, false); // false = no va a crédito después
+            ventanaPrincipal.setPanelContenido(segurosPanel);
+            break;
+        case 1: // Solo Crédito
+            Creditos creditosPanel = new Creditos(cliente, carroSeleccionado);
+            ventanaPrincipal.setPanelContenido(creditosPanel);
+            break;
+        case 2: // Ambos
+            Seguros ambosSegurosPanel = new Seguros(cliente, carroSeleccionado, true); // true = sí va a crédito después
+            ventanaPrincipal.setPanelContenido(ambosSegurosPanel);
+            break;
+        default:
+            JOptionPane.showMessageDialog(this, "Operación cancelada.");
+            break;
+    }
 
 
-// Obtener la ventana Principal (el JFrame)
-Principal ventanaPrincipal = (Principal) javax.swing.SwingUtilities.getWindowAncestor(this);
-
-// Cambiar el contenido del panel central
-ventanaPrincipal.setPanelContenido(segurosPanel);
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void txtColoniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtColoniaActionPerformed

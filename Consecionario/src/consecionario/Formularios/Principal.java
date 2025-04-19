@@ -202,7 +202,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(iconHome, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanelPaginaPrincipalLayout.setVerticalGroup(
             jPanelPaginaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -544,7 +544,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jPanelVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jPanelCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addContainerGap(300, Short.MAX_VALUE))
         );
 
         jPanelContenido.setLayout(new java.awt.BorderLayout());
@@ -555,11 +555,9 @@ public class Principal extends javax.swing.JFrame {
         iconUserMain.setText("ImagenUsuario");
 
         txtNombreUsuario.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        txtNombreUsuario.setForeground(new java.awt.Color(0, 0, 0));
         txtNombreUsuario.setText("NombreUsuario");
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Tipo de Usuario");
 
         javax.swing.GroupLayout pnlSuperiorLayout = new javax.swing.GroupLayout(pnlSuperior);
@@ -633,7 +631,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelVentasMouseClicked
 
     private void jPanelCreditoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCreditoMouseClicked
-        MostrarJpanel(new Creditos());
+       
     }//GEN-LAST:event_jPanelCreditoMouseClicked
 
     private void jPanelHistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHistorialMouseClicked
