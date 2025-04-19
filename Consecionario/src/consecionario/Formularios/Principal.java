@@ -628,8 +628,9 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanelVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelVentasMouseClicked
-        CategoriaCarro categoriaCarro = new CategoriaCarro(this);
-        MostrarJpanel(categoriaCarro);
+        //CategoriaCarro categoriaCarro = new CategoriaCarro(this);
+        //MostrarJpanel(categoriaCarro);
+        MostrarJpanel(new InventarioVisual());
     }//GEN-LAST:event_jPanelVentasMouseClicked
 
     private void jPanelCreditoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCreditoMouseClicked

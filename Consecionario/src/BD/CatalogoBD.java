@@ -70,11 +70,16 @@ public List<CatalogoCarros> obtenerPorCategoria(String categoria) {
         return lista;
     }
 
-    String sql = "SELECT * FROM almacen WHERE categoria = ?";
+    // Si la categoría es "Todos", obtenemos todos los autos
+    String sql = categoria.equals("Todos") ? "SELECT * FROM almacen" : "SELECT * FROM almacen WHERE categoria = ?";
 
     try {
         ps = con.prepareStatement(sql);
-        ps.setString(1, categoria);
+
+        if (!categoria.equals("Todos")) {
+            ps.setString(1, categoria);
+        }
+
         ResultSet rs = ps.executeQuery();
 
         while (rs.next()) {
