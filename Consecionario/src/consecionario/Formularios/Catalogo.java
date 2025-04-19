@@ -55,7 +55,7 @@ public class Catalogo extends javax.swing.JPanel {
                 fila[3] = rs.getDouble("precio");
                 fila[4] = rs.getString("color");
                 fila[5] = rs.getString("estado");
-                fila[6] = rs.getString("Categoria");
+                fila[6] = rs.getString("categoria");
 
                 modelo.addRow(fila);
             }
