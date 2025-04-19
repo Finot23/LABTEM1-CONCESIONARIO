@@ -14,13 +14,13 @@ public class Seguro {
     private String cobertura;
     private String periodo;
     private String metodoP;
-    private int valor;
-    private int prima;
+    private double valor;
+    private double prima;
     
     // Nuevos campos para cálculos
     private int edadConductor;
     private String generoConductor;
-    private int valorBaseAuto;
+    private double valorBaseAuto;
     
     // Coberturas adicionales específicas
     private boolean coberturaJuridico;
@@ -35,7 +35,7 @@ public class Seguro {
     }
     
     public Seguro(String nombreS, String apellidoP, String autoResumen, String cobertura, 
-                 String periodo, String metodoP, int valor, int prima) {
+                 String periodo, String metodoP, double valor, double prima) {
         this.nombreS = nombreS;
         this.apellidoP = apellidoP;
         this.autoResumen = autoResumen;
@@ -96,19 +96,19 @@ public class Seguro {
         this.metodoP = metodoP;
     }
 
-    public int getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(int valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 
-    public int getPrima() {
+    public double getPrima() {
         return prima;
     }
 
-    public void setPrima(int prima) {
+    public void setPrima(double prima) {
         this.prima = prima;
     }
     
@@ -130,11 +130,11 @@ public class Seguro {
         this.generoConductor = generoConductor;
     }
 
-    public int getValorBaseAuto() {
+    public double getValorBaseAuto() {
         return valorBaseAuto;
     }
 
-    public void setValorBaseAuto(int valorBaseAuto) {
+    public void setValorBaseAuto(double valorBaseAuto) {
         this.valorBaseAuto = valorBaseAuto;
     }
 
@@ -191,113 +191,99 @@ public class Seguro {
      * Calcula el valor por el que estará asegurado el auto
      * @return valor asegurado calculado
      */
-    public int calcularValorAsegurado() {
-        // Usar el valor base del auto
-        int valorAsegurado = this.valorBaseAuto;
-        
-        // Modificación según cobertura principal
-        switch (this.cobertura) {
-            case "Básica":
-                // Sin cambios en el valor base
-                break;
-            case "Amplia":
-                valorAsegurado = (int)(valorAsegurado * 1.15); // 15% adicional
-                break;
-            case "Total":
-                valorAsegurado = (int)(valorAsegurado * 1.30); // 30% adicional
-                break;
-        }
-        
-        // Aplicar modificaciones por coberturas adicionales
-        if (this.coberturaJuridico) {
-            valorAsegurado = (int)(valorAsegurado * 1.04); // +4% por defensa jurídica
-        }
-        
-        if (this.coberturaLlantas) {
-            valorAsegurado = (int)(valorAsegurado * 1.03); // +3% por cobertura de llantas
-        }
-        
-        if (this.coberturaPerdidaTotal) {
-            valorAsegurado = (int)(valorAsegurado * 1.08); // +8% por pérdida total
-        }
-        
-        if (this.coberturaRCA) {
-            valorAsegurado = (int)(valorAsegurado * 1.06); // +6% por responsabilidad civil ampliada
-        }
-        
-        if (this.coberturaRobo) {
-            valorAsegurado = (int)(valorAsegurado * 1.07); // +7% por cobertura de robo
-        }
-        
-        if (this.coberturaVial) {
-            valorAsegurado = (int)(valorAsegurado * 1.02); // +2% por asistencia vial
-        }
-        
-        // Factor de edad
-        if (this.edadConductor < 25) {
-            valorAsegurado = (int)(valorAsegurado * 0.95); // -5% para jóvenes
-        } else if (this.edadConductor > 60) {
-            valorAsegurado = (int)(valorAsegurado * 0.90); // -10% para mayores
-        }
-        
-        // Factor de género
-        if (this.generoConductor != null && this.generoConductor.equalsIgnoreCase("Masculino")) {
-            valorAsegurado = (int)(valorAsegurado * 0.98); // -2% para hombres
-        }
-        
-        // Actualizar el valor de la propiedad
-        this.valor = valorAsegurado;
-        return valorAsegurado;
-    }
     
-    /**
-     * Calcula la prima a pagar según el período y cobertura
-     * @return prima calculada
-     */
-    public int calcularPrima() {
-        // Asegurarse que el valor asegurado esté calculado
-        if (this.valor <= 0) {
-            this.calcularValorAsegurado();
-        }
-        
-        // Calcular prima base según cobertura
-        double porcentajeBase;
-        switch (this.cobertura) {
-            case "Básica":
-                porcentajeBase = 0.03; // 3% del valor asegurado
-                break;
-            case "Amplia":
-                porcentajeBase = 0.05; // 5% del valor asegurado
-                break;
-            case "Total":
-                porcentajeBase = 0.08; // 8% del valor asegurado
-                break;
-            default:
-                porcentajeBase = 0.04; // Valor por defecto
-        }
-        
-        int primaAnual = (int)(this.valor * porcentajeBase);
-        
-        // Ajustar según período
-        int primaCalculada;
-        switch (this.periodo.toLowerCase()) {
-            case "mensual":
-                primaCalculada = (int)(primaAnual / 12 * 1.1); // Mensual con 10% recargo
-                break;
-            case "semestral":
-                primaCalculada = (int)(primaAnual / 2 * 1.05); // Semestral con 5% recargo
-                break;
-            case "anual":
-                primaCalculada = primaAnual; // Sin recargo
-                break;
-            default:
-                primaCalculada = primaAnual;
-        }
-        
-        // Actualizar el valor de la propiedad
-        this.prima = primaCalculada;
-        return primaCalculada;
+    public double calcularValorAsegurado() {
+    if (this.valorBaseAuto <= 0) {
+        return 0.0; // Evita cálculos con valores no inicializados
     }
+
+    double valorAsegurado = this.valorBaseAuto;
+
+    // Asegúrate de que 'cobertura' no sea null
+    if (this.cobertura == null) {
+        this.cobertura = "Básica"; // Valor por defecto
+    }
+
+    switch (this.cobertura) {
+        case "Básica":
+            break; // Sin cambios
+        case "Amplia":
+            valorAsegurado *= 1.15; // +15%
+            break;
+        case "Total":
+            valorAsegurado *= 1.30; // +30%
+            break;
+        default:
+            valorAsegurado *= 1.10; // +10% si la cobertura no coincide
+    }
+
+    // Aplicar coberturas adicionales (simplificado)
+    if (this.coberturaJuridico) valorAsegurado *= 1.04;
+    if (this.coberturaLlantas) valorAsegurado *= 1.03;
+    if (this.coberturaPerdidaTotal) valorAsegurado *= 1.08;
+    if (this.coberturaRCA) valorAsegurado *= 1.06;
+    if (this.coberturaRobo) valorAsegurado *= 1.07;
+    if (this.coberturaVial) valorAsegurado *= 1.02;
+
+    // Ajustes por edad y género
+    if (this.edadConductor < 25) {
+        valorAsegurado *= 0.95; // -5% para jóvenes
+    } else if (this.edadConductor > 60) {
+        valorAsegurado *= 0.90; // -10% para mayores
+    }
+
+    if ("Masculino".equalsIgnoreCase(this.generoConductor)) {
+        valorAsegurado *= 0.98; // -2% para hombres
+    }
+
+    this.valor = valorAsegurado;
+    return valorAsegurado;
+}
+
+public double calcularPrima() {
+    if (this.valor <= 0) {
+        this.calcularValorAsegurado(); // Recalcula si es necesario
+    }
+
+    if (this.cobertura == null || this.periodo == null) {
+        return 0.0; // Evita NullPointerException
+    }
+
+    double porcentajeBase;
+    switch (this.cobertura) {
+        case "Básica":
+            porcentajeBase = 0.03; // 3%
+            break;
+        case "Amplia":
+            porcentajeBase = 0.05; // 5%
+            break;
+        case "Total":
+            porcentajeBase = 0.08; // 8%
+            break;
+        default:
+            porcentajeBase = 0.04; // Por defecto
+    }
+
+    double primaAnual = this.valor * porcentajeBase;
+    double primaCalculada;
+
+    switch (this.periodo.toLowerCase()) {
+        case "mensual":
+            primaCalculada = primaAnual / 12 * 1.1; // +10%
+            break;
+        case "semestral":
+            primaCalculada = primaAnual / 2 * 1.05; // +5%
+            break;
+        case "anual":
+            primaCalculada = primaAnual; // Sin recargo
+            break;
+        default:
+            primaCalculada = primaAnual; // Por defecto (anual)
+    }
+
+    this.prima = primaCalculada;
+    return primaCalculada;
+}
     
     /**
      * Genera un resumen formateado con los datos del auto

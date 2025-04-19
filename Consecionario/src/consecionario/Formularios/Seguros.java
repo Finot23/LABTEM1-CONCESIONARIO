@@ -24,7 +24,7 @@ import java.util.concurrent.ExecutionException;
  * @author antoniosalinas
  */
 public class Seguros extends javax.swing.JPanel {
-    
+    private boolean irACreditoDespues;
     private CatalogoCarros carro;
     private Cliente cliente;
     
@@ -34,10 +34,25 @@ public class Seguros extends javax.swing.JPanel {
         this.cliente = cliente;
         this.carro = carro;
         initComponents();
+        inicializarListeners();
+        configurarListeners();
         cargarDatosCliente(); 
         cargarDatosCarroSeleccionado();
        
     }
+     
+    public Seguros(Cliente cliente, CatalogoCarros carro, boolean irACreditoDespues) {
+    initComponents();
+    this.cliente = cliente;
+    this.carro = carro;
+    this.irACreditoDespues = irACreditoDespues;
+    inicializarListeners();
+        configurarListeners();
+        cargarDatosCliente(); 
+        cargarDatosCarroSeleccionado();
+
+    // (Aquí puedes poner código para mostrar datos del cliente y auto si lo necesitas)
+}
      
      
     private void cargarDatosCliente() {
@@ -67,14 +82,18 @@ public class Seguros extends javax.swing.JPanel {
     comboTipo.setSelectedItem(carro.getCategoria());
     fieldValorAuto.setText(String.valueOf(carro.getPrecio()));
 }
-     public Seguros(JPanel jPanelContenido) {
+    public Seguros(JPanel jPanelContenido) {
         this.jPanelContenido = jPanelContenido;
         initComponents();
+        inicializarListeners();
+        configurarListeners();
     }
      
     
-public Seguros() {
+    public Seguros() {
         initComponents();
+        inicializarListeners();
+        configurarListeners();
     }
      
     private boolean clienteYaExiste = false;
@@ -82,11 +101,6 @@ public Seguros() {
     private ItemListener checkboxListener;
     private java.awt.event.ActionListener comboBoxListener;
     
-    /**
-     * Creates new form Seguros
-     */
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -804,7 +818,7 @@ public Seguros() {
     }// </editor-fold>//GEN-END:initComponents
     
     
-   private void inicializarListeners() {
+    private void inicializarListeners() {
         documentListener = new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -856,15 +870,23 @@ public Seguros() {
     }
     
     private void actualizarCalculos() {
+        System.out.println("Método actualizarCalculos() ejecutado");
     try {
         if (fieldValorAuto.getText().trim().isEmpty()) {
-            labelPrima.setText("$0 MXN");
-            labelValorAsegurado.setText("$0 MXN");
+            labelPrima.setText("$0.00 MXN");
+            labelValorAsegurado.setText("$0.00 MXN");
             return;
         }
+         double valorAuto = Double.parseDouble(fieldValorAuto.getText());
+        if (valorAuto <= 0) {
+            throw new NumberFormatException("El valor debe ser positivo");
+        }
+        
+        
 
         Seguro seguro = new Seguro();
-        seguro.setValorBaseAuto(Integer.parseInt(fieldValorAuto.getText()));
+        seguro.setValorBaseAuto(valorAuto);
+        //seguro.setValorBaseAuto(Double.parseDouble(fieldValorAuto.getText()));
         seguro.setEdadConductor(fieldEdad.getText().trim().isEmpty() ? 30 : Integer.parseInt(fieldEdad.getText()));
         seguro.setGeneroConductor(comboGenero.getSelectedItem().toString());
         seguro.setCobertura(comboCobertura.getSelectedItem().toString());
@@ -876,15 +898,20 @@ public Seguros() {
         seguro.setCoberturaRobo(checkRobo.isSelected());
         seguro.setCoberturaJuridico(checkJuridico.isSelected());
         
-        int valorAsegurado = seguro.calcularValorAsegurado();
-        int prima = seguro.calcularPrima();
+        double valorAsegurado = seguro.calcularValorAsegurado();
+        double prima = seguro.calcularPrima();
         
-        labelPrima.setText(String.format("$%,d MXN", prima));
-        labelValorAsegurado.setText(String.format("$%,d MXN", valorAsegurado));
+        System.out.println("[DEBUG] Valor base del auto: " + seguro.getValorBaseAuto());
+        System.out.println("[DEBUG] Cobertura seleccionada: " + seguro.getCobertura());
+        System.out.println("[DEBUG] Valor asegurado calculado: " + valorAsegurado);
+        System.out.println("[DEBUG] Prima calculada: " + prima);
+        
+        labelPrima.setText(String.format("$%,.2f MXN", prima));
+        labelValorAsegurado.setText(String.format("$%,.2f MXN", valorAsegurado));
         
     } catch (NumberFormatException e) {
-        labelPrima.setText("$0 MXN");
-        labelValorAsegurado.setText("$0 MXN");
+        labelPrima.setText("$0.00 MXN");
+        labelValorAsegurado.setText("$0.00 MXN");
     }
 }
     
@@ -913,7 +940,7 @@ public Seguros() {
     //actualizarCalculos(); 
 }
 
-public void setGenero(String genero) {
+    public void setGenero(String genero) {
     for (int i = 0; i < comboGenero.getItemCount(); i++) {
         if (comboGenero.getItemAt(i).equalsIgnoreCase(genero)) {
             comboGenero.setSelectedIndex(i);
@@ -925,52 +952,51 @@ public void setGenero(String genero) {
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         // TODO add your handling code here:
         // --- Parte 1: Obtener datos del formulario ---
-    Cliente cliente = new Cliente();
-    cliente.setApellidoP(fieldApellidoP.getText());
-    cliente.setApellidoM(fieldApellidoM.getText());
-    cliente.setNombre(fieldNombre.getText());
-    cliente.setTelefono(Long.parseLong(fieldTelefono.getText()));
-    cliente.setCorreo(fieldEmail.getText());
-    cliente.setCalle(fieldCalle.getText());
-    cliente.setColonia(fieldColonia.getText());
-    cliente.setMunicipio(fieldMunicipio.getText());
-   
-    cliente.setEstado(fieldEstado.getText());
-    cliente.setCP(fieldCP.getText());
-    cliente.setCurp(fieldCurp.getText());
-    cliente.setLicencia(fieldLicencia.getText());
-    cliente.setGenero(comboGenero.getSelectedItem().toString());
-    cliente.setEdad((int) Long.parseLong(fieldEdad.getText()));
-    
-    // 2. Validar campos obligatorios
-    if (fieldValorAuto.getText().trim().isEmpty() || fieldNombre.getText().trim().isEmpty() || 
-        fieldApellidoP.getText().trim().isEmpty() || fieldTelefono.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Complete todos los campos obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+        Cliente cliente = new Cliente();
+        cliente.setApellidoP(fieldApellidoP.getText());
+        cliente.setApellidoM(fieldApellidoM.getText());
+        cliente.setNombre(fieldNombre.getText());
+        cliente.setTelefono(Long.parseLong(fieldTelefono.getText()));
+        cliente.setCorreo(fieldEmail.getText());
+        cliente.setCalle(fieldCalle.getText());
+        cliente.setColonia(fieldColonia.getText());
+        cliente.setMunicipio(fieldMunicipio.getText());
+        cliente.setEstado(fieldEstado.getText());
+        cliente.setCP(fieldCP.getText());
+        cliente.setCurp(fieldCurp.getText());
+        cliente.setLicencia(fieldLicencia.getText());
+        cliente.setGenero(comboGenero.getSelectedItem().toString());
+        cliente.setEdad((int) Long.parseLong(fieldEdad.getText()));
 
-    // 3. Configurar diálogo de carga (ESTA ES LA PARTE NUEVA)
-    JDialog loadingDialog = new JDialog();
-    loadingDialog.setUndecorated(true);
-    loadingDialog.setSize(250, 100);
-    loadingDialog.setLocationRelativeTo(this);
-    
-    JPanel panel = new JPanel(new BorderLayout());
-    panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-    
-    JProgressBar progressBar = new JProgressBar();
-    progressBar.setIndeterminate(true);
-    JLabel label = new JLabel("Procesando pago...", JLabel.CENTER);
-    
-    panel.add(progressBar, BorderLayout.CENTER);
-    panel.add(label, BorderLayout.SOUTH);
-    loadingDialog.add(panel);
-    loadingDialog.setVisible(true);
+        // 2. Validar campos obligatorios
+        if (fieldValorAuto.getText().trim().isEmpty() || fieldNombre.getText().trim().isEmpty() || 
+            fieldApellidoP.getText().trim().isEmpty() || fieldTelefono.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Complete todos los campos obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-    // 4. Ejecutar en segundo plano (CON TIEMPO EXTENDIDO)
-    new Thread(() -> {
-        try {
-            // ==== TU LÓGICA ORIGINAL INICIA AQUÍ ====
+        // 3. Configurar diálogo de carga
+        JDialog loadingDialog = new JDialog();
+        loadingDialog.setUndecorated(true);
+        loadingDialog.setSize(250, 100);
+        loadingDialog.setLocationRelativeTo(this);
+    
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+    
+        JProgressBar progressBar = new JProgressBar();
+        progressBar.setIndeterminate(true);
+        JLabel label = new JLabel("Procesando pago...", JLabel.CENTER);
+    
+        panel.add(progressBar, BorderLayout.CENTER);
+        panel.add(label, BorderLayout.SOUTH);
+        loadingDialog.add(panel);
+        loadingDialog.setVisible(true);
+
+        // 4. Ejecutar en segundo plano (CON TIEMPO EXTENDIDO)
+        new Thread(() -> {
+            try {
+            
             Thread.sleep(3000); // Espera inicial de 3 segundos (simula procesamiento)
             
             Cliente clientes = new Cliente();
@@ -982,7 +1008,7 @@ public void setGenero(String genero) {
             clientes.setCalle(fieldCalle.getText());
             clientes.setColonia(fieldColonia.getText());
             clientes.setMunicipio(fieldMunicipio.getText());
-            //cliente.setCiudad(fieldCiudad.getText());
+            
             clientes.setEstado(fieldEstado.getText());
             clientes.setCP(fieldCP.getText());
             clientes.setCurp(fieldCurp.getText());
@@ -1010,8 +1036,8 @@ public void setGenero(String genero) {
             seguro.setCobertura(comboCobertura.getSelectedItem().toString());
             seguro.setPeriodo(comboPeriodo.getSelectedItem().toString());
             seguro.setMetodoP(comboPago.getSelectedItem().toString());
-            seguro.setValor(Integer.parseInt(labelValorAsegurado.getText().replaceAll("[^0-9]", "")));
-            seguro.setPrima(Integer.parseInt(labelPrima.getText().replaceAll("[^0-9]", "")));
+            seguro.setValor(Double.parseDouble(labelValorAsegurado.getText().replaceAll("[^0-9.]", "")));
+            seguro.setPrima(Double.parseDouble(labelPrima.getText().replaceAll("[^0-9.]", "")));
             seguro.setEdadConductor(clientes.getEdad());
             seguro.setGeneroConductor(clientes.getGenero());
             seguro.setValorBaseAuto(Integer.parseInt(fieldValorAuto.getText()));
@@ -1024,7 +1050,6 @@ public void setGenero(String genero) {
 
             SegurosBD segurosBD = new SegurosBD();
             boolean resultado = segurosBD.RegistrarSeguro(seguro);
-            // ==== TU LÓGICA ORIGINAL TERMINA AQUÍ ====
             
             Thread.sleep(2000); // Espera adicional de 2 segundos (antes de mostrar resultado)
             
@@ -1035,6 +1060,16 @@ public void setGenero(String genero) {
                         "✅ Pago aprobado", 
                         "Éxito", 
                         JOptionPane.INFORMATION_MESSAGE);
+                    
+                    // Aquí comprobamos si el cliente eligió "Ambos" y si es así, vamos a créditos
+                    if (irACreditoDespues) {
+                        // Mostrar el formulario de Créditos
+                        Principal ventanaPrincipal = (Principal) javax.swing.SwingUtilities.getWindowAncestor(Seguros.this);
+                        
+                        // Cambiar al panel de créditos
+                        Creditos creditosPanel = new Creditos(cliente, carro);  // Usar datos correctos
+                        ventanaPrincipal.setPanelContenido(creditosPanel);
+                    }
                 } else {
                     JOptionPane.showMessageDialog(Seguros.this, 
                         "Error en el proceso", 
@@ -1074,12 +1109,6 @@ public void setGenero(String genero) {
     private void comboGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGeneroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboGeneroActionPerformed
-
-    
-    
-   
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
