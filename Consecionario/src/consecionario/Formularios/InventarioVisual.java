@@ -94,13 +94,19 @@ public void actualizarFiltrado() {
         // Recorrer la lista y agregar los cards al panel
         for (CatalogoCarros carro : listaDeCarros) {
             
-            CardAuto card = new CardAuto(
+
+        CardAuto card = new CardAuto(
             carro.getImagen(),
-        carro.getMarca(),
-        carro.getModelo(),
-        carro.getAnioFabricacion(),
-        carro.getKilometraje(),
-        carro.getPrecio()
+            carro.getMarca(),
+            carro.getModelo(),
+            carro.getAnioFabricacion(),
+            carro.getKilometraje(),
+            carro.getPrecio(),
+            carro.getColor(), // Asegúrate de pasar el color
+            carro.getEstado(), // Asegúrate de pasar el estado
+            carro.getCategoria(), // Asegúrate de pasar la categoría
+            carro.getId() // Asegúrate de pasar el ID
+        
     );
     pnlCards.add(card);
     
@@ -165,7 +171,7 @@ public void actualizarFiltrado() {
         );
         pnlCardsLayout.setVerticalGroup(
             pnlCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 488, Short.MAX_VALUE)
+            .addGap(0, 498, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(pnlCards);
@@ -269,10 +275,10 @@ public void actualizarFiltrado() {
             FiltroCondicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FiltroCondicionLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(btnCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(pnlOpcionesCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         pnlFiltros.add(FiltroCondicion, java.awt.BorderLayout.CENTER);
