@@ -7,12 +7,22 @@ package consecionario.Formularios;
 import BD.CatalogoBD;
 import consecionario.Clases.CardAuto;
 import consecionario.Clases.CatalogoCarros;
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -25,23 +35,58 @@ public class InventarioVisual extends javax.swing.JPanel {
      */
     
       private CatalogoBD catalogoBD;
+      
 
     // Constructor de InventarioVisual
     public InventarioVisual() {
         initComponents();
         catalogoBD = new CatalogoBD();  // Inicializamos el acceso a la base de datos
+        
+        
+        chkSUV.addItemListener(e -> actualizarFiltrado());
+        chkHatchback.addItemListener(e -> actualizarFiltrado());
+        chkSedan.addItemListener(e -> actualizarFiltrado());
+        chkNuevo.addItemListener(e -> actualizarFiltrado());
+        chkUsado.addItemListener(e -> actualizarFiltrado());
+      
+        
        
-        cargarTodosLosAutos();  // Cargar todos los autos al inicio
-        OrdenarCards();
-    }
+        
+    pnlOpcionesTipoAuto.setVisible(false);
+pnlOpcionesCondicion.setVisible(false);    
+    cargarTodosLosAutos();
+    OrdenarCards();
+    
 
-        private int numColumnas = 3;
+    add(pnlFiltros, BorderLayout.WEST);
+    add(jScrollPane1, BorderLayout.CENTER);
+}
+
+
+public void actualizarFiltrado() {
+    List<String> tiposSeleccionados = new ArrayList<>();
+    if (chkSUV.isSelected()) tiposSeleccionados.add("SUV");
+    if (chkHatchback.isSelected()) tiposSeleccionados.add("Hatchback");
+    if (chkSedan.isSelected()) tiposSeleccionados.add("Sedán");
+
+    List<String> condicionesSeleccionadas = new ArrayList<>();
+    if (chkNuevo.isSelected()) condicionesSeleccionadas.add("Nuevo");
+    if (chkUsado.isSelected()) condicionesSeleccionadas.add("Usado");
+
+    List<CatalogoCarros> filtrados = catalogoBD.filtrarPorMultiples(tiposSeleccionados, condicionesSeleccionadas);
+    AgregarPanels(filtrados); // método que ya usas para mostrar los autos
+}
+
+    
+
+
+        private int numColumnas = 2;
     // Método para ordenar los cards
     public void OrdenarCards() {
         //pnlCards.setLayout(new FlowLayout(FlowLayout.LEFT, 40, 20));
          pnlCards.setLayout(new GridLayout(0, numColumnas, 30, 20));
     }
-
+    
     // Método para agregar los panels con los autos
     public void AgregarPanels(List<CatalogoCarros> listaDeCarros) {
         pnlCards.removeAll();
@@ -79,8 +124,12 @@ public class InventarioVisual extends javax.swing.JPanel {
         List<CatalogoCarros> listaDeCarros = catalogoBD.obtenerPorCategoria(categoria);
         AgregarPanels(listaDeCarros);  // Llamamos al método para agregar los autos filtrados al panel
     }
+    
+  public void filtrarPorCondicion(String condicion) {
+    List<CatalogoCarros> listaDeCarros = catalogoBD.obtenerPorCondicion(condicion);
+    AgregarPanels(listaDeCarros);
+}
 
-    // Método para agregar botones de filtro
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,6 +142,18 @@ public class InventarioVisual extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         pnlCards = new javax.swing.JPanel();
+        pnlFiltros = new javax.swing.JPanel();
+        FiltroTipoAuto = new javax.swing.JPanel();
+        btnTipoAuto = new javax.swing.JToggleButton();
+        pnlOpcionesTipoAuto = new javax.swing.JPanel();
+        chkSedan = new javax.swing.JCheckBox();
+        chkHatchback = new javax.swing.JCheckBox();
+        chkSUV = new javax.swing.JCheckBox();
+        FiltroCondicion = new javax.swing.JPanel();
+        btnCondicion = new javax.swing.JToggleButton();
+        pnlOpcionesCondicion = new javax.swing.JPanel();
+        chkNuevo = new javax.swing.JCheckBox();
+        chkUsado = new javax.swing.JCheckBox();
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(908, 510));
 
@@ -100,35 +161,183 @@ public class InventarioVisual extends javax.swing.JPanel {
         pnlCards.setLayout(pnlCardsLayout);
         pnlCardsLayout.setHorizontalGroup(
             pnlCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 837, Short.MAX_VALUE)
+            .addGap(0, 953, Short.MAX_VALUE)
         );
         pnlCardsLayout.setVerticalGroup(
             pnlCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
+            .addGap(0, 488, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(pnlCards);
+
+        pnlFiltros.setPreferredSize(new java.awt.Dimension(600, 50));
+        pnlFiltros.setLayout(new java.awt.BorderLayout());
+
+        btnTipoAuto.setBackground(new java.awt.Color(255, 255, 255));
+        btnTipoAuto.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btnTipoAuto.setForeground(new java.awt.Color(0, 0, 0));
+        btnTipoAuto.setText("Tipo de auto");
+        btnTipoAuto.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, java.awt.Color.gray));
+        btnTipoAuto.setContentAreaFilled(false);
+        btnTipoAuto.setFocusPainted(false);
+        btnTipoAuto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTipoAutoActionPerformed(evt);
+            }
+        });
+
+        pnlOpcionesTipoAuto.setLayout(new java.awt.BorderLayout());
+
+        chkSedan.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        chkSedan.setText("Sedan");
+        pnlOpcionesTipoAuto.add(chkSedan, java.awt.BorderLayout.CENTER);
+
+        chkHatchback.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        chkHatchback.setText("Hatchback");
+        pnlOpcionesTipoAuto.add(chkHatchback, java.awt.BorderLayout.PAGE_START);
+
+        chkSUV.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        chkSUV.setText("SUV");
+        chkSUV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkSUVActionPerformed(evt);
+            }
+        });
+        pnlOpcionesTipoAuto.add(chkSUV, java.awt.BorderLayout.PAGE_END);
+
+        javax.swing.GroupLayout FiltroTipoAutoLayout = new javax.swing.GroupLayout(FiltroTipoAuto);
+        FiltroTipoAuto.setLayout(FiltroTipoAutoLayout);
+        FiltroTipoAutoLayout.setHorizontalGroup(
+            FiltroTipoAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FiltroTipoAutoLayout.createSequentialGroup()
+                .addContainerGap(74, Short.MAX_VALUE)
+                .addComponent(pnlOpcionesTipoAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57))
+            .addComponent(btnTipoAuto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        FiltroTipoAutoLayout.setVerticalGroup(
+            FiltroTipoAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FiltroTipoAutoLayout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(btnTipoAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(pnlOpcionesTipoAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        pnlFiltros.add(FiltroTipoAuto, java.awt.BorderLayout.PAGE_START);
+
+        btnCondicion.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btnCondicion.setText("Condición");
+        btnCondicion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, java.awt.Color.gray));
+        btnCondicion.setContentAreaFilled(false);
+        btnCondicion.setFocusPainted(false);
+        btnCondicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCondicionActionPerformed(evt);
+            }
+        });
+
+        pnlOpcionesCondicion.setLayout(new java.awt.BorderLayout());
+
+        chkNuevo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        chkNuevo.setText("Nuevo");
+        pnlOpcionesCondicion.add(chkNuevo, java.awt.BorderLayout.PAGE_END);
+
+        chkUsado.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        chkUsado.setText("Usado");
+        chkUsado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkUsadoActionPerformed(evt);
+            }
+        });
+        pnlOpcionesCondicion.add(chkUsado, java.awt.BorderLayout.CENTER);
+
+        javax.swing.GroupLayout FiltroCondicionLayout = new javax.swing.GroupLayout(FiltroCondicion);
+        FiltroCondicion.setLayout(FiltroCondicionLayout);
+        FiltroCondicionLayout.setHorizontalGroup(
+            FiltroCondicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FiltroCondicionLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlOpcionesCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FiltroCondicionLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        FiltroCondicionLayout.setVerticalGroup(
+            FiltroCondicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FiltroCondicionLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(btnCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlOpcionesCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(179, Short.MAX_VALUE))
+        );
+
+        pnlFiltros.add(FiltroCondicion, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 103, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 839, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addComponent(pnlFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
-                .addGap(29, 29, 29))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 76, Short.MAX_VALUE)))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnTipoAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoAutoActionPerformed
+        // TODO add your handling code here:
+         pnlOpcionesTipoAuto.setVisible(btnTipoAuto.isSelected());
+        btnTipoAuto.setText("Tipo de auto " + (btnTipoAuto.isSelected() ? "\u25B2" : "\u25BC")); // ▲ o ▼
+    
+    }//GEN-LAST:event_btnTipoAutoActionPerformed
+
+    private void btnCondicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCondicionActionPerformed
+        // TODO add your handling code here:
+        pnlOpcionesCondicion.setVisible(btnCondicion.isSelected());
+        btnCondicion.setText("Condición " + (btnCondicion.isSelected() ? "\u25B2" : "\u25BC")); // ▲ o ▼
+    
+    }//GEN-LAST:event_btnCondicionActionPerformed
+
+    private void chkSUVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSUVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkSUVActionPerformed
+
+    private void chkUsadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkUsadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkUsadoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel FiltroCondicion;
+    private javax.swing.JPanel FiltroTipoAuto;
+    private javax.swing.JToggleButton btnCondicion;
+    private javax.swing.JToggleButton btnTipoAuto;
+    private javax.swing.JCheckBox chkHatchback;
+    private javax.swing.JCheckBox chkNuevo;
+    private javax.swing.JCheckBox chkSUV;
+    private javax.swing.JCheckBox chkSedan;
+    private javax.swing.JCheckBox chkUsado;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlCards;
+    private javax.swing.JPanel pnlFiltros;
+    private javax.swing.JPanel pnlOpcionesCondicion;
+    private javax.swing.JPanel pnlOpcionesTipoAuto;
     // End of variables declaration//GEN-END:variables
 }

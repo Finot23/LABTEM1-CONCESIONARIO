@@ -110,4 +110,125 @@ public List<CatalogoCarros> obtenerPorCategoria(String categoria) {
 
     return lista;
 }
+
+public List<CatalogoCarros> obtenerPorCondicion(String condicion) {
+    List<CatalogoCarros> lista = new ArrayList<>();
+    con = ConexionBD.conn();
+
+    if (con == null) {
+        System.out.println("No se pudo establecer conexión con la base de datos.");
+        return lista;
+    }
+
+    String sql = "SELECT * FROM almacen WHERE estado = ?"; // Asumo que la columna para la condición es 'estado'
+
+    try {
+        ps = con.prepareStatement(sql);
+        ps.setString(1, condicion); // "Nuevo" o "Usado"
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            CatalogoCarros carro = new CatalogoCarros();
+            carro.setId(rs.getInt("id"));
+            carro.setMarca(rs.getString("marca"));
+            carro.setModelo(rs.getString("modelo"));
+            carro.setAnioFabricacion(rs.getInt("anio_fabricacion"));
+            carro.setPrecio(rs.getDouble("precio"));
+            carro.setColor(rs.getString("color"));
+            carro.setEstado(rs.getString("estado"));
+            carro.setCategoria(rs.getString("categoria"));
+            carro.setImagen(rs.getString("imagen"));
+            carro.setDescripcion(rs.getString("descripcion"));
+            carro.setKilometraje(rs.getLong("kilometraje"));
+            lista.add(carro);
+        }
+    } catch (SQLException e) {
+        System.out.println("Error al obtener por condición: " + e.getMessage());
+    } finally {
+        try {
+            if (ps != null) ps.close();
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al cerrar conexión: " + e.getMessage());
+        }
+    }
+
+    return lista;
+}
+
+public List<CatalogoCarros> filtrarPorMultiples(List<String> tipos, List<String> condiciones) {
+    List<CatalogoCarros> lista = new ArrayList<>();
+    con = ConexionBD.conn();
+
+    if (con == null) {
+        System.out.println("No se pudo establecer conexión con la base de datos.");
+        return lista;
+    }
+
+    StringBuilder sql = new StringBuilder("SELECT * FROM almacen WHERE 1=1");
+
+    if (tipos != null && !tipos.isEmpty()) {
+        sql.append(" AND categoria IN (");
+        sql.append(String.join(",", tipos.stream().map(t -> "?").toArray(String[]::new)));
+        sql.append(")");
+    }
+
+    if (condiciones != null && !condiciones.isEmpty()) {
+        sql.append(" AND estado IN (");
+        sql.append(String.join(",", condiciones.stream().map(c -> "?").toArray(String[]::new)));
+        sql.append(")");
+    }
+
+    try {
+        ps = con.prepareStatement(sql.toString());
+
+        int index = 1;
+        if (tipos != null && !tipos.isEmpty()) {
+            for (String tipo : tipos) {
+                ps.setString(index++, tipo);
+            }
+        }
+        if (condiciones != null && !condiciones.isEmpty()) {
+            for (String condicion : condiciones) {
+                ps.setString(index++, condicion);
+            }
+        }
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            CatalogoCarros carro = new CatalogoCarros();
+            carro.setId(rs.getInt("id"));
+            carro.setMarca(rs.getString("marca"));
+            carro.setModelo(rs.getString("modelo"));
+            carro.setAnioFabricacion(rs.getInt("anio_fabricacion"));
+            carro.setPrecio(rs.getDouble("precio"));
+            carro.setColor(rs.getString("color"));
+            carro.setEstado(rs.getString("estado"));
+            carro.setCategoria(rs.getString("categoria"));
+            carro.setImagen(rs.getString("imagen"));
+            carro.setDescripcion(rs.getString("descripcion"));
+            carro.setKilometraje(rs.getLong("kilometraje"));
+            lista.add(carro);
+        }
+
+        rs.close();
+    } catch (SQLException e) {
+        System.out.println("Error al filtrar por múltiples: " + e.getMessage());
+    } finally {
+        try {
+            if (ps != null) ps.close();
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al cerrar conexión: " + e.getMessage());
+        }
+    }
+
+    return lista;
+
+
+
+}
+
 }
