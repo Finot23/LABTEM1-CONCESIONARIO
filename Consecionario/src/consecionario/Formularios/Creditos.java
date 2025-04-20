@@ -23,6 +23,22 @@ public class Creditos extends javax.swing.JPanel {
         this.cliente = cliente;
         this.carro = carro;
         cargarDatosClienteyAuto(); // Esta función pone la info en las etiquetas
+        
+        // Agregar el listener para el comboPorcentaje
+comboPorcentaje.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        // Llamamos a un método para actualizar los cálculos dinámicamente
+        actualizarCalculadoraCredito();
+    }
+});
+
+// Agregar el listener para el comboMeses
+comboMeses.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        // Llamamos a un método para actualizar los cálculos dinámicamente
+        actualizarCalculadoraCredito();
+    }
+});
 }
 
 
@@ -79,7 +95,7 @@ public class Creditos extends javax.swing.JPanel {
 
         etCredito.setText("Monto de Credito:");
 
-        jLabel7.setText("Tasa de Interes Anual:");
+        jLabel7.setText("Tasa de Interes Anual: 15%");
 
         jLabel8.setText("Plazo (Numero de meses)");
 
@@ -115,7 +131,7 @@ public class Creditos extends javax.swing.JPanel {
                             .addComponent(jLabel7)
                             .addComponent(etEnganche)))
                     .addComponent(etPagoMensual))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         etInteresLayout.setVerticalGroup(
             etInteresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,6 +250,32 @@ public class Creditos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboMesesActionPerformed
 
+    private void actualizarCalculadoraCredito() {
+    // Obtenemos el porcentaje seleccionado y los meses
+    String porcentajeSeleccionado = comboPorcentaje.getSelectedItem().toString();
+    int meses = Integer.parseInt(comboMeses.getSelectedItem().toString());
+
+    // Crear un objeto de Credito con los datos
+    Credito credito = new Credito(cliente, carro);
+    credito.setporcentajeEnganche(porcentajeSeleccionado);
+    credito.setvalor_auto(carro.getPrecio());
+
+    double enganche = credito.calcularEnganche();
+    double montoCredito = credito.creditoAprobado();
+    
+    credito.setmeses(meses);
+    double tasaAnual = 0.15;
+    credito.settasa_interes(tasaAnual);
+    
+    double pagoMensual = credito.pagoMensual(montoCredito, meses);
+    credito.setpago_mensual(pagoMensual);
+
+    // Actualizamos las etiquetas
+    etEnganche.setText("Enganche: $" + String.format("%.2f", enganche));
+    etCredito.setText("Monto del crédito: $" + String.format("%.2f", montoCredito));
+    etPagoMensual.setText("Pago mensual: $" + String.format("%.2f", pagoMensual));
+}
+    
     private void btnAprobarCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprobarCreditoActionPerformed
         // TODO add your handling code here:
         String porcentajeSeleccionado = comboPorcentaje.getSelectedItem().toString();

@@ -51,9 +51,7 @@ public class Seguros extends javax.swing.JPanel {
         cargarDatosCliente(); 
         cargarDatosCarroSeleccionado();
 
-    // (Aquí puedes poner código para mostrar datos del cliente y auto si lo necesitas)
 }
-     
      
     private void cargarDatosCliente() {
 

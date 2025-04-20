@@ -24,10 +24,6 @@ import javax.swing.JTextField;
 
 public class Ventas extends javax.swing.JPanel {
     
-
-    /**
-     * Creates new form Ventas
-     */
     private CatalogoCarros carroSeleccionado;
    
 
@@ -1131,6 +1127,7 @@ public class Ventas extends javax.swing.JPanel {
     switch (seleccion) {
         case 0: // Solo Seguro
             Seguros segurosPanel = new Seguros(cliente, carroSeleccionado, false); // false = no va a crédito después
+            segurosPanel.setClienteYaExiste(true);  
             ventanaPrincipal.setPanelContenido(segurosPanel);
             break;
         case 1: // Solo Crédito
@@ -1139,6 +1136,7 @@ public class Ventas extends javax.swing.JPanel {
             break;
         case 2: // Ambos
             Seguros ambosSegurosPanel = new Seguros(cliente, carroSeleccionado, true); // true = sí va a crédito después
+            ambosSegurosPanel.setClienteYaExiste(true); 
             ventanaPrincipal.setPanelContenido(ambosSegurosPanel);
             break;
         default:
