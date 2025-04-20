@@ -76,7 +76,7 @@
                   <Table columnCount="7" rowCount="9">
                     <Column editable="true" title="id" type="java.lang.Object"/>
                     <Column editable="true" title="modelo" type="java.lang.Object"/>
-                    <Column editable="true" title="a&#xf1;o_fabricacion" type="java.lang.Object"/>
+                    <Column editable="true" title="anio_fabricacion" type="java.lang.Object"/>
                     <Column editable="true" title="precio" type="java.lang.Object"/>
                     <Column editable="true" title="color" type="java.lang.Object"/>
                     <Column editable="true" title="estado" type="java.lang.Object"/>

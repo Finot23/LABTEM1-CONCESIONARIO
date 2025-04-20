@@ -141,7 +141,7 @@ public class Catalogo extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "id", "modelo", "año_fabricacion", "precio", "color", "estado", "Categoria"
+                "id", "modelo", "anio_fabricacion", "precio", "color", "estado", "Categoria"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

@@ -981,23 +981,23 @@ public class Seguros extends javax.swing.JPanel {
         loadingDialog.setSize(250, 100);
         loadingDialog.setLocationRelativeTo(this);
     
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        //JPanel panel = new JPanel(new BorderLayout());
+        //panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
     
-        JProgressBar progressBar = new JProgressBar();
-        progressBar.setIndeterminate(true);
-        JLabel label = new JLabel("Procesando pago...", JLabel.CENTER);
+        //JProgressBar progressBar = new JProgressBar();
+        //progressBar.setIndeterminate(true);
+        //JLabel label = new JLabel("Procesando pago...", JLabel.CENTER);
     
-        panel.add(progressBar, BorderLayout.CENTER);
-        panel.add(label, BorderLayout.SOUTH);
-        loadingDialog.add(panel);
-        loadingDialog.setVisible(true);
+        //panel.add(progressBar, BorderLayout.CENTER);
+        //panel.add(label, BorderLayout.SOUTH);
+        //loadingDialog.add(panel);
+        //loadingDialog.setVisible(true);
 
         // 4. Ejecutar en segundo plano (CON TIEMPO EXTENDIDO)
         new Thread(() -> {
             try {
             
-            Thread.sleep(3000); // Espera inicial de 3 segundos (simula procesamiento)
+            //Thread.sleep(3000); // Espera inicial de 3 segundos (simula procesamiento)
             
             Cliente clientes = new Cliente();
             clientes.setNombre(fieldNombre.getText());
@@ -1051,9 +1051,9 @@ public class Seguros extends javax.swing.JPanel {
             SegurosBD segurosBD = new SegurosBD();
             boolean resultado = segurosBD.RegistrarSeguro(seguro);
             
-            Thread.sleep(2000); // Espera adicional de 2 segundos (antes de mostrar resultado)
+            //Thread.sleep(2000); // Espera adicional de 2 segundos (antes de mostrar resultado)
             
-            SwingUtilities.invokeLater(() -> {
+             SwingUtilities.invokeLater(() -> {
                 loadingDialog.dispose();
                 if (resultado) {
                     JOptionPane.showMessageDialog(Seguros.this, 

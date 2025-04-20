@@ -51,7 +51,6 @@ public class InterfaceEA extends javax.swing.JFrame {
         fieldModelo = new javax.swing.JTextField();
         fieldMarca = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        fieldAnio = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         fieldColor = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -61,6 +60,9 @@ public class InterfaceEA extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         fieldValorAuto = new javax.swing.JTextField();
+        fieldKm = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        fieldAnio = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -84,8 +86,6 @@ public class InterfaceEA extends javax.swing.JFrame {
 
         jLabel2.setText("Marca");
 
-        fieldAnio.setPreferredSize(new java.awt.Dimension(70, 22));
-
         jLabel4.setText("Precio");
 
         fieldColor.setPreferredSize(new java.awt.Dimension(70, 22));
@@ -106,6 +106,17 @@ public class InterfaceEA extends javax.swing.JFrame {
 
         fieldValorAuto.setPreferredSize(new java.awt.Dimension(70, 22));
 
+        fieldKm.setPreferredSize(new java.awt.Dimension(40, 22));
+
+        jLabel8.setText("Km");
+
+        fieldAnio.setPreferredSize(new java.awt.Dimension(45, 22));
+        fieldAnio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldAnioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -117,7 +128,7 @@ public class InterfaceEA extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addGap(55, 55, 55)
+                                .addGap(43, 43, 43)
                                 .addComponent(jLabel3))
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(fieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -129,15 +140,17 @@ public class InterfaceEA extends javax.swing.JFrame {
                                     .addComponent(fieldMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
+                                .addGap(14, 14, 14)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(fieldColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel5)))))
+                                    .addComponent(fieldKm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(fieldColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(fieldValorAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(fieldAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +160,7 @@ public class InterfaceEA extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(comboEstadoAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,12 +177,14 @@ public class InterfaceEA extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel8))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldValorAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldValorAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldKm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -262,7 +277,7 @@ public class InterfaceEA extends javax.swing.JFrame {
 
     try {
         java.sql.Connection conn = ConexionBD.conn();
-        String sql = "INSERT INTO almacen (marca, modelo, año_fabricacion, precio, color, estado, categoria, imagen, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO almacen (marca, modelo, anio_fabricacion, precio, color, estado, categoria, imagen, descripcion,kilometraje) VALUES (? ,?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement ps = conn.prepareStatement(sql);
 
         ps.setString(1, fieldMarca.getText());
@@ -274,6 +289,7 @@ public class InterfaceEA extends javax.swing.JFrame {
         ps.setString(7, comboTipo.getSelectedItem().toString());
         ps.setString(8, ""); // imagen vacía
         ps.setString(9, ""); // descripción vacía
+        ps.setInt(10, Integer.parseInt(fieldKm.getText()));
 
         ps.executeUpdate();
         JOptionPane.showMessageDialog(this, "Auto agregado exitosamente.");
@@ -289,6 +305,10 @@ public class InterfaceEA extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void fieldAnioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldAnioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldAnioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -299,6 +319,7 @@ public class InterfaceEA extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JTextField fieldAnio;
     private javax.swing.JTextField fieldColor;
+    private javax.swing.JTextField fieldKm;
     private javax.swing.JTextField fieldMarca;
     private javax.swing.JTextField fieldModelo;
     private javax.swing.JTextField fieldValorAuto;
@@ -309,6 +330,7 @@ public class InterfaceEA extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
