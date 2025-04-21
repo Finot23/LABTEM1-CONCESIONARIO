@@ -9,6 +9,7 @@ import BD.ClienteDB;
 import consecionario.Clases.AdministradorPanel;
 import consecionario.Clases.CatalogoCarros;
 import consecionario.Clases.Cliente;
+import consecionario.Clases.GeneradorPDF;
 import consecionario.Formularios.Principal;
 import consecionario.Formularios.Seguros;
 import java.awt.Color;
@@ -1118,32 +1119,41 @@ public class Ventas extends javax.swing.JPanel {
         return;
     }
     // Mostrar opciones de qué desea hacer
-    Object[] opciones = {"Solo Seguro", "Solo Crédito", "Ambos", "Cancelar"};
-    int seleccion = JOptionPane.showOptionDialog(null,"¿Qué desea hacer a continuación?","Opciones de Compra",JOptionPane.DEFAULT_OPTION,
-        JOptionPane.QUESTION_MESSAGE,null,opciones,opciones[0]);
+    Object[] opciones = {"Solo Seguro", "Solo Crédito", "Ambos", "No requiere seguro", "No requiere crédito", "Cancelar"};
+int seleccion = JOptionPane.showOptionDialog(null, "¿Qué desea hacer a continuación?", "Opciones de Compra", 
+                                              JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
 
-    Principal ventanaPrincipal = (Principal) javax.swing.SwingUtilities.getWindowAncestor(this);
+Principal ventanaPrincipal = (Principal) javax.swing.SwingUtilities.getWindowAncestor(this);
 
-    switch (seleccion) {
-        case 0: // Solo Seguro
-            Seguros segurosPanel = new Seguros(cliente, carroSeleccionado, false); // false = no va a crédito después
-            segurosPanel.setClienteYaExiste(true);  
-            ventanaPrincipal.setPanelContenido(segurosPanel);
-            break;
-        case 1: // Solo Crédito
-            Creditos creditosPanel = new Creditos(cliente, carroSeleccionado);
-            ventanaPrincipal.setPanelContenido(creditosPanel);
-            break;
-        case 2: // Ambos
-            Seguros ambosSegurosPanel = new Seguros(cliente, carroSeleccionado, true); // true = sí va a crédito después
-            ambosSegurosPanel.setClienteYaExiste(true); 
-            ventanaPrincipal.setPanelContenido(ambosSegurosPanel);
-            break;
-        default:
-            JOptionPane.showMessageDialog(this, "Operación cancelada.");
-            break;
-    }
-
+switch (seleccion) {
+    case 0: // Solo Seguro
+        Seguros segurosPanel = new Seguros(cliente, carroSeleccionado, false); // false = no va a crédito después
+        segurosPanel.setClienteYaExiste(true);  
+        ventanaPrincipal.setPanelContenido(segurosPanel);
+        break;
+    case 1: // Solo Crédito
+        Creditos creditosPanel = new Creditos(cliente, carroSeleccionado);
+        ventanaPrincipal.setPanelContenido(creditosPanel);
+        break;
+    case 2: // Ambos
+        Seguros ambosSegurosPanel = new Seguros(cliente, carroSeleccionado, true); // true = sí va a crédito después
+        ambosSegurosPanel.setClienteYaExiste(true); 
+        ventanaPrincipal.setPanelContenido(ambosSegurosPanel);
+        break;
+    case 3: // No requiere seguro
+        // Aquí agregas lo que debe hacer si no requiere seguro
+        GeneradorPDF.generarResumenVenta(cliente, carroSeleccionado, null);
+        break;
+        
+        
+    case 4: // No requiere crédito
+        // Aquí agregas lo que debe hacer si no requiere crédito
+        JOptionPane.showMessageDialog(this, "El cliente no requiere crédito.");
+        break;
+    default:
+        JOptionPane.showMessageDialog(this, "Operación cancelada.");
+        break;
+}
 
     }//GEN-LAST:event_btnContinuarActionPerformed
 
