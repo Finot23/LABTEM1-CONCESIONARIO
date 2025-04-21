@@ -1038,7 +1038,7 @@ public class Seguros extends javax.swing.JPanel {
             seguro.setPrima(Double.parseDouble(labelPrima.getText().replaceAll("[^0-9.]", "")));
             seguro.setEdadConductor(clientes.getEdad());
             seguro.setGeneroConductor(clientes.getGenero());
-            seguro.setValorBaseAuto(Integer.parseInt(fieldValorAuto.getText()));
+            seguro.setValorBaseAuto(Double.parseDouble(fieldValorAuto.getText()));
             seguro.setCoberturaJuridico(checkJuridico.isSelected());
             seguro.setCoberturaLlantas(checkLlantas.isSelected());
             seguro.setCoberturaPerdidaTotal(checkPerdidaTotal.isSelected());
