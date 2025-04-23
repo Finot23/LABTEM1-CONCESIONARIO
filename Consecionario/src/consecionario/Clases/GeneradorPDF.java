@@ -1,134 +1,215 @@
 package consecionario.Clases;
 
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.Rectangle;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 import java.io.File;
-
-import javax.swing.JOptionPane;
 import java.io.FileOutputStream;
+import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 public class GeneradorPDF {
 
-   public static void generarResumenVenta(Cliente cliente, CatalogoCarros carroSeleccionado, String rutaSalida) {
+ 
+
+    /* ----------  ESTILOS & COLORES  ---------- */
+    private static final BaseColor AZUL   = new BaseColor(0x00, 0x26, 0x3A);
+    private static final Font fEmpresa    = new Font(Font.FontFamily.HELVETICA, 20, Font.BOLD);
+    private static final Font fSlogan     = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
+    private static final Font fDireccion = new Font(Font.FontFamily.HELVETICA, 8, Font.NORMAL);
+    private static final Font fEtiqueta   = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD, AZUL);
+    private static final Font fTablaHd    = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD, BaseColor.WHITE);
+    private static final Font fNormal     = new Font(Font.FontFamily.HELVETICA, 9);
+
+    /* ----------  MÉTODO PRINCIPAL  ---------- */
+    public static void generarResumenVenta(Cliente cliente,
+                                           CatalogoCarros carro,
+                                           String rutaSalida) {
+
         try {
-            // Crear carpeta si no existe
-            String rutaBase = "src/consecionario/Facturas/VentasSinSeguro/";
-            File carpeta = new File(rutaBase);
-            if (!carpeta.exists()) {
-                carpeta.mkdirs();
-            }
+            Double TotalConIVA = carro.getPrecio();
+            Double TotalSinIVA = TotalConIVA / 1.16;
+            DecimalFormat df = new DecimalFormat("#,##0.00");
+            LocalDate hoy = LocalDate.now();                   
+            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String fechaEmision = hoy.format(fmt); 
 
-            // Ruta del archivo
+            // Carpeta de salida
+            String base = "src/consecionario/Facturas/VentasSinSeguro/";
+            File dir = new File(base);
+            if (!dir.exists()) dir.mkdirs();
+
             if (rutaSalida == null || rutaSalida.isEmpty()) {
-                rutaSalida = rutaBase + "Resumen_Venta_" + cliente.getNombre().replaceAll("\\s+", "_") + ".pdf";
+                rutaSalida = base + "Resumen_Venta_"
+                           + cliente.getNombre().replaceAll("\\s+", "_") + ".pdf";
             }
 
-            Document document = new Document(PageSize.A4);
-            PdfWriter.getInstance(document, new FileOutputStream(rutaSalida));
-            document.open();
+            Document doc = new Document(PageSize.A4, 36, 36, 36, 36);
+            PdfWriter.getInstance(doc, new FileOutputStream(rutaSalida));
+            doc.open();
 
-            // Fuentes
-            Font fontEmpresa = new Font(Font.FontFamily.HELVETICA, 20, Font.BOLD, BaseColor.DARK_GRAY);
-            Font fontSlogan = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL);
-            Font fontDireccion = new Font(Font.FontFamily.HELVETICA, 8, Font.NORMAL, BaseColor.GRAY);
-            Font fontFactura = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD, BaseColor.BLACK);
-            Font fontNormal = new Font(Font.FontFamily.HELVETICA, 10);
-            Font fontBold = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
+            /* -------- 1. ENCABEZADO -------- */
+            PdfPTable head = new PdfPTable(2);
+            head.setWidthPercentage(100);
+            head.setWidths(new int[]{3, 2});
 
+            PdfPCell left = new PdfPCell();
+            left.setBorder(Rectangle.NO_BORDER);
+            left.addElement(new Phrase("AutoNova Group", fEmpresa));
+            head.addCell(left);
 
-            // Tabla para encabezado: 2 columnas
-            PdfPTable encabezado = new PdfPTable(2);
-            encabezado.setWidthPercentage(100);
-            encabezado.setWidths(new int[]{2, 3}); // proporción columnas
-
-            // Celda 1: Nombre de la empresa
-            PdfPCell celdaIzquierda = new PdfPCell();
-            celdaIzquierda.setBorder(Rectangle.NO_BORDER);
-            celdaIzquierda.addElement(new Phrase("AutoNova Group", fontEmpresa));
-            celdaIzquierda.addElement(new Phrase("FACTURA", fontFactura));
-            document.add(new Paragraph("\n"));
-            encabezado.addCell(celdaIzquierda);
-
-            // Celda 2: Eslogan y dirección
-            PdfPCell celdaDerecha = new PdfPCell();
-            celdaDerecha.setBorder(Rectangle.NO_BORDER);
-            celdaDerecha.setHorizontalAlignment(Element.ALIGN_RIGHT);
-            celdaDerecha.addElement(new Phrase("COCHES NUEVOS Y SEMINUEVOS GARANTIZADOS", fontSlogan));
-            celdaDerecha.addElement(new Phrase("Vasco de Quiroga 4871, Contadero,", fontDireccion));
-            celdaDerecha.addElement(new Phrase("Cuajimalpa de Morelos, 05348 Ciudad de México, CDMX", fontDireccion));
-            encabezado.addCell(celdaDerecha);
-
-            document.add(encabezado);
-
-            // Línea separadora
-            LineSeparator separator = new LineSeparator();
-            separator.setLineColor(BaseColor.LIGHT_GRAY);
-            document.add(new Chunk(separator));
-
-            // Puedes continuar con tu tabla de datos aquí abajo...
-
-            document.add(Chunk.NEWLINE);
-
-            PdfPTable tabla = new PdfPTable(2);
-            tabla.setWidthPercentage(100);
+            PdfPCell right = new PdfPCell();
+            right.setBorder(Rectangle.NO_BORDER);
+            right.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            right.addElement(new Phrase("\nFACTURA:", fEtiqueta));
+            right.addElement(new Phrase("COCHES NUEVOS Y SEMINUEVOS\nGARANTIZADOS", fSlogan));
+            right.addElement(new Phrase("Vasco de Quiroga 4871, Contadero,\nCuajimalpa de Morelos, 05348 Ciudad de México, CDMX", fDireccion));
             
-            tabla.addCell(getCelda("DATOS DEL CLIENTE", FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
-            tabla.addCell(getCelda("DATOS DEL DOCUMENTO",FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
-            tabla.addCell(getCelda("Nombre del Cliente: "+cliente.getNombre(), FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
-            
-            tabla.addCell(new Phrase("Folio fiscal: 7A4B98C5-XXXX", fontNormal));
-            tabla.addCell(getCelda("RFC del receptor: XAXX010101000",FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
-            
-            
-            tabla.addCell(getCelda("Dirección: "+cliente.getCalle() +cliente.getColonia() +cliente.getMunicipio() +cliente.getEstado() +cliente.getCP() , FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
-            //tabla.addCell/"Fecha de emisión"
-            
-            
-            tabla.addCell(getCelda("Carro:", FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
-            tabla.addCell(getCelda(carroSeleccionado.getModelo(), null));
-            tabla.addCell(getCelda("Año:", FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
-            tabla.addCell(getCelda(String.valueOf(carroSeleccionado.getAnioFabricacion()), null));
-            tabla.addCell(getCelda("Precio:", FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
-            tabla.addCell(getCelda("$" + carroSeleccionado.getPrecio(), null));
-            tabla.addCell(getCelda("Seguro requerido:", FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
-            tabla.addCell(getCelda("No", null));
-            
-            PdfPCell docCell = new PdfPCell();
-            docCell.setBorder(Rectangle.NO_BORDER);
-            docCell.addElement(new Phrase("DATOS DEL DOCUMENTO", fontBold));
-           
-            docCell.addElement(new Phrase("Fecha emisión: 22/04/2025", fontNormal));
-            docCell.addElement(new Phrase("Forma de pago: 99 - POR DEFINIR", fontNormal));
-            
-            document.add(tabla);
+            head.addCell(right);
 
-            document.close();
-            JOptionPane.showMessageDialog(null, "Resumen generado en: " + rutaSalida);
+            doc.add(head);
+            doc.add(new Chunk("\n"));
+            doc.add(new LineSeparator());
+            doc.add(new Chunk("\nFACTURA\n\n", fEtiqueta));
+
+            /* -------- 2. DATOS CLIENTE / DOC -------- */
+            PdfPTable datos = tablaDosCol(100);
+            datos.addCell(celdaCabecera("DATOS DEL CLIENTE"));
+            datos.addCell(celdaCabecera("DATOS DEL DOCUMENTO"));
+
+            datos.addCell(new Phrase("Nombre del Cliente: \n" + cliente.getNombre() + cliente.getApellidoP() + cliente.getApellidoM(), fNormal));
+            datos.addCell(new Phrase("Folio fiscal: \n" + "7A4B98C5-XXXX", fNormal));
+
+            datos.addCell(new Phrase("Dirección:\n"
+                    + cliente.getCalle() + ", "
+                    + cliente.getColonia() + ", "
+                    + cliente.getMunicipio() + ", "
+                    + cliente.getEstado() + ", C.P. " + cliente.getCP(), fNormal));
+
+            datos.addCell(new Phrase("RFC del emisor: XAXX010101000"
+                    + "\nFecha de emisión: " + fechaEmision, fNormal));
+
+            doc.add(datos);
+            doc.add(Chunk.NEWLINE);
+
+            /* --------------------------------------------------------------------------------
+           4) FORMA DE PAGO / MONEDA
+        -------------------------------------------------------------------------------- */
+        PdfPTable pago = tablaDosCol(100);
+        pago.addCell(celdaCabecera("FORMA DE PAGO"));
+        pago.addCell(celdaCabecera("MONEDA"));
+        pago.addCell(new Phrase("01 - EFECTIVO", fNormal));
+        pago.addCell(new Phrase("MXN - PESO MEXICANO", fNormal));
+        doc.add(pago);
+        doc.add(new Chunk("\n"));
+
+        /* --------------------------------------------------------------------------------
+           5) TABLA CONCEPTOS (Cantidad, Descripción, Clave)
+        -------------------------------------------------------------------------------- */
+        PdfPTable conceptos = new PdfPTable(new float[]{1, 5, 2});
+        conceptos.setWidthPercentage(100);
+
+        // Cabeceras azul con texto blanco
+        for (String h : new String[]{"CANTIDAD", "DESCRIPCIÓN", "CLAVE DE UNIDAD"})
+            conceptos.addCell(celdaCabecera(h));
+
+        // Fila concepto
+        // --- Construir la descripción completa ---
+StringBuilder sb = new StringBuilder();
+sb.append("UN VEHÍCULO ").append(carro.getEstado())
+  .append(" CON LA SIGUIENTE DESCRIPCIÓN\n\n")
+  .append("MARCA: ").append(carro.getMarca()).append('\n')
+  .append("MODELO: ").append(carro.getModelo()).append('\n')
+  .append("TIPO: ").append(carro.getCategoria()).append('\n')
+  .append("COLOR: ").append(carro.getColor()).append('\n')
+  .append("AÑO: ").append(carro.getAnioFabricacion()).append('\n')
+  .append("KILOMETRAJE: ").append(carro.getKilometraje());
+
+Phrase descripcion = new Phrase(sb.toString(), fNormal);
+
+// --- Añadir a la tabla ---
+conceptos.addCell(new Phrase("01", fNormal));  // Cantidad
+conceptos.addCell(descripcion);                // Descripción
+conceptos.addCell(new Phrase(String.valueOf(carro.getId()), fNormal));
+
+        doc.add(conceptos);
+        doc.add(new Chunk("\n"));
+
+        /* Nota / Norma */
+        Paragraph nota = new Paragraph("La transmisión de la propiedad del bien al que se refiere la presente factura se formaliza a través del contrato de adhesión correspondiente, conforme a las disposiciones de la Norma Oficial Mexicana 1 C‑05CFI‑2010", fNormal);
+        nota.setAlignment(Element.ALIGN_JUSTIFIED);
+        doc.add(nota);
+        doc.add(new Chunk("\n"));
+
+        Paragraph leyenda = new Paragraph("AUTOMÓVIL CON LAS CARACTERÍSTICAS Y CONDICIONES EN LAS QUE SE ENCUENTRA", fEtiqueta);
+        leyenda.setAlignment(Element.ALIGN_CENTER);
+        doc.add(leyenda);
+        doc.add(new Chunk("\n"));
+
+        /* --------------------------------------------------------------------------------
+           6) IMPORTE Y TOTALES
+        -------------------------------------------------------------------------------- */
+        PdfPTable totTitulo = new PdfPTable(1);
+        totTitulo.setWidthPercentage(100);
+        PdfPCell cImp = celdaCabecera("IMPORTE");
+        cImp.setHorizontalAlignment(Element.ALIGN_LEFT);
+        totTitulo.addCell(cImp);
+        doc.add(totTitulo);
+
+        // tabla totales (alinear a la derecha)
+        PdfPTable totales = new PdfPTable(2);
+        totales.setWidths(new float[]{2, 1});
+        totales.setHorizontalAlignment(Element.ALIGN_RIGHT);
+        totales.setWidthPercentage(40);
+
+        totales.addCell(celdaLinea("Subtotal:", false));
+        totales.addCell(celdaLinea("$" +df.format(TotalSinIVA), true));
+
+        totales.addCell(celdaLinea("IVA 16%:", false));
+        totales.addCell(celdaLinea("$" +df.format(TotalConIVA), true));
+
+        totales.addCell(celdaLinea("Total:", true));
+        totales.addCell(celdaLinea("$" +df.format(TotalConIVA), true));
+
+        doc.add(totales);
+
+        
+    
+
+            doc.close();
+
+            JOptionPane.showMessageDialog(null, "PDF generado en:\n" + rutaSalida);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al generar el PDF: " + e.getMessage());
+            JOptionPane.showMessageDialog(null,
+                    "Error al generar el PDF:\n" + e.getMessage());
         }
     }
 
-    private static PdfPCell getCelda(String texto, Font fuente) {
-        if (fuente == null) {
-            fuente = new Font(Font.FontFamily.HELVETICA, 11);
-        }
-        PdfPCell celda = new PdfPCell(new Phrase(texto, fuente));
-        celda.setBorder(Rectangle.NO_BORDER);
-        return celda;
+    /* ----------  HELPERS  ---------- */
+    private static PdfPTable tablaDosCol(float pct) {
+        PdfPTable t = new PdfPTable(2);
+        t.setWidthPercentage(pct);
+        return t;
     }
 
+    private static PdfPCell celdaCabecera(String txt) {
+        PdfPCell c = new PdfPCell(new Phrase(txt, fTablaHd));
+        c.setBackgroundColor(AZUL);
+        c.setBorder(Rectangle.NO_BORDER);
+        c.setHorizontalAlignment(Element.ALIGN_CENTER);
+        c.setPadding(4f);
+        return c;
+    }
+
+    private static PdfPCell celdaLinea(String txt, boolean boldRight) {
+        Font f = boldRight ? fEtiqueta : fNormal;
+        PdfPCell c = new PdfPCell(new Phrase(txt, f));
+        c.setBorder(Rectangle.NO_BORDER);
+        c.setHorizontalAlignment(boldRight ? Element.ALIGN_RIGHT : Element.ALIGN_LEFT);
+        c.setPadding(2f);
+        return c;
+    }
 }
