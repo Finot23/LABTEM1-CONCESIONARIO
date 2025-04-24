@@ -31,6 +31,7 @@ public class GeneradorPDF {
         try {
             Double TotalConIVA = carro.getPrecio();
             Double TotalSinIVA = TotalConIVA / 1.16;
+            Double IVA = TotalSinIVA * 0.16;
             DecimalFormat df = new DecimalFormat("#,##0.00");
             LocalDate hoy = LocalDate.now();                   
             DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -63,7 +64,7 @@ public class GeneradorPDF {
             PdfPCell right = new PdfPCell();
             right.setBorder(Rectangle.NO_BORDER);
             right.setHorizontalAlignment(Element.ALIGN_RIGHT);
-            right.addElement(new Phrase("\nFACTURA:", fEtiqueta));
+            right.addElement(new Phrase("\nFACTURA: " +cliente.getId(), fEtiqueta));
             right.addElement(new Phrase("COCHES NUEVOS Y SEMINUEVOS\nGARANTIZADOS", fSlogan));
             right.addElement(new Phrase("Vasco de Quiroga 4871, Contadero,\nCuajimalpa de Morelos, 05348 Ciudad de México, CDMX", fDireccion));
             
@@ -161,14 +162,14 @@ conceptos.addCell(new Phrase(String.valueOf(carro.getId()), fNormal));
         // tabla totales (alinear a la derecha)
         PdfPTable totales = new PdfPTable(2);
         totales.setWidths(new float[]{2, 1});
-        totales.setHorizontalAlignment(Element.ALIGN_RIGHT);
         totales.setWidthPercentage(40);
+        totales.setHorizontalAlignment(Element.ALIGN_RIGHT);
 
         totales.addCell(celdaLinea("Subtotal:", false));
         totales.addCell(celdaLinea("$" +df.format(TotalSinIVA), true));
 
         totales.addCell(celdaLinea("IVA 16%:", false));
-        totales.addCell(celdaLinea("$" +df.format(TotalConIVA), true));
+        totales.addCell(celdaLinea("$" +df.format(IVA), true));
 
         totales.addCell(celdaLinea("Total:", true));
         totales.addCell(celdaLinea("$" +df.format(TotalConIVA), true));

@@ -1141,7 +1141,7 @@ switch (seleccion) {
         ventanaPrincipal.setPanelContenido(ambosSegurosPanel);
         break;
     case 3: // No requiere seguro
-        // Aquí agregas lo que debe hacer si no requiere seguro
+       
        GeneradorPDF.generarResumenVenta(cliente, carroSeleccionado, null);
         break;
         

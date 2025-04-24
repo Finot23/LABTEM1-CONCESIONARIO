@@ -27,6 +27,8 @@ public class Cliente {
     int Edad;
     
     
+    
+    
     public Cliente(){
     
 }

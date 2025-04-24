@@ -29,9 +29,31 @@ public class Seguro {
     private boolean coberturaRCA;  // Responsabilidad Civil Ampliada
     private boolean coberturaRobo;
     private boolean coberturaVial;
+    private String NoSerie;
+    private String Placas;
 
     public Seguro() {
         // Constructor vacío
+    }
+
+    public void setPlacas(String Placas) {
+        this.Placas = Placas;
+    }
+
+    public String getPlacas() {
+        return Placas;
+    }
+
+    public Seguro(String NoSerie) {
+        this.NoSerie = NoSerie;
+    }
+
+    public String getNoSerie() {
+        return NoSerie;
+    }
+
+    public void setNoSerie(String NoSerie) {
+        this.NoSerie = NoSerie;
     }
     
     public Seguro(String nombreS, String apellidoP, String autoResumen, String cobertura, 

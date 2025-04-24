@@ -8,6 +8,8 @@ import BD.ClienteDB;
 import BD.SegurosBD;
 import consecionario.Clases.CatalogoCarros;
 import consecionario.Clases.Cliente;
+import consecionario.Clases.GeneradorPDF;
+import consecionario.Clases.PolizaSeguroPDF;
 import consecionario.Clases.Seguro;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
@@ -26,6 +28,7 @@ import java.util.concurrent.ExecutionException;
 public class Seguros extends javax.swing.JPanel {
     private boolean irACreditoDespues;
     private CatalogoCarros carro;
+    private Seguro seguro;
     private Cliente cliente;
     
     private JPanel jPanelContenido;
@@ -69,6 +72,7 @@ public class Seguros extends javax.swing.JPanel {
     fieldMunicipio.setText(cliente.getMunicipio());
     fieldEstado.setText(cliente.getEstado());
     fieldCP.setText(cliente.getCP());
+    fieldLicencia.setText(cliente.getLicencia());
     
     
 }
@@ -895,6 +899,7 @@ public class Seguros extends javax.swing.JPanel {
         seguro.setCoberturaRCA(checkRCA.isSelected());
         seguro.setCoberturaRobo(checkRobo.isSelected());
         seguro.setCoberturaJuridico(checkJuridico.isSelected());
+        seguro.setNoSerie(fieldSerie.getText());
         
         double valorAsegurado = seguro.calcularValorAsegurado();
         double prima = seguro.calcularPrima();
@@ -1024,6 +1029,8 @@ public class Seguros extends javax.swing.JPanel {
             Seguro seguro = new Seguro();
             seguro.setNombreS(fieldNombre.getText());
             seguro.setApellidoP(fieldApellidoP.getText());
+            seguro.setNoSerie(fieldSerie.getText());
+            seguro.setPlacas(fieldPlacas.getText());
             seguro.setAutoResumen(Seguro.generarResumenAuto(
                 fieldMarca.getText(),
                 fieldModelo.getText(),
@@ -1050,6 +1057,7 @@ public class Seguros extends javax.swing.JPanel {
             boolean resultado = segurosBD.RegistrarSeguro(seguro);
             
             //Thread.sleep(2000); // Espera adicional de 2 segundos (antes de mostrar resultado)
+            PolizaSeguroPDF.generarResumenSeguro(cliente, carro, seguro, null);
             
              SwingUtilities.invokeLater(() -> {
                 loadingDialog.dispose();
@@ -1086,6 +1094,7 @@ public class Seguros extends javax.swing.JPanel {
             });
         }
     }).start();
+        
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void fieldCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCPActionPerformed
