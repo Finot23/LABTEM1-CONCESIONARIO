@@ -476,7 +476,10 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
 
                 this.dispose(); // Cierra la ventana de login
             } else if (tipoUsuario.equals("Vendedor")) {
-                JOptionPane.showMessageDialog(null, "Se inició sesión con éxito, bienvenido Vendedor.");
+                PrincipalVendedor v = new PrincipalVendedor(tipoUsuario, usuario);
+                v.setVisible(true);
+                //JOptionPane.showMessageDialog(null, "Se inició sesión con éxito, bienvenido Vendedor.");
+                this.dispose();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos.");

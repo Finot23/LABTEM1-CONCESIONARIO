@@ -29,8 +29,14 @@ public class Catalogo extends javax.swing.JPanel {
     /**
      * Creates new form Catalogo
      */
-    public Catalogo() {
+    public Catalogo(String tipoUsuario) {
+        
         initComponents();
+         if (tipoUsuario.equals("Vendedor")) {
+            almacenAdmin.setVisible(false); // Ocultar el panel para vendedores
+        } else {
+            almacenAdmin.setVisible(true); // Mostrar el panel para administradores
+        }
        
     } 
     
@@ -116,9 +122,10 @@ public class Catalogo extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
         Filtrar = new javax.swing.JButton();
-        btnAEauto = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        almacenAdmin = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        btnAEauto = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(810, 520));
 
@@ -164,13 +171,10 @@ public class Catalogo extends javax.swing.JPanel {
         });
         bg.add(Filtrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, -1, -1));
 
-        btnAEauto.setText("Agregar Auto");
-        btnAEauto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAEautoActionPerformed(evt);
-            }
-        });
-        bg.add(btnAEauto, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, -1, -1));
+        jLabel1.setText("Escoge tu categoria preferida");
+        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, -1, -1));
+
+        almacenAdmin.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton1.setText("Eliminar Auto");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -178,10 +182,36 @@ public class Catalogo extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        bg.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, -1, -1));
 
-        jLabel1.setText("Escoge tu categoria preferida");
-        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, -1, -1));
+        btnAEauto.setText("Agregar Auto");
+        btnAEauto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAEautoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout almacenAdminLayout = new javax.swing.GroupLayout(almacenAdmin);
+        almacenAdmin.setLayout(almacenAdminLayout);
+        almacenAdminLayout.setHorizontalGroup(
+            almacenAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(almacenAdminLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(almacenAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAEauto)
+                    .addComponent(jButton1))
+                .addContainerGap(114, Short.MAX_VALUE))
+        );
+        almacenAdminLayout.setVerticalGroup(
+            almacenAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, almacenAdminLayout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(btnAEauto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addGap(26, 26, 26))
+        );
+
+        bg.add(almacenAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 230, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -228,6 +258,7 @@ public class Catalogo extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Filtrar;
+    private javax.swing.JPanel almacenAdmin;
     private javax.swing.JPanel bg;
     private javax.swing.JButton btnAEauto;
     private javax.swing.JLabel cat;

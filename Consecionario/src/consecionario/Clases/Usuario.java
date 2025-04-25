@@ -37,6 +37,38 @@ public class Usuario {
         this.Nombres = Nombres;
     }
 
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public void setContraseña(String Contraseña) {
+        this.Contraseña = Contraseña;
+    }
+
+    public void setRol(String Rol) {
+        this.Rol = Rol;
+    }
+
+    public void setApellidoP(String ApellidoP) {
+        this.ApellidoP = ApellidoP;
+    }
+
+    public void setApellidoM(String ApellidoM) {
+        this.ApellidoM = ApellidoM;
+    }
+
+    public void setPuesto(String Puesto) {
+        this.Puesto = Puesto;
+    }
+
+    public void setNombres(String Nombres) {
+        this.Nombres = Nombres;
+    }
+
     public int getId() {
         return Id;
     }
@@ -69,36 +101,6 @@ public class Usuario {
         return Nombres;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
-    }
-
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
-    }
-
-    public void setContraseña(String Contraseña) {
-        this.Contraseña = Contraseña;
-    }
-
-    public void setRol(String Rol) {
-        this.Rol = Rol;
-    }
-
-    public void setApellidoP(String ApellidoP) {
-        this.ApellidoP = ApellidoP;
-    }
-
-    public void setApellidoM(String ApellidoM) {
-        this.ApellidoM = ApellidoM;
-    }
-
-    public void setPuesto(String Puesto) {
-        this.Puesto = Puesto;
-    }
-
-    public void setNombres(String Nombres) {
-        this.Nombres = Nombres;
-    }
+    
     
 }

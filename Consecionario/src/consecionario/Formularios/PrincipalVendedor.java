@@ -19,7 +19,7 @@ import consecionario.Formularios.Ventas;
  *
  * @author antoniosalinas
  */
-public class Principal extends javax.swing.JFrame {
+public class PrincipalVendedor extends javax.swing.JFrame {
 
 
     /**
@@ -28,12 +28,12 @@ public class Principal extends javax.swing.JFrame {
      */
     
   
-    public Principal(String rolUsuario, String usuario) {
+    public PrincipalVendedor(String rolUsuario, String usuario) {
         initComponents();
         pnlLeftBar1.setVisible(false);
         pnlLeftBar2.setVisible(false);
         pnlLeftBar3.setVisible(false);
-        pnlLeftBar4.setVisible(false);
+        
         pnlLeftBar5.setVisible(false);
         pnlLeftBar6.setVisible(false);
        
@@ -42,7 +42,7 @@ public class Principal extends javax.swing.JFrame {
         
         
         rsscalelabel.RSScaleLabel.setScaleLabel(iconUserMain, "src/consecionario/Imagenes/iconoUsuarioSmall.png");
-        rsscalelabel.RSScaleLabel.setScaleLabel(iconCredito, "src/consecionario/Imagenes/iconoCredito.png");
+        
         rsscalelabel.RSScaleLabel.setScaleLabel(iconHistorial, "src/consecionario/Imagenes/iconoHistorial.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(iconHome, "src/consecionario/Imagenes/iconoInicio.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(iconSeguro, "src/consecionario/Imagenes/iconoSeguro.png");
@@ -128,10 +128,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         iconHistorial = new javax.swing.JLabel();
         pnlLeftBar3 = new javax.swing.JPanel();
-        jPanelCredito = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        iconCredito = new javax.swing.JLabel();
-        pnlLeftBar4 = new javax.swing.JPanel();
         jPanelVentas = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         iconVenta = new javax.swing.JLabel();
@@ -333,64 +329,6 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanelCredito.setBackground(new java.awt.Color(0, 0, 0));
-        jPanelCredito.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanelCredito.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanelCreditoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanelCreditoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanelCreditoMouseExited(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Credito");
-
-        iconCredito.setText("Creditos");
-
-        pnlLeftBar4.setBackground(new java.awt.Color(255, 195, 0));
-
-        javax.swing.GroupLayout pnlLeftBar4Layout = new javax.swing.GroupLayout(pnlLeftBar4);
-        pnlLeftBar4.setLayout(pnlLeftBar4Layout);
-        pnlLeftBar4Layout.setHorizontalGroup(
-            pnlLeftBar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 8, Short.MAX_VALUE)
-        );
-        pnlLeftBar4Layout.setVerticalGroup(
-            pnlLeftBar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 49, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanelCreditoLayout = new javax.swing.GroupLayout(jPanelCredito);
-        jPanelCredito.setLayout(jPanelCreditoLayout);
-        jPanelCreditoLayout.setHorizontalGroup(
-            jPanelCreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCreditoLayout.createSequentialGroup()
-                .addComponent(pnlLeftBar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(iconCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanelCreditoLayout.setVerticalGroup(
-            jPanelCreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCreditoLayout.createSequentialGroup()
-                .addComponent(pnlLeftBar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanelCreditoLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(jPanelCreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(iconCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         jPanelVentas.setBackground(new java.awt.Color(0, 0, 0));
         jPanelVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelVentas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -517,7 +455,6 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(bgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanelCatalogo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
                     .addComponent(jPanelVentas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelCredito, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelHistorial, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelSeguros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelPaginaPrincipal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))
@@ -539,12 +476,10 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(jPanelHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addComponent(jPanelCredito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
                 .addComponent(jPanelVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jPanelCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(300, Short.MAX_VALUE))
+                .addContainerGap(384, Short.MAX_VALUE))
         );
 
         jPanelContenido.setLayout(new java.awt.BorderLayout());
@@ -631,12 +566,6 @@ public class Principal extends javax.swing.JFrame {
         MostrarJpanel(new InventarioVisual());
     }//GEN-LAST:event_jPanelVentasMouseClicked
 
-    private void jPanelCreditoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCreditoMouseClicked
-        MostrarJpanel(new panelUsuarios());
-        //NuevoUsuario nuevoUsuarioForm = new NuevoUsuario();
-    //nuevoUsuarioForm.setVisible(true);
-    }//GEN-LAST:event_jPanelCreditoMouseClicked
-
     private void jPanelHistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHistorialMouseClicked
         MostrarJpanel(new Historial());
     }//GEN-LAST:event_jPanelHistorialMouseClicked
@@ -683,7 +612,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelPaginaPrincipalMouseClicked
 
     private void jPanelCatalogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCatalogoMouseClicked
-        String rol = "Gerente";
+        String rol = "Vendedor";
         Catalogo catalogo = new Catalogo(rol);
         MostrarJpanel(catalogo);
           
@@ -718,16 +647,6 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         pnlLeftBar3.setVisible(false);
     }//GEN-LAST:event_jPanelHistorialMouseExited
-
-    private void jPanelCreditoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCreditoMouseEntered
-        // TODO add your handling code here:
-        pnlLeftBar4.setVisible(true);
-    }//GEN-LAST:event_jPanelCreditoMouseEntered
-
-    private void jPanelCreditoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCreditoMouseExited
-        // TODO add your handling code here:
-        pnlLeftBar4.setVisible(false);
-    }//GEN-LAST:event_jPanelCreditoMouseExited
 
     private void jPanelVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelVentasMouseEntered
         // TODO add your handling code here:
@@ -791,7 +710,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel bg;
     private javax.swing.JPanel bgMenu;
     private javax.swing.JLabel iconCatalogo;
-    private javax.swing.JLabel iconCredito;
     private javax.swing.JLabel iconHistorial;
     private javax.swing.JLabel iconHome;
     private javax.swing.JLabel iconSeguro;
@@ -800,14 +718,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanelCatalogo;
     private javax.swing.JPanel jPanelContenido;
-    private javax.swing.JPanel jPanelCredito;
     private javax.swing.JPanel jPanelHistorial;
     private javax.swing.JPanel jPanelPaginaPrincipal;
     private javax.swing.JPanel jPanelSeguros;
@@ -815,7 +731,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlLeftBar1;
     private javax.swing.JPanel pnlLeftBar2;
     private javax.swing.JPanel pnlLeftBar3;
-    private javax.swing.JPanel pnlLeftBar4;
     private javax.swing.JPanel pnlLeftBar5;
     private javax.swing.JPanel pnlLeftBar6;
     private javax.swing.JPanel pnlSuperior;

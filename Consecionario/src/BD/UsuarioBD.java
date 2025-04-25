@@ -55,4 +55,42 @@ public class UsuarioBD {
 
     return user; // este es el usuario cargado o null si no se encontró
 }
+    
+
+    public boolean crearUsuario(Usuario usuario) {
+    con = ConexionBD.conn();
+    
+    if (con == null) {
+        System.out.println("No se pudo establecer conexión con la base de datos.");
+        return false;
+    }
+
+    String sql = "INSERT INTO userlogin (nombre_usuario, contraseña_usuario, rol, nombres, apellido_P, apellido_M, puesto) "
+               + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+    
+    try {
+        ps = con.prepareStatement(sql);
+        ps.setString(1, usuario.getNombre());
+        ps.setString(2, usuario.getContraseña());
+        ps.setString(3, usuario.getRol());
+        ps.setString(4, usuario.getNombres());
+        ps.setString(5, usuario.getApellidoP());
+        ps.setString(6, usuario.getApellidoM());
+        ps.setString(7, usuario.getPuesto());
+
+        int resultado = ps.executeUpdate();
+        return resultado > 0;
+        
+    } catch (SQLException e) {
+        System.out.println("Error al crear usuario: " + e.getMessage());
+        return false;
+    } finally {
+        try {
+            if (ps != null) ps.close();
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al cerrar conexión: " + e.getMessage());
+        }
+    }
+}
 }
