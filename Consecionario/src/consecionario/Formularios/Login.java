@@ -8,6 +8,8 @@ package consecionario.Formularios;
 import BD.ConexionBD;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +22,7 @@ import javax.swing.JOptionPane;
  *
  * @author antoniosalinas
  */
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame implements ActionListener{
     
     
     String placeholderUsuario = "Ingrese Usuario";
@@ -48,8 +50,14 @@ public class Login extends javax.swing.JFrame {
         
         txtPass.setText(placeholderPass);
         txtPass.setForeground(placeholderColor);
-       
+       txtUsuario.addActionListener(this);
+       txtPass.addActionListener(this);
         
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // Este método se llamará cuando se presione Enter en txtUsuario o txtPass
+        loginBtnMouseClicked(null); // Llama a tu lógica de inicio de sesión
     }
  private String verificarUsuario(String usuario, String contraseña){
 String sqlquery = "SELECT rol FROM userlogin WHERE nombre_usuario=? AND contraseña_usuario=?";
@@ -411,19 +419,20 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
     private void txtPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusGained
         // TODO add your handling code here:
         if (String.valueOf(txtPass.getPassword()).equals(placeholderPass)){
-            txtPass.setText("");
-            txtPass.setForeground(normalColor);
-        }
+        txtPass.setText("");
+        txtPass.setForeground(normalColor);
+        txtPass.setEchoChar('*'); // Agrega esta línea
+    }
 
     }//GEN-LAST:event_txtPassFocusGained
 
     private void txtPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusLost
         // TODO add your handling code here:
         if(String.valueOf(txtPass.getPassword()).isEmpty()){
-            txtPass.setText(placeholderPass);
-            txtPass.setForeground(placeholderColor);
-
-        }
+        txtPass.setText(placeholderPass);
+        txtPass.setForeground(placeholderColor);
+        txtPass.setEchoChar((char)0); // Mantenlo sin máscara para el marcador de posición
+    }
     }//GEN-LAST:event_txtPassFocusLost
 
     private void txtPassMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassMousePressed
