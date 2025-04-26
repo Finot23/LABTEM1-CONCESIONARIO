@@ -23,13 +23,13 @@ public class CreditosBD {
       
      try{
         ps = con.prepareStatement(sql);
-        ps.setString(1, c1.getmodelo());
-        ps.setDouble(2, c1.getvalor_auto());
-        ps.setString(3, c1.getporcentajeEnganche());
-        ps.setDouble(4, c1.getenganche());
-        ps.setDouble(5, c1.getcredito());
-        ps.setInt(6, c1.getmeses());
-        ps.setDouble(7, c1.getpago_mensual());
+        ps.setString(1, c1.getModelo());
+        ps.setDouble(2, c1.getValor_auto());
+        ps.setString(3, c1.getPorcentajeEnganche());
+        ps.setDouble(4, c1.getEnganche());
+        ps.setDouble(5, c1.getCredito());
+        ps.setInt(6, c1.getMeses());
+        ps.setDouble(7, c1.getPago_mensual());
         
         ps.executeUpdate();
         return true;

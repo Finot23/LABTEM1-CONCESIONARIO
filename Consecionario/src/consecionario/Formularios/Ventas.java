@@ -48,6 +48,7 @@ public class Ventas extends javax.swing.JPanel {
     String placeholderColorCarro ="Color";
     String placeholderAnio ="Año";
     String placeholderEstados ="Condición";
+    String placeholderNoSerie = "Número de Serie";
     
     Color placeholderColor= Color.GRAY;
     Color normalColor = Color.BLACK;
@@ -115,6 +116,9 @@ public class Ventas extends javax.swing.JPanel {
         
         txtEstadoCarro.setText(placeholderEstados);
         txtEstadoCarro.setForeground(placeholderColor);
+        
+        txtNoSerie.setText(placeholderNoSerie);
+        txtNoSerie.setForeground(placeholderColor);
        
     } 
     
@@ -135,6 +139,7 @@ public class Ventas extends javax.swing.JPanel {
     txtTipoCarro.setText(carro.getCategoria());
     txtAnioCarro.setText(String.valueOf(carro.getAnioFabricacion()));
     txtPrecioCarro.setText(String.valueOf(carro.getPrecio()));
+    txtNoSerie.setText(String.valueOf(carro.getNoSerie()));
 
 
 }
@@ -183,6 +188,7 @@ public class Ventas extends javax.swing.JPanel {
         txtAnioCarro = new javax.swing.JTextField();
         txtEstadoCarro = new javax.swing.JTextField();
         txtPrecioCarro = new javax.swing.JTextField();
+        txtNoSerie = new javax.swing.JTextField();
         btnContinuar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -405,7 +411,7 @@ public class Ventas extends javax.swing.JPanel {
                     .addComponent(cbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNoLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         bg.add(jPanelDatosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 810, 120));
@@ -586,7 +592,6 @@ public class Ventas extends javax.swing.JPanel {
 
         txtMarca.setEditable(false);
         txtMarca.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtMarca.setForeground(new java.awt.Color(0, 0, 0));
         txtMarca.setText("Marca");
         txtMarca.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -599,7 +604,6 @@ public class Ventas extends javax.swing.JPanel {
 
         txtModelo.setEditable(false);
         txtModelo.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtModelo.setForeground(new java.awt.Color(0, 0, 0));
         txtModelo.setText("Modelo");
         txtModelo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -615,7 +619,6 @@ public class Ventas extends javax.swing.JPanel {
 
         txtTipoCarro.setEditable(false);
         txtTipoCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtTipoCarro.setForeground(new java.awt.Color(0, 0, 0));
         txtTipoCarro.setText("Tipo");
         txtTipoCarro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -633,7 +636,6 @@ public class Ventas extends javax.swing.JPanel {
 
         txtColorCarro.setEditable(false);
         txtColorCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtColorCarro.setForeground(new java.awt.Color(0, 0, 0));
         txtColorCarro.setText("Color");
         txtColorCarro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -646,7 +648,6 @@ public class Ventas extends javax.swing.JPanel {
 
         txtAnioCarro.setEditable(false);
         txtAnioCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtAnioCarro.setForeground(new java.awt.Color(0, 0, 0));
         txtAnioCarro.setText("Año");
         txtAnioCarro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -664,7 +665,6 @@ public class Ventas extends javax.swing.JPanel {
 
         txtEstadoCarro.setEditable(false);
         txtEstadoCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtEstadoCarro.setForeground(new java.awt.Color(0, 0, 0));
         txtEstadoCarro.setText("Condición");
         txtEstadoCarro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -677,7 +677,6 @@ public class Ventas extends javax.swing.JPanel {
 
         txtPrecioCarro.setEditable(false);
         txtPrecioCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtPrecioCarro.setForeground(new java.awt.Color(0, 0, 0));
         txtPrecioCarro.setText("Precio");
         txtPrecioCarro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -685,6 +684,23 @@ public class Ventas extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtPrecioCarroFocusLost(evt);
+            }
+        });
+
+        txtNoSerie.setEditable(false);
+        txtNoSerie.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        txtNoSerie.setText("Numero de Serie");
+        txtNoSerie.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNoSerieFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNoSerieFocusLost(evt);
+            }
+        });
+        txtNoSerie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNoSerieActionPerformed(evt);
             }
         });
 
@@ -710,8 +726,10 @@ public class Ventas extends javax.swing.JPanel {
                         .addGap(113, 113, 113)
                         .addComponent(txtEstadoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(88, 88, 88)
-                        .addComponent(txtPrecioCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(144, Short.MAX_VALUE))
+                        .addComponent(txtPrecioCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(txtNoSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         txtPrecioLayout.setVerticalGroup(
             txtPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -729,7 +747,8 @@ public class Ventas extends javax.swing.JPanel {
                 .addGroup(txtPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAnioCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEstadoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPrecioCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPrecioCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNoSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -1119,7 +1138,7 @@ public class Ventas extends javax.swing.JPanel {
         return;
     }
     // Mostrar opciones de qué desea hacer
-    Object[] opciones = {"Solo Seguro", "Solo Crédito", "Ambos", "No requiere seguro", "No requiere crédito", "Cancelar"};
+    Object[] opciones = {"Solo Seguro", "Solo Crédito", "Ambos", "No requiere seguro Ni Credito" , "Cancelar"};
 int seleccion = JOptionPane.showOptionDialog(null, "¿Qué desea hacer a continuación?", "Opciones de Compra", 
                                               JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
 
@@ -1145,11 +1164,7 @@ switch (seleccion) {
        GeneradorPDF.generarResumenVenta(cliente, carroSeleccionado, null);
         break;
         
-        
-    case 4: // No requiere crédito
-        // Aquí agregas lo que debe hacer si no requiere crédito
-        JOptionPane.showMessageDialog(this, "El cliente no requiere crédito.");
-        break;
+       
     default:
         JOptionPane.showMessageDialog(this, "Operación cancelada.");
         break;
@@ -1231,6 +1246,18 @@ switch (seleccion) {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioCarroFocusLost
 
+    private void txtNoSerieFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNoSerieFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNoSerieFocusGained
+
+    private void txtNoSerieFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNoSerieFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNoSerieFocusLost
+
+    private void txtNoSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNoSerieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNoSerieActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
@@ -1264,6 +1291,7 @@ switch (seleccion) {
     private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtMunicipio;
     private javax.swing.JTextField txtNoLicencia;
+    private javax.swing.JTextField txtNoSerie;
     private javax.swing.JTextField txtNombreCliente;
     private javax.swing.JPanel txtPrecio;
     private javax.swing.JTextField txtPrecioCarro;

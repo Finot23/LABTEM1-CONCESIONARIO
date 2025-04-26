@@ -83,6 +83,7 @@ public class Seguros extends javax.swing.JPanel {
     fieldColor.setText(carro.getColor());
     comboTipo.setSelectedItem(carro.getCategoria());
     fieldValorAuto.setText(String.valueOf(carro.getPrecio()));
+    fieldSerie.setText(String.valueOf(carro.getNoSerie()));
 }
     public Seguros(JPanel jPanelContenido) {
         this.jPanelContenido = jPanelContenido;
@@ -1058,6 +1059,7 @@ public class Seguros extends javax.swing.JPanel {
             
             //Thread.sleep(2000); // Espera adicional de 2 segundos (antes de mostrar resultado)
             PolizaSeguroPDF.generarResumenSeguro(cliente, carro, seguro, null);
+            GeneradorPDF.generarResumenVenta(cliente, carro, null);
             
              SwingUtilities.invokeLater(() -> {
                 loadingDialog.dispose();

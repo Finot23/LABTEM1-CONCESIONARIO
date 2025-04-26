@@ -4,6 +4,8 @@ import BD.CreditosBD;
 import consecionario.Clases.CatalogoCarros;
 import consecionario.Clases.Cliente;
 import consecionario.Clases.Credito;
+import consecionario.Clases.CreditoAutoPDF;
+import consecionario.Clases.GeneradorPDF;
 import javax.swing.JOptionPane;
 
 public class Creditos extends javax.swing.JPanel {
@@ -256,19 +258,19 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
     int meses = Integer.parseInt(comboMeses.getSelectedItem().toString());
 
     // Crear un objeto de Credito con los datos
-    Credito credito = new Credito(cliente, carro);
-    credito.setporcentajeEnganche(porcentajeSeleccionado);
-    credito.setvalor_auto(carro.getPrecio());
+    Credito credito = new Credito();
+    credito.setPorcentajeEnganche(porcentajeSeleccionado);
+    credito.setValor_auto(carro.getPrecio());
 
     double enganche = credito.calcularEnganche();
     double montoCredito = credito.creditoAprobado();
     
-    credito.setmeses(meses);
+    credito.setMeses(meses);
     double tasaAnual = 0.15;
-    credito.settasa_interes(tasaAnual);
+    credito.setTasa_interes(tasaAnual);
     
     double pagoMensual = credito.pagoMensual(montoCredito, meses);
-    credito.setpago_mensual(pagoMensual);
+    credito.setPago_mensual(pagoMensual);
 
     // Actualizamos las etiquetas
     etEnganche.setText("Enganche: $" + String.format("%.2f", enganche));
@@ -281,19 +283,26 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
         String porcentajeSeleccionado = comboPorcentaje.getSelectedItem().toString();
         int meses = Integer.parseInt(comboMeses.getSelectedItem().toString());
 
-        Credito credito = new Credito(cliente, carro);
-        credito.setporcentajeEnganche(porcentajeSeleccionado); // ✅ CORREGIDO
-        credito.setvalor_auto(carro.getPrecio()); // ✅ tu setter usa "setvalor_auto"
+        Credito credito = new Credito();
+        credito.setNombre(cliente.getNombre());
+        credito.setApellido_p(cliente.getApellidoP());
+        credito.setApellido_m(cliente.getApellidoM());
+        credito.setModelo(carro.getModelo());
+        credito.setMarca(carro.getMarca());
+        credito.setValor_auto(carro.getPrecio());
+        credito.setPorcentajeEnganche(porcentajeSeleccionado);
+        
 
         double enganche = credito.calcularEnganche();
         double montoCredito = credito.creditoAprobado();
 
-        credito.setmeses(meses);
+        credito.setMeses(meses);
         double tasaAnual = 0.15;
-        credito.settasa_interes(tasaAnual); // ✅ CORREGIDO
+        credito.setTasa_interes(tasaAnual); 
 
         double pagoMensual = credito.pagoMensual(montoCredito, meses);
-        credito.setpago_mensual(pagoMensual);
+        credito.setPago_mensual(pagoMensual);
+        
 
         System.out.println("Enganche: " + enganche);
         System.out.println("Monto del Crédito: " + montoCredito);
@@ -305,12 +314,16 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
 
         CreditosBD dao = new CreditosBD();
         boolean registrado = dao.RegistrarCredito(credito);
-
+        
+        
         if (registrado) {
             JOptionPane.showMessageDialog(this, "Crédito aprobado y registrado con éxito.");
+            CreditoAutoPDF.generarResumenCredito(cliente, carro, credito, null);
+            GeneradorPDF.generarResumenVenta(cliente, carro, null);
         } else {
             JOptionPane.showMessageDialog(this, "Error al registrar el crédito.");
         }
+        
     }//GEN-LAST:event_btnAprobarCreditoActionPerformed
 
     private void comboPorcentajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPorcentajeActionPerformed

@@ -38,7 +38,7 @@ public class GeneradorPDF {
             String fechaEmision = hoy.format(fmt); 
 
             // Carpeta de salida
-            String base = "src/consecionario/Facturas/VentasSinSeguro/";
+            String base = "src/consecionario/Facturas/Ventas/";
             File dir = new File(base);
             if (!dir.exists()) dir.mkdirs();
 

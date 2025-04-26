@@ -29,7 +29,7 @@ public boolean RegistrarCarro(CatalogoCarros cl){
             return false;
         }
         
-     String sql = "INSERT INTO almacen (id, marca, modelo, anio_fabricacion, precio, color, estado, categoria, imagen, descripcion, kilometraje) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+     String sql = "INSERT INTO almacen (id, marca, modelo, anio_fabricacion, no_serie, precio, color, estado, categoria, imagen, descripcion, kilometraje) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       
      try{
         ps = con.prepareStatement(sql);
@@ -37,13 +37,14 @@ public boolean RegistrarCarro(CatalogoCarros cl){
         ps.setString(2, cl.getMarca());
         ps.setString(3, cl.getModelo());
         ps.setInt(4, cl.getAnioFabricacion());
-        ps.setDouble(5, cl.getPrecio());
-        ps.setString(6, cl.getColor());
-        ps.setString(7, cl.getEstado());
-        ps.setString(8, cl.getCategoria());
-        ps.setString(9, cl.getImagen());
-        ps.setString(10, cl.getDescripcion());
-        ps.setLong(11, cl.getKilometraje());
+        ps.setString(5, cl.getNoSerie());
+        ps.setDouble(6, cl.getPrecio());
+        ps.setString(7, cl.getColor());
+        ps.setString(8, cl.getEstado());
+        ps.setString(9, cl.getCategoria());
+        ps.setString(10, cl.getImagen());
+        ps.setString(11, cl.getDescripcion());
+        ps.setLong(12, cl.getKilometraje());
         
         ps.executeUpdate();
         return true;
@@ -88,6 +89,7 @@ public List<CatalogoCarros> obtenerPorCategoria(String categoria) {
             carro.setMarca(rs.getString("marca"));
             carro.setModelo(rs.getString("modelo"));
             carro.setAnioFabricacion(rs.getInt("anio_fabricacion"));
+            carro.setNoSerie(rs.getString("no_serie"));
             carro.setPrecio(rs.getDouble("precio"));
             carro.setColor(rs.getString("color"));
             carro.setEstado(rs.getString("estado"));
@@ -134,6 +136,7 @@ public List<CatalogoCarros> obtenerPorCondicion(String condicion) {
             carro.setMarca(rs.getString("marca"));
             carro.setModelo(rs.getString("modelo"));
             carro.setAnioFabricacion(rs.getInt("anio_fabricacion"));
+            carro.setNoSerie(rs.getString("no_serie"));
             carro.setPrecio(rs.getDouble("precio"));
             carro.setColor(rs.getString("color"));
             carro.setEstado(rs.getString("estado"));
@@ -203,6 +206,7 @@ public List<CatalogoCarros> filtrarPorMultiples(List<String> tipos, List<String>
             carro.setMarca(rs.getString("marca"));
             carro.setModelo(rs.getString("modelo"));
             carro.setAnioFabricacion(rs.getInt("anio_fabricacion"));
+            carro.setNoSerie(rs.getString("no_serie"));
             carro.setPrecio(rs.getDouble("precio"));
             carro.setColor(rs.getString("color"));
             carro.setEstado(rs.getString("estado"));

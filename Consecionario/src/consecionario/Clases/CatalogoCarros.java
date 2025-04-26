@@ -21,9 +21,23 @@ public class CatalogoCarros {
     String Imagen;
     String Descripcion;
     Long Kilometraje;
+    String NoSerie;
+    
 public CatalogoCarros() {
     // Constructor vacío requerido para instanciar sin parámetros
 }
+
+    public void setNoSerie(String NoSerie) {
+        this.NoSerie = NoSerie;
+    }
+
+    public String getNoSerie() {
+        return NoSerie;
+    }
+
+    public CatalogoCarros(String NoSerie) {
+        this.NoSerie = NoSerie;
+    }
 
     public CatalogoCarros(int Id, String Marca, String Modelo, int AnioFabricacion, double Precio, String Color, String Estado, String Categoria, String Imagen, String Descripcion, Long Kilometraje) {
         this.Id = Id;
