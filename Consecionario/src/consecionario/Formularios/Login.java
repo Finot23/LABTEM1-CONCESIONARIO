@@ -41,6 +41,7 @@ public class Login extends javax.swing.JFrame implements ActionListener{
     
     public Login() {
         initComponents();
+         this.setExtendedState(6);
         txtPass.setEchoChar((char)0);
         ConexionBD conexionBD = new ConexionBD();
         conn = conexionBD.conn();
@@ -182,7 +183,6 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtLogo4)
-                    .addComponent(txtEslogan1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEslogan2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLogo)
                     .addComponent(txtFrase1)
@@ -192,7 +192,8 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
                     .addComponent(txtLogo5)
                     .addComponent(txtFrase2)
                     .addComponent(txtLogo6)
-                    .addComponent(txtLogo3))
+                    .addComponent(txtLogo3)
+                    .addComponent(txtEslogan1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -247,9 +248,11 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
         pnlLogin.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(46, 46, 46));
         jLabel1.setText("Ingresa tus credenciales");
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(46, 46, 46));
         jLabel3.setText("Contraseña");
 
         txtPass.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -277,6 +280,7 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
 
         jLabelUsuario.setBackground(new java.awt.Color(0, 0, 0));
         jLabelUsuario.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabelUsuario.setForeground(new java.awt.Color(46, 46, 46));
         jLabelUsuario.setText("Usuario:");
 
         txtUsuario.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N

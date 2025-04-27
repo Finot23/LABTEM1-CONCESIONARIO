@@ -7,6 +7,7 @@ package consecionario.Formularios;
 import BD.ClienteDB;
 import consecionario.Clases.Cliente;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.util.List;
@@ -108,10 +109,13 @@ header.setForeground(Color.WHITE);
     
     public Dashboard() {
         initComponents();
-        CargarImagen();
-        cargarClientesEnTabla();
-        PersonalizarTabla();
-        mostrarTotalClientes();
+    pnlContenido.setLayout(new java.awt.BorderLayout());
+    pnlContenido.add(pnlContenidoNuevosClientes, java.awt.BorderLayout.CENTER);
+    this.setPreferredSize(new Dimension(834, 840));
+    CargarImagen();
+    cargarClientesEnTabla();
+    PersonalizarTabla();
+    mostrarTotalClientes();
     }
     
     
@@ -128,29 +132,41 @@ header.setForeground(Color.WHITE);
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtUbicacion = new javax.swing.JLabel();
         bg = new javax.swing.JPanel();
         pnlNuevosUsuarios = new javax.swing.JPanel();
         txtNuevosClientes = new javax.swing.JLabel();
         txtIconUsuario = new javax.swing.JLabel();
         txtNumUsuarios = new javax.swing.JLabel();
-        txtUbicacion = new javax.swing.JLabel();
         pnlContenido = new javax.swing.JPanel();
         pnlContenidoNuevosClientes = new javax.swing.JPanel();
         txtInfoClientes = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatosClientes = new javax.swing.JTable();
 
-        bg.setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new java.awt.BorderLayout());
 
-        pnlNuevosUsuarios.setBackground(new java.awt.Color(255, 195, 0));
+        txtUbicacion.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        txtUbicacion.setForeground(new java.awt.Color(0, 0, 0));
+        txtUbicacion.setText("Dashboard / Pagina Principal");
+        add(txtUbicacion, java.awt.BorderLayout.PAGE_START);
+
+        bg.setBackground(new java.awt.Color(255, 255, 255));
+        bg.setLayout(new java.awt.BorderLayout());
+
+        pnlNuevosUsuarios.setBackground(new java.awt.Color(0, 38, 58));
         pnlNuevosUsuarios.setPreferredSize(new java.awt.Dimension(352, 100));
 
         txtNuevosClientes.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         txtNuevosClientes.setForeground(new java.awt.Color(255, 255, 255));
-        txtNuevosClientes.setText("Nuevos Clientes");
+        txtNuevosClientes.setText("Cantidad de clientes registrados");
 
+        txtIconUsuario.setForeground(new java.awt.Color(255, 255, 255));
         txtIconUsuario.setText("jLabel3");
 
+        txtNumUsuarios.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtNumUsuarios.setForeground(new java.awt.Color(255, 255, 255));
         txtNumUsuarios.setText("NumUsuarios");
 
         javax.swing.GroupLayout pnlNuevosUsuariosLayout = new javax.swing.GroupLayout(pnlNuevosUsuarios);
@@ -162,7 +178,7 @@ header.setForeground(Color.WHITE);
                 .addGroup(pnlNuevosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtNuevosClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtNumUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtIconUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
@@ -178,12 +194,14 @@ header.setForeground(Color.WHITE);
                         .addComponent(txtNumUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
-        txtUbicacion.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        txtUbicacion.setForeground(new java.awt.Color(0, 0, 0));
-        txtUbicacion.setText("Dashboard / Pagina Principal");
+        bg.add(pnlNuevosUsuarios, java.awt.BorderLayout.NORTH);
+
+        pnlContenido.setBackground(new java.awt.Color(255, 255, 255));
+
+        pnlContenidoNuevosClientes.setBackground(new java.awt.Color(255, 255, 255));
 
         txtInfoClientes.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        txtInfoClientes.setForeground(new java.awt.Color(0, 0, 0));
+        txtInfoClientes.setForeground(new java.awt.Color(0, 38, 58));
         txtInfoClientes.setText("Información de clientes");
 
         tblDatosClientes.setModel(new javax.swing.table.DefaultTableModel(
@@ -238,43 +256,9 @@ header.setForeground(Color.WHITE);
             .addComponent(pnlContenidoNuevosClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
-        bg.setLayout(bgLayout);
-        bgLayout.setHorizontalGroup(
-            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlNuevosUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUbicacion))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(40, 40, 40))
-        );
-        bgLayout.setVerticalGroup(
-            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(txtUbicacion)
-                .addGap(18, 18, 18)
-                .addComponent(pnlNuevosUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(pnlContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(140, Short.MAX_VALUE))
-        );
+        bg.add(pnlContenido, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        add(bg, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
