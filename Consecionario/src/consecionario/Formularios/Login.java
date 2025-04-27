@@ -105,7 +105,6 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
         txtLogo6 = new javax.swing.JLabel();
         pnlLogin = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtPass = new javax.swing.JPasswordField();
         jLabelUsuario = new javax.swing.JLabel();
@@ -116,13 +115,13 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pnlMain.setBackground(new java.awt.Color(255, 255, 255));
-        pnlMain.setLayout(new java.awt.BorderLayout());
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
+        bg.setLayout(new java.awt.BorderLayout());
 
-        pnlLeft.setBackground(new java.awt.Color(0, 0, 0));
+        pnlLeft.setBackground(new java.awt.Color(10, 10, 10));
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(10, 10, 10));
 
         txtLogo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         txtLogo.setForeground(new java.awt.Color(255, 255, 255));
@@ -156,23 +155,23 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
         txtLogo1.setText("ID Connect");
 
         txtLogo2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        txtLogo2.setForeground(new java.awt.Color(255, 255, 255));
+        txtLogo2.setForeground(new java.awt.Color(204, 204, 204));
         txtLogo2.setText("Proyecto creado por:");
 
         txtLogo3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        txtLogo3.setForeground(new java.awt.Color(255, 255, 255));
+        txtLogo3.setForeground(new java.awt.Color(204, 204, 204));
         txtLogo3.setText("Luis Antonio Salinas Mata");
 
         txtLogo4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        txtLogo4.setForeground(new java.awt.Color(255, 255, 255));
+        txtLogo4.setForeground(new java.awt.Color(204, 204, 204));
         txtLogo4.setText("Jose Abraham Marin Sanchez");
 
         txtLogo5.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        txtLogo5.setForeground(new java.awt.Color(255, 255, 255));
+        txtLogo5.setForeground(new java.awt.Color(204, 204, 204));
         txtLogo5.setText("Andres Mateo Dorantes");
 
         txtLogo6.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        txtLogo6.setForeground(new java.awt.Color(255, 255, 255));
+        txtLogo6.setForeground(new java.awt.Color(204, 204, 204));
         txtLogo6.setText("Adan Perez Alvarado");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -233,7 +232,7 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
             .addGroup(pnlLeftLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlLeftLayout.setVerticalGroup(
             pnlLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,22 +242,20 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        bg.add(pnlLeft, java.awt.BorderLayout.WEST);
+
         pnlLogin.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Ingresa tus credenciales para");
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel1.setText("Ingresa tus credenciales");
 
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("acceder a tus servicios");
-
-        jLabel3.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setText("Contraseña");
 
-        txtPass.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtPass.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtPass.setForeground(new java.awt.Color(153, 153, 153));
         txtPass.setText("********");
+        txtPass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 38, 58)));
         txtPass.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtPassFocusGained(evt);
@@ -279,12 +276,13 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
         });
 
         jLabelUsuario.setBackground(new java.awt.Color(0, 0, 0));
-        jLabelUsuario.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabelUsuario.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabelUsuario.setText("Usuario:");
 
-        txtUsuario.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(204, 204, 204));
         txtUsuario.setText("Ingresa tu usuario");
+        txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 38, 58)));
         txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -311,6 +309,12 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loginBtnMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                loginBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                loginBtnMouseExited(evt);
+            }
         });
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -322,9 +326,9 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
         loginBtnLayout.setHorizontalGroup(
             loginBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginBtnLayout.createSequentialGroup()
-                .addGap(91, 91, 91)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel4)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         loginBtnLayout.setVerticalGroup(
             loginBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,35 +343,31 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
         pnlLoginLayout.setHorizontalGroup(
             pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLoginLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(71, 71, 71)
                 .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(20, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlLoginLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)))
-                .addGap(32, 32, 32))
+                        .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pnlLoginLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                        .addGap(63, 63, 63))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginLayout.createSequentialGroup()
+                        .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlLoginLayout.createSequentialGroup()
+                                .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtPass, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlLoginLayout.createSequentialGroup()
+                                .addComponent(txtUsuario)
+                                .addGap(1, 1, 1)))
+                        .addGap(62, 62, 62))))
         );
         pnlLoginLayout.setVerticalGroup(
             pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLoginLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addGap(141, 141, 141)
+                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -376,31 +376,25 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(32, 32, 32)
                 .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(427, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
-        bg.setLayout(bgLayout);
-        bgLayout.setHorizontalGroup(
-            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgLayout.createSequentialGroup()
-                .addComponent(pnlLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
-                .addComponent(pnlLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(88, Short.MAX_VALUE))
-        );
-        bgLayout.setVerticalGroup(
-            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(bgLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(pnlLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        bg.add(pnlLogin, java.awt.BorderLayout.CENTER);
 
-        pnlMain.add(bg, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout pnlMainLayout = new javax.swing.GroupLayout(pnlMain);
+        pnlMain.setLayout(pnlMainLayout);
+        pnlMainLayout.setHorizontalGroup(
+            pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMainLayout.createSequentialGroup()
+                .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+        pnlMainLayout.setVerticalGroup(
+            pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -410,7 +404,7 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -496,6 +490,18 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
         }
     }//GEN-LAST:event_loginBtnMouseClicked
 
+    private void loginBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseEntered
+        // TODO add your handling code here:
+        String hexColor = "#00263A";
+        loginBtn.setBackground(Color.decode(hexColor));
+    }//GEN-LAST:event_loginBtnMouseEntered
+
+    private void loginBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseExited
+        // TODO add your handling code here:
+        String hexColor = "#FFC300";
+        loginBtn.setBackground(Color.decode(hexColor));
+    }//GEN-LAST:event_loginBtnMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -535,7 +541,6 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelUsuario;
