@@ -60,7 +60,7 @@ public class Dashboard extends javax.swing.JPanel {
     //inicializa el metodo para cargar la imagen deceada en el label decignado
     public void CargarImagen(){
      SetImageLabel(txtIconUsuario, "/consecionario/Imagenes/IconoGrupo.png");
-     SetImageLabel(txtIconVentas, "/consecionario/Imagenes/iconoVentasCarros.png");
+    // SetImageLabel(txtIconVentas, "/consecionario/Imagenes/iconoVentasCarros.png");
     }
     public void cargarClientesEnTabla() {
     ClienteDB clienteDB = new ClienteDB();
@@ -85,7 +85,7 @@ public class Dashboard extends javax.swing.JPanel {
 }
     public void PersonalizarTabla(){
         tblDatosClientes.setRowHeight(40); // Altura de cada fila
-tblDatosClientes.setGridColor(Color.LIGHT_GRAY); // Color de las líneas
+        tblDatosClientes.setGridColor(Color.decode("#00263A")); // Color de las líneas
 
 // Cambiar fuente del contenido
 tblDatosClientes.setFont(new Font("Segoe UI", Font.PLAIN, 14));
@@ -134,18 +134,11 @@ header.setForeground(Color.WHITE);
         txtIconUsuario = new javax.swing.JLabel();
         txtNumUsuarios = new javax.swing.JLabel();
         txtUbicacion = new javax.swing.JLabel();
-        pnlVentas = new javax.swing.JPanel();
-        txtVentasRecientes = new javax.swing.JLabel();
-        txtNumUsuarios1 = new javax.swing.JLabel();
-        txtIconVentas = new javax.swing.JLabel();
         pnlContenido = new javax.swing.JPanel();
         pnlContenidoNuevosClientes = new javax.swing.JPanel();
         txtInfoClientes = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatosClientes = new javax.swing.JTable();
-        pnlVentasRecientes = new javax.swing.JPanel();
-
-        setLayout(new java.awt.BorderLayout());
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -177,61 +170,17 @@ header.setForeground(Color.WHITE);
             pnlNuevosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlNuevosUsuariosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlNuevosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pnlNuevosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtIconUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlNuevosUsuariosLayout.createSequentialGroup()
                         .addComponent(txtNuevosClientes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtNumUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNumUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         txtUbicacion.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         txtUbicacion.setForeground(new java.awt.Color(0, 0, 0));
         txtUbicacion.setText("Dashboard / Pagina Principal");
-
-        pnlVentas.setBackground(new java.awt.Color(255, 195, 0));
-        pnlVentas.setPreferredSize(new java.awt.Dimension(352, 100));
-
-        txtVentasRecientes.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        txtVentasRecientes.setForeground(new java.awt.Color(255, 255, 255));
-        txtVentasRecientes.setText("Ventas Recientes");
-
-        txtNumUsuarios1.setText("NumVentas");
-
-        txtIconVentas.setText("jLabel3");
-
-        javax.swing.GroupLayout pnlVentasLayout = new javax.swing.GroupLayout(pnlVentas);
-        pnlVentas.setLayout(pnlVentasLayout);
-        pnlVentasLayout.setHorizontalGroup(
-            pnlVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlVentasLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(pnlVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNumUsuarios1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnlVentasLayout.createSequentialGroup()
-                        .addComponent(txtVentasRecientes, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                        .addGap(58, 58, 58)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtIconVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-        );
-        pnlVentasLayout.setVerticalGroup(
-            pnlVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlVentasLayout.createSequentialGroup()
-                .addGroup(pnlVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlVentasLayout.createSequentialGroup()
-                        .addContainerGap(14, Short.MAX_VALUE)
-                        .addComponent(txtIconVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlVentasLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(txtVentasRecientes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNumUsuarios1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-
-        pnlContenido.setLayout(new java.awt.CardLayout());
 
         txtInfoClientes.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         txtInfoClientes.setForeground(new java.awt.Color(0, 0, 0));
@@ -275,23 +224,19 @@ header.setForeground(Color.WHITE);
                 .addComponent(txtInfoClientes)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
-        pnlContenido.add(pnlContenidoNuevosClientes, "card2");
-
-        javax.swing.GroupLayout pnlVentasRecientesLayout = new javax.swing.GroupLayout(pnlVentasRecientes);
-        pnlVentasRecientes.setLayout(pnlVentasRecientesLayout);
-        pnlVentasRecientesLayout.setHorizontalGroup(
-            pnlVentasRecientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 873, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlContenidoLayout = new javax.swing.GroupLayout(pnlContenido);
+        pnlContenido.setLayout(pnlContenidoLayout);
+        pnlContenidoLayout.setHorizontalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlContenidoNuevosClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-        pnlVentasRecientesLayout.setVerticalGroup(
-            pnlVentasRecientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 515, Short.MAX_VALUE)
+        pnlContenidoLayout.setVerticalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlContenidoNuevosClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-
-        pnlContenido.add(pnlVentasRecientes, "card3");
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
@@ -300,13 +245,13 @@ header.setForeground(Color.WHITE);
             .addGroup(bgLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(bgLayout.createSequentialGroup()
-                        .addComponent(pnlNuevosUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(pnlVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtUbicacion)
-                    .addComponent(pnlContenido, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlNuevosUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUbicacion))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(40, 40, 40))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,15 +259,22 @@ header.setForeground(Color.WHITE);
                 .addGap(20, 20, 20)
                 .addComponent(txtUbicacion)
                 .addGap(18, 18, 18)
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlNuevosUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(35, 35, 35)
-                .addComponent(pnlContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(40, 40, 40))
+                .addComponent(pnlNuevosUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(pnlContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
-        add(bg, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -332,16 +284,11 @@ header.setForeground(Color.WHITE);
     private javax.swing.JPanel pnlContenido;
     private javax.swing.JPanel pnlContenidoNuevosClientes;
     private javax.swing.JPanel pnlNuevosUsuarios;
-    private javax.swing.JPanel pnlVentas;
-    private javax.swing.JPanel pnlVentasRecientes;
     private javax.swing.JTable tblDatosClientes;
     private javax.swing.JLabel txtIconUsuario;
-    private javax.swing.JLabel txtIconVentas;
     private javax.swing.JLabel txtInfoClientes;
     private javax.swing.JLabel txtNuevosClientes;
     private javax.swing.JLabel txtNumUsuarios;
-    private javax.swing.JLabel txtNumUsuarios1;
     private javax.swing.JLabel txtUbicacion;
-    private javax.swing.JLabel txtVentasRecientes;
     // End of variables declaration//GEN-END:variables
 }
