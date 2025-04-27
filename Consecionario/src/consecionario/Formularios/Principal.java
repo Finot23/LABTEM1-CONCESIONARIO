@@ -80,25 +80,8 @@ public class Principal extends javax.swing.JFrame {
     }
     
       
-      public void mostrarCatalogo(String tipo) {
-        JPanel catalogoPanel = null;
-        switch (tipo) {
-            case "Hatchback":
-               catalogoPanel = new CatalogoHatchback();
+      
 
-                break;
-            case "Sedan":
-                catalogoPanel = new CatalogoSedan();
-                break;
-            case "SUV":
-                catalogoPanel = new CatalogoSUV();
-                break;
-        }
-
-        if (catalogoPanel != null) {
-            MostrarJpanel(catalogoPanel);
-        }
-    }
     public void setPanelContenido(JPanel nuevoPanel) {
     jPanelContenido.removeAll();              // Quita lo anterior
     jPanelContenido.add(nuevoPanel);          // Agrega el nuevo panel
@@ -559,6 +542,11 @@ public class Principal extends javax.swing.JFrame {
         iconUserMain.setBackground(new java.awt.Color(255, 255, 255));
         iconUserMain.setForeground(new java.awt.Color(0, 38, 58));
         iconUserMain.setText("ImagenUsuario");
+        iconUserMain.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconUserMainMouseClicked(evt);
+            }
+        });
 
         txtNombreUsuario.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         txtNombreUsuario.setForeground(new java.awt.Color(0, 38, 58));
@@ -731,6 +719,11 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         pnlLeftBar6.setVisible(false);
     }//GEN-LAST:event_jPanelCatalogoMouseExited
+
+    private void iconUserMainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconUserMainMouseClicked
+        // TODO add your handling code here:
+        MostrarJpanel(new InfoUsuario());
+    }//GEN-LAST:event_iconUserMainMouseClicked
      
     /**
      * @param args the command line arguments

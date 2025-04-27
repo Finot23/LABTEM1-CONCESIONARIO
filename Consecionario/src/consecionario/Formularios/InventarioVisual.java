@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
 
 /**
  *
@@ -30,6 +31,8 @@ public class InventarioVisual extends javax.swing.JPanel {
     
       private CatalogoBD catalogoBD;
       
+        private int numColumnas = 2;
+    // Método para ordenar los cards
 
     // Constructor de InventarioVisual
     public InventarioVisual() {
@@ -52,8 +55,9 @@ pnlOpcionesCondicion.setVisible(false);
     OrdenarCards();
     
 
-    add(pnlFiltros, BorderLayout.WEST);
-    add(jScrollPane1, BorderLayout.CENTER);
+    pnlCards.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // Añadir márgenes al panel de cards
+        add(pnlFiltros, BorderLayout.WEST);
+        add(jScrollPane1, BorderLayout.CENTER);
 }
 
 
@@ -71,14 +75,9 @@ public void actualizarFiltrado() {
     AgregarPanels(filtrados); // método que ya usas para mostrar los autos
 }
 
-    
-
-
-        private int numColumnas = 2;
-    // Método para ordenar los cards
     public void OrdenarCards() {
         //pnlCards.setLayout(new FlowLayout(FlowLayout.LEFT, 40, 20));
-         pnlCards.setLayout(new GridLayout(0, numColumnas, 30, 20));
+         pnlCards.setLayout(new GridLayout(0, numColumnas, 20, 10)); // Aumentar espacio horizontal
     }
     
     // Método para agregar los panels con los autos
@@ -140,38 +139,28 @@ public void actualizarFiltrado() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        pnlCards = new javax.swing.JPanel();
         pnlFiltros = new javax.swing.JPanel();
         FiltroTipoAuto = new javax.swing.JPanel();
         btnTipoAuto = new javax.swing.JToggleButton();
         pnlOpcionesTipoAuto = new javax.swing.JPanel();
+        chkSUV = new javax.swing.JCheckBox();
         chkSedan = new javax.swing.JCheckBox();
         chkHatchback = new javax.swing.JCheckBox();
-        chkSUV = new javax.swing.JCheckBox();
         FiltroCondicion = new javax.swing.JPanel();
         btnCondicion = new javax.swing.JToggleButton();
         pnlOpcionesCondicion = new javax.swing.JPanel();
         chkNuevo = new javax.swing.JCheckBox();
         chkUsado = new javax.swing.JCheckBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        pnlCards = new javax.swing.JPanel();
 
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(908, 510));
+        setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout pnlCardsLayout = new javax.swing.GroupLayout(pnlCards);
-        pnlCards.setLayout(pnlCardsLayout);
-        pnlCardsLayout.setHorizontalGroup(
-            pnlCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 953, Short.MAX_VALUE)
-        );
-        pnlCardsLayout.setVerticalGroup(
-            pnlCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 498, Short.MAX_VALUE)
-        );
-
-        jScrollPane1.setViewportView(pnlCards);
-
-        pnlFiltros.setPreferredSize(new java.awt.Dimension(600, 50));
+        pnlFiltros.setBackground(new java.awt.Color(255, 255, 255));
+        pnlFiltros.setPreferredSize(new java.awt.Dimension(200, 50));
         pnlFiltros.setLayout(new java.awt.BorderLayout());
+
+        FiltroTipoAuto.setBackground(new java.awt.Color(255, 255, 255));
 
         btnTipoAuto.setBackground(new java.awt.Color(255, 255, 255));
         btnTipoAuto.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -186,16 +175,9 @@ public void actualizarFiltrado() {
             }
         });
 
-        pnlOpcionesTipoAuto.setLayout(new java.awt.BorderLayout());
+        pnlOpcionesTipoAuto.setBackground(new java.awt.Color(255, 255, 255));
 
-        chkSedan.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        chkSedan.setText("Sedan");
-        pnlOpcionesTipoAuto.add(chkSedan, java.awt.BorderLayout.CENTER);
-
-        chkHatchback.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        chkHatchback.setText("Hatchback");
-        pnlOpcionesTipoAuto.add(chkHatchback, java.awt.BorderLayout.PAGE_START);
-
+        chkSUV.setBackground(new java.awt.Color(255, 255, 255));
         chkSUV.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         chkSUV.setText("SUV");
         chkSUV.addActionListener(new java.awt.event.ActionListener() {
@@ -203,28 +185,72 @@ public void actualizarFiltrado() {
                 chkSUVActionPerformed(evt);
             }
         });
-        pnlOpcionesTipoAuto.add(chkSUV, java.awt.BorderLayout.PAGE_END);
+
+        chkSedan.setBackground(new java.awt.Color(255, 255, 255));
+        chkSedan.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        chkSedan.setText("Sedan");
+
+        chkHatchback.setBackground(new java.awt.Color(255, 255, 255));
+        chkHatchback.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        chkHatchback.setText("Hatchback");
+        chkHatchback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkHatchbackActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlOpcionesTipoAutoLayout = new javax.swing.GroupLayout(pnlOpcionesTipoAuto);
+        pnlOpcionesTipoAuto.setLayout(pnlOpcionesTipoAutoLayout);
+        pnlOpcionesTipoAutoLayout.setHorizontalGroup(
+            pnlOpcionesTipoAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 103, Short.MAX_VALUE)
+            .addGroup(pnlOpcionesTipoAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlOpcionesTipoAutoLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(pnlOpcionesTipoAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(chkHatchback)
+                        .addComponent(chkSedan, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chkSUV, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        pnlOpcionesTipoAutoLayout.setVerticalGroup(
+            pnlOpcionesTipoAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 75, Short.MAX_VALUE)
+            .addGroup(pnlOpcionesTipoAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlOpcionesTipoAutoLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(chkHatchback)
+                    .addGap(0, 0, 0)
+                    .addComponent(chkSedan)
+                    .addGap(0, 0, 0)
+                    .addComponent(chkSUV)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
 
         javax.swing.GroupLayout FiltroTipoAutoLayout = new javax.swing.GroupLayout(FiltroTipoAuto);
         FiltroTipoAuto.setLayout(FiltroTipoAutoLayout);
         FiltroTipoAutoLayout.setHorizontalGroup(
             FiltroTipoAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FiltroTipoAutoLayout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
-                .addComponent(pnlOpcionesTipoAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
-            .addComponent(btnTipoAuto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(FiltroTipoAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlOpcionesTipoAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTipoAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         FiltroTipoAutoLayout.setVerticalGroup(
             FiltroTipoAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FiltroTipoAutoLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+            .addGroup(FiltroTipoAutoLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addComponent(btnTipoAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(pnlOpcionesTipoAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addComponent(pnlOpcionesTipoAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6))
         );
 
         pnlFiltros.add(FiltroTipoAuto, java.awt.BorderLayout.PAGE_START);
+
+        FiltroCondicion.setBackground(new java.awt.Color(255, 255, 255));
 
         btnCondicion.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btnCondicion.setText("Condición");
@@ -237,12 +263,13 @@ public void actualizarFiltrado() {
             }
         });
 
-        pnlOpcionesCondicion.setLayout(new java.awt.BorderLayout());
+        pnlOpcionesCondicion.setBackground(new java.awt.Color(255, 255, 255));
 
+        chkNuevo.setBackground(new java.awt.Color(255, 255, 255));
         chkNuevo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         chkNuevo.setText("Nuevo");
-        pnlOpcionesCondicion.add(chkNuevo, java.awt.BorderLayout.PAGE_END);
 
+        chkUsado.setBackground(new java.awt.Color(255, 255, 255));
         chkUsado.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         chkUsado.setText("Usado");
         chkUsado.addActionListener(new java.awt.event.ActionListener() {
@@ -250,53 +277,64 @@ public void actualizarFiltrado() {
                 chkUsadoActionPerformed(evt);
             }
         });
-        pnlOpcionesCondicion.add(chkUsado, java.awt.BorderLayout.CENTER);
+
+        javax.swing.GroupLayout pnlOpcionesCondicionLayout = new javax.swing.GroupLayout(pnlOpcionesCondicion);
+        pnlOpcionesCondicion.setLayout(pnlOpcionesCondicionLayout);
+        pnlOpcionesCondicionLayout.setHorizontalGroup(
+            pnlOpcionesCondicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 112, Short.MAX_VALUE)
+            .addGroup(pnlOpcionesCondicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlOpcionesCondicionLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(pnlOpcionesCondicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(chkUsado, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chkNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        pnlOpcionesCondicionLayout.setVerticalGroup(
+            pnlOpcionesCondicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+            .addGroup(pnlOpcionesCondicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlOpcionesCondicionLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(chkUsado)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(chkNuevo)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
 
         javax.swing.GroupLayout FiltroCondicionLayout = new javax.swing.GroupLayout(FiltroCondicion);
         FiltroCondicion.setLayout(FiltroCondicionLayout);
         FiltroCondicionLayout.setHorizontalGroup(
             FiltroCondicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FiltroCondicionLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pnlOpcionesCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FiltroCondicionLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap()
+                .addGroup(FiltroCondicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlOpcionesCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 44, Short.MAX_VALUE))
         );
         FiltroCondicionLayout.setVerticalGroup(
             FiltroCondicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FiltroCondicionLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
+                .addContainerGap()
                 .addComponent(btnCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlOpcionesCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
 
         pnlFiltros.add(FiltroCondicion, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(pnlFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
+        add(pnlFiltros, java.awt.BorderLayout.WEST);
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(908, 510));
+
+        pnlCards.setBackground(new java.awt.Color(255, 255, 255));
+        pnlCards.setLayout(new java.awt.GridLayout());
+        jScrollPane1.setViewportView(pnlCards);
+
+        add(jScrollPane1, java.awt.BorderLayout.EAST);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTipoAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoAutoActionPerformed
@@ -320,6 +358,10 @@ public void actualizarFiltrado() {
     private void chkUsadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkUsadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkUsadoActionPerformed
+
+    private void chkHatchbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkHatchbackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkHatchbackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

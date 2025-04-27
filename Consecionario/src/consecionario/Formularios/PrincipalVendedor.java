@@ -78,25 +78,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
         jPanelContenido.repaint();
     }
       
-      public void mostrarCatalogo(String tipo) {
-        JPanel catalogoPanel = null;
-        switch (tipo) {
-            case "Hatchback":
-               catalogoPanel = new CatalogoHatchback();
-
-                break;
-            case "Sedan":
-                catalogoPanel = new CatalogoSedan();
-                break;
-            case "SUV":
-                catalogoPanel = new CatalogoSUV();
-                break;
-        }
-
-        if (catalogoPanel != null) {
-            MostrarJpanel(catalogoPanel);
-        }
-    }
+     
     public void setPanelContenido(JPanel nuevoPanel) {
     jPanelContenido.removeAll();              // Quita lo anterior
     jPanelContenido.add(nuevoPanel);          // Agrega el nuevo panel
@@ -198,7 +180,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
                 .addComponent(iconHome, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanelPaginaPrincipalLayout.setVerticalGroup(
             jPanelPaginaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,7 +461,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
                 .addComponent(jPanelVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jPanelCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(384, Short.MAX_VALUE))
+                .addContainerGap(387, Short.MAX_VALUE))
         );
 
         jPanelContenido.setLayout(new java.awt.BorderLayout());

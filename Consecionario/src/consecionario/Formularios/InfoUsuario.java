@@ -68,10 +68,10 @@ public class InfoUsuario extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(834, 840));
 
         gb.setBackground(new java.awt.Color(255, 255, 255));
-        gb.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        gb.setLayout(new java.awt.BorderLayout());
 
         IconUser2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/consecionario/Imagenes/iconoUsuario.png"))); // NOI18N
-        gb.add(IconUser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, -1, -1));
+        gb.add(IconUser2, java.awt.BorderLayout.NORTH);
 
         lblNombre.setText("Nombre (s):");
 
@@ -116,7 +116,7 @@ public class InfoUsuario extends javax.swing.JPanel {
                     .addComponent(lblNombre)
                     .addComponent(lblInfoUsuario)
                     .addComponent(lblApellidoP))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(550, Short.MAX_VALUE))
         );
         bgInfoUsuarioLayout.setVerticalGroup(
             bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,10 +139,10 @@ public class InfoUsuario extends javax.swing.JPanel {
                 .addGroup(bgInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPuesto)
                     .addComponent(txtPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(571, Short.MAX_VALUE))
         );
 
-        gb.add(bgInfoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, -1, -1));
+        gb.add(bgInfoUsuario, java.awt.BorderLayout.CENTER);
 
         txtBienvenida.setBackground(new java.awt.Color(0, 0, 0));
         txtBienvenida.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
