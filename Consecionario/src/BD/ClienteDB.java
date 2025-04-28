@@ -31,43 +31,48 @@ public boolean RegistrarClientes(Cliente cl){
             return false;
         }
         
-     String sql = "INSERT INTO clientes (Id, Apellido_Paterno, Apellido_Materno, nombre, telefono, Correo, calle, colonia, municipio, estado , cp ,curp,licencia,genero,edad) VALUES (?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?,?,?,?)";
+     String sql = "INSERT INTO clientes (Apellido_Paterno, Apellido_Materno, nombre, telefono, Correo, calle, colonia, municipio, estado , cp ,curp,licencia,genero,edad) VALUES (?, ?, ?, ?, ?, ?,?,?, ?, ?, ?,?,?,?)";
       
      try{
-        ps = con.prepareStatement(sql);
-        ps.setInt(1, cl.getId());
-        ps.setString(2, cl.getApellidoP());
-        ps.setString(3, cl.getApellidoM());
-        ps.setString(4, cl.getNombre());
-        ps.setLong(5, cl.getTelefono());
-        ps.setString(6, cl.getCorreo());
-        ps.setString(7, cl.getCalle());
-        ps.setString(8, cl.getColonia());
-        ps.setString(9, cl.getMunicipio());
+        ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+       
+        ps.setString(1, cl.getApellidoP());
+        ps.setString(2, cl.getApellidoM());
+        ps.setString(3, cl.getNombre());
+        ps.setLong(4, cl.getTelefono());
+        ps.setString(5, cl.getCorreo());
+        ps.setString(6, cl.getCalle());
+        ps.setString(7, cl.getColonia());
+        ps.setString(8, cl.getMunicipio());
         
-        ps.setString(10, cl.getEstado());
-        ps.setString(11, cl.getCP());
-        ps.setString(12, cl.getCurp());
-        ps.setString(13, cl.getLicencia());
-        ps.setString(14, cl.getGenero());
-        ps.setInt(15, cl.getEdad());
+        ps.setString(9, cl.getEstado());
+        ps.setString(10, cl.getCP());
+        ps.setString(11, cl.getCurp());
+        ps.setString(12, cl.getLicencia());
+        ps.setString(13, cl.getGenero());
+        ps.setInt(14, cl.getEdad());
         
         
         ps.executeUpdate();
-        return true;
-        
-    }catch (Exception e){
-        System.out.println("Error al registrar cliente: " + e.getMessage());
-        return false;
-    } finally {
-        try {
-            if (ps != null) ps.close();
-            if(con !=null) con.close();
-        } catch (SQLException e){
-            System.out.println("Error al cerrar conexión: " + e.getMessage());
-        }
+        // Obtener la ID generada automáticamente
+    ResultSet generatedKeys = ps.getGeneratedKeys();
+    if (generatedKeys.next()) {
+        cl.setId(generatedKeys.getInt(1));  // Asignar la ID al objeto cliente
+    }
+    return true;
+} catch (Exception e){
+    System.out.println("Error al registrar cliente: " + e.getMessage());
+    return false;
+} finally {
+    try {
+        if (ps != null) ps.close();
+        if(con != null) con.close();
+    } catch (SQLException e){
+        System.out.println("Error al cerrar conexión: " + e.getMessage());
     }
 }
+     }
+     
 
  public Cliente buscarClientePorNombreYApellido(String nombre, String apellidoPaterno) {
         Connection con = ConexionBD.conn();

@@ -5,10 +5,12 @@
 package consecionario.Formularios;
 
 import BD.ClienteDB;
+import BD.ConexionBD;
 import BD.SegurosBD;
 import consecionario.Clases.CatalogoCarros;
 import consecionario.Clases.Cliente;
 import consecionario.Clases.GeneradorPDF;
+
 import consecionario.Clases.PolizaSeguroPDF;
 import consecionario.Clases.Seguro;
 import javax.swing.JOptionPane;
@@ -18,6 +20,8 @@ import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
+import java.time.LocalDate;
 import java.util.concurrent.ExecutionException;
 
 
@@ -26,6 +30,34 @@ import java.util.concurrent.ExecutionException;
  * @author antoniosalinas
  */
 public class Seguros extends javax.swing.JPanel {
+    
+    
+     private void registrarHistorial(Cliente cliente, String tipoDocumento, String rutaArchivo) {
+    Connection con = ConexionBD.conn();
+    
+    if (con != null) {
+        try {
+            String sql = "INSERT INTO historial_documentos (id_cliente, nombre_cliente, tipo_documento, ruta_archivo, fecha_registro) VALUES (?, ?, ?, ?, NOW())";
+            java.sql.PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, cliente.getId());
+            ps.setString(2, cliente.getNombre() + " " + cliente.getApellidoP() + " " + cliente.getApellidoM());
+            ps.setString(3, tipoDocumento);
+            ps.setString(4, rutaArchivo);
+            
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al registrar historial: " + e.getMessage());
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "No se pudo conectar a la base de datos para registrar historial.");
+    }
+    }
+     
+    
+    
     private boolean irACreditoDespues;
     private CatalogoCarros carro;
     private Seguro seguro;
@@ -1056,11 +1088,9 @@ public class Seguros extends javax.swing.JPanel {
 
             SegurosBD segurosBD = new SegurosBD();
             boolean resultado = segurosBD.RegistrarSeguro(seguro);
-            
-            //Thread.sleep(2000); // Espera adicional de 2 segundos (antes de mostrar resultado)
-            PolizaSeguroPDF.generarResumenSeguro(cliente, carro, seguro, null);
-            GeneradorPDF.generarResumenVenta(cliente, carro, null);
-            
+
+       
+           
              SwingUtilities.invokeLater(() -> {
                 loadingDialog.dispose();
                 if (resultado) {
@@ -1069,6 +1099,34 @@ public class Seguros extends javax.swing.JPanel {
                         "Éxito", 
                         JOptionPane.INFORMATION_MESSAGE);
                     
+                    try {
+                        
+                         // 1. Generar PDF Venta
+GeneradorPDF.generarResumenVenta(cliente, carro, null);
+
+// 2. Armar manualmente la ruta
+String rutaVenta = "src/consecionario/Facturas/Ventas/Resumen_Venta_" + cliente.getNombre().replaceAll("\\s+", "_") + ".pdf";
+String rutaSeguro = "src/consecionario/Facturas/PolizaSeguro/Poliza_Seguro_" + cliente.getNombre().replaceAll("\\s+", "_") + ".pdf";
+// 3. Registrar historial
+registrarHistorial(cliente, "Venta", rutaVenta);
+    
+                        
+                        
+        // Generar PDF del seguro
+        PolizaSeguroPDF.generarResumenSeguro(cliente, carro, seguro, null);
+
+        
+
+        // Registrar historial
+       registrarHistorial(cliente, "Seguro", rutaSeguro);
+
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(Seguros.this, 
+            "Error al generar el PDF del seguro: " + ex.getMessage(), 
+            "Error", 
+            JOptionPane.ERROR_MESSAGE);
+    }
+  
                     // Aquí comprobamos si el cliente eligió "Ambos" y si es así, vamos a créditos
                     if (irACreditoDespues) {
                         // Mostrar el formulario de Créditos

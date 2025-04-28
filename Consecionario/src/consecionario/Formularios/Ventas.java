@@ -6,13 +6,23 @@ package consecionario.Formularios;
 
 
 import BD.ClienteDB;
+import BD.ConexionBD;
+
 import consecionario.Clases.AdministradorPanel;
 import consecionario.Clases.CatalogoCarros;
 import consecionario.Clases.Cliente;
 import consecionario.Clases.GeneradorPDF;
+import java.sql.Connection;
 import consecionario.Formularios.Principal;
 import consecionario.Formularios.Seguros;
 import java.awt.Color;
+import java.io.File;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+import javax.swing.InputVerifier;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -25,6 +35,30 @@ import javax.swing.JTextField;
 
 public class Ventas extends javax.swing.JPanel {
     
+     private void registrarHistorial(Cliente cliente, String tipoDocumento, String rutaArchivo) {
+    Connection con = ConexionBD.conn();
+    
+    if (con != null) {
+        try {
+            String sql = "INSERT INTO historial_documentos (id_cliente, nombre_cliente, tipo_documento, ruta_archivo, fecha_registro) VALUES (?, ?, ?, ?, NOW())";
+            java.sql.PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, cliente.getId());
+            ps.setString(2, cliente.getNombre() + " " + cliente.getApellidoP() + " " + cliente.getApellidoM());
+            ps.setString(3, tipoDocumento);
+            ps.setString(4, rutaArchivo);
+            
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al registrar historial: " + e.getMessage());
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "No se pudo conectar a la base de datos para registrar historial.");
+    }
+    }
+     
     private CatalogoCarros carroSeleccionado;
    
 
@@ -119,14 +153,38 @@ public class Ventas extends javax.swing.JPanel {
         
         txtNoSerie.setText(placeholderNoSerie);
         txtNoSerie.setForeground(placeholderColor);
-       
+       txtEdad.setInputVerifier(new InputVerifier() {
+        @Override
+        public boolean verify(JComponent input) {
+            JTextField textField = (JTextField) input;
+            String text = textField.getText();
+            try {
+                if (text.isEmpty() || Integer.parseInt(text) > 0) {
+                    return true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "La edad debe ser un número positivo.", "Error de entrada", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Ingrese una edad válida (número).", "Error de entrada", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+
+        @Override
+        public boolean shouldYieldFocus(JComponent input) {
+            return verify(input);
+        }
+    });
+
     } 
     
     public Ventas(JPanel jPanelContenido) {
         // Lógica por defecto o vacía
         this.jPanelContenido = jPanelContenido;
     }   
-    
+    private DecimalFormat df = new DecimalFormat("#,##0.00");
+
     public Ventas(CatalogoCarros carro) {
     initComponents();
     this.carroSeleccionado = carro;
@@ -138,11 +196,16 @@ public class Ventas extends javax.swing.JPanel {
     txtEstadoCarro.setText(carro.getEstado());
     txtTipoCarro.setText(carro.getCategoria());
     txtAnioCarro.setText(String.valueOf(carro.getAnioFabricacion()));
-    txtPrecioCarro.setText(String.valueOf(carro.getPrecio()));
+    
+     txtPrecioCarro.setText(df.format(carro.getPrecio()));
+
     txtNoSerie.setText(String.valueOf(carro.getNoSerie()));
+
+    
 
 
 }
+    
         
     /**
      * This method is called from within the constructor to initialize the form.
@@ -152,6 +215,7 @@ public class Ventas extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         bg = new javax.swing.JPanel();
         lblSolicitudCompra = new javax.swing.JLabel();
@@ -194,20 +258,19 @@ public class Ventas extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(834, 768));
 
-        bg.setBackground(new java.awt.Color(255, 255, 255));
+        bg.setBackground(new java.awt.Color(245, 245, 245));
         bg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bg.setMinimumSize(new java.awt.Dimension(1024, 768));
         bg.setPreferredSize(new java.awt.Dimension(834, 768));
-        bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSolicitudCompra.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblSolicitudCompra.setForeground(new java.awt.Color(0, 38, 58));
         lblSolicitudCompra.setText("Solicitud de compra");
-        bg.add(lblSolicitudCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 310, -1));
 
-        jPanelDatosCliente.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelDatosCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(199, 0, 57), 3));
+        jPanelDatosCliente.setBackground(new java.awt.Color(245, 245, 245));
+        jPanelDatosCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 38, 58), 3));
 
-        bgDatosComprador.setBackground(new java.awt.Color(199, 0, 57));
+        bgDatosComprador.setBackground(new java.awt.Color(0, 38, 58));
         bgDatosComprador.setForeground(new java.awt.Color(255, 255, 255));
         bgDatosComprador.setFont(new java.awt.Font("Roboto", 1, 8)); // NOI18N
 
@@ -299,8 +362,8 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
-        jSeparator1.setBackground(new java.awt.Color(153, 0, 51));
-        jSeparator1.setForeground(new java.awt.Color(199, 0, 57));
+        jSeparator1.setBackground(new java.awt.Color(0, 38, 58));
+        jSeparator1.setForeground(new java.awt.Color(0, 38, 58));
 
         cbGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Género", "Masculino", "Femenino" }));
         cbGenero.addActionListener(new java.awt.event.ActionListener() {
@@ -372,30 +435,30 @@ public class Ventas extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelDatosClienteLayout.createSequentialGroup()
-                        .addComponent(txtApellidoP, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtApellidoP)
                         .addGap(18, 18, 18)
-                        .addComponent(txtApellidoM, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtApellidoM)
                         .addGap(18, 18, 18)
-                        .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNombreCliente)
                         .addGap(18, 18, 18)
-                        .addComponent(txtCURP, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(28, Short.MAX_VALUE))
+                        .addComponent(txtCURP)
+                        .addGap(149, 149, 149))
                     .addGroup(jPanelDatosClienteLayout.createSequentialGroup()
-                        .addComponent(cbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbGenero, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEdad)
                         .addGap(18, 18, 18)
-                        .addComponent(txtNoLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNoLicencia)
                         .addGap(18, 18, 18)
                         .addComponent(txtCorreo)
                         .addGap(18, 18, 18)
-                        .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTelefonoCliente)
                         .addGap(27, 27, 27))))
         );
         jPanelDatosClienteLayout.setVerticalGroup(
             jPanelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDatosClienteLayout.createSequentialGroup()
-                .addComponent(bgDatosComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bgDatosComprador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtApellidoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -411,15 +474,13 @@ public class Ventas extends javax.swing.JPanel {
                     .addComponent(cbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNoLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(9, 9, 9))
         );
 
-        bg.add(jPanelDatosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 810, 120));
+        jPanelDireccion.setBackground(new java.awt.Color(245, 245, 245));
+        jPanelDireccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 38, 58), 3));
 
-        jPanelDireccion.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelDireccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(199, 0, 57), 3));
-
-        bgDomicilio.setBackground(new java.awt.Color(199, 0, 57));
+        bgDomicilio.setBackground(new java.awt.Color(0, 38, 58));
         bgDomicilio.setForeground(new java.awt.Color(255, 255, 255));
         bgDomicilio.setFont(new java.awt.Font("Roboto", 1, 8)); // NOI18N
 
@@ -472,8 +533,8 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
-        jSeparator2.setBackground(new java.awt.Color(153, 0, 51));
-        jSeparator2.setForeground(new java.awt.Color(199, 0, 57));
+        jSeparator2.setBackground(new java.awt.Color(0, 38, 58));
+        jSeparator2.setForeground(new java.awt.Color(0, 38, 58));
 
         txtMunicipio.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtMunicipio.setForeground(new java.awt.Color(153, 153, 153));
@@ -531,22 +592,22 @@ public class Ventas extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelDireccionLayout.createSequentialGroup()
-                        .addComponent(txtCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCalle)
                         .addGap(22, 22, 22)
-                        .addComponent(txtColonia, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
+                        .addComponent(txtColonia))
                     .addGroup(jPanelDireccionLayout.createSequentialGroup()
-                        .addComponent(txtMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMunicipio, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                         .addGap(57, 57, 57)
-                        .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
                         .addGap(53, 53, 53)
-                        .addComponent(txtCP, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(txtCP, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                        .addGap(354, 354, 354)))
                 .addContainerGap())
         );
         jPanelDireccionLayout.setVerticalGroup(
             jPanelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDireccionLayout.createSequentialGroup()
-                .addComponent(bgDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bgDomicilio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -558,15 +619,13 @@ public class Ventas extends javax.swing.JPanel {
                     .addComponent(txtMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
-        bg.add(jPanelDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 810, 120));
+        txtPrecio.setBackground(new java.awt.Color(245, 245, 245));
+        txtPrecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 38, 58), 3));
 
-        txtPrecio.setBackground(new java.awt.Color(255, 255, 255));
-        txtPrecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(199, 0, 57), 3));
-
-        bgCarro.setBackground(new java.awt.Color(199, 0, 57));
+        bgCarro.setBackground(new java.awt.Color(0, 38, 58));
         bgCarro.setForeground(new java.awt.Color(255, 255, 255));
         bgCarro.setFont(new java.awt.Font("Roboto", 1, 8)); // NOI18N
 
@@ -614,8 +673,8 @@ public class Ventas extends javax.swing.JPanel {
             }
         });
 
-        jSeparator3.setBackground(new java.awt.Color(153, 0, 51));
-        jSeparator3.setForeground(new java.awt.Color(199, 0, 57));
+        jSeparator3.setBackground(new java.awt.Color(0, 38, 58));
+        jSeparator3.setForeground(new java.awt.Color(0, 38, 58));
 
         txtTipoCarro.setEditable(false);
         txtTipoCarro.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
@@ -714,27 +773,28 @@ public class Ventas extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(txtPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(txtPrecioLayout.createSequentialGroup()
-                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMarca)
                         .addGap(32, 32, 32)
-                        .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtModelo)
                         .addGap(31, 31, 31)
-                        .addComponent(txtTipoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTipoCarro)
                         .addGap(46, 46, 46)
-                        .addComponent(txtColorCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtColorCarro)
+                        .addGap(30, 30, 30))
                     .addGroup(txtPrecioLayout.createSequentialGroup()
-                        .addComponent(txtAnioCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAnioCarro)
                         .addGap(113, 113, 113)
-                        .addComponent(txtEstadoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEstadoCarro)
                         .addGap(88, 88, 88)
-                        .addComponent(txtPrecioCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPrecioCarro)
                         .addGap(34, 34, 34)
-                        .addComponent(txtNoSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(114, Short.MAX_VALUE))
+                        .addComponent(txtNoSerie)))
+                .addGap(231, 231, 231))
         );
         txtPrecioLayout.setVerticalGroup(
             txtPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txtPrecioLayout.createSequentialGroup()
-                .addComponent(bgCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bgCarro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txtPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -749,27 +809,62 @@ public class Ventas extends javax.swing.JPanel {
                     .addComponent(txtEstadoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPrecioCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNoSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
-        bg.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 810, 120));
-
         btnContinuar.setBackground(new java.awt.Color(255, 153, 51));
+        btnContinuar.setForeground(new java.awt.Color(0, 38, 58));
         btnContinuar.setText("Continuar");
         btnContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnContinuarActionPerformed(evt);
             }
         });
-        bg.add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 560, 390, -1));
+
+        javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
+        bg.setLayout(bgLayout);
+        bgLayout.setHorizontalGroup(
+            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(txtPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(204, 204, 204))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(btnContinuar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(424, 424, 424))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelDatosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(204, 204, 204))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSolicitudCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(318, 318, 318))
+        );
+        bgLayout.setVerticalGroup(
+            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSolicitudCompra)
+                .addGap(125, 125, 125)
+                .addComponent(jPanelDatosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanelDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(txtPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
+                .addComponent(btnContinuar)
+                .addGap(253, 253, 253))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 1141, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1083,6 +1178,7 @@ public class Ventas extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoPActionPerformed
 
+   
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         // TODO add your handling code here:
                 
@@ -1138,11 +1234,13 @@ public class Ventas extends javax.swing.JPanel {
         return;
     }
     // Mostrar opciones de qué desea hacer
-    Object[] opciones = {"Solo Seguro", "Solo Crédito", "Ambos", "No requiere seguro Ni Credito" , "Cancelar"};
+    Object[] opciones = {"Solo Seguro", "Solo Crédito", "Ambos", "Solo Venta" , "Cancelar"};
 int seleccion = JOptionPane.showOptionDialog(null, "¿Qué desea hacer a continuación?", "Opciones de Compra", 
                                               JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
 
 Principal ventanaPrincipal = (Principal) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+
 
 switch (seleccion) {
     case 0: // Solo Seguro
@@ -1159,10 +1257,17 @@ switch (seleccion) {
         ambosSegurosPanel.setClienteYaExiste(true); 
         ventanaPrincipal.setPanelContenido(ambosSegurosPanel);
         break;
-    case 3: // No requiere seguro
-       
-       GeneradorPDF.generarResumenVenta(cliente, carroSeleccionado, null);
-        break;
+        
+   case 3: // Solo Venta
+   // 1. Generar PDF directamente
+GeneradorPDF.generarResumenVenta(cliente, carroSeleccionado, null);
+
+// 2. Armar manualmente la ruta
+String rutaFactura = "src/consecionario/Facturas/Ventas/Resumen_Venta_" + cliente.getNombre().replaceAll("\\s+", "_") + ".pdf";
+
+// 3. Registrar historial
+registrarHistorial(cliente, "Venta", rutaFactura);
+    break;
         
        
     default:

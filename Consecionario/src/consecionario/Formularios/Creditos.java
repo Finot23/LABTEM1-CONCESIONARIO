@@ -1,14 +1,64 @@
 package consecionario.Formularios;
 
+import BD.ConexionBD;
 import BD.CreditosBD;
 import consecionario.Clases.CatalogoCarros;
 import consecionario.Clases.Cliente;
 import consecionario.Clases.Credito;
 import consecionario.Clases.CreditoAutoPDF;
 import consecionario.Clases.GeneradorPDF;
+import java.sql.Connection;
+
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 public class Creditos extends javax.swing.JPanel {
+    
+    private void registrarHistorial(Cliente cliente, String tipoDocumento, String rutaArchivo) {
+    Connection con = ConexionBD.conn();
+    
+    if (con != null) {
+        try {
+            String sql = "INSERT INTO historial_documentos (id_cliente, nombre_cliente, tipo_documento, ruta_archivo, fecha_registro) VALUES (?, ?, ?, ?, NOW())";
+            java.sql.PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, cliente.getId());
+            ps.setString(2, cliente.getNombre() + " " + cliente.getApellidoP() + " " + cliente.getApellidoM());
+            ps.setString(3, tipoDocumento);
+            ps.setString(4, rutaArchivo);
+            
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al registrar historial: " + e.getMessage());
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "No se pudo conectar a la base de datos para registrar historial.");
+    }
+    }
+    
+    private boolean ventaYaRegistrada(Cliente cliente) {
+    Connection con = ConexionBD.conn();
+    boolean existe = false;
+    if (con != null) {
+        try {
+            String sql = "SELECT COUNT(*) FROM historial_documentos WHERE id_cliente = ? AND tipo_documento = 'Venta'";
+            java.sql.PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, cliente.getId());
+            java.sql.ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                existe = rs.getInt(1) > 0;
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al validar venta existente: " + e.getMessage());
+        }
+    }
+    return existe;
+}
     
     private Cliente cliente;
     private CatalogoCarros carro;
@@ -318,8 +368,31 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
         
         if (registrado) {
             JOptionPane.showMessageDialog(this, "Crédito aprobado y registrado con éxito.");
-            CreditoAutoPDF.generarResumenCredito(cliente, carro, credito, null);
-            GeneradorPDF.generarResumenVenta(cliente, carro, null);
+            
+            
+        
+                                    // 1. Generar PDF Venta
+GeneradorPDF.generarResumenVenta(cliente, carro, null);
+
+// 2. Armar manualmente la ruta
+String rutaVenta = "src/consecionario/Facturas/Ventas/Resumen_Venta_" + cliente.getNombre().replaceAll("\\s+", "_") + ".pdf";
+String rutaCredito = "src/consecionario/Facturas/ResumenCreditos/Resumen_Credito_" + cliente.getNombre().replaceAll("\\s+", "_") + ".pdf";
+
+if (!ventaYaRegistrada(cliente)) {
+    registrarHistorial(cliente, "Venta", rutaVenta);
+}
+
+    
+                        
+                        
+        // Generar PDF del seguro
+        CreditoAutoPDF.generarResumenCredito(cliente, carro, credito, null);
+
+        
+
+        // Registrar historial
+       registrarHistorial(cliente, "Credito", rutaCredito);
+            
         } else {
             JOptionPane.showMessageDialog(this, "Error al registrar el crédito.");
         }

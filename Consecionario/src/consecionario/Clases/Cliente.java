@@ -4,6 +4,9 @@
  */
 package consecionario.Clases;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author antoniosalinas
@@ -26,6 +29,7 @@ public class Cliente {
     String Genero;
     int Edad;
     
+
     
     
     

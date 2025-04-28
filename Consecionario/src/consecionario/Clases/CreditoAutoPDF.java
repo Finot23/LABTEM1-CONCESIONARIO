@@ -65,6 +65,7 @@ try{
         head.addCell(left);
         PdfPCell right = new PdfPCell(); right.setBorder(Rectangle.NO_BORDER); right.setHorizontalAlignment(Element.ALIGN_RIGHT);
         right.addElement(new Phrase("Coches Nuevos y Seminuevos Garantizados", fNormal));
+        right.addElement(new Phrase("\nFACTURA: " + "F" + cliente.getId() + "-" + LocalDate.now().getYear(), fNormal));
         head.addCell(right);
         doc.add(head);  doc.add(Chunk.NEWLINE);
 

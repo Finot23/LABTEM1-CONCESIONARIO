@@ -1,8 +1,10 @@
 package consecionario.Clases;
 
+import BD.ConexionBD;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.draw.LineSeparator;
+import com.sun.jdi.connect.spi.Connection;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.DecimalFormat;
@@ -64,7 +66,7 @@ public class GeneradorPDF {
             PdfPCell right = new PdfPCell();
             right.setBorder(Rectangle.NO_BORDER);
             right.setHorizontalAlignment(Element.ALIGN_RIGHT);
-            right.addElement(new Phrase("\nFACTURA: " +cliente.getId(), fEtiqueta));
+           right.addElement(new Phrase("\nFACTURA: " + "F" + cliente.getId() + "-" + LocalDate.now().getYear(), fEtiqueta));
             right.addElement(new Phrase("COCHES NUEVOS Y SEMINUEVOS\nGARANTIZADOS", fSlogan));
             right.addElement(new Phrase("Vasco de Quiroga 4871, Contadero,\nCuajimalpa de Morelos, 05348 Ciudad de México, CDMX", fDireccion));
             
@@ -213,4 +215,6 @@ conceptos.addCell(new Phrase(String.valueOf(carro.getId()), fNormal));
         c.setPadding(2f);
         return c;
     }
+   
+
 }

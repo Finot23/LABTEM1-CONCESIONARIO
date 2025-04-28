@@ -72,7 +72,7 @@ public class PolizaSeguroPDF {
         left.setBorder(Rectangle.NO_BORDER);
         left.addElement(new Phrase("AutoNova Group", fTitulo));
         left.addElement(new Phrase("SEGURO DE AUTO", fBold));
-        left.addElement(new Phrase("No. " + cliente.getId(), fNormal));
+        left.addElement(new Phrase("\nFACTURA: " + "F" + cliente.getId() + "-" + LocalDate.now().getYear(), fNormal));
         head.addCell(left);
 
         PdfPCell right = new PdfPCell();
