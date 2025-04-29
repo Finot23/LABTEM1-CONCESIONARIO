@@ -61,11 +61,15 @@ public class panelUsuarios extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnCrearUser = new javax.swing.JButton();
 
-        panelNuevoUser.setBackground(new java.awt.Color(255, 255, 255));
+        panelNuevoUser.setBackground(new java.awt.Color(245, 245, 245));
 
+        jPanel2.setBackground(new java.awt.Color(0, 38, 58));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("DATOS PERSONALES");
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(245, 245, 245));
 
         jLabel3.setText("Nombre(s)");
 
@@ -136,7 +140,7 @@ public class panelUsuarios extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBackground(new java.awt.Color(245, 245, 245));
 
         jLabel8.setText("Nombre de Usuario");
 
@@ -185,6 +189,8 @@ public class panelUsuarios extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("CREDENCIALES DE ACCESO");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -219,7 +225,8 @@ public class panelUsuarios extends javax.swing.JPanel {
 
         jLabel1.setText("GESTION DE USUARIOS");
 
-        btnCrearUser.setText("CREAR USUARIO");
+        btnCrearUser.setBackground(new java.awt.Color(255, 153, 51));
+        btnCrearUser.setText("Crear Usuario");
         btnCrearUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearUserActionPerformed(evt);
@@ -238,7 +245,7 @@ public class panelUsuarios extends javax.swing.JPanel {
                             .addComponent(jLabel1)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelNuevoUserLayout.createSequentialGroup()
-                        .addGap(227, 227, 227)
+                        .addGap(239, 239, 239)
                         .addComponent(btnCrearUser)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

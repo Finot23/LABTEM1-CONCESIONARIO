@@ -215,7 +215,6 @@ public class Ventas extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         bg = new javax.swing.JPanel();
         lblSolicitudCompra = new javax.swing.JLabel();
@@ -291,7 +290,7 @@ public class Ventas extends javax.swing.JPanel {
             bgDatosCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgDatosCompradorLayout.createSequentialGroup()
                 .addComponent(lblDatosComprador)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         txtApellidoP.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
@@ -501,7 +500,7 @@ public class Ventas extends javax.swing.JPanel {
             bgDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgDomicilioLayout.createSequentialGroup()
                 .addComponent(lblDomicilio)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         txtCalle.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
@@ -646,7 +645,7 @@ public class Ventas extends javax.swing.JPanel {
             bgCarroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgCarroLayout.createSequentialGroup()
                 .addComponent(lblCarro)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         txtMarca.setEditable(false);
@@ -864,7 +863,7 @@ public class Ventas extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 1141, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
