@@ -69,8 +69,8 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     }
     private void MostrarJpanel(JPanel info){
         
-        info.setSize(834, 840);
-        info.setLocation(0, 0);
+        //info.setSize(834, 840);
+        //info.setLocation(0, 0);
         
         jPanelContenido.removeAll();
         jPanelContenido.add(info, BorderLayout.CENTER);
@@ -181,7 +181,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
                 .addComponent(iconHome, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanelPaginaPrincipalLayout.setVerticalGroup(
             jPanelPaginaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -462,7 +462,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
                 .addComponent(jPanelVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jPanelCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(384, Short.MAX_VALUE))
+                .addContainerGap(387, Short.MAX_VALUE))
         );
 
         jPanelContenido.setLayout(new java.awt.BorderLayout());
@@ -542,7 +542,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 908, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 908, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
