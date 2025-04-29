@@ -150,7 +150,8 @@ header.setForeground(Color.WHITE);
         txtUbicacion.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         txtUbicacion.setForeground(new java.awt.Color(0, 0, 0));
         txtUbicacion.setText("Dashboard / Pagina Principal");
-        add(txtUbicacion, java.awt.BorderLayout.PAGE_START);
+        txtUbicacion.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        add(txtUbicacion, java.awt.BorderLayout.NORTH);
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setLayout(new java.awt.BorderLayout());
@@ -185,7 +186,7 @@ header.setForeground(Color.WHITE);
         pnlNuevosUsuariosLayout.setVerticalGroup(
             pnlNuevosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlNuevosUsuariosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(pnlNuevosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtIconUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlNuevosUsuariosLayout.createSequentialGroup()
@@ -230,10 +231,11 @@ header.setForeground(Color.WHITE);
         pnlContenidoNuevosClientesLayout.setHorizontalGroup(
             pnlContenidoNuevosClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlContenidoNuevosClientesLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(txtInfoClientes)
-                .addGap(566, 712, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(20, 20, 20)
+                .addGroup(pnlContenidoNuevosClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1081, Short.MAX_VALUE)
+                    .addComponent(txtInfoClientes))
+                .addContainerGap())
         );
         pnlContenidoNuevosClientesLayout.setVerticalGroup(
             pnlContenidoNuevosClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,7 +251,9 @@ header.setForeground(Color.WHITE);
         pnlContenido.setLayout(pnlContenidoLayout);
         pnlContenidoLayout.setHorizontalGroup(
             pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlContenidoNuevosClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnlContenidoLayout.createSequentialGroup()
+                .addComponent(pnlContenidoNuevosClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 20, Short.MAX_VALUE))
         );
         pnlContenidoLayout.setVerticalGroup(
             pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
