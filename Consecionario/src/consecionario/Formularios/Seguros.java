@@ -260,10 +260,12 @@ public class Seguros extends javax.swing.JPanel {
 
         fieldApellidoP.setPreferredSize(new java.awt.Dimension(80, 22));
 
+        labelApellido.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         labelApellido.setText("Apellido P.");
 
         fieldApellidoM.setPreferredSize(new java.awt.Dimension(80, 22));
 
+        labelApellidoM.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         labelApellidoM.setText("Apellido M.");
 
         fieldCurp.setPreferredSize(new java.awt.Dimension(130, 22));
@@ -273,8 +275,10 @@ public class Seguros extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel2.setText("Curp");
 
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel7.setText("Genero");
 
         fieldEdad.setPreferredSize(new java.awt.Dimension(70, 22));
@@ -284,6 +288,7 @@ public class Seguros extends javax.swing.JPanel {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel6.setText("Edad");
 
         fieldLicencia.setPreferredSize(new java.awt.Dimension(120, 22));
@@ -293,16 +298,20 @@ public class Seguros extends javax.swing.JPanel {
             }
         });
 
+        labelAge.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         labelAge.setText("No. Licencia");
 
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel4.setText("Telefono");
 
         fieldTelefono.setPreferredSize(new java.awt.Dimension(150, 22));
 
         fieldEmail.setPreferredSize(new java.awt.Dimension(150, 22));
 
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel5.setText("Correo Electronico");
 
+        comboGenero.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino", "Sin especificar" }));
         comboGenero.setPreferredSize(new java.awt.Dimension(120, 22));
         comboGenero.addActionListener(new java.awt.event.ActionListener() {
@@ -313,6 +322,7 @@ public class Seguros extends javax.swing.JPanel {
 
         fieldNombre.setPreferredSize(new java.awt.Dimension(80, 22));
 
+        labelName.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         labelName.setText("Nombre(s)");
 
         javax.swing.GroupLayout pnlDatosClienteLayout = new javax.swing.GroupLayout(pnlDatosCliente);
@@ -396,7 +406,7 @@ public class Seguros extends javax.swing.JPanel {
                 .addGroup(pnlDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout bgDatosClienteLayout = new javax.swing.GroupLayout(bgDatosCliente);
@@ -419,12 +429,12 @@ public class Seguros extends javax.swing.JPanel {
                 .addComponent(lblDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(20, 20, 20))
         );
 
         bgDatosVehiculo.setBackground(new java.awt.Color(0, 38, 58));
 
-        lblDatosVehiculo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblDatosVehiculo.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         lblDatosVehiculo.setForeground(new java.awt.Color(255, 255, 255));
         lblDatosVehiculo.setText("DATOS DEL VEHICULO");
 
@@ -433,42 +443,53 @@ public class Seguros extends javax.swing.JPanel {
         pnlDatosVehiculo.setMinimumSize(new java.awt.Dimension(420, 155));
         pnlDatosVehiculo.setPreferredSize(new java.awt.Dimension(420, 155));
 
+        jLabel9.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel9.setText("Modelo");
 
         fieldModelo.setPreferredSize(new java.awt.Dimension(150, 22));
 
+        jLabel10.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel10.setText("Marca");
 
         fieldMarca.setPreferredSize(new java.awt.Dimension(120, 22));
 
+        jLabel12.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel12.setText("Año");
 
         fieldAnio.setPreferredSize(new java.awt.Dimension(90, 22));
 
+        jLabel14.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel14.setText("Placas");
 
         fieldPlacas.setPreferredSize(new java.awt.Dimension(150, 22));
 
+        jLabel11.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel11.setText("No.de Serie");
 
         fieldSerie.setPreferredSize(new java.awt.Dimension(120, 22));
 
+        jLabel16.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel16.setText("Color");
 
         fieldColor.setPreferredSize(new java.awt.Dimension(90, 22));
 
+        jLabel13.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel13.setText("Tipo");
 
+        jLabel15.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel15.setText("Uso del Auto");
 
+        comboUso.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         comboUso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Particular", "Empresarial", "Uber/Didi" }));
         comboUso.setPreferredSize(new java.awt.Dimension(150, 22));
 
+        comboTipo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hatchback", "Sedan", "SUV" }));
         comboTipo.setPreferredSize(new java.awt.Dimension(120, 22));
 
         fieldValorAuto.setPreferredSize(new java.awt.Dimension(90, 22));
 
+        jLabel20.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel20.setText("Precio Aprox.");
 
         javax.swing.GroupLayout pnlDatosVehiculoLayout = new javax.swing.GroupLayout(pnlDatosVehiculo);
@@ -526,7 +547,7 @@ public class Seguros extends javax.swing.JPanel {
                                 .addComponent(jLabel20)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(pnlDatosVehiculoLayout.createSequentialGroup()
-                                .addComponent(fieldValorAuto, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                                .addComponent(fieldValorAuto, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                                 .addGap(74, 74, 74))))))
         );
         pnlDatosVehiculoLayout.setVerticalGroup(
@@ -570,8 +591,8 @@ public class Seguros extends javax.swing.JPanel {
         bgDatosVehiculoLayout.setHorizontalGroup(
             bgDatosVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgDatosVehiculoLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(pnlDatosVehiculo, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
+                .addGap(8, 8, 8)
+                .addComponent(pnlDatosVehiculo, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(bgDatosVehiculoLayout.createSequentialGroup()
                 .addContainerGap()
@@ -590,7 +611,7 @@ public class Seguros extends javax.swing.JPanel {
 
         bgDireccionCliente.setBackground(new java.awt.Color(0, 38, 58));
 
-        lblDireccion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblDireccion.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         lblDireccion.setForeground(new java.awt.Color(255, 255, 255));
         lblDireccion.setText("DIRECCION");
 
@@ -599,16 +620,19 @@ public class Seguros extends javax.swing.JPanel {
         pnlDireccionCliente.setMinimumSize(new java.awt.Dimension(715, 55));
         pnlDireccionCliente.setPreferredSize(new java.awt.Dimension(715, 55));
 
+        jLabel29.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel29.setText("Calle");
 
         fieldCalle.setPreferredSize(new java.awt.Dimension(160, 22));
 
         fieldColonia.setPreferredSize(new java.awt.Dimension(130, 22));
 
+        jLabel33.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel33.setText("Colonia");
 
         fieldMunicipio.setPreferredSize(new java.awt.Dimension(130, 22));
 
+        jLabel37.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel37.setText("Municipio");
 
         fieldCP.setPreferredSize(new java.awt.Dimension(60, 22));
@@ -618,10 +642,12 @@ public class Seguros extends javax.swing.JPanel {
             }
         });
 
+        jLabel39.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel39.setText("CP");
 
         fieldEstado.setPreferredSize(new java.awt.Dimension(130, 22));
 
+        jLabel30.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel30.setText("Ciudad / Estado");
 
         javax.swing.GroupLayout pnlDireccionClienteLayout = new javax.swing.GroupLayout(pnlDireccionCliente);
@@ -670,7 +696,7 @@ public class Seguros extends javax.swing.JPanel {
                     .addComponent(fieldMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout bgDireccionClienteLayout = new javax.swing.GroupLayout(bgDireccionCliente);
@@ -699,7 +725,7 @@ public class Seguros extends javax.swing.JPanel {
         bgCobertura.setBackground(new java.awt.Color(0, 38, 58));
 
         lblCobertura.setBackground(new java.awt.Color(51, 51, 255));
-        lblCobertura.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblCobertura.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         lblCobertura.setForeground(new java.awt.Color(255, 255, 255));
         lblCobertura.setText("COBERTURA");
 
@@ -709,23 +735,32 @@ public class Seguros extends javax.swing.JPanel {
         pnlCobertura.setPreferredSize(new java.awt.Dimension(280, 154));
         pnlCobertura.setVerifyInputWhenFocusTarget(false);
 
+        jLabel18.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel18.setText("Tipo de Cobertura");
 
+        comboCobertura.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         comboCobertura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Amplia", "Limitada", "Responsabilidad Civil" }));
         comboCobertura.setPreferredSize(new java.awt.Dimension(120, 22));
 
+        jLabel19.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel19.setText("Coberturas Adicionales");
 
+        checkVial.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         checkVial.setText("Asistencia Vial");
 
+        checkPerdidaTotal.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         checkPerdidaTotal.setText("Perdida Total");
 
+        checkLlantas.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         checkLlantas.setText("Llantas y Cristales");
 
+        checkRobo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         checkRobo.setText("Robo de autopartes");
 
+        checkRCA.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         checkRCA.setText("Civil Ampliada");
 
+        checkJuridico.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         checkJuridico.setText("Apoyo Juridico");
 
         javax.swing.GroupLayout pnlCoberturaLayout = new javax.swing.GroupLayout(pnlCobertura);
@@ -810,7 +845,7 @@ public class Seguros extends javax.swing.JPanel {
         bgPago_Cotizacion.setBackground(new java.awt.Color(0, 38, 58));
 
         lblPagoCotizacion.setBackground(new java.awt.Color(51, 51, 255));
-        lblPagoCotizacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPagoCotizacion.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         lblPagoCotizacion.setForeground(new java.awt.Color(255, 255, 255));
         lblPagoCotizacion.setText("PAGO Y COTIZACION");
 
@@ -819,12 +854,16 @@ public class Seguros extends javax.swing.JPanel {
         pnlPago.setMinimumSize(new java.awt.Dimension(280, 55));
         pnlPago.setPreferredSize(new java.awt.Dimension(280, 55));
 
+        jLabel27.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel27.setText("Periodo");
 
+        comboPeriodo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         comboPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MENSUAL", "SEMESTRAL", "ANUAL" }));
 
+        jLabel28.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel28.setText("Metodo de Pago");
 
+        comboPago.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         comboPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TARJETA", "TRANSFERENCIA", "EFECTIVO" }));
 
         javax.swing.GroupLayout pnlPagoLayout = new javax.swing.GroupLayout(pnlPago);
@@ -853,7 +892,7 @@ public class Seguros extends javax.swing.JPanel {
                 .addGroup(pnlPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(comboPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pnlCotizacion.setBackground(new java.awt.Color(245, 245, 245));
@@ -861,12 +900,16 @@ public class Seguros extends javax.swing.JPanel {
         pnlCotizacion.setMinimumSize(new java.awt.Dimension(280, 150));
         pnlCotizacion.setPreferredSize(new java.awt.Dimension(280, 150));
 
+        jLabel21.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel21.setText("Prima del seguro");
 
+        jLabel23.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel23.setText("Valor Asegurado");
 
+        labelValorAsegurado.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         labelValorAsegurado.setText("$ 0");
 
+        labelPrima.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         labelPrima.setText("$ 0");
 
         javax.swing.GroupLayout pnlCotizacionLayout = new javax.swing.GroupLayout(pnlCotizacion);
@@ -892,7 +935,7 @@ public class Seguros extends javax.swing.JPanel {
                 .addGroup(pnlCotizacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelValorAsegurado)
                     .addComponent(jLabel23))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(pnlCotizacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelPrima)
                     .addComponent(jLabel21))
@@ -908,11 +951,11 @@ public class Seguros extends javax.swing.JPanel {
             .addGroup(bgPago_CotizacionLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addGroup(bgPago_CotizacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlCotizacion, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                    .addComponent(pnlCotizacion, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
                     .addGroup(bgPago_CotizacionLayout.createSequentialGroup()
                         .addComponent(lblPagoCotizacion)
                         .addGap(0, 174, Short.MAX_VALUE))
-                    .addComponent(pnlPago, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE))
+                    .addComponent(pnlPago, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
                 .addContainerGap())
         );
         bgPago_CotizacionLayout.setVerticalGroup(
@@ -930,6 +973,7 @@ public class Seguros extends javax.swing.JPanel {
         bgBtnContinuar.setBackground(new java.awt.Color(255, 255, 255));
 
         btnContinuar.setBackground(new java.awt.Color(255, 153, 51));
+        btnContinuar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         btnContinuar.setText("Continuar");
         btnContinuar.setPreferredSize(new java.awt.Dimension(150, 23));
         btnContinuar.addActionListener(new java.awt.event.ActionListener() {
@@ -991,7 +1035,7 @@ public class Seguros extends javax.swing.JPanel {
                         .addComponent(bgPago_Cotizacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(bgCobertura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(bgBtnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(516, 516, 516))
         );
@@ -1003,11 +1047,11 @@ public class Seguros extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1125, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1059, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 1154, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 1145, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
     

@@ -63,16 +63,19 @@ public class panelUsuarios extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(0, 38, 58));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("DATOS PERSONALES");
 
         jPanel3.setBackground(new java.awt.Color(245, 245, 245));
 
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel3.setText("Nombre(s)");
 
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel4.setText("Apellido Paterno");
 
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel5.setText("Apellido Materno");
 
         txtNombres.setPreferredSize(new java.awt.Dimension(200, 22));
@@ -81,12 +84,15 @@ public class panelUsuarios extends javax.swing.JPanel {
 
         txtApellidoM.setPreferredSize(new java.awt.Dimension(120, 22));
 
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel6.setText("Puesto");
 
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel7.setText("Rol");
 
         txtPuesto.setPreferredSize(new java.awt.Dimension(200, 22));
 
+        comboRol.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         comboRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente", "Vendedor" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -142,14 +148,17 @@ public class panelUsuarios extends javax.swing.JPanel {
 
         jPanel4.setBackground(new java.awt.Color(245, 245, 245));
 
+        jLabel8.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel8.setText("Nombre de Usuario");
 
         txtUser.setPreferredSize(new java.awt.Dimension(200, 22));
 
         password.setPreferredSize(new java.awt.Dimension(120, 22));
 
+        jLabel10.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel10.setText("Contraseña");
 
+        jLabel11.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel11.setText("Confirmar Contraseña");
 
         confPassword.setPreferredSize(new java.awt.Dimension(120, 22));
@@ -191,7 +200,7 @@ public class panelUsuarios extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("CREDENCIALES DE ACCESO");
 
@@ -225,9 +234,11 @@ public class panelUsuarios extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel1.setText("GESTION DE USUARIOS");
 
         btnCrearUser.setBackground(new java.awt.Color(255, 153, 51));
+        btnCrearUser.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         btnCrearUser.setText("Crear Usuario");
         btnCrearUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,6 +247,7 @@ public class panelUsuarios extends javax.swing.JPanel {
         });
 
         btneliminaruser.setBackground(new java.awt.Color(255, 153, 51));
+        btneliminaruser.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         btneliminaruser.setText("Eliminar Usuario");
         btneliminaruser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,7 +284,7 @@ public class panelUsuarios extends javax.swing.JPanel {
                 .addGroup(panelNuevoUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCrearUser)
                     .addComponent(btneliminaruser))
-                .addContainerGap(514, Short.MAX_VALUE))
+                .addContainerGap(521, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

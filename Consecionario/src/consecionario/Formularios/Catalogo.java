@@ -184,9 +184,11 @@ header.setForeground(Color.WHITE);
         bg.setBackground(new java.awt.Color(245, 245, 245));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        cat.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         cat.setText("ALMACEN");
         bg.add(cat, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, -30, 150, 100));
 
+        jTable1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -207,6 +209,7 @@ header.setForeground(Color.WHITE);
 
         bg.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 530, -1));
 
+        jComboBox1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hatchback ", "Sedan", "SUV", " " }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,6 +218,7 @@ header.setForeground(Color.WHITE);
         });
         bg.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, -1, -1));
 
+        Filtrar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         Filtrar.setText("Filtrar");
         Filtrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,11 +227,13 @@ header.setForeground(Color.WHITE);
         });
         bg.add(Filtrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel1.setText("Escoge tu categoria preferida");
         bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 40, -1, -1));
 
         almacenAdmin.setBackground(new java.awt.Color(245, 245, 245));
 
+        jButton1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jButton1.setText("Eliminar Auto");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,6 +241,7 @@ header.setForeground(Color.WHITE);
             }
         });
 
+        btnAEauto.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         btnAEauto.setText("Agregar Auto");
         btnAEauto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,7 +258,7 @@ header.setForeground(Color.WHITE);
                 .addGroup(almacenAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAEauto)
                     .addComponent(jButton1))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         almacenAdminLayout.setVerticalGroup(
             almacenAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,41 +275,51 @@ header.setForeground(Color.WHITE);
         jPanel2.setBackground(new java.awt.Color(245, 245, 245));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel2.setText("DATOS DEL AUTO");
 
         jPanel3.setBackground(new java.awt.Color(245, 245, 245));
 
+        jLabel9.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel9.setText("Modelo");
 
         fieldModelo.setPreferredSize(new java.awt.Dimension(120, 22));
 
         fieldMarca.setPreferredSize(new java.awt.Dimension(120, 22));
 
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel3.setText("Marca");
 
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel4.setText("Precio");
 
         fieldColor.setPreferredSize(new java.awt.Dimension(70, 22));
 
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel5.setText("Color");
 
+        comboTipo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hatchback", "Sedan", "SUV" }));
         comboTipo.setPreferredSize(new java.awt.Dimension(120, 22));
 
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel6.setText("Categoria");
 
+        comboEstadoAuto.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         comboEstadoAuto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Usado" }));
         comboEstadoAuto.setPreferredSize(new java.awt.Dimension(120, 22));
 
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel7.setText("Estado del auto");
 
+        jLabel8.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel8.setText("Año");
 
         fieldValorAuto.setPreferredSize(new java.awt.Dimension(70, 22));
 
         fieldKm.setPreferredSize(new java.awt.Dimension(40, 22));
 
+        jLabel10.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel10.setText("Km");
 
         fieldAnio.setPreferredSize(new java.awt.Dimension(45, 22));
@@ -312,6 +329,7 @@ header.setForeground(Color.WHITE);
             }
         });
 
+        btnAgergarImagen.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         btnAgergarImagen.setText("Agregar imagen");
         btnAgergarImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -402,6 +420,7 @@ header.setForeground(Color.WHITE);
         );
 
         btnAgregar.setBackground(new java.awt.Color(255, 153, 51));
+        btnAgregar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -435,7 +454,7 @@ header.setForeground(Color.WHITE);
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAgregar)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         bg.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, 300, 280));

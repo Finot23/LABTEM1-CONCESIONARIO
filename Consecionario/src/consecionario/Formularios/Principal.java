@@ -44,7 +44,7 @@ public class Principal extends javax.swing.JFrame {
         
         
         rsscalelabel.RSScaleLabel.setScaleLabel(iconUserMain, "src/consecionario/Imagenes/iconoUsuarioSmall.png");
-        rsscalelabel.RSScaleLabel.setScaleLabel(iconCredito, "src/consecionario/Imagenes/iconoCredito.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(iconCredito, "src/consecionario/Imagenes/iconoGestionU.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(iconHistorial, "src/consecionario/Imagenes/iconoHistorial.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(iconHome, "src/consecionario/Imagenes/iconoInicio.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(iconSeguro, "src/consecionario/Imagenes/iconoSeguro.png");
@@ -483,7 +483,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(iconCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanelCatalogoLayout.setVerticalGroup(
             jPanelCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
