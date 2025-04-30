@@ -15,15 +15,6 @@ import consecionario.Formularios.Ventas;
 import java.awt.Dimension;
 
 
-//prueba push
-
-/**
- *
- * @author antoniosalinas
- */
-
-
-
 public class Principal extends javax.swing.JFrame {
 
 
@@ -44,7 +35,7 @@ public class Principal extends javax.swing.JFrame {
   
     public Principal(String rolUsuario, String usuario) {
         initComponents();
-        this.rolUsuario = rolUsuario; // Guarda el rol
+        this.rolUsuario = rolUsuario;
         this.usuario = usuario;
         ValidarUsuario(rolUsuario);
         pnlLeftBar1.setVisible(false);
@@ -724,7 +715,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelHistorialMouseClicked
 
     private void jPanelSegurosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSegurosMouseClicked
-        // Paso 1: Preguntar si el cliente existe
+        //Pregunta si el cliente existe
     int respuesta = JOptionPane.showConfirmDialog(
         null, 
         "¿El cliente ya existe?", 
@@ -732,11 +723,11 @@ public class Principal extends javax.swing.JFrame {
         JOptionPane.YES_NO_OPTION
     );
     
-    // Paso 2: Crear el panel de seguros
+    //crea el panel de seguros
     Seguros segurosPanel = new Seguros();
     boolean clienteExiste = false;
     
-    // Paso 3: Si el usuario dice que existe, buscar sus datos
+    //Si el usuario  existe busca sus datos
     if (respuesta == JOptionPane.YES_OPTION) {
         String nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente:");
         String apellidoPaterno = JOptionPane.showInputDialog("Ingrese el apellido paterno:");
@@ -746,7 +737,7 @@ public class Principal extends javax.swing.JFrame {
             Cliente cliente = clienteDB.buscarClientePorNombreYApellido(nombre, apellidoPaterno);
             
             if (cliente != null) {
-                segurosPanel.setDatosCliente(cliente); // Autocompletar campos
+                segurosPanel.setDatosCliente(cliente); //para autocompletar
                 clienteExiste = true;
                 JOptionPane.showMessageDialog(null, "Datos del cliente cargados correctamente");
             } else {
@@ -755,7 +746,6 @@ public class Principal extends javax.swing.JFrame {
         }
     }
     
-    // Paso 4: Configurar el estado y mostrar el panel
     segurosPanel.setClienteYaExiste(clienteExiste);
     MostrarJpanel(segurosPanel);
     }//GEN-LAST:event_jPanelSegurosMouseClicked

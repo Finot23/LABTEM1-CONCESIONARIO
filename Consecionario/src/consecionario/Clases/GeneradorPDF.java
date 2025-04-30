@@ -16,7 +16,7 @@ public class GeneradorPDF {
 
  
 
-    /* ----------  ESTILOS & COLORES  ---------- */
+    ///ESTILOS y COLORES//
     private static final BaseColor AZUL   = new BaseColor(0x00, 0x26, 0x3A);
     private static final Font fEmpresa    = new Font(Font.FontFamily.HELVETICA, 20, Font.BOLD);
     private static final Font fSlogan     = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
@@ -25,7 +25,6 @@ public class GeneradorPDF {
     private static final Font fTablaHd    = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD, BaseColor.WHITE);
     private static final Font fNormal     = new Font(Font.FontFamily.HELVETICA, 9);
 
-    /* ----------  MÉTODO PRINCIPAL  ---------- */
     public static void generarResumenVenta(Cliente cliente,CatalogoCarros carro,String rutaSalida) {
 
         try {
@@ -51,7 +50,7 @@ public class GeneradorPDF {
             PdfWriter.getInstance(doc, new FileOutputStream(rutaSalida));
             doc.open();
 
-            /* -------- 1. ENCABEZADO -------- */
+            
             PdfPTable head = new PdfPTable(2);
             head.setWidthPercentage(100);
             head.setWidths(new int[]{3, 2});
@@ -75,7 +74,7 @@ public class GeneradorPDF {
             doc.add(new LineSeparator());
             doc.add(new Chunk("\nFACTURA\n\n", fEtiqueta));
 
-            /* -------- 2. DATOS CLIENTE / DOC -------- */
+            
             PdfPTable datos = tablaDosCol(100);
             datos.addCell(celdaCabecera("DATOS DEL CLIENTE"));
             datos.addCell(celdaCabecera("DATOS DEL DOCUMENTO"));
@@ -94,10 +93,8 @@ public class GeneradorPDF {
 
             doc.add(datos);
             doc.add(Chunk.NEWLINE);
-
-            /* --------------------------------------------------------------------------------
-           4) FORMA DE PAGO / MONEDA
-        -------------------------------------------------------------------------------- */
+            
+        
         PdfPTable pago = tablaDosCol(100);
         pago.addCell(celdaCabecera("FORMA DE PAGO"));
         pago.addCell(celdaCabecera("MONEDA"));
@@ -106,18 +103,14 @@ public class GeneradorPDF {
         doc.add(pago);
         doc.add(new Chunk("\n"));
 
-        /* --------------------------------------------------------------------------------
-           5) TABLA CONCEPTOS (Cantidad, Descripción, Clave)
-        -------------------------------------------------------------------------------- */
+       //tabla 
         PdfPTable conceptos = new PdfPTable(new float[]{1, 5, 2});
         conceptos.setWidthPercentage(100);
 
-        // Cabeceras azul con texto blanco
         for (String h : new String[]{"CANTIDAD", "DESCRIPCIÓN", "CLAVE DE UNIDAD"})
             conceptos.addCell(celdaCabecera(h));
 
-        // Fila concepto
-        // --- Construir la descripción completa ---
+        //Construir la descripción completa
 StringBuilder sb = new StringBuilder();
 sb.append("UN VEHÍCULO ").append(carro.getEstado())
   .append(" CON LA SIGUIENTE DESCRIPCIÓN\n\n")
@@ -130,7 +123,7 @@ sb.append("UN VEHÍCULO ").append(carro.getEstado())
 
 Phrase descripcion = new Phrase(sb.toString(), fNormal);
 
-// --- Añadir a la tabla ---
+//ñadir a la tabla
 conceptos.addCell(new Phrase("01", fNormal));  // Cantidad
 conceptos.addCell(descripcion);                // Descripción
 conceptos.addCell(new Phrase(String.valueOf(carro.getId()), fNormal));
@@ -138,7 +131,7 @@ conceptos.addCell(new Phrase(String.valueOf(carro.getId()), fNormal));
         doc.add(conceptos);
         doc.add(new Chunk("\n"));
 
-        /* Nota / Norma */
+        // Nota ley
         Paragraph nota = new Paragraph("La transmisión de la propiedad del bien al que se refiere la presente factura se formaliza a través del contrato de adhesión correspondiente, conforme a las disposiciones de la Norma Oficial Mexicana 1 C‑05CFI‑2010", fNormal);
         nota.setAlignment(Element.ALIGN_JUSTIFIED);
         doc.add(nota);
@@ -149,9 +142,7 @@ conceptos.addCell(new Phrase(String.valueOf(carro.getId()), fNormal));
         doc.add(leyenda);
         doc.add(new Chunk("\n"));
 
-        /* --------------------------------------------------------------------------------
-           6) IMPORTE Y TOTALES
-        -------------------------------------------------------------------------------- */
+        //importes totales
         PdfPTable totTitulo = new PdfPTable(1);
         totTitulo.setWidthPercentage(100);
         PdfPCell cImp = celdaCabecera("IMPORTE");
@@ -159,7 +150,7 @@ conceptos.addCell(new Phrase(String.valueOf(carro.getId()), fNormal));
         totTitulo.addCell(cImp);
         doc.add(totTitulo);
 
-        // tabla totales (alinear a la derecha)
+        // tabla totales 
         PdfPTable totales = new PdfPTable(2);
         totales.setWidths(new float[]{2, 1});
         totales.setWidthPercentage(40);
@@ -188,8 +179,7 @@ conceptos.addCell(new Phrase(String.valueOf(carro.getId()), fNormal));
                     "Error al generar el PDF:\n" + e.getMessage());
         }
     }
-
-    /* ----------  HELPERS  ---------- */
+    //helpers
     private static PdfPTable tablaDosCol(float pct) {
         PdfPTable t = new PdfPTable(2);
         t.setWidthPercentage(pct);

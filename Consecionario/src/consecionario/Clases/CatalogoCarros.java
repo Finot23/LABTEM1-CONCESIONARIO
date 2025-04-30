@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package consecionario.Clases;
 
 /**
@@ -10,7 +6,7 @@ package consecionario.Clases;
  */
 public class CatalogoCarros {
     
-  int Id;
+    int Id;
     String Marca;
     String Modelo;
     int AnioFabricacion;
@@ -24,7 +20,7 @@ public class CatalogoCarros {
     String NoSerie;
     
 public CatalogoCarros() {
-    // Constructor vacío requerido para instanciar sin parámetros
+  
 }
 
     public void setNoSerie(String NoSerie) {

@@ -19,10 +19,8 @@ import javax.swing.event.DocumentListener;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import javax.swing.*;
-import java.awt.*;
 import java.sql.Connection;
-import java.time.LocalDate;
-import java.util.concurrent.ExecutionException;
+
 
 
 /**
@@ -1087,18 +1085,16 @@ public class Seguros extends javax.swing.JPanel {
         };
     }
     
-    // Método para asignar los listeners a los componentes
+    //mtodo para asignar los listeners
     private void configurarListeners() {
-        // Campos de texto
+      
         fieldValorAuto.getDocument().addDocumentListener(documentListener);
         fieldEdad.getDocument().addDocumentListener(documentListener);
         
-        // Comboboxes
         comboCobertura.addActionListener(comboBoxListener);
         comboPeriodo.addActionListener(comboBoxListener);
         comboGenero.addActionListener(comboBoxListener);
         
-        // Checkboxes
         checkVial.addItemListener(checkboxListener);
         checkPerdidaTotal.addItemListener(checkboxListener);
         checkLlantas.addItemListener(checkboxListener);
@@ -1174,7 +1170,6 @@ public class Seguros extends javax.swing.JPanel {
     fieldLicencia.setText(cliente.getLicencia());
     fieldEdad.setText(String.valueOf(cliente.getEdad()));
     
-    // Configurar género
     setGenero(cliente.getGenero());
     //actualizarCalculos(); 
 }
@@ -1190,7 +1185,6 @@ public class Seguros extends javax.swing.JPanel {
     
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         // TODO add your handling code here:
-        // --- Parte 1: Obtener datos del formulario ---
         Cliente cliente = new Cliente();
         cliente.setApellidoP(fieldApellidoP.getText());
         cliente.setApellidoM(fieldApellidoM.getText());
@@ -1207,14 +1201,12 @@ public class Seguros extends javax.swing.JPanel {
         cliente.setGenero(comboGenero.getSelectedItem().toString());
         cliente.setEdad((int) Long.parseLong(fieldEdad.getText()));
 
-        // 2. Validar campos obligatorios
         if (fieldValorAuto.getText().trim().isEmpty() || fieldNombre.getText().trim().isEmpty() || 
             fieldApellidoP.getText().trim().isEmpty() || fieldTelefono.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Complete todos los campos obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // 3. Configurar diálogo de carga
         JDialog loadingDialog = new JDialog();
         loadingDialog.setUndecorated(true);
         loadingDialog.setSize(250, 100);
@@ -1232,11 +1224,8 @@ public class Seguros extends javax.swing.JPanel {
         //loadingDialog.add(panel);
         //loadingDialog.setVisible(true);
 
-        // 4. Ejecutar en segundo plano (CON TIEMPO EXTENDIDO)
         new Thread(() -> {
             try {
-            
-            //Thread.sleep(3000); // Espera inicial de 3 segundos (simula procesamiento)
             
             Cliente clientes = new Cliente();
             clientes.setNombre(fieldNombre.getText());
@@ -1305,23 +1294,18 @@ public class Seguros extends javax.swing.JPanel {
                     
                     try {
                         
-                         // 1. Generar PDF Venta
+                         //genera PDF Venta
 GeneradorPDF.generarResumenVenta(cliente, carro, null);
 
-// 2. Armar manualmente la ruta
+//Arma la ruta
 String rutaVenta = "src/consecionario/Facturas/Ventas/Resumen_Venta_" + cliente.getNombre().replaceAll("\\s+", "_") + ".pdf";
 String rutaSeguro = "src/consecionario/Facturas/PolizaSeguro/Poliza_Seguro_" + cliente.getNombre().replaceAll("\\s+", "_") + ".pdf";
-// 3. Registrar historial
+//Registra en el historial
 registrarHistorial(cliente, "Venta", rutaVenta);
-    
-                        
-                        
-        // Generar PDF del seguro
+              
+        // Genera el PDF del seguro
         PolizaSeguroPDF.generarResumenSeguro(cliente, carro, seguro, null);
 
-        
-
-        // Registrar historial
        registrarHistorial(cliente, "Seguro", rutaSeguro);
 
     } catch (Exception ex) {
@@ -1331,13 +1315,13 @@ registrarHistorial(cliente, "Venta", rutaVenta);
             JOptionPane.ERROR_MESSAGE);
     }
   
-                    // Aquí comprobamos si el cliente eligió "Ambos" y si es así, vamos a créditos
+                    //si el cliente elije ambos
                     if (irACreditoDespues) {
                         // Mostrar el formulario de Créditos
                         Principal ventanaPrincipal = (Principal) javax.swing.SwingUtilities.getWindowAncestor(Seguros.this);
                         
                         // Cambiar al panel de créditos
-                        Creditos creditosPanel = new Creditos(cliente, carro);  // Usar datos correctos
+                        Creditos creditosPanel = new Creditos(cliente, carro);
                         ventanaPrincipal.setPanelContenido(creditosPanel);
                     }
                 } else {

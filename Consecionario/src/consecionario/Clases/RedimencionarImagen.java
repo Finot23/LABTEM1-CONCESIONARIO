@@ -14,17 +14,17 @@ import javax.swing.JLabel;
  */
 public class RedimencionarImagen {
      public void setImageToLabel(JLabel label, String imageResourcePath) {
-        // 1. Cargar imagen desde los recursos del proyecto (dentro de src/)
+        //Cargar imagen desde los recursos del proyecto)
         ImageIcon originalIcon = new ImageIcon(getClass().getResource(imageResourcePath));
 
-        // 2. Redimensionar al tamaño actual del JLabel
+        //Redimensionar al tamaño actual del JLabel
         Image scaledImage = originalIcon.getImage().getScaledInstance(
             label.getWidth(),
             label.getHeight(),
             Image.SCALE_SMOOTH
         );
 
-        // 3. Asignar imagen escalada al JLabel
+        //Asignar imagen escalada al JLabel
         label.setIcon(new ImageIcon(scaledImage));
 }
 }

@@ -9,7 +9,6 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import consecionario.Formularios.Ventas;
 
 /**
  *
@@ -310,14 +309,13 @@ public class panelUsuarios extends javax.swing.JPanel {
             return;
         }
 
-        // Verificar que las contraseñas coincidan
+        // Verifica que las contraseñas coincidan
         if(!String.valueOf(password.getPassword()).equals(String.valueOf(confPassword.getPassword()))) {
             JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden",
                 "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Crear el objeto Usuario
         Usuario usuario = new Usuario();
         usuario.setNombres(txtNombres.getText());
         usuario.setApellidoP(txtApellidoP.getText());
@@ -327,7 +325,6 @@ public class panelUsuarios extends javax.swing.JPanel {
         usuario.setNombre(txtUser.getText());
         usuario.setContraseña(String.valueOf(password.getPassword()));
 
-        // Intentar guardar en la base de datos
         UsuarioBD usuarioBD = new UsuarioBD();
         if(usuarioBD.crearUsuario(usuario)) {
             JOptionPane.showMessageDialog(this, "Usuario creado exitosamente",
@@ -342,10 +339,7 @@ public class panelUsuarios extends javax.swing.JPanel {
         // TODO add your handling code here:
         String nombreAEliminar = JOptionPane.showInputDialog(
     this, 
-    "Ingrese el nombre de usuario a eliminar:", 
-    "", // 👈 sin título
-    JOptionPane.PLAIN_MESSAGE
-);
+    "Ingrese el nombre de usuario a eliminar:", "",JOptionPane.PLAIN_MESSAGE);
 
     if (nombreAEliminar == null || nombreAEliminar.trim().isEmpty()) {
         JOptionPane.showMessageDialog(this, "Debe ingresar un nombre de usuario válido.",

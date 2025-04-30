@@ -18,9 +18,6 @@ import consecionario.Formularios.Seguros;
 import java.awt.Color;
 import java.io.File;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
 import javax.swing.InputVerifier;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -180,7 +177,6 @@ public class Ventas extends javax.swing.JPanel {
     } 
     
     public Ventas(JPanel jPanelContenido) {
-        // Lógica por defecto o vacía
         this.jPanelContenido = jPanelContenido;
     }   
     private DecimalFormat df = new DecimalFormat("#,##0.00");
@@ -189,7 +185,6 @@ public class Ventas extends javax.swing.JPanel {
     initComponents();
     this.carroSeleccionado = carro;
     
-    // Esto debe ser visible en pantalla
     txtMarca.setText(carro.getMarca());
     txtModelo.setText(carro.getModelo());
     txtColorCarro.setText(carro.getColor());
@@ -201,12 +196,8 @@ public class Ventas extends javax.swing.JPanel {
 
     txtNoSerie.setText(String.valueOf(carro.getNoSerie()));
 
-    
-
-
 }
     
-        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1205,10 +1196,9 @@ public class Ventas extends javax.swing.JPanel {
     cliente.setNombre(txtNombreCliente.getText());
     cliente.setCurp(txtCURP.getText());
     cliente.setGenero(cbGenero.getSelectedItem().toString());
-    cliente.setEdad(edad); // Ya validado
+    cliente.setEdad(edad);
     cliente.setLicencia(txtNoLicencia.getText());
 
-    // Validación de teléfono
     try {
         long telefono = Long.parseLong(txtTelefonoCliente.getText().trim());
         cliente.setTelefono(telefono);
@@ -1227,7 +1217,7 @@ public class Ventas extends javax.swing.JPanel {
     ClienteDB dao = new ClienteDB();
     if (dao.RegistrarClientes(cliente)) {
         JOptionPane.showMessageDialog(this, "Cliente registrado con éxito");
-    // limpiarCampos(); // si tienes una función para limpiar
+    // limpiarCampos();
     }else {
         JOptionPane.showMessageDialog(this, "Error al registrar cliente");
         return;
@@ -1243,7 +1233,7 @@ Principal ventanaPrincipal = (Principal) javax.swing.SwingUtilities.getWindowAnc
 
 switch (seleccion) {
     case 0: // Solo Seguro
-        Seguros segurosPanel = new Seguros(cliente, carroSeleccionado, false); // false = no va a crédito después
+        Seguros segurosPanel = new Seguros(cliente, carroSeleccionado, false);
         segurosPanel.setClienteYaExiste(true);  
         ventanaPrincipal.setPanelContenido(segurosPanel);
         break;
@@ -1252,23 +1242,19 @@ switch (seleccion) {
         ventanaPrincipal.setPanelContenido(creditosPanel);
         break;
     case 2: // Ambos
-        Seguros ambosSegurosPanel = new Seguros(cliente, carroSeleccionado, true); // true = sí va a crédito después
+        Seguros ambosSegurosPanel = new Seguros(cliente, carroSeleccionado, true);
         ambosSegurosPanel.setClienteYaExiste(true); 
         ventanaPrincipal.setPanelContenido(ambosSegurosPanel);
         break;
         
    case 3: // Solo Venta
-   // 1. Generar PDF directamente
+   //Genera PDF
 GeneradorPDF.generarResumenVenta(cliente, carroSeleccionado, null);
 
-// 2. Armar manualmente la ruta
 String rutaFactura = "src/consecionario/Facturas/Ventas/Resumen_Venta_" + cliente.getNombre().replaceAll("\\s+", "_") + ".pdf";
-
-// 3. Registrar historial
 registrarHistorial(cliente, "Venta", rutaFactura);
     break;
-        
-       
+
     default:
         JOptionPane.showMessageDialog(this, "Operación cancelada.");
         break;

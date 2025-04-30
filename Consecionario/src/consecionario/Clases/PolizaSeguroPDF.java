@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 
 public class PolizaSeguroPDF {
 
-    /* ====== Colores & Fuentes ====== */
+    //colores fuentes
     private static final BaseColor AZUL = new BaseColor(0x00, 0x26, 0x3A);
     private static final Font fTitulo   = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD);
     private static final Font fBold     = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
@@ -32,15 +32,15 @@ public class PolizaSeguroPDF {
             LocalDate hoy = LocalDate.now();                   
             DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String fechaEmision = hoy.format(fmt); 
-            // 1) Un mes después
+            //Un mes después
             LocalDate unMesDespues = hoy.plusMonths(1);
             String fechaMes = unMesDespues.format(fmt);     
 
-            // 2) Seis meses después (semestre)
+            //semestre
             LocalDate semestreDespues = hoy.plusMonths(6);
             String fechaSemestre = semestreDespues.format(fmt); 
 
-            // 3) Un año después
+            //año
             LocalDate unAnioDespues = hoy.plusYears(1);
             String fechaAnio = unAnioDespues.format(fmt);   
              DecimalFormat df = new DecimalFormat("#,##0.00");
@@ -49,7 +49,7 @@ public class PolizaSeguroPDF {
              Double IVA = PrimaConIVA * 0.16;
              
         
-            // Carpeta de salida
+            //Carpeta
             String base = "src/consecionario/Facturas/PolizaSeguro/";
             File dir = new File(base);
             if (!dir.exists()) dir.mkdirs();
@@ -63,7 +63,7 @@ public class PolizaSeguroPDF {
         PdfWriter.getInstance(doc, new FileOutputStream(rutaSalida));
         doc.open();
 
-        /* ====== 1. Encabezado ====== */
+     
         PdfPTable head = new PdfPTable(2);
         head.setWidthPercentage(100);
         head.setWidths(new int[]{3, 2});
@@ -84,7 +84,7 @@ public class PolizaSeguroPDF {
         doc.add(head);
         doc.add(Chunk.NEWLINE);
 
-        /* ====== 2. Datos del Contratante/Conductor ====== */
+        ///Datos del Contratante
         PdfPTable bloque1 = tablaDosCol();
         bloque1.addCell(cab("Contratante"));
         bloque1.addCell(cab("Conductor Principal"));
@@ -108,7 +108,7 @@ public class PolizaSeguroPDF {
         doc.add(bloque1);
         doc.add(Chunk.NEWLINE);
 
-        /* ====== 3. Cláusula Intro ====== */
+        //Cláusula Intro
         Paragraph intro = new Paragraph(
             "Seguros AutoNova Group S.A. de C.V. asegura, de conformidad con las cláusulas "
           + "de esta póliza, durante la vigencia establecida, el vehículo descrito a continuación…",
@@ -117,7 +117,7 @@ public class PolizaSeguroPDF {
         doc.add(intro);
         doc.add(Chunk.NEWLINE);
 
-        /* ====== 4. Datos del Vehículo & Fecha Expedición ====== */
+        //Datos del Vehículo
         PdfPTable veh = tablaDosCol();
         veh.addCell(cab("Datos del Vehículo"));
         veh.addCell(cab("Fecha de Expedición de la Póliza"));
@@ -153,7 +153,7 @@ public class PolizaSeguroPDF {
         doc.add(veh);
         doc.add(Chunk.NEWLINE);
 
-        /* ====== 5. Vigencia de la Póliza ====== */
+        //vigencia
         PdfPTable vig = tablaDosCol();
         vig.addCell(cab("Vigencia de la Póliza"));
         vig.addCell(cab(""));
@@ -169,7 +169,7 @@ vig.addCell(text("Hasta las 12:00 hrs. del " + fechaTope));
         doc.add(vig);
         doc.add(Chunk.NEWLINE);
 
-        /* ====== 6. Plan & Prima ====== */
+        //plan prima
         PdfPTable plan = tablaDosCol();
         plan.addCell(cab("Detalles del Plan"));
         plan.addCell(cab("Desglose de la Prima"));
@@ -195,42 +195,41 @@ vig.addCell(text("Hasta las 12:00 hrs. del " + fechaTope));
         doc.add(plan);
         doc.add(Chunk.NEWLINE);
 
-        /* ====== 7. Tabla de Coberturas ====== */
+        //coberturas
         PdfPTable cob = new PdfPTable(new float[]{4, 3, 2});
 cob.setWidthPercentage(100);
 for (String h : new String[]{"Cobertura / Servicio", "Suma Asegurada", "Deducible"})
     cob.addCell(celdaCab(h));
 
-/* ---- helper para no repetir código ---- */
 BiConsumer<String, String[]> fila = (nombre, datos) -> {
     cob.addCell(text(nombre));
     cob.addCell(text(datos[0]));   // suma asegurada
     cob.addCell(text(datos[1]));   // deducible
 };
 
-/* ---- agregar filas según flags del Seguro ---- */
-if (seguro.isCoberturaVial())          // Asistencia Vial
+//agregar filas
+if (seguro.isCoberturaVial())         
     fila.accept("Asistencia Vial",      new String[]{"Incluida", "N/A"});
 
-if (seguro.isCoberturaPerdidaTotal())  // Pérdida Total
+if (seguro.isCoberturaPerdidaTotal())  
     fila.accept("Daños Materiales (PT)", new String[]{"Valor Comercial", "10 %"});
 
-if (seguro.isCoberturaRobo())          // Robo de autopartes
+if (seguro.isCoberturaRobo())          
     fila.accept("Robo de Autopartes",   new String[]{"$30 000", "20 %"});
 
-if (seguro.isCoberturaLlantas())       // Llantas y Cristales
+if (seguro.isCoberturaLlantas())       
     fila.accept("Llantas y Cristales",  new String[]{"$15 000", "15 %"});
 
-if (seguro.isCoberturaRCA())           // Responsabilidad Civil Ampliada
+if (seguro.isCoberturaRCA())          
     fila.accept("Civil Ampliada",       new String[]{"$3 000 000", "N/A"});
 
-if (seguro.isCoberturaJuridico())      // Apoyo Jurídico
+if (seguro.isCoberturaJuridico())     
     fila.accept("Apoyo Jurídico",       new String[]{"Incluido", "N/A"});
 
-/* ---- finalmente añade la tabla al documento ---- */
+//añade la tabla al doc
 doc.add(cob);
 
-        /* ====== Pie ====== */
+        
         doc.add(Chunk.NEWLINE);
         doc.add(new Paragraph("AutoNova Group", fBold));
         doc.close();
@@ -241,8 +240,6 @@ doc.add(cob);
     }
         
        
-
-    /* ====== Helpers ====== */
     private static PdfPTable tablaDosCol() throws DocumentException {
         PdfPTable t = new PdfPTable(2);
         t.setWidthPercentage(100);

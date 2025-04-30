@@ -149,7 +149,7 @@ header.setForeground(Color.WHITE);
         if (filasAfectadas > 0) {
             JOptionPane.showMessageDialog(this, "Auto eliminado correctamente.");
 
-            // 🔁 Recargar la tabla
+            //Recargar la tabla
             recargarTabla();
         } else {
             JOptionPane.showMessageDialog(this, "No se pudo eliminar el auto.");
@@ -661,27 +661,23 @@ header.setForeground(Color.WHITE);
         // Mostrar el cuadro de diálogo
         int result = fileChooser.showOpenDialog(this);
 
-        // Si se selecciona una imagen, realizar el proceso
+        // Si se selecciona una imagen
         if (result == JFileChooser.APPROVE_OPTION) {
-            // Obtener el archivo seleccionado
             File selectedFile = fileChooser.getSelectedFile();
 
-            // Definir el destino donde guardar la imagen en el proyecto
-            String projectImagesPath = "src/consecionario/Imagenes/"; // Asegúrate de que esta carpeta exista
+            //define el destino donde guardar la imagen
+            String projectImagesPath = "src/consecionario/Imagenes/"; 
             File destinationFile = new File(projectImagesPath + selectedFile.getName());
 
             try {
-                // Copiar la imagen seleccionada a la carpeta del proyecto
+                //se copia la imagen seleccionada a la carpeta del proyecto
                 Files.copy(selectedFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
                 JOptionPane.showMessageDialog(this, "Imagen guardada con éxito.");
 
                 // Extraer la ruta para subirla a la base de datos
                 String imagePath = destinationFile.getAbsolutePath();
-
-                // Aquí podrías guardar la ruta en una variable o directamente en la base de datos
-                // Por ejemplo, guardar la ruta en un campo de texto:
+       
                 JOptionPane.showMessageDialog(this, "Imagen seleccionada: " + imagePath);
-                // O también podrías usarla al momento de insertar en la base de datos como se muestra más abajo
                 this.imagePath = "/consecionario/imagenes/" + selectedFile.getName();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Error al guardar la imagen: " + e.getMessage());

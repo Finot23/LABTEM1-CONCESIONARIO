@@ -32,7 +32,7 @@ public class CardAuto extends JPanel {
 
     private Border defaultBorder = BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1);
     private Border hoverBorder = BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(176, 217, 226), 2), // Celeste grisáceo (#B0D9E2)
+            BorderFactory.createLineBorder(new Color(176, 217, 226), 2), //color Celeste grisáceo (#B0D9E2)
             BorderFactory.createEmptyBorder(3, 3, 3, 3)
     );
 
@@ -61,48 +61,48 @@ public class CardAuto extends JPanel {
         // Panel imagen (Centrado)
         JPanel pnlImagen = new JPanel(new BorderLayout());
         lblImagen = new JLabel();
-        SetImageLabel(lblImagen, imagenResourcePath, 200, 150); // Reducimos un poco el tamaño para centrar mejor
+        SetImageLabel(lblImagen, imagenResourcePath, 200, 150); // Reducimos un poco el tamaño
         lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
         pnlImagen.add(lblImagen, BorderLayout.CENTER);
-        pnlImagen.setPreferredSize(new Dimension(250, 160)); // Ajustamos la altura del panel
-        pnlImagen.setBackground(Color.WHITE); // Fondo blanco
+        pnlImagen.setPreferredSize(new Dimension(250, 160));
+        pnlImagen.setBackground(Color.WHITE);
         add(pnlImagen, BorderLayout.NORTH);
 
         // Panel info
         JPanel pnlInfo = new JPanel(new GridLayout(4, 1, 5, 5));
         pnlInfo.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        pnlInfo.setBackground(Color.WHITE); // Fondo blanco
+        pnlInfo.setBackground(Color.WHITE);
 
         lblTitulo = new JLabel(marca + " · " + modelo);
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 16));
-        lblTitulo.setForeground(new Color(46, 46, 46)); // Gris pizarra (#2E2E2E)
-        lblTitulo.setHorizontalAlignment(SwingConstants.CENTER); // Centramos el texto
+        lblTitulo.setForeground(new Color(46, 46, 46)); // color Gris pizarra (#2E2E2E)
+        lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         pnlInfo.add(lblTitulo);
 
         // Panel para el kilometraje con línea superior
         JPanel pnlKilometraje = new JPanel(new BorderLayout());
         pnlKilometraje.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createMatteBorder(1, 0, 0, 0, Color.LIGHT_GRAY), // Línea superior
-                BorderFactory.createEmptyBorder(5, 0, 0, 0) // Espaciado superior
+                BorderFactory.createMatteBorder(1, 0, 0, 0, Color.LIGHT_GRAY),
+                BorderFactory.createEmptyBorder(5, 0, 0, 0)
         ));
-        pnlKilometraje.setBackground(Color.WHITE); // Fondo blanco
+        pnlKilometraje.setBackground(Color.WHITE); 
         lblDetalles = new JLabel(anioFabricacion + " · " + String.format("%,d km", kilometraje));
         lblDetalles.setFont(new Font("Arial", Font.PLAIN, 12));
         lblDetalles.setForeground(Color.GRAY);
-        lblDetalles.setHorizontalAlignment(SwingConstants.CENTER); // Centramos el texto
+        lblDetalles.setHorizontalAlignment(SwingConstants.CENTER);
         pnlKilometraje.add(lblDetalles, BorderLayout.CENTER);
         pnlInfo.add(pnlKilometraje);
 
         JLabel lblPrecioDesde = new JLabel("Precio desde");
         lblPrecioDesde.setFont(new Font("Arial", Font.PLAIN, 11));
         lblPrecioDesde.setForeground(Color.DARK_GRAY);
-        lblPrecioDesde.setHorizontalAlignment(SwingConstants.CENTER); // Centramos el texto
+        lblPrecioDesde.setHorizontalAlignment(SwingConstants.CENTER);
         pnlInfo.add(lblPrecioDesde);
 
         lblPrecio = new JLabel("$" + String.format("%,.0f", precio));
         lblPrecio.setFont(new Font("Arial", Font.BOLD, 18));
         lblPrecio.setForeground(new Color(43, 147, 72)); // Verde petróleo (#2B9348)
-        lblPrecio.setHorizontalAlignment(SwingConstants.CENTER); // Centramos el texto
+        lblPrecio.setHorizontalAlignment(SwingConstants.CENTER);
         pnlInfo.add(lblPrecio);
 
         add(pnlInfo, BorderLayout.SOUTH);
@@ -117,14 +117,14 @@ public class CardAuto extends JPanel {
             @Override
             public void mouseEntered(MouseEvent e) {
                 setBorder(hoverBorder);
-                setBackground(new Color(245, 245, 255)); // Blanco humo (#F5F5F5)
+                setBackground(new Color(245, 245, 255));
                 setCursor(new Cursor(Cursor.HAND_CURSOR));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 setBorder(defaultBorder);
-                setBackground(Color.WHITE); // Volvemos al blanco al salir
+                setBackground(Color.WHITE);
                 setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             }
         });
@@ -139,7 +139,7 @@ public class CardAuto extends JPanel {
             return;
         }
         ImageIcon imageIcon = new ImageIcon(imgURL);
-        Image scaledImage = imageIcon.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH); // Ajustar ancho de la imagen
+        Image scaledImage = imageIcon.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH); 
         labelName.setIcon(new ImageIcon(scaledImage));
     }
 

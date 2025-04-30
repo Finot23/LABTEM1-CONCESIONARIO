@@ -26,7 +26,7 @@ public class Historial extends javax.swing.JPanel {
     private void cargarHistorial() { DefaultTableModel modelo = new DefaultTableModel() {
         @Override
         public boolean isCellEditable(int row, int column) {
-            return false; // Ninguna celda será editable
+            return false; //Ninguna celda será editable
         }
     };
     modelo.addColumn("ID");
@@ -79,13 +79,12 @@ public class Historial extends javax.swing.JPanel {
 }
     
     public void PersonalizarTabla(){
-        tblHistorial.setRowHeight(40); // Altura de cada fila
-        tblHistorial.setGridColor(Color.decode("#00263A")); // Color de las líneas
+        tblHistorial.setRowHeight(40); //Altura de cada fila
+        tblHistorial.setGridColor(Color.decode("#00263A")); //Color de las líneas
 
-// Cambiar fuente del contenido
+
 tblHistorial.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 
-// Cambiar fondo y texto de la tabla
 tblHistorial.setBackground(new Color(245, 245, 245));
 tblHistorial.setForeground(Color.BLACK);
 

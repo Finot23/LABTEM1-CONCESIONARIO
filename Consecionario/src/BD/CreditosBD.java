@@ -12,7 +12,7 @@ public class CreditosBD {
     
     
     public boolean RegistrarCredito(Credito c1){
-     con = ConexionBD.conn(); // Aquí sí guardamos en la variable de clase
+     con = ConexionBD.conn();
 
         if (con == null) {
             System.out.println("No se pudo establecer conexión con la base de datos.");

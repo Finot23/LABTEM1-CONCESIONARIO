@@ -22,7 +22,7 @@ public class CatalogoBD {
 
 
 public boolean RegistrarCarro(CatalogoCarros cl){
-     con = ConexionBD.conn(); // Aquí sí guardamos en la variable de clase
+     con = ConexionBD.conn(); 
 
         if (con == null) {
             System.out.println("No se pudo establecer conexión con la base de datos.");
@@ -122,11 +122,11 @@ public List<CatalogoCarros> obtenerPorCondicion(String condicion) {
         return lista;
     }
 
-    String sql = "SELECT * FROM almacen WHERE estado = ?"; // Asumo que la columna para la condición es 'estado'
+    String sql = "SELECT * FROM almacen WHERE estado = ?";
 
     try {
         ps = con.prepareStatement(sql);
-        ps.setString(1, condicion); // "Nuevo" o "Usado"
+        ps.setString(1, condicion);
 
         ResultSet rs = ps.executeQuery();
 

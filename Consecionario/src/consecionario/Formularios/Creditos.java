@@ -74,20 +74,19 @@ public class Creditos extends javax.swing.JPanel {
         initComponents();
         this.cliente = cliente;
         this.carro = carro;
-        cargarDatosClienteyAuto(); // Esta función pone la info en las etiquetas
+        cargarDatosClienteyAuto(); 
         
-        // Agregar el listener para el comboPorcentaje
+        
 comboPorcentaje.addActionListener(new java.awt.event.ActionListener() {
     public void actionPerformed(java.awt.event.ActionEvent evt) {
-        // Llamamos a un método para actualizar los cálculos dinámicamente
+        //actualiza los cálculos dinámicamente
         actualizarCalculadoraCredito();
     }
 });
 
-// Agregar el listener para el comboMeses
+
 comboMeses.addActionListener(new java.awt.event.ActionListener() {
     public void actionPerformed(java.awt.event.ActionEvent evt) {
-        // Llamamos a un método para actualizar los cálculos dinámicamente
         actualizarCalculadoraCredito();
     }
 });
@@ -364,7 +363,6 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
     String porcentajeSeleccionado = comboPorcentaje.getSelectedItem().toString();
     int meses = Integer.parseInt(comboMeses.getSelectedItem().toString());
 
-    // Crear un objeto de Credito con los datos
     Credito credito = new Credito();
     credito.setPorcentajeEnganche(porcentajeSeleccionado);
     credito.setValor_auto(carro.getPrecio());
@@ -379,7 +377,7 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
     double pagoMensual = credito.pagoMensual(montoCredito, meses);
     credito.setPago_mensual(pagoMensual);
 
-    // Actualizamos las etiquetas
+    //Actualiza las etiquetas
     etEnganche.setText("Enganche: $" + String.format("%.2f", enganche));
     etCredito.setText("Monto del crédito: $" + String.format("%.2f", montoCredito));
     etPagoMensual.setText("Pago mensual: $" + String.format("%.2f", pagoMensual));
@@ -428,26 +426,20 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
             
             
         
-                                    // 1. Generar PDF Venta
+//Generar PDF Venta
 GeneradorPDF.generarResumenVenta(cliente, carro, null);
 
-// 2. Armar manualmente la ruta
+//Arma manualmente la ruta
 String rutaVenta = "src/consecionario/Facturas/Ventas/Resumen_Venta_" + cliente.getNombre().replaceAll("\\s+", "_") + ".pdf";
 String rutaCredito = "src/consecionario/Facturas/ResumenCreditos/Resumen_Credito_" + cliente.getNombre().replaceAll("\\s+", "_") + ".pdf";
 
 if (!ventaYaRegistrada(cliente)) {
     registrarHistorial(cliente, "Venta", rutaVenta);
 }
-
-    
-                        
-                        
-        // Generar PDF del seguro
+          
+        //Genera PDF del seguro
         CreditoAutoPDF.generarResumenCredito(cliente, carro, credito, null);
 
-        
-
-        // Registrar historial
        registrarHistorial(cliente, "Credito", rutaCredito);
             
         } else {

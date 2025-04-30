@@ -53,9 +53,8 @@ public class UsuarioBD {
         }
     }
 
-    return user; // este es el usuario cargado o null si no se encontró
+    return user;
 }
-    
 
     public boolean crearUsuario(Usuario usuario) {
     con = ConexionBD.conn();

@@ -24,7 +24,7 @@ import java.util.List;
       private PreparedStatement ps;
 
 public boolean RegistrarClientes(Cliente cl){
-     con = ConexionBD.conn(); // Aquí sí guardamos en la variable de clase
+     con = ConexionBD.conn();
 
         if (con == null) {
             System.out.println("No se pudo establecer conexión con la base de datos.");
@@ -54,10 +54,10 @@ public boolean RegistrarClientes(Cliente cl){
         
         
         ps.executeUpdate();
-        // Obtener la ID generada automáticamente
+        // Obtiene la id generada automáticamente
     ResultSet generatedKeys = ps.getGeneratedKeys();
     if (generatedKeys.next()) {
-        cl.setId(generatedKeys.getInt(1));  // Asignar la ID al objeto cliente
+        cl.setId(generatedKeys.getInt(1));  //Asigna la ID al objeto cliente
     }
     return true;
 } catch (Exception e){

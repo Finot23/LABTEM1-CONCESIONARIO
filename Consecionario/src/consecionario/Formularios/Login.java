@@ -30,7 +30,6 @@ public class Login extends javax.swing.JFrame implements ActionListener{
     Color placeholderColor= Color.GRAY;
     Color normalColor = Color.BLACK;
     
-//Funcion de conexion con base de datos 
     Connection conn;
     PreparedStatement pst;
     ResultSet rs;
@@ -58,7 +57,7 @@ public class Login extends javax.swing.JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // Este método se llamará cuando se presione Enter en txtUsuario o txtPass
-        loginBtnMouseClicked(null); // Llama a tu lógica de inicio de sesión
+        loginBtnMouseClicked(null);
     }
  private String verificarUsuario(String usuario, String contraseña){
 String sqlquery = "SELECT rol FROM userlogin WHERE nombre_usuario=? AND contraseña_usuario=?";
@@ -419,7 +418,7 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
         if (String.valueOf(txtPass.getPassword()).equals(placeholderPass)){
         txtPass.setText("");
         txtPass.setForeground(normalColor);
-        txtPass.setEchoChar('*'); // Agrega esta línea
+        txtPass.setEchoChar('*');
     }
 
     }//GEN-LAST:event_txtPassFocusGained
@@ -429,7 +428,7 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
         if(String.valueOf(txtPass.getPassword()).isEmpty()){
         txtPass.setText(placeholderPass);
         txtPass.setForeground(placeholderColor);
-        txtPass.setEchoChar((char)0); // Mantenlo sin máscara para el marcador de posición
+        txtPass.setEchoChar((char)0); 
     }
     }//GEN-LAST:event_txtPassFocusLost
 
@@ -478,15 +477,15 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
 
         if (tipoUsuario != null) {
             if (tipoUsuario.equals("Gerente")) {
-                Principal p = new Principal(tipoUsuario, usuario); // Pasamos el rol
+                Principal p = new Principal(tipoUsuario, usuario); 
                 p.setVisible(true);
 
-                this.dispose(); // Cierra la ventana de login
+                this.dispose(); 
             } else if (tipoUsuario.equals("Vendedor")) {
-                Principal p = new Principal(tipoUsuario, usuario); // Pasamos el rol
+                Principal p = new Principal(tipoUsuario, usuario);
                 p.setVisible(true);
-//                PrincipalVendedor v = new PrincipalVendedor(tipoUsuario, usuario);
-//                v.setVisible(true);
+                //PrincipalVendedor v = new PrincipalVendedor(tipoUsuario, usuario);
+                // v.setVisible(true);
                 //JOptionPane.showMessageDialog(null, "Se inició sesión con éxito, bienvenido Vendedor.");
                 this.dispose();
             }

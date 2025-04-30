@@ -17,12 +17,11 @@ public class Seguro {
     private double valor;
     private double prima;
     
-    // Nuevos campos para cálculos
     private int edadConductor;
     private String generoConductor;
     private double valorBaseAuto;
     
-    // Coberturas adicionales específicas
+    //coberturas adicionales
     private boolean coberturaJuridico;
     private boolean coberturaLlantas;
     private boolean coberturaPerdidaTotal;
@@ -33,7 +32,7 @@ public class Seguro {
     private String Placas;
 
     public Seguro() {
-        // Constructor vacío
+        
     }
 
     public void setPlacas(String Placas) {
@@ -56,8 +55,7 @@ public class Seguro {
         this.NoSerie = NoSerie;
     }
     
-    public Seguro(String nombreS, String apellidoP, String autoResumen, String cobertura, 
-                 String periodo, String metodoP, double valor, double prima) {
+    public Seguro(String nombreS, String apellidoP, String autoResumen, String cobertura, String periodo, String metodoP, double valor, double prima) {
         this.nombreS = nombreS;
         this.apellidoP = apellidoP;
         this.autoResumen = autoResumen;
@@ -67,8 +65,6 @@ public class Seguro {
         this.valor = valor;
         this.prima = prima;
     }
-    
-    // Getters y setters existentes...
 
     public String getNombreS() {
         return nombreS;
@@ -134,8 +130,6 @@ public class Seguro {
         this.prima = prima;
     }
     
-    
-    // Getters y setters para los campos adicionales
     public int getEdadConductor() {
         return edadConductor;
     }
@@ -159,8 +153,7 @@ public class Seguro {
     public void setValorBaseAuto(double valorBaseAuto) {
         this.valorBaseAuto = valorBaseAuto;
     }
-
-    // Getters y setters para las coberturas adicionales
+    
     public boolean isCoberturaJuridico() {
         return coberturaJuridico;
     }
@@ -209,37 +202,31 @@ public class Seguro {
         this.coberturaVial = coberturaVial;
     }
     
-    /**
-     * Calcula el valor por el que estará asegurado el auto
-     * @return valor asegurado calculado
-     */
-    
     public double calcularValorAsegurado() {
     if (this.valorBaseAuto <= 0) {
-        return 0.0; // Evita cálculos con valores no inicializados
+        return 0.0;
     }
 
     double valorAsegurado = this.valorBaseAuto;
 
-    // Asegúrate de que 'cobertura' no sea null
     if (this.cobertura == null) {
-        this.cobertura = "Básica"; // Valor por defecto
+        this.cobertura = "Básica"; //vlor por defecto
     }
 
     switch (this.cobertura) {
         case "Básica":
-            break; // Sin cambios
+            break; //Sin cambios
         case "Amplia":
-            valorAsegurado *= 1.15; // +15%
+            valorAsegurado *= 1.15; //+15%
             break;
         case "Total":
-            valorAsegurado *= 1.30; // +30%
+            valorAsegurado *= 1.30; //+30%
             break;
         default:
-            valorAsegurado *= 1.10; // +10% si la cobertura no coincide
+            valorAsegurado *= 1.10;
     }
 
-    // Aplicar coberturas adicionales (simplificado)
+    //Aplicar coberturas adicionales
     if (this.coberturaJuridico) valorAsegurado *= 1.04;
     if (this.coberturaLlantas) valorAsegurado *= 1.03;
     if (this.coberturaPerdidaTotal) valorAsegurado *= 1.08;
@@ -247,15 +234,14 @@ public class Seguro {
     if (this.coberturaRobo) valorAsegurado *= 1.07;
     if (this.coberturaVial) valorAsegurado *= 1.02;
 
-    // Ajustes por edad y género
     if (this.edadConductor < 25) {
-        valorAsegurado *= 0.95; // -5% para jóvenes
+        valorAsegurado *= 0.95;
     } else if (this.edadConductor > 60) {
-        valorAsegurado *= 0.90; // -10% para mayores
+        valorAsegurado *= 0.90;
     }
 
     if ("Masculino".equalsIgnoreCase(this.generoConductor)) {
-        valorAsegurado *= 0.98; // -2% para hombres
+        valorAsegurado *= 0.98;
     }
 
     this.valor = valorAsegurado;
@@ -264,26 +250,26 @@ public class Seguro {
 
 public double calcularPrima() {
     if (this.valor <= 0) {
-        this.calcularValorAsegurado(); // Recalcula si es necesario
+        this.calcularValorAsegurado();
     }
 
     if (this.cobertura == null || this.periodo == null) {
-        return 0.0; // Evita NullPointerException
+        return 0.0;
     }
 
     double porcentajeBase;
     switch (this.cobertura) {
         case "Básica":
-            porcentajeBase = 0.03; // 3%
+            porcentajeBase = 0.03;
             break;
         case "Amplia":
-            porcentajeBase = 0.05; // 5%
+            porcentajeBase = 0.05;
             break;
         case "Total":
-            porcentajeBase = 0.08; // 8%
+            porcentajeBase = 0.08;
             break;
         default:
-            porcentajeBase = 0.04; // Por defecto
+            porcentajeBase = 0.04;
     }
 
     double primaAnual = this.valor * porcentajeBase;
@@ -291,33 +277,24 @@ public double calcularPrima() {
 
     switch (this.periodo.toLowerCase()) {
         case "mensual":
-            primaCalculada = primaAnual / 12 * 1.1; // +10%
+            primaCalculada = primaAnual / 12 * 1.1;
             break;
         case "semestral":
-            primaCalculada = primaAnual / 2 * 1.05; // +5%
+            primaCalculada = primaAnual / 2 * 1.05;
             break;
         case "anual":
-            primaCalculada = primaAnual; // Sin recargo
+            primaCalculada = primaAnual;
             break;
         default:
-            primaCalculada = primaAnual; // Por defecto (anual)
+            primaCalculada = primaAnual;
     }
 
     this.prima = primaCalculada;
     return primaCalculada;
 }
     
-    /**
-     * Genera un resumen formateado con los datos del auto
-     * @param marca marca del auto
-     * @param modelo modelo del auto
-     * @param año año del auto
-     * @param placa placa del auto (opcional)
-     * @param color color del auto (opcional)
-     * @return cadena con resumen formateado
-     */
-    public static String generarResumenAuto(String marca, String modelo, String año, 
-                                          String placa, String color) {
+    
+    public static String generarResumenAuto(String marca, String modelo, String año, String placa, String color) {
         StringBuilder resumen = new StringBuilder();
         resumen.append(marca).append(" ").append(modelo).append(" (").append(año).append(")");
         

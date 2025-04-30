@@ -20,12 +20,12 @@ public class Credito {
         
     }
     public String getMetodoPago() { return metodoPago; }
-public void setMetodoPago(String metodoPago) { this.metodoPago = metodoPago; }
-// Método para calcular el enganche según el porcentaje
-public double calcularEnganche() {
-    double porcentaje = Double.parseDouble(this.PorcentajeEnganche.replace("%", "")) / 100.0;
-    this.Enganche = this.Valor_auto * porcentaje;
-    return this.Enganche;
+    public void setMetodoPago(String metodoPago) { this.metodoPago = metodoPago; }
+
+    public double calcularEnganche() {
+        double porcentaje = Double.parseDouble(this.PorcentajeEnganche.replace("%", "")) / 100.0;
+        this.Enganche = this.Valor_auto * porcentaje;
+        return this.Enganche;
 }
 
 // Método para calcular el monto del crédito aprobado
@@ -34,7 +34,7 @@ public double creditoAprobado() {
     return this.Credito;
 }
 
-// Método para calcular el pago mensual
+//para calcular el pago mensual
 public double pagoMensual(double montoCredito, int meses) {
     double tasaMensual = this.Tasa_interes / 12.0;
     double pago = (montoCredito * tasaMensual) / (1 - Math.pow(1 + tasaMensual, -meses));

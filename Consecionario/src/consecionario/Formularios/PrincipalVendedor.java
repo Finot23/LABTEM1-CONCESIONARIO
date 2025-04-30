@@ -13,12 +13,6 @@ import javax.swing.JPanel;
 import consecionario.Formularios.Ventas;
 
 
-//prueba push
-
-/**
- *
- * @author antoniosalinas
- */
 public class PrincipalVendedor extends javax.swing.JFrame {
 
 
@@ -33,7 +27,6 @@ public class PrincipalVendedor extends javax.swing.JFrame {
         pnlLeftBar1.setVisible(false);
         pnlLeftBar2.setVisible(false);
         pnlLeftBar3.setVisible(false);
-        
         pnlLeftBar5.setVisible(false);
         pnlLeftBar6.setVisible(false);
        
@@ -181,7 +174,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
                 .addComponent(iconHome, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanelPaginaPrincipalLayout.setVerticalGroup(
             jPanelPaginaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -563,19 +556,17 @@ public class PrincipalVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelHistorialMouseClicked
 
     private void jPanelSegurosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSegurosMouseClicked
-        // Paso 1: Preguntar si el cliente existe
+
     int respuesta = JOptionPane.showConfirmDialog(
         null, 
         "¿El cliente ya existe?", 
         "Confirmación", 
         JOptionPane.YES_NO_OPTION
     );
-    
-    // Paso 2: Crear el panel de seguros
+   
     Seguros segurosPanel = new Seguros();
     boolean clienteExiste = false;
     
-    // Paso 3: Si el usuario dice que existe, buscar sus datos
     if (respuesta == JOptionPane.YES_OPTION) {
         String nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente:");
         String apellidoPaterno = JOptionPane.showInputDialog("Ingrese el apellido paterno:");
@@ -585,7 +576,7 @@ public class PrincipalVendedor extends javax.swing.JFrame {
             Cliente cliente = clienteDB.buscarClientePorNombreYApellido(nombre, apellidoPaterno);
             
             if (cliente != null) {
-                segurosPanel.setDatosCliente(cliente); // Autocompletar campos
+                segurosPanel.setDatosCliente(cliente);
                 clienteExiste = true;
                 JOptionPane.showMessageDialog(null, "Datos del cliente cargados correctamente");
             } else {
@@ -594,7 +585,6 @@ public class PrincipalVendedor extends javax.swing.JFrame {
         }
     }
     
-    // Paso 4: Configurar el estado y mostrar el panel
     segurosPanel.setClienteYaExiste(clienteExiste);
     MostrarJpanel(segurosPanel);
     }//GEN-LAST:event_jPanelSegurosMouseClicked

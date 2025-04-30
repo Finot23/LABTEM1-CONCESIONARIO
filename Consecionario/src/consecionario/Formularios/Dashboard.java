@@ -67,7 +67,7 @@ public class Dashboard extends javax.swing.JPanel {
     ClienteDB clienteDB = new ClienteDB();
     List<Cliente> listaClientes = clienteDB.obtenerTodosLosClientes();
 
-    // Obtenemos el modelo de la tabla
+    //Obtenemos el modelo de la tabla
     DefaultTableModel modelo = (DefaultTableModel) tblDatosClientes.getModel();
     modelo.setRowCount(0); // Limpiar tabla
 
@@ -88,10 +88,9 @@ public class Dashboard extends javax.swing.JPanel {
         tblDatosClientes.setRowHeight(40); // Altura de cada fila
         tblDatosClientes.setGridColor(Color.decode("#00263A")); // Color de las líneas
 
-// Cambiar fuente del contenido
 tblDatosClientes.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 
-// Cambiar fondo y texto de la tabla
+
 tblDatosClientes.setBackground(new Color(245, 245, 245));
 tblDatosClientes.setForeground(Color.BLACK);
 

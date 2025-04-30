@@ -32,12 +32,9 @@ public class InventarioVisual extends javax.swing.JPanel {
       private CatalogoBD catalogoBD;
       
         private int numColumnas = 2;
-    // Método para ordenar los cards
-
-    // Constructor de InventarioVisual
     public InventarioVisual() {
         initComponents();
-        catalogoBD = new CatalogoBD();  // Inicializamos el acceso a la base de datos
+        catalogoBD = new CatalogoBD();
         
         
         chkSUV.addItemListener(e -> actualizarFiltrado());
@@ -72,19 +69,19 @@ public void actualizarFiltrado() {
     if (chkUsado.isSelected()) condicionesSeleccionadas.add("Usado");
 
     List<CatalogoCarros> filtrados = catalogoBD.filtrarPorMultiples(tiposSeleccionados, condicionesSeleccionadas);
-    AgregarPanels(filtrados); // método que ya usas para mostrar los autos
+    AgregarPanels(filtrados); // método para mostrar los autos
 }
 
     public void OrdenarCards() {
         //pnlCards.setLayout(new FlowLayout(FlowLayout.LEFT, 40, 20));
-         pnlCards.setLayout(new GridLayout(0, numColumnas, 20, 10)); // Aumentar espacio horizontal
+         pnlCards.setLayout(new GridLayout(0, numColumnas, 20, 10)); //Aumenta espacio horizontal
     }
     
     // Método para agregar los panels con los autos
     public void AgregarPanels(List<CatalogoCarros> listaDeCarros) {
         pnlCards.removeAll();
 
-        // Recorrer la lista y agregar los cards al panel
+        // Recorre la lista y agregar los cards al panel
         for (CatalogoCarros carro : listaDeCarros) {
             
 
@@ -95,10 +92,10 @@ public void actualizarFiltrado() {
             carro.getAnioFabricacion(),
             carro.getKilometraje(),
             carro.getPrecio(),
-            carro.getColor(), // Asegúrate de pasar el color
-            carro.getEstado(), // Asegúrate de pasar el estado
-            carro.getCategoria(), // Asegúrate de pasar la categoría
-            carro.getId() // Asegúrate de pasar el ID
+            carro.getColor(),
+            carro.getEstado(),
+            carro.getCategoria(),
+            carro.getId()
         
     );
     pnlCards.add(card);
@@ -112,16 +109,15 @@ public void actualizarFiltrado() {
         pnlCards.repaint();
     }
     
-    // Cargar todos los autos inicialmente (sin filtro)
+    //Carga todos los autos inicialmente sin filtro
     public void cargarTodosLosAutos() {
-        List<CatalogoCarros> listaDeCarros = catalogoBD.obtenerPorCategoria("Todos");  // "Todos" es un valor genérico que puede recuperar todos los autos
-        AgregarPanels(listaDeCarros);  // Llamamos al método para agregar los autos al panel
+        List<CatalogoCarros> listaDeCarros = catalogoBD.obtenerPorCategoria("Todos");  //Todos es un valor que puede recuperar todos los autos
+        AgregarPanels(listaDeCarros); 
     }
-
-    // Método para filtrar autos por categoría
+    
     public void filtrarPorCategoria(String categoria) {
         List<CatalogoCarros> listaDeCarros = catalogoBD.obtenerPorCategoria(categoria);
-        AgregarPanels(listaDeCarros);  // Llamamos al método para agregar los autos filtrados al panel
+        AgregarPanels(listaDeCarros);
     }
     
   public void filtrarPorCondicion(String condicion) {
