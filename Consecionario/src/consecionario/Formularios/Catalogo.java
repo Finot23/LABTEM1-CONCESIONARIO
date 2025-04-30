@@ -276,7 +276,7 @@ header.setForeground(Color.WHITE);
         bgFiltrosLayout.setVerticalGroup(
             bgFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgFiltrosLayout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addComponent(Filtrar)
                 .addContainerGap())
             .addGroup(bgFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,7 +290,7 @@ header.setForeground(Color.WHITE);
 
         bgAgregarCarro.setBackground(new java.awt.Color(255, 255, 255));
 
-        almacenAdmin.setBackground(new java.awt.Color(245, 245, 245));
+        almacenAdmin.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton1.setBackground(new java.awt.Color(255, 153, 51));
         jButton1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -333,14 +333,14 @@ header.setForeground(Color.WHITE);
                 .addGap(26, 26, 26))
         );
 
-        pnlDatosAuto.setBackground(new java.awt.Color(245, 245, 245));
+        pnlDatosAuto.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("DATOS DEL AUTO");
 
-        jPanel3.setBackground(new java.awt.Color(245, 245, 245));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
@@ -606,14 +606,15 @@ header.setForeground(Color.WHITE);
         bgTablaLayout.setHorizontalGroup(
             bgTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgTablaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+                .addGap(17, 17, 17))
         );
         bgTablaLayout.setVerticalGroup(
             bgTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgTablaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlBgTablaLayout = new javax.swing.GroupLayout(pnlBgTabla);
@@ -623,7 +624,7 @@ header.setForeground(Color.WHITE);
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBgTablaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bgTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(557, 557, 557))
+                .addGap(0, 0, 0))
         );
         pnlBgTablaLayout.setVerticalGroup(
             pnlBgTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
