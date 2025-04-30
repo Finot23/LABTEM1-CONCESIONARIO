@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package consecionario.Formularios;
 
 import BD.ClienteDB;
@@ -60,6 +57,7 @@ public class panelUsuarios extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnCrearUser = new javax.swing.JButton();
+        btneliminaruser = new javax.swing.JButton();
 
         panelNuevoUser.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -237,6 +235,14 @@ public class panelUsuarios extends javax.swing.JPanel {
             }
         });
 
+        btneliminaruser.setBackground(new java.awt.Color(255, 153, 51));
+        btneliminaruser.setText("Eliminar Usuario");
+        btneliminaruser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneliminaruserActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelNuevoUserLayout = new javax.swing.GroupLayout(panelNuevoUser);
         panelNuevoUser.setLayout(panelNuevoUserLayout);
         panelNuevoUserLayout.setHorizontalGroup(
@@ -249,8 +255,10 @@ public class panelUsuarios extends javax.swing.JPanel {
                             .addComponent(jLabel1)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelNuevoUserLayout.createSequentialGroup()
-                        .addGap(351, 351, 351)
-                        .addComponent(btnCrearUser)))
+                        .addGap(282, 282, 282)
+                        .addComponent(btnCrearUser)
+                        .addGap(58, 58, 58)
+                        .addComponent(btneliminaruser)))
                 .addContainerGap(98, Short.MAX_VALUE))
         );
         panelNuevoUserLayout.setVerticalGroup(
@@ -261,19 +269,24 @@ public class panelUsuarios extends javax.swing.JPanel {
                 .addGap(4, 4, 4)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(btnCrearUser)
-                .addContainerGap(549, Short.MAX_VALUE))
+                .addGroup(panelNuevoUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCrearUser)
+                    .addComponent(btneliminaruser))
+                .addContainerGap(514, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelNuevoUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelNuevoUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelNuevoUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelNuevoUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(29, 29, 29))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -313,9 +326,51 @@ public class panelUsuarios extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnCrearUserActionPerformed
 
+    private void btneliminaruserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminaruserActionPerformed
+        // TODO add your handling code here:
+        String nombreAEliminar = JOptionPane.showInputDialog(
+    this, 
+    "Ingrese el nombre de usuario a eliminar:", 
+    "", // 👈 sin título
+    JOptionPane.PLAIN_MESSAGE
+);
+
+    if (nombreAEliminar == null || nombreAEliminar.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Debe ingresar un nombre de usuario válido.",
+            "Advertencia", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    UsuarioBD usuarioBD = new UsuarioBD();
+    Usuario user = usuarioBD.buscarUsuarioPorNombre(nombreAEliminar);
+
+    if (user == null) {
+        JOptionPane.showMessageDialog(this, "El usuario no existe.",
+            "Información", JOptionPane.INFORMATION_MESSAGE);
+    } else if (user.getRol().equalsIgnoreCase("Gerente")) {
+        JOptionPane.showMessageDialog(this, "No se puede eliminar a un usuario con rol Gerente.",
+            "Advertencia", JOptionPane.WARNING_MESSAGE);
+    } else {
+        int confirm = JOptionPane.showConfirmDialog(this,
+            "¿Está seguro de que desea eliminar al usuario: " + nombreAEliminar + "?",
+            "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            if (usuarioBD.eliminarUsuarioPorNombre(nombreAEliminar)) {
+                JOptionPane.showMessageDialog(this, "Usuario eliminado exitosamente.",
+                    "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo eliminar el usuario.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+    }//GEN-LAST:event_btneliminaruserActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrearUser;
+    private javax.swing.JButton btneliminaruser;
     private javax.swing.JComboBox<String> comboRol;
     private javax.swing.JPasswordField confPassword;
     private javax.swing.JLabel jLabel1;

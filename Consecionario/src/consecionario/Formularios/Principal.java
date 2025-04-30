@@ -339,7 +339,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Credito");
+        jLabel4.setText("Usuarios");
 
         iconCredito.setText("Creditos");
 
@@ -483,7 +483,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(iconCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         jPanelCatalogoLayout.setVerticalGroup(
             jPanelCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

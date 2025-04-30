@@ -93,4 +93,77 @@ public class UsuarioBD {
         }
     }
 }
+    
+public Usuario buscarUsuarioPorNombre(String nombreUsuario) {
+    con = ConexionBD.conn();
+    if (con == null) {
+        System.out.println("No se pudo establecer conexión con la base de datos.");
+        return null;
+    }
+
+    String sql = "SELECT * FROM userlogin WHERE nombre_usuario = ?";
+    Usuario user = null;
+
+    try {
+        ps = con.prepareStatement(sql);
+        ps.setString(1, nombreUsuario);
+
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            user = new Usuario();
+            user.setId(rs.getInt("id"));
+            user.setNombre(rs.getString("nombre_usuario"));
+            user.setContraseña(rs.getString("contraseña_usuario"));
+            user.setRol(rs.getString("rol"));
+            user.setNombres(rs.getString("nombres"));
+            user.setApellidoP(rs.getString("apellido_P"));
+            user.setApellidoM(rs.getString("apellido_M"));
+            user.setPuesto(rs.getString("puesto"));
+        }
+
+        rs.close();
+    } catch (SQLException e) {
+        System.out.println("Error al buscar usuario: " + e.getMessage());
+    } finally {
+        try {
+            if (ps != null) ps.close();
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al cerrar conexión: " + e.getMessage());
+        }
+    }
+
+    return user;
+}
+
+public boolean eliminarUsuarioPorNombre(String nombreUsuario) {
+    con = ConexionBD.conn();
+    if (con == null) {
+        System.out.println("No se pudo establecer conexión con la base de datos.");
+        return false;
+    }
+
+    String sql = "DELETE FROM userlogin WHERE nombre_usuario = ?";
+
+    try {
+        ps = con.prepareStatement(sql);
+        ps.setString(1, nombreUsuario);
+
+        int resultado = ps.executeUpdate();
+        return resultado > 0;
+    } catch (SQLException e) {
+        System.out.println("Error al eliminar usuario: " + e.getMessage());
+        return false;
+    } finally {
+        try {
+            if (ps != null) ps.close();
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al cerrar conexión: " + e.getMessage());
+        }
+    }
+}
+
+    
 }

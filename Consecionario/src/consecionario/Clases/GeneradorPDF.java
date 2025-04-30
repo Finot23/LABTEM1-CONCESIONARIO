@@ -26,9 +26,7 @@ public class GeneradorPDF {
     private static final Font fNormal     = new Font(Font.FontFamily.HELVETICA, 9);
 
     /* ----------  MÉTODO PRINCIPAL  ---------- */
-    public static void generarResumenVenta(Cliente cliente,
-                                           CatalogoCarros carro,
-                                           String rutaSalida) {
+    public static void generarResumenVenta(Cliente cliente,CatalogoCarros carro,String rutaSalida) {
 
         try {
             Double TotalConIVA = carro.getPrecio();

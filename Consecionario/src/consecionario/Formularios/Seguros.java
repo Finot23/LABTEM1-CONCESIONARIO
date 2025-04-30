@@ -240,7 +240,6 @@ public class Seguros extends javax.swing.JPanel {
 
         lblTitle.setBackground(new java.awt.Color(255, 255, 255));
         lblTitle.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(0, 0, 0));
         lblTitle.setText("Formulario Seguros");
         lblTitle.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         bg.add(lblTitle, java.awt.BorderLayout.NORTH);
@@ -397,7 +396,7 @@ public class Seguros extends javax.swing.JPanel {
                 .addGroup(pnlDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout bgDatosClienteLayout = new javax.swing.GroupLayout(bgDatosCliente);
@@ -410,7 +409,7 @@ public class Seguros extends javax.swing.JPanel {
                     .addGroup(bgDatosClienteLayout.createSequentialGroup()
                         .addComponent(lblDatosCliente)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(pnlDatosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE))
+                    .addComponent(pnlDatosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE))
                 .addContainerGap())
         );
         bgDatosClienteLayout.setVerticalGroup(
@@ -419,8 +418,8 @@ public class Seguros extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lblDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         bgDatosVehiculo.setBackground(new java.awt.Color(0, 38, 58));
@@ -510,14 +509,14 @@ public class Seguros extends javax.swing.JPanel {
                     .addGroup(pnlDatosVehiculoLayout.createSequentialGroup()
                         .addGroup(pnlDatosVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlDatosVehiculoLayout.createSequentialGroup()
-                                .addComponent(comboUso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(comboUso, 0, 221, Short.MAX_VALUE)
                                 .addGap(18, 18, 18))
                             .addGroup(pnlDatosVehiculoLayout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addGap(114, 114, 114)))
                         .addGroup(pnlDatosVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlDatosVehiculoLayout.createSequentialGroup()
-                                .addComponent(comboTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(comboTipo, 0, 229, Short.MAX_VALUE)
                                 .addGap(18, 18, 18))
                             .addGroup(pnlDatosVehiculoLayout.createSequentialGroup()
                                 .addComponent(jLabel13)
@@ -527,7 +526,7 @@ public class Seguros extends javax.swing.JPanel {
                                 .addComponent(jLabel20)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(pnlDatosVehiculoLayout.createSequentialGroup()
-                                .addComponent(fieldValorAuto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(fieldValorAuto, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                                 .addGap(74, 74, 74))))))
         );
         pnlDatosVehiculoLayout.setVerticalGroup(
@@ -563,7 +562,7 @@ public class Seguros extends javax.swing.JPanel {
                     .addComponent(comboUso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldValorAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout bgDatosVehiculoLayout = new javax.swing.GroupLayout(bgDatosVehiculo);
@@ -571,21 +570,22 @@ public class Seguros extends javax.swing.JPanel {
         bgDatosVehiculoLayout.setHorizontalGroup(
             bgDatosVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgDatosVehiculoLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(bgDatosVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgDatosVehiculoLayout.createSequentialGroup()
-                        .addComponent(lblDatosVehiculo)
-                        .addGap(0, 644, Short.MAX_VALUE))
-                    .addComponent(pnlDatosVehiculo, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addComponent(pnlDatosVehiculo, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(bgDatosVehiculoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblDatosVehiculo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         bgDatosVehiculoLayout.setVerticalGroup(
             bgDatosVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgDatosVehiculoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lblDatosVehiculo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(4, 4, 4)
                 .addComponent(pnlDatosVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         bgDireccionCliente.setBackground(new java.awt.Color(0, 38, 58));
@@ -631,7 +631,7 @@ public class Seguros extends javax.swing.JPanel {
             .addGroup(pnlDireccionClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlDireccionClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fieldCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                    .addComponent(fieldCalle, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
                     .addComponent(jLabel29))
                 .addGap(20, 20, 20)
                 .addGroup(pnlDireccionClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -639,15 +639,15 @@ public class Seguros extends javax.swing.JPanel {
                     .addComponent(fieldColonia, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlDireccionClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fieldMunicipio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fieldMunicipio, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                     .addComponent(jLabel37))
                 .addGap(18, 18, 18)
                 .addGroup(pnlDireccionClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fieldEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fieldEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                     .addComponent(jLabel30))
                 .addGap(18, 18, 18)
                 .addGroup(pnlDireccionClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fieldCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fieldCP, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                     .addGroup(pnlDireccionClienteLayout.createSequentialGroup()
                         .addComponent(jLabel39)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -680,19 +680,20 @@ public class Seguros extends javax.swing.JPanel {
             .addGroup(bgDireccionClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(bgDireccionClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlDireccionCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(bgDireccionClienteLayout.createSequentialGroup()
                         .addComponent(lblDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(pnlDireccionCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         bgDireccionClienteLayout.setVerticalGroup(
             bgDireccionClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgDireccionClienteLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblDireccion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlDireccionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
 
         bgCobertura.setBackground(new java.awt.Color(0, 38, 58));
@@ -787,12 +788,13 @@ public class Seguros extends javax.swing.JPanel {
         bgCoberturaLayout.setHorizontalGroup(
             bgCoberturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgCoberturaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pnlCobertura, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(bgCoberturaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCobertura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(bgCoberturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bgCoberturaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(pnlCobertura, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblCobertura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         bgCoberturaLayout.setVerticalGroup(
@@ -941,16 +943,15 @@ public class Seguros extends javax.swing.JPanel {
         bgBtnContinuarLayout.setHorizontalGroup(
             bgBtnContinuarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgBtnContinuarLayout.createSequentialGroup()
-                .addGap(250, 250, 250)
+                .addGap(251, 251, 251)
                 .addComponent(btnContinuar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(250, 250, 250))
+                .addGap(249, 249, 249))
         );
         bgBtnContinuarLayout.setVerticalGroup(
             bgBtnContinuarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgBtnContinuarLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(0, 33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlContenidoLayout = new javax.swing.GroupLayout(pnlContenido);
@@ -980,17 +981,17 @@ public class Seguros extends javax.swing.JPanel {
                     .addGroup(pnlContenidoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(bgDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(5, 5, 5)
                         .addComponent(bgDireccionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(bgDatosVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bgDatosVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11))
                     .addGroup(pnlContenidoLayout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(bgPago_Cotizacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(bgCobertura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)))
                 .addComponent(bgBtnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(516, 516, 516))
         );
@@ -1216,7 +1217,8 @@ public class Seguros extends javax.swing.JPanel {
                     throw new Exception("Error al registrar cliente");
                 }
             }
-
+            
+            
             Seguro seguro = new Seguro();
             seguro.setNombreS(fieldNombre.getText());
             seguro.setApellidoP(fieldApellidoP.getText());
