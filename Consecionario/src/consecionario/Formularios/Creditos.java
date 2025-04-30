@@ -104,7 +104,8 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
+        bgCreditos = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         etInteres = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -121,16 +122,19 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
         etAuto = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        pnlBtnAprobar = new javax.swing.JPanel();
         btnAprobarCredito = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         bg.setBackground(new java.awt.Color(245, 245, 245));
         bg.setPreferredSize(new java.awt.Dimension(550, 270));
-        bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        bg.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setText("FORM CREDITOS");
-        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
+        lblTitle.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(0, 0, 0));
+        lblTitle.setText("Formulario Credito");
+        bg.add(lblTitle, java.awt.BorderLayout.NORTH);
 
         jPanel1.setBackground(new java.awt.Color(0, 38, 58));
 
@@ -185,7 +189,7 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
                             .addComponent(jLabel7)
                             .addComponent(etEnganche)))
                     .addComponent(etPagoMensual))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         etInteresLayout.setVerticalGroup(
             etInteresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +231,7 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
                         .addComponent(etCliente)
                         .addGap(176, 176, 176)
                         .addComponent(etAuto)))
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,7 +283,24 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
                 .addContainerGap())
         );
 
-        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 32, 540, 240));
+        javax.swing.GroupLayout bgCreditosLayout = new javax.swing.GroupLayout(bgCreditos);
+        bgCreditos.setLayout(bgCreditosLayout);
+        bgCreditosLayout.setHorizontalGroup(
+            bgCreditosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgCreditosLayout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(250, 250, 250))
+        );
+        bgCreditosLayout.setVerticalGroup(
+            bgCreditosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgCreditosLayout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(245, 245, 245))
+        );
+
+        bg.add(bgCreditos, java.awt.BorderLayout.CENTER);
 
         btnAprobarCredito.setBackground(new java.awt.Color(255, 153, 51));
         btnAprobarCredito.setText("Aprobar Credito");
@@ -288,17 +309,35 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
                 btnAprobarCreditoActionPerformed(evt);
             }
         });
-        bg.add(btnAprobarCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
+
+        javax.swing.GroupLayout pnlBtnAprobarLayout = new javax.swing.GroupLayout(pnlBtnAprobar);
+        pnlBtnAprobar.setLayout(pnlBtnAprobarLayout);
+        pnlBtnAprobarLayout.setHorizontalGroup(
+            pnlBtnAprobarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBtnAprobarLayout.createSequentialGroup()
+                .addGap(445, 445, 445)
+                .addComponent(btnAprobarCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(457, Short.MAX_VALUE))
+        );
+        pnlBtnAprobarLayout.setVerticalGroup(
+            pnlBtnAprobarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBtnAprobarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnAprobarCredito)
+                .addContainerGap(71, Short.MAX_VALUE))
+        );
+
+        bg.add(pnlBtnAprobar, java.awt.BorderLayout.SOUTH);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1471, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -416,6 +455,7 @@ if (!ventaYaRegistrada(cliente)) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
+    private javax.swing.JPanel bgCreditos;
     private javax.swing.JButton btnAprobarCredito;
     private javax.swing.JComboBox<String> comboMeses;
     private javax.swing.JComboBox<String> comboPorcentaje;
@@ -426,7 +466,6 @@ if (!ventaYaRegistrada(cliente)) {
     private javax.swing.JPanel etInteres;
     private javax.swing.JLabel etPagoMensual;
     private javax.swing.JLabel etValorAuto;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -434,5 +473,7 @@ if (!ventaYaRegistrada(cliente)) {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JPanel pnlBtnAprobar;
     // End of variables declaration//GEN-END:variables
 }
