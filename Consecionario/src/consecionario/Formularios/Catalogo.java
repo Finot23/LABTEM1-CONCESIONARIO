@@ -25,6 +25,10 @@ import javax.swing.table.JTableHeader;
  * @author andre
  */
 public class Catalogo extends javax.swing.JPanel {
+   
+  
+    
+    
     private Catalogo catalogoRef;
     private String imagePath; 
     
@@ -164,11 +168,12 @@ header.setForeground(Color.WHITE);
         this.catalogoRef = catalogoRef;
         PersonalizarTabla();
         
-         if (tipoUsuario.equals("Vendedor")) {
-            almacenAdmin.setVisible(false); // Ocultar el panel para vendedores
-        } else {
-            almacenAdmin.setVisible(true); // Mostrar el panel para administradores
-        }
+        
+        if (tipoUsuario.equals("Vendedor")) {
+         btnAEauto.setVisible(false);
+            jButton1.setVisible(false); // Ocultar panel de administración
+   
+    }
        
          cargarTodosLosAutos();
     } 

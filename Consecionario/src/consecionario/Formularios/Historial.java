@@ -33,6 +33,7 @@ public class Historial extends javax.swing.JPanel {
     modelo.addColumn("Nombre Cliente");
     modelo.addColumn("Tipo Documento");
     modelo.addColumn("Fecha Registro");
+    modelo.addColumn("PDF");
     
 
     Connection con = ConexionBD.conn();
