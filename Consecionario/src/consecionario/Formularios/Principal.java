@@ -71,7 +71,8 @@ public class Principal extends javax.swing.JFrame {
      
         
     //txtBienvenida.setText("Bienvendido de nuevo, " +rolUsuario);
-    txtNombreUsuario.setText(""+usuario);    
+    txtNombreUsuario.setText(""+usuario);  
+    txtTipoUsuario.setText("Tipo de Usuario : "+rolUsuario);
          jPanelSeguros.setVisible(false);
     }
      
@@ -147,7 +148,7 @@ public class Principal extends javax.swing.JFrame {
         pnlSuperior = new javax.swing.JPanel();
         iconUserMain = new javax.swing.JLabel();
         txtNombreUsuario = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        txtTipoUsuario = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanelContenido = new javax.swing.JPanel();
 
@@ -572,9 +573,9 @@ public class Principal extends javax.swing.JFrame {
         txtNombreUsuario.setForeground(new java.awt.Color(0, 38, 58));
         txtNombreUsuario.setText("NombreUsuario");
 
-        jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 38, 58));
-        jLabel7.setText("Tipo de Usuario : Administrador");
+        txtTipoUsuario.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        txtTipoUsuario.setForeground(new java.awt.Color(0, 38, 58));
+        txtTipoUsuario.setText("Tipo de Usuario : Administrador");
 
         jLabel9.setText("Usuario:");
 
@@ -585,7 +586,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSuperiorLayout.createSequentialGroup()
                 .addContainerGap(531, Short.MAX_VALUE)
                 .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
+                    .addComponent(txtTipoUsuario)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSuperiorLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -603,7 +604,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(iconUserMain, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                         .addGap(11, 11, 11))
                     .addGroup(pnlSuperiorLayout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSuperiorLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -807,7 +808,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanelCatalogo;
@@ -825,5 +825,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlLeftBar6;
     private javax.swing.JPanel pnlSuperior;
     private javax.swing.JLabel txtNombreUsuario;
+    private javax.swing.JLabel txtTipoUsuario;
     // End of variables declaration//GEN-END:variables
 }
