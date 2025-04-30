@@ -5,11 +5,14 @@
 package consecionario.Formularios;
 
 import BD.ConexionBD;
+import java.awt.Color;
 import java.awt.Desktop;
+import java.awt.Font;
 import java.io.File;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -30,7 +33,8 @@ public class Historial extends javax.swing.JPanel {
     modelo.addColumn("Nombre Cliente");
     modelo.addColumn("Tipo Documento");
     modelo.addColumn("Fecha Registro");
-    modelo.addColumn("Ruta Archivo");
+    modelo.addColumn("PDF");
+    
 
     Connection con = ConexionBD.conn();
     if (con != null) {
@@ -55,7 +59,7 @@ public class Historial extends javax.swing.JPanel {
         }
     }
 
-    jTable1.setModel(modelo);
+    tblHistorial.setModel(modelo);
 }
     private void abrirPDF(String ruta) {
     try {
@@ -73,15 +77,34 @@ public class Historial extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Error al abrir el archivo: " + e.getMessage());
     }
 }
+    
+    public void PersonalizarTabla(){
+        tblHistorial.setRowHeight(40); // Altura de cada fila
+        tblHistorial.setGridColor(Color.decode("#00263A")); // Color de las líneas
+
+// Cambiar fuente del contenido
+tblHistorial.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+
+// Cambiar fondo y texto de la tabla
+tblHistorial.setBackground(new Color(245, 245, 245));
+tblHistorial.setForeground(Color.BLACK);
+
+// Encabezados personalizados
+JTableHeader header = tblHistorial.getTableHeader();
+header.setFont(new Font("Segoe UI", Font.BOLD, 14));
+header.setBackground(new Color(60, 63, 65));
+header.setForeground(Color.WHITE);
+    }
     public Historial() {
         initComponents();
+        PersonalizarTabla();
         cargarHistorial();
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblHistorial.addMouseListener(new java.awt.event.MouseAdapter() {
     public void mouseClicked(java.awt.event.MouseEvent evt) {
         if (evt.getClickCount() == 2) { // doble clic
-            int fila = jTable1.getSelectedRow();
+            int fila = tblHistorial.getSelectedRow();
             if (fila != -1) {
-                String rutaArchivo = jTable1.getValueAt(fila, 4).toString();
+                String rutaArchivo = tblHistorial.getValueAt(fila, 4).toString();
                 abrirPDF(rutaArchivo);
             }
         }
@@ -99,15 +122,20 @@ public class Historial extends javax.swing.JPanel {
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
+        pnlTabla = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblHistorial = new javax.swing.JTable();
+        lblHistorial = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new java.awt.BorderLayout());
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setLayout(new java.awt.BorderLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        pnlTabla.setBackground(new java.awt.Color(255, 255, 255));
+
+        tblHistorial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -118,32 +146,45 @@ public class Historial extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblHistorial);
 
-        bg.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout pnlTablaLayout = new javax.swing.GroupLayout(pnlTabla);
+        pnlTabla.setLayout(pnlTablaLayout);
+        pnlTablaLayout.setHorizontalGroup(
+            pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1189, Short.MAX_VALUE)
+            .addGroup(pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlTablaLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        pnlTablaLayout.setVerticalGroup(
+            pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 736, Short.MAX_VALUE)
+            .addGroup(pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlTablaLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 1177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        bg.add(pnlTabla, java.awt.BorderLayout.CENTER);
+
+        add(bg, java.awt.BorderLayout.CENTER);
+
+        lblHistorial.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblHistorial.setForeground(new java.awt.Color(0, 0, 0));
+        lblHistorial.setText("Historial de ventas");
+        add(lblHistorial, java.awt.BorderLayout.NORTH);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblHistorial;
+    private javax.swing.JPanel pnlTabla;
+    private javax.swing.JTable tblHistorial;
     // End of variables declaration//GEN-END:variables
 }

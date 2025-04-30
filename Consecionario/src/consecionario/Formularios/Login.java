@@ -483,8 +483,10 @@ try (PreparedStatement pst = conn.prepareStatement(sqlquery)) {
 
                 this.dispose(); // Cierra la ventana de login
             } else if (tipoUsuario.equals("Vendedor")) {
-                PrincipalVendedor v = new PrincipalVendedor(tipoUsuario, usuario);
-                v.setVisible(true);
+                Principal p = new Principal(tipoUsuario, usuario); // Pasamos el rol
+                p.setVisible(true);
+//                PrincipalVendedor v = new PrincipalVendedor(tipoUsuario, usuario);
+//                v.setVisible(true);
                 //JOptionPane.showMessageDialog(null, "Se inició sesión con éxito, bienvenido Vendedor.");
                 this.dispose();
             }

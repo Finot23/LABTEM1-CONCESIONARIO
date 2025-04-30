@@ -4,11 +4,8 @@
  */
 package consecionario.Formularios;
 import BD.ConexionBD;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -17,11 +14,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -30,6 +25,10 @@ import javax.swing.table.JTableHeader;
  * @author andre
  */
 public class Catalogo extends javax.swing.JPanel {
+   
+  
+    
+    
     private Catalogo catalogoRef;
     private String imagePath; 
     
@@ -38,19 +37,7 @@ public class Catalogo extends javax.swing.JPanel {
     /**
      * Creates new form Catalogo
      */
-    public Catalogo(String tipoUsuario,Catalogo catalogoRef) {
-        
-        initComponents();
-        jPanel2.setVisible(false);
-        this.catalogoRef = catalogoRef;
-        PersonalizarTabla();
-         if (tipoUsuario.equals("Vendedor")) {
-            almacenAdmin.setVisible(false); // Ocultar el panel para vendedores
-        } else {
-            almacenAdmin.setVisible(true); // Mostrar el panel para administradores
-        }
-       
-    } 
+    
     
     
     public void PersonalizarTabla(){
@@ -70,6 +57,38 @@ header.setFont(new Font("Segoe UI", Font.BOLD, 14));
 header.setBackground(new Color(60, 63, 65));
 header.setForeground(Color.WHITE);
     }
+    private void cargarTodosLosAutos() {
+    try {
+        Connection conn = ConexionBD.conn();
+        if (conn != null) {
+            String query = "SELECT * FROM almacen";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            modelo.setRowCount(0); // Limpiar tabla
+
+            while (rs.next()) {
+                Object[] fila = new Object[7];
+                fila[0] = rs.getInt("id");
+                fila[1] = rs.getString("modelo");
+                fila[2] = rs.getInt("anio_fabricacion");
+                fila[3] = rs.getDouble("precio");
+                fila[4] = rs.getString("color");
+                fila[5] = rs.getString("estado");
+                fila[6] = rs.getString("categoria");
+
+                modelo.addRow(fila);
+            }
+
+            conn.close();
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos");
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al cargar los autos: " + e.getMessage());
+    }
+}
     
     private void filtrarPorCategoria() {
     try {
@@ -142,22 +161,39 @@ header.setForeground(Color.WHITE);
         JOptionPane.showMessageDialog(this, "Error al eliminar el auto: " + e.getMessage());
     }
 }
+    public Catalogo(String tipoUsuario,Catalogo catalogoRef) {
+        
+        initComponents();
+        pnlDatosAuto.setVisible(false);
+        this.catalogoRef = catalogoRef;
+        PersonalizarTabla();
+        
+        
+        if (tipoUsuario.equals("Vendedor")) {
+         btnAEauto.setVisible(false);
+            jButton1.setVisible(false); // Ocultar panel de administración
+   
+    }
+       
+         cargarTodosLosAutos();
+    } 
      
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
-        cat = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        lblTitle = new javax.swing.JLabel();
+        bgFiltrosAñadirCarro = new javax.swing.JPanel();
+        bgFiltros = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
         Filtrar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblSeleccionarCategoria = new javax.swing.JLabel();
+        bgAgregarCarro = new javax.swing.JPanel();
         almacenAdmin = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         btnAEauto = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        pnlDatosAuto = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -178,36 +214,24 @@ header.setForeground(Color.WHITE);
         fieldAnio = new javax.swing.JTextField();
         btnAgergarImagen = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
+        pnlBgTabla = new javax.swing.JPanel();
+        bgTabla = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setMaximumSize(new java.awt.Dimension(810, 520));
+        setLayout(new java.awt.BorderLayout());
 
         bg.setBackground(new java.awt.Color(245, 245, 245));
-        bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        bg.setLayout(new java.awt.BorderLayout());
 
-        cat.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        cat.setText("ALMACEN");
-        bg.add(cat, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, -30, 150, 100));
+        lblTitle.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblTitle.setText("Inventario");
+        bg.add(lblTitle, java.awt.BorderLayout.NORTH);
 
-        jTable1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "id", "modelo", "anio_fabricacion", "precio", "color", "estado", "Categoria"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        bgFiltrosAñadirCarro.setBackground(new java.awt.Color(255, 255, 255));
 
-        bg.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 530, -1));
+        bgFiltros.setBackground(new java.awt.Color(255, 255, 255));
 
         jComboBox1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hatchback ", "Sedan", "SUV", " " }));
@@ -216,8 +240,8 @@ header.setForeground(Color.WHITE);
                 jComboBox1ActionPerformed(evt);
             }
         });
-        bg.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, -1, -1));
 
+        Filtrar.setBackground(new java.awt.Color(255, 153, 51));
         Filtrar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         Filtrar.setText("Filtrar");
         Filtrar.addActionListener(new java.awt.event.ActionListener() {
@@ -225,14 +249,46 @@ header.setForeground(Color.WHITE);
                 FiltrarActionPerformed(evt);
             }
         });
-        bg.add(Filtrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel1.setText("Escoge tu categoria preferida");
-        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 40, -1, -1));
+        lblSeleccionarCategoria.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        lblSeleccionarCategoria.setText("Escoge tu categoria preferida");
 
-        almacenAdmin.setBackground(new java.awt.Color(245, 245, 245));
+        javax.swing.GroupLayout bgFiltrosLayout = new javax.swing.GroupLayout(bgFiltros);
+        bgFiltros.setLayout(bgFiltrosLayout);
+        bgFiltrosLayout.setHorizontalGroup(
+            bgFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgFiltrosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Filtrar)
+                .addContainerGap(118, Short.MAX_VALUE))
+            .addGroup(bgFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(bgFiltrosLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(bgFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblSeleccionarCategoria)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        bgFiltrosLayout.setVerticalGroup(
+            bgFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgFiltrosLayout.createSequentialGroup()
+                .addContainerGap(74, Short.MAX_VALUE)
+                .addComponent(Filtrar)
+                .addContainerGap())
+            .addGroup(bgFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(bgFiltrosLayout.createSequentialGroup()
+                    .addGap(3, 3, 3)
+                    .addComponent(lblSeleccionarCategoria)
+                    .addGap(14, 14, 14)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(47, Short.MAX_VALUE)))
+        );
 
+        bgAgregarCarro.setBackground(new java.awt.Color(255, 255, 255));
+
+        almacenAdmin.setBackground(new java.awt.Color(255, 255, 255));
+
+        jButton1.setBackground(new java.awt.Color(255, 153, 51));
         jButton1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jButton1.setText("Eliminar Auto");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -241,6 +297,7 @@ header.setForeground(Color.WHITE);
             }
         });
 
+        btnAEauto.setBackground(new java.awt.Color(255, 153, 51));
         btnAEauto.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         btnAEauto.setText("Agregar Auto");
         btnAEauto.addActionListener(new java.awt.event.ActionListener() {
@@ -258,7 +315,7 @@ header.setForeground(Color.WHITE);
                 .addGroup(almacenAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAEauto)
                     .addComponent(jButton1))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         almacenAdminLayout.setVerticalGroup(
             almacenAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,15 +327,13 @@ header.setForeground(Color.WHITE);
                 .addGap(26, 26, 26))
         );
 
-        bg.add(almacenAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 230, 80));
-
-        jPanel2.setBackground(new java.awt.Color(245, 245, 245));
+        pnlDatosAuto.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel2.setText("DATOS DEL AUTO");
 
-        jPanel3.setBackground(new java.awt.Color(245, 245, 245));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel9.setText("Modelo");
@@ -428,51 +483,141 @@ header.setForeground(Color.WHITE);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlDatosAutoLayout = new javax.swing.GroupLayout(pnlDatosAuto);
+        pnlDatosAuto.setLayout(pnlDatosAutoLayout);
+        pnlDatosAutoLayout.setHorizontalGroup(
+            pnlDatosAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDatosAutoLayout.createSequentialGroup()
+                .addGroup(pnlDatosAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatosAutoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(pnlDatosAutoLayout.createSequentialGroup()
                         .addGap(97, 97, 97)
                         .addComponent(btnAgregar))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(pnlDatosAutoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        pnlDatosAutoLayout.setVerticalGroup(
+            pnlDatosAutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDatosAutoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAgregar)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        bg.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, 300, 280));
+        javax.swing.GroupLayout bgAgregarCarroLayout = new javax.swing.GroupLayout(bgAgregarCarro);
+        bgAgregarCarro.setLayout(bgAgregarCarroLayout);
+        bgAgregarCarroLayout.setHorizontalGroup(
+            bgAgregarCarroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 312, Short.MAX_VALUE)
+            .addGroup(bgAgregarCarroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(bgAgregarCarroLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(bgAgregarCarroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(almacenAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlDatosAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        bgAgregarCarroLayout.setVerticalGroup(
+            bgAgregarCarroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 372, Short.MAX_VALUE)
+            .addGroup(bgAgregarCarroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(bgAgregarCarroLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(almacenAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, 0)
+                    .addComponent(pnlDatosAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 913, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout bgFiltrosAñadirCarroLayout = new javax.swing.GroupLayout(bgFiltrosAñadirCarro);
+        bgFiltrosAñadirCarro.setLayout(bgFiltrosAñadirCarroLayout);
+        bgFiltrosAñadirCarroLayout.setHorizontalGroup(
+            bgFiltrosAñadirCarroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgFiltrosAñadirCarroLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(bgFiltrosAñadirCarroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bgAgregarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bgFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        bgFiltrosAñadirCarroLayout.setVerticalGroup(
+            bgFiltrosAñadirCarroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgFiltrosAñadirCarroLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(bgFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bgAgregarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(105, Short.MAX_VALUE))
+        );
+
+        bg.add(bgFiltrosAñadirCarro, java.awt.BorderLayout.WEST);
+
+        pnlBgTabla.setBackground(new java.awt.Color(255, 255, 255));
+
+        bgTabla.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Modelo", "Año de Fabricación", "Precio", "Color", "Estado", "Categoria"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        javax.swing.GroupLayout bgTablaLayout = new javax.swing.GroupLayout(bgTabla);
+        bgTabla.setLayout(bgTablaLayout);
+        bgTablaLayout.setHorizontalGroup(
+            bgTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgTablaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        bgTablaLayout.setVerticalGroup(
+            bgTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgTablaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout pnlBgTablaLayout = new javax.swing.GroupLayout(pnlBgTabla);
+        pnlBgTabla.setLayout(pnlBgTablaLayout);
+        pnlBgTablaLayout.setHorizontalGroup(
+            pnlBgTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBgTablaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bgTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(384, 384, 384))
+        );
+        pnlBgTablaLayout.setVerticalGroup(
+            pnlBgTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBgTablaLayout.createSequentialGroup()
+                .addComponent(bgTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+
+        bg.add(pnlBgTabla, java.awt.BorderLayout.CENTER);
+
+        add(bg, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -492,7 +637,7 @@ header.setForeground(Color.WHITE);
     private void btnAEautoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAEautoActionPerformed
         // TODO add your handling code here:
         
-        jPanel2.setVisible(true);
+        pnlDatosAuto.setVisible(true);
         //InterfaceEA dialog = new InterfaceEA(this); 
         //dialog.setCatalogoReference(this);
         //dialog.setVisible(true);
@@ -580,7 +725,7 @@ header.setForeground(Color.WHITE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al agregar auto: " + e.getMessage());
         }
-        jPanel2.setVisible(false);
+        pnlDatosAuto.setVisible(false);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
 
@@ -588,10 +733,13 @@ header.setForeground(Color.WHITE);
     private javax.swing.JButton Filtrar;
     private javax.swing.JPanel almacenAdmin;
     private javax.swing.JPanel bg;
+    private javax.swing.JPanel bgAgregarCarro;
+    private javax.swing.JPanel bgFiltros;
+    private javax.swing.JPanel bgFiltrosAñadirCarro;
+    private javax.swing.JPanel bgTabla;
     private javax.swing.JButton btnAEauto;
     private javax.swing.JButton btnAgergarImagen;
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JLabel cat;
     private javax.swing.JComboBox<String> comboEstadoAuto;
     private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JTextField fieldAnio;
@@ -602,7 +750,6 @@ header.setForeground(Color.WHITE);
     private javax.swing.JTextField fieldValorAuto;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -612,9 +759,12 @@ header.setForeground(Color.WHITE);
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblSeleccionarCategoria;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JPanel pnlBgTabla;
+    private javax.swing.JPanel pnlDatosAuto;
     // End of variables declaration//GEN-END:variables
 }
