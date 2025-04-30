@@ -272,7 +272,7 @@ header.setForeground(Color.WHITE);
         bgFiltrosLayout.setVerticalGroup(
             bgFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgFiltrosLayout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addComponent(Filtrar)
                 .addContainerGap())
             .addGroup(bgFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -587,14 +587,15 @@ header.setForeground(Color.WHITE);
         bgTablaLayout.setHorizontalGroup(
             bgTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgTablaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+                .addGap(17, 17, 17))
         );
         bgTablaLayout.setVerticalGroup(
             bgTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgTablaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlBgTablaLayout = new javax.swing.GroupLayout(pnlBgTabla);
@@ -604,7 +605,7 @@ header.setForeground(Color.WHITE);
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBgTablaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bgTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(557, 557, 557))
+                .addGap(0, 0, 0))
         );
         pnlBgTablaLayout.setVerticalGroup(
             pnlBgTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

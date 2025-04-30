@@ -181,13 +181,13 @@ vig.addCell(text("Hasta las 12:00 hrs. del " + fechaTope));
         plan.addCell(text("Recargo Pago Póliza: $0.00"));
 
         plan.addCell(text("Moneda: MXN"));
-        plan.addCell(text("IVA 16%: " +df.format(IVA)));
+        plan.addCell(text("IVA 16%: $"+df.format(IVA)));
 
         
         plan.addCell(text("Importe a pagar: $0.00"));
 
         plan.addCell(empty());
-        plan.addCell(text("Primer pago: $0.00"));
+        plan.addCell(text("Primer pago: $"+df.format(seguro.getPrima())));
 
         plan.addCell(empty());
         plan.addCell(text("Pagos subsecuentes: $0.00"));
