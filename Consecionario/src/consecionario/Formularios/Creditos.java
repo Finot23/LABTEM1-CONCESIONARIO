@@ -139,8 +139,10 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
 
         etInteres.setBackground(new java.awt.Color(245, 245, 245));
 
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel4.setText("Porcentaje de Enganche");
 
+        comboPorcentaje.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         comboPorcentaje.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10%", "20%", "30%", "50%" }));
         comboPorcentaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,14 +150,19 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
             }
         });
 
+        etEnganche.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         etEnganche.setText("Pago de Enganche:");
 
+        etCredito.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         etCredito.setText("Monto de Credito:");
 
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel7.setText("Tasa de Interes Anual: 15%");
 
+        jLabel8.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel8.setText("Plazo (Numero de meses)");
 
+        comboMeses.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         comboMeses.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "24", "36", "48", "60" }));
         comboMeses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,6 +170,7 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
             }
         });
 
+        etPagoMensual.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         etPagoMensual.setText("Pago Mensual:");
 
         javax.swing.GroupLayout etInteresLayout = new javax.swing.GroupLayout(etInteres);
@@ -188,7 +196,7 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
                             .addComponent(jLabel7)
                             .addComponent(etEnganche)))
                     .addComponent(etPagoMensual))
-                .addContainerGap(545, Short.MAX_VALUE))
+                .addContainerGap(534, Short.MAX_VALUE))
         );
         etInteresLayout.setVerticalGroup(
             etInteresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,10 +220,13 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
 
         jPanel3.setBackground(new java.awt.Color(245, 245, 245));
 
+        etValorAuto.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         etValorAuto.setText("Precio del Auto:");
 
+        etCliente.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         etCliente.setText("Cliente:");
 
+        etAuto.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         etAuto.setText("Automovil:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -244,11 +255,11 @@ comboMeses.addActionListener(new java.awt.event.ActionListener() {
                 .addContainerGap())
         );
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("CLIENTE");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("INFORMACION CREDITO");
 
